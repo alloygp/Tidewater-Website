@@ -1,5 +1,27 @@
 // HOA Homepage — Topbar + Header with megamenu
 function Topbar() {
+  const cfg = (window.PAGE_CONFIG && window.PAGE_CONFIG.topbar) || {};
+  const variant = cfg.variant || 'default'; // 'default' | 'homeowner'
+  if (variant === 'homeowner') {
+    return (
+      <div className="tw-topbar">
+        <div className="tw-topbar-inner">
+          <div className="tw-topbar-left">
+            <a href="#"><span className="tw-topbar-em">Pay Assessment</span></a>
+            <span style={{opacity:.4}}>·</span>
+            <a href="#">Submit a Request</a>
+            <span style={{opacity:.4}}>·</span>
+            <a href="#">Find My Community</a>
+          </div>
+          <div className="tw-topbar-right">
+            <a href="#"><span className="tw-topbar-em">Emergency:</span> 24/7/365</a>
+            <a href="#">(443) 548-0191</a>
+            <a href="#" className="tw-topbar-login">Owner Login →</a>
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="tw-topbar">
       <div className="tw-topbar-inner">
@@ -19,25 +41,33 @@ function Topbar() {
 }
 
 function Header() {
+  const cfg = (window.PAGE_CONFIG && window.PAGE_CONFIG.nav) || {};
+  const active = cfg.active || null;
   const [openMenu, setOpenMenu] = React.useState(false);
   const navItems = [
-    { label: 'About', has: true, menu: 'about' },
-    { label: 'Management', active: true, has: true, menu: 'mgmt' },
-    { label: 'Maintenance' },
-    { label: 'Real Estate' },
-    { label: 'Resources' },
+    { label: 'About', has: true, menu: 'about', href: '/about/' },
+    { label: 'Management', has: true, menu: 'mgmt', href: '/hoa-management/', match: ['mgmt','hoa','condo'] },
+    { label: 'Maintenance', href: '/maintenance/' },
+    { label: 'Real Estate', href: '/real-estate/' },
+    { label: 'Resources', href: '/resources/' },
   ];
+  const isActive = (n) => {
+    if (!active) return false;
+    if (n.menu && n.menu === active) return true;
+    if (n.match && n.match.indexOf(active) !== -1) return true;
+    return false;
+  };
   const menus = {
     about: [
-      { title: 'Our Story', body: 'Family-owned in the Mid-Atlantic since 1989.', icon: 'shield' },
-      { title: 'Leadership', body: 'PCAM-credentialed team and chapter presidents.', icon: 'sliders' },
-      { title: 'Service Areas', body: 'MD, DC, VA, PA, DE, and West Virginia.', icon: 'chart' },
-      { title: 'Careers', body: 'Join an independent, board-first management firm.', icon: 'building' },
+      { title: 'Our Story', body: 'Family-owned in the Mid-Atlantic since 1989.', icon: 'shield', href: '/about/' },
+      { title: 'Leadership', body: 'PCAM-credentialed team and chapter presidents.', icon: 'sliders', href: '/about/leadership/' },
+      { title: 'Service Areas', body: 'MD, DC, VA, PA, DE, and West Virginia.', icon: 'chart', href: '/service-areas/' },
+      { title: 'Careers', body: 'Join an independent, board-first management firm.', icon: 'building', href: '/careers/' },
     ],
     mgmt: [
-      { title: 'HOA Management', body: 'Full-service management for homeowner associations.', icon: 'shield' },
-      { title: 'Condo Association Management', body: 'High-rise, mid-rise, and garden-style condo expertise.', icon: 'building' },
-      { title: 'Rental Property Management', body: 'Single-family and small-multifamily rental management.', icon: 'chart' },
+      { title: 'HOA Management', body: 'Full-service management for homeowner associations.', icon: 'shield', href: 'hoa-management.html' },
+      { title: 'Condo Association Management', body: 'High-rise, mid-rise, and garden-style condo expertise.', icon: 'building', href: 'condo-association-management.html' },
+      { title: 'Rental Property Management', body: 'Single-family and small-multifamily rental management.', icon: 'chart', href: '/rental-property-management/' },
     ],
   };
   const icons = {
@@ -49,11 +79,11 @@ function Header() {
   return (
     <header className="tw-header">
       <div className="tw-header-inner">
-        <a className="tw-header-logo" href="#"><img src="assets/logo-main-black.svg" alt="Tidewater Companies"/></a>
+        <a className="tw-header-logo" href="index.html"><img src="assets/logo-main-black.svg" alt="Tidewater Companies"/></a>
         <nav className="tw-header-nav">
           {navItems.map(n => (
             <div key={n.label} style={{position:'relative'}} onMouseEnter={()=>n.has && setOpenMenu(n.menu)} onMouseLeave={()=>n.has && setOpenMenu(false)}>
-              <a href="#" className={`tw-header-nav-link ${n.active ? 'is-active' : ''}`}>
+              <a href={n.href || '#'} className={`tw-header-nav-link ${isActive(n) ? 'is-active' : ''}`}>
                 {n.label}{n.has && <span className="tw-chev">▾</span>}
               </a>
               {n.has && (
@@ -75,7 +105,7 @@ function Header() {
                   {n.menu === 'mgmt' ? (
                     <div className="tw-mega-list">
                       {menus[n.menu].map(m => (
-                        <a key={m.title} href="#" className="tw-mega-item">
+                        <a key={m.title} href={m.href || '#'} className="tw-mega-item">
                           <div className="tw-mega-icon">{icons[m.icon]}</div>
                           <div>
                             <div className="tw-mega-title">{m.title}</div>
@@ -86,7 +116,7 @@ function Header() {
                     </div>
                   ) : (
                     menus[n.menu].map(m => (
-                      <a key={m.title} href="#" className="tw-mega-item">
+                      <a key={m.title} href={m.href || '#'} className="tw-mega-item">
                         <div className="tw-mega-icon">{icons[m.icon]}</div>
                         <div>
                           <div className="tw-mega-title">{m.title}</div>

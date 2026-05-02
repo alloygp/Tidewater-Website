@@ -64,11 +64,11 @@ function Footer() {
           <div>
             <h4>Companies</h4>
             <ul>
-              <li><a href="#">HOA / Condo Management</a></li>
+              <li><a href="hoa-management.html">HOA Management</a></li>
+              <li><a href="condo-association-management.html">Condo Association Management</a></li>
               <li><a href="#">Rental Property Management</a></li>
               <li><a href="#">Tidewater Property Maintenance</a></li>
               <li><a href="#">Tidewater Realty Group</a></li>
-              <li><a href="#">Developer Program</a></li>
             </ul>
           </div>
           <div>
