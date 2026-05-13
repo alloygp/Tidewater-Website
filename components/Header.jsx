@@ -45,10 +45,10 @@ function Header() {
   const active = cfg.active || null;
   const [openMenu, setOpenMenu] = React.useState(false);
   const navItems = [
-    { label: 'About', has: true, menu: 'about', href: '/about/' },
-    { label: 'Management', has: true, menu: 'mgmt', href: '/hoa-management/', match: ['mgmt','hoa','condo'] },
-    { label: 'Maintenance', href: '/maintenance/' },
-    { label: 'Real Estate', href: '/real-estate/' },
+    { label: 'About', has: true, menu: 'about', href: 'about.html' },
+    { label: 'Management', has: true, menu: 'mgmt', href: 'hoa-management.html', match: ['mgmt','hoa','condo','rental'] },
+    { label: 'Maintenance', href: 'maintenance.html', match: ['maintenance'] },
+    { label: 'Real Estate', href: 'realty.html', match: ['realty'] },
     { label: 'Resources', href: '/resources/' },
   ];
   const isActive = (n) => {
@@ -59,15 +59,15 @@ function Header() {
   };
   const menus = {
     about: [
-      { title: 'Our Story', body: 'Family-owned in the Mid-Atlantic since 1989.', icon: 'shield', href: '/about/' },
-      { title: 'Leadership', body: 'PCAM-credentialed team and chapter presidents.', icon: 'sliders', href: '/about/leadership/' },
+      { title: 'Our Story', body: 'Family-owned in the Mid-Atlantic since 1989.', icon: 'shield', href: 'about.html' },
+      { title: 'Leadership', body: 'PCAM-credentialed team and chapter presidents.', icon: 'sliders', href: 'about-leadership.html' },
       { title: 'Service Areas', body: 'MD, DC, VA, PA, DE, and West Virginia.', icon: 'chart', href: '/service-areas/' },
-      { title: 'Careers', body: 'Join an independent, board-first management firm.', icon: 'building', href: '/careers/' },
+      { title: 'Careers', body: 'Join an independent, board-first management firm.', icon: 'building', href: 'about-careers.html' },
     ],
     mgmt: [
       { title: 'HOA Management', body: 'Full-service management for homeowner associations.', icon: 'shield', href: 'hoa-management.html' },
       { title: 'Condo Association Management', body: 'High-rise, mid-rise, and garden-style condo expertise.', icon: 'building', href: 'condo-association-management.html' },
-      { title: 'Rental Property Management', body: 'Single-family and small-multifamily rental management.', icon: 'chart', href: '/rental-property-management/' },
+      { title: 'Rental Property Management', body: 'Single-family and small-multifamily rental management.', icon: 'chart', href: 'rental-property-management.html' },
     ],
   };
   const icons = {
