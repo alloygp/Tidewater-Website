@@ -1,0 +1,249 @@
+/* ============================================================
+   Tidewater Companies — Colors & Type
+   Source: Brand Guide V1.0 (April 2026)
+   Fonts:  Nunito Sans (heading), Work Sans (body) — Google Fonts
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* ---------- Brand Colors (canonical) ---------- */
+  --tw-teal:        #3A92A6;   /* Hero — primary brand color */
+  --tw-gold:        #BFAC5F;   /* Coastal Gold — accent */
+  --tw-clay:        #CE8E72;   /* Clay Rose — accent / warning */
+  --tw-sand:        #E2BB92;   /* Warm Sand — accent */
+  --tw-sage:        #647D57;   /* Sage Green — accent */
+  --tw-dark:        #172325;   /* Dark Tide — dark neutral / text */
+  --tw-linen:       #F1EEEA;   /* Soft Linen — light neutral */
+  --tw-cream:       #FEFCF8;   /* White Cream — off-white surface */
+  --tw-mist:        #E9F0F1;   /* Morning Mist — cool light neutral */
+
+  /* Tonal teal scale (derived from --tw-teal) */
+  --tw-teal-50:  #EAF3F5;
+  --tw-teal-100: #C7E0E5;
+  --tw-teal-200: #94C5CE;
+  --tw-teal-300: #62A9B6;
+  --tw-teal-400: #3A92A6;   /* === --tw-teal === */
+  --tw-teal-500: #2F7C8E;
+  --tw-teal-600: #246574;
+  --tw-teal-700: #1B4E59;
+  --tw-teal-800: #133840;
+  --tw-teal-900: #0B2227;
+
+  /* Tonal warm-neutral scale */
+  --tw-warm-50:  #FEFCF8;   /* === --tw-cream === */
+  --tw-warm-100: #F8F4EE;
+  --tw-warm-200: #F1EEEA;   /* === --tw-linen === */
+  --tw-warm-300: #E0DAD2;
+  --tw-warm-400: #B8B0A6;
+  --tw-warm-500: #8A8278;
+  --tw-warm-600: #5C5751;
+  --tw-warm-700: #3A3733;
+  --tw-warm-800: #232220;
+  --tw-warm-900: #172325;   /* === --tw-dark === */
+
+  /* ---------- Semantic Colors ---------- */
+  --tw-bg:           var(--tw-cream);
+  --tw-bg-alt:       var(--tw-linen);
+  --tw-bg-cool:      var(--tw-mist);
+  --tw-bg-dark:      var(--tw-dark);
+
+  --tw-fg:           var(--tw-dark);            /* Primary text */
+  --tw-fg-muted:     #555;                       /* Secondary text */
+  --tw-fg-subtle:    #888;                       /* Tertiary / meta */
+  --tw-fg-inverse:   var(--tw-cream);            /* Text on dark */
+
+  --tw-accent:       var(--tw-teal);             /* Primary accent */
+  --tw-accent-hover: var(--tw-teal-500);
+  --tw-accent-press: var(--tw-teal-600);
+
+  --tw-border:       #E5DFD7;
+  --tw-border-strong:#C9C2B7;
+  --tw-divider:      rgba(23, 35, 37, 0.08);
+
+  /* Status (derived to harmonize with palette) */
+  --tw-success:      var(--tw-sage);
+  --tw-warning:      var(--tw-gold);
+  --tw-danger:       var(--tw-clay);
+  --tw-info:         var(--tw-teal);
+
+  /* ---------- Type ---------- */
+  --tw-font-heading: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --tw-font-body:    'Work Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --tw-font-mono:    ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Type scale (rem-friendly, designed for body=16px) */
+  --tw-text-xs:   12px;
+  --tw-text-sm:   14px;
+  --tw-text-base: 16px;
+  --tw-text-md:   18px;
+  --tw-text-lg:   20px;
+  --tw-text-xl:   24px;
+  --tw-text-2xl:  30px;
+  --tw-text-3xl:  36px;
+  --tw-text-4xl:  48px;
+  --tw-text-5xl:  64px;
+
+  --tw-leading-tight: 1.2;
+  --tw-leading-snug:  1.35;
+  --tw-leading-body:  1.6;
+  --tw-leading-loose: 1.75;
+
+  --tw-tracking-tight: -0.01em;
+  --tw-tracking-normal: 0;
+  --tw-tracking-wide:   0.05em;
+  --tw-tracking-wider:  0.1em;
+  --tw-tracking-widest: 0.2em;     /* Eyebrows / labels */
+
+  /* ---------- Spacing ---------- */
+  --tw-space-1:  4px;
+  --tw-space-2:  8px;
+  --tw-space-3:  12px;
+  --tw-space-4:  16px;
+  --tw-space-5:  20px;
+  --tw-space-6:  24px;
+  --tw-space-8:  32px;
+  --tw-space-10: 40px;
+  --tw-space-12: 48px;
+  --tw-space-16: 64px;
+  --tw-space-20: 80px;
+  --tw-space-24: 96px;
+
+  /* ---------- Radii ---------- */
+  --tw-radius-xs: 3px;
+  --tw-radius-sm: 4px;
+  --tw-radius-md: 6px;
+  --tw-radius-lg: 8px;
+  --tw-radius-xl: 12px;
+  --tw-radius-pill: 999px;
+
+  /* ---------- Shadows / Elevation ---------- */
+  --tw-shadow-xs: 0 1px 2px rgba(23, 35, 37, 0.06);
+  --tw-shadow-sm: 0 2px 6px rgba(23, 35, 37, 0.08);
+  --tw-shadow-md: 0 6px 18px rgba(23, 35, 37, 0.10);
+  --tw-shadow-lg: 0 14px 36px rgba(23, 35, 37, 0.14);
+  --tw-shadow-xl: 0 24px 60px rgba(23, 35, 37, 0.18);
+  --tw-shadow-inset: inset 0 1px 2px rgba(23, 35, 37, 0.06);
+
+  /* ---------- Motion ---------- */
+  --tw-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --tw-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --tw-duration-fast:    150ms;
+  --tw-duration-base:    220ms;
+  --tw-duration-slow:    350ms;
+
+  /* ---------- Layout ---------- */
+  --tw-container-sm:  720px;
+  --tw-container-md:  960px;
+  --tw-container-lg:  1180px;
+  --tw-container-xl:  1320px;
+}
+
+/* ============================================================
+   Semantic / element styles
+   ============================================================ */
+body, .tw-body {
+  font-family: var(--tw-font-body);
+  font-size: var(--tw-text-base);
+  line-height: var(--tw-leading-body);
+  color: var(--tw-fg);
+  background: var(--tw-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.tw-h1, h1.tw {
+  font-family: var(--tw-font-heading);
+  font-weight: 800;
+  font-size: clamp(36px, 4.4vw, 56px);
+  line-height: var(--tw-leading-tight);
+  letter-spacing: var(--tw-tracking-tight);
+  color: var(--tw-dark);
+  margin: 0 0 0.4em;
+}
+
+.tw-h2, h2.tw {
+  font-family: var(--tw-font-heading);
+  font-weight: 800;
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: var(--tw-leading-tight);
+  letter-spacing: var(--tw-tracking-tight);
+  color: var(--tw-dark);
+  margin: 0 0 0.45em;
+}
+
+.tw-h3, h3.tw {
+  font-family: var(--tw-font-heading);
+  font-weight: 700;
+  font-size: clamp(22px, 2.2vw, 28px);
+  line-height: var(--tw-leading-snug);
+  color: var(--tw-dark);
+  margin: 0 0 0.5em;
+}
+
+.tw-h4, h4.tw {
+  font-family: var(--tw-font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: var(--tw-leading-snug);
+  color: var(--tw-dark);
+  margin: 0 0 0.5em;
+}
+
+.tw-eyebrow {
+  font-family: var(--tw-font-heading);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: var(--tw-tracking-widest);
+  color: var(--tw-teal);
+}
+
+.tw-lede {
+  font-family: var(--tw-font-body);
+  font-weight: 300;
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: var(--tw-leading-loose);
+  color: var(--tw-fg-muted);
+}
+
+.tw-p, p.tw {
+  font-family: var(--tw-font-body);
+  font-size: var(--tw-text-base);
+  line-height: var(--tw-leading-body);
+  color: var(--tw-fg);
+}
+
+.tw-small {
+  font-size: var(--tw-text-sm);
+  color: var(--tw-fg-muted);
+}
+
+.tw-meta {
+  font-family: var(--tw-font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tw-tracking-wider);
+  color: var(--tw-fg-subtle);
+}
+
+.tw-quote {
+  font-family: var(--tw-font-heading);
+  font-weight: 300;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.5;
+  border-left: 3px solid var(--tw-gold);
+  padding-left: 20px;
+  color: var(--tw-dark);
+}
+
+a.tw, .tw-link {
+  color: var(--tw-teal-500);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tw-duration-fast) var(--tw-ease-out);
+}
+a.tw:hover, .tw-link:hover { color: var(--tw-teal-700); }
