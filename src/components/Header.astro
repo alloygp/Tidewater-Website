@@ -30,7 +30,7 @@ const isActive = (n: typeof navItems[0]) => {
       <!-- About -->
       <div class="tw-nav-item" data-menu="about">
         <a href="/about/" class={`tw-header-nav-link ${isActive(navItems[0]) ? 'is-active' : ''}`}>
-          About<span class="tw-chev">▾</span>
+          About<svg class="tw-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
         </a>
         <div class="tw-megamenu tw-megamenu-grid">
           <a href="/about/" class="tw-mega-item">
@@ -75,7 +75,7 @@ const isActive = (n: typeof navItems[0]) => {
       <!-- Management -->
       <div class="tw-nav-item" data-menu="mgmt">
         <a href="/hoa-management/" class={`tw-header-nav-link ${isActive(navItems[1]) ? 'is-active' : ''}`}>
-          Management<span class="tw-chev">▾</span>
+          Management<svg class="tw-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
         </a>
         <div class="tw-megamenu tw-megamenu-2col">
           <a href="#" class="tw-mega-feature">
@@ -148,12 +148,19 @@ const isActive = (n: typeof navItems[0]) => {
 </header>
 
 <script>
-  // Megamenu — desktop hover
+  // Megamenu — desktop hover with close delay to bridge the CSS gap
   document.querySelectorAll<HTMLElement>('.tw-nav-item[data-menu]').forEach(item => {
-    const menu = item.querySelector('.tw-megamenu');
+    const menu = item.querySelector<HTMLElement>('.tw-megamenu');
     if (!menu) return;
-    item.addEventListener('mouseenter', () => menu.classList.add('is-open'));
-    item.addEventListener('mouseleave', () => menu.classList.remove('is-open'));
+    let closeTimer: ReturnType<typeof setTimeout>;
+
+    const open = () => { clearTimeout(closeTimer); menu.classList.add('is-open'); };
+    const close = () => { closeTimer = setTimeout(() => menu.classList.remove('is-open'), 150); };
+
+    item.addEventListener('mouseenter', open);
+    item.addEventListener('mouseleave', close);
+    menu.addEventListener('mouseenter', open);
+    menu.addEventListener('mouseleave', close);
   });
 
   // Mobile nav toggle
