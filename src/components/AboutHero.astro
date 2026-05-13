@@ -1,0 +1,67 @@
+---
+interface Props {
+  eyebrow?: string;
+  titleHtml?: string;
+  lede?: string;
+  image?: string;
+  imageAlt?: string;
+  datelineLeft?: string;
+  datelineRight?: string;
+  ledger?: { num: string; label: string }[];
+}
+
+const {
+  eyebrow = 'About Tidewater',
+  titleHtml = 'Family-owned in the Mid-Atlantic <em>since 1989.</em>',
+  lede = 'Two generations. One building. ~75 people who never moved on to a corporate parent.',
+  image = '/assets/hero-mission.jpg',
+  imageAlt = 'Tidewater team',
+  datelineLeft = 'Owings Mills, MD',
+  datelineRight = 'Est. 1989',
+  ledger = [
+    { num: '1989', label: 'Founded by Stanley Greenberg' },
+    { num: '2', label: 'Generations family-owned' },
+    { num: '~75', label: 'In-house team — all under one roof' },
+    { num: '300+', label: 'Communities · 30,000+ homes' },
+  ],
+} = Astro.props;
+---
+<section class="tw-about-hero">
+  <div class="tw-about-hero-bg">
+    <img src={image} alt={imageAlt} />
+  </div>
+  <div class="tw-hero-paper" aria-hidden="true"></div>
+
+  <div class="tw-about-hero-grid">
+    <div class="tw-about-hero-copy">
+      <div class="tw-about-hero-dateline">
+        <span>{datelineLeft}</span>
+        <span class="tw-about-hero-dateline-rule"></span>
+        <span>{datelineRight}</span>
+      </div>
+      <div class="tw-eyebrow tw-eyebrow-gold">{eyebrow}</div>
+      <h1 class="tw-about-hero-title"><Fragment set:html={titleHtml} /></h1>
+      <p class="tw-about-hero-lede">{lede}</p>
+    </div>
+
+    <aside class="tw-about-hero-ledger" aria-label="At a glance">
+      <div class="tw-about-hero-ledger-head">
+        <span class="tw-about-hero-ledger-label">At a glance</span>
+        <span class="tw-about-hero-ledger-meta">No. 04 · Brief</span>
+      </div>
+      <ul class="tw-about-hero-ledger-list">
+        {ledger.map((l) => (
+          <li>
+            <span class="tw-about-hero-ledger-num">{l.num}</span>
+            <span class="tw-about-hero-ledger-text">{l.label}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="tw-about-hero-ledger-foot">
+        <span class="tw-about-hero-ledger-stamp">AAMC<sup>®</sup></span>
+        <span class="tw-about-hero-ledger-stamp">A+ BBB</span>
+        <span class="tw-about-hero-ledger-stamp">CAI Member</span>
+      </div>
+    </aside>
+  </div>
+</section>

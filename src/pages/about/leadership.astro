@@ -1,0 +1,38 @@
+---
+import AboutLayout from '../../layouts/AboutLayout.astro';
+import Topbar from '../../components/Topbar.astro';
+import Header from '../../components/Header.astro';
+import AboutHero from '../../components/AboutHero.astro';
+import LeadershipIntro from '../../components/LeadershipIntro.astro';
+import LeadershipFull from '../../components/LeadershipFull.astro';
+import CredentialsWall from '../../components/CredentialsWall.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+---
+<AboutLayout
+  title="Leadership — Tidewater Companies"
+  description="The Tidewater leadership team — two generations of ownership, 4 PCAM holders, 2 former CAI Chesapeake Chapter Presidents, and the directors running every regional office."
+>
+  <Topbar variant="default" />
+  <Header activeNav="about" />
+  <AboutHero
+    eyebrow="Leadership at Tidewater"
+    titleHtml="The team boards <em>actually meet.</em>"
+    lede="Two generations of ownership. Four PCAM holders. Two former CAI Chesapeake Chapter Presidents. A Controller with an MBA and CPA. The people who run Tidewater are in the building, accessible, and on the phone."
+    image="/assets/hero-mission.jpg"
+    imageAlt="Tidewater leadership team — Owings Mills, Maryland"
+    datelineLeft="Owings Mills, MD"
+    datelineRight="Leadership Directory"
+    ledger={[
+      { num: '4', label: 'PCAM holders on staff — top individual credential' },
+      { num: '2', label: 'Former CAI Chesapeake Chapter Presidents' },
+      { num: '20+', label: 'Years tenure for Senior Director of Operations' },
+      { num: '100%', label: 'CAI designations paid by the company' },
+    ]}
+  />
+  <LeadershipIntro />
+  <LeadershipFull />
+  <CredentialsWall />
+  <CTA />
+  <Footer />
+</AboutLayout>

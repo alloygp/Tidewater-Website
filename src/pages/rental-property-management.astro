@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Topbar from '../components/Topbar.astro';
+import Header from '../components/Header.astro';
+import RentalHero from '../components/RentalHero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import RentalPains from '../components/RentalPains.astro';
+import RentalFee from '../components/RentalFee.astro';
+import RentalCounty from '../components/RentalCounty.jsx';
+import RentalDeployed from '../components/RentalDeployed.astro';
+import RentalPortal from '../components/RentalPortal.astro';
+import Mission from '../components/Mission.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout
+  title="Tidewater Companies — Rental Property Management for Maryland & DC Landlords"
+  description="One flat, all-inclusive fee. Full rental property management for landlords across Maryland and DC. Built for deployed, out-of-state, and second-home owners. Family-owned since 1989."
+>
+  <Topbar variant="homeowner" />
+  <Header activeNav="rental" />
+  <RentalHero />
+  <TrustBar />
+  <RentalPains />
+  <RentalFee />
+  <RentalCounty client:visible />
+  <RentalDeployed />
+  <RentalPortal />
+  <Mission />
+  <Testimonials />
+  <CTA />
+  <Footer />
+</BaseLayout>
