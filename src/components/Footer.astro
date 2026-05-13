@@ -1,0 +1,88 @@
+---
+const offices = [
+  { city: 'Owings Mills, MD',  sub: 'Headquarters · 3600 Crondall Lane' },
+  { city: 'Silver Spring, MD', sub: 'Washington DC Metro' },
+  { city: 'Eastern Shore, MD', sub: 'Delmarva regional office' },
+];
+const services = [
+  'Anne Arundel','Annapolis','Baltimore','Baltimore County','Bel Air','Bethesda','Bowie',
+  'Cambridge','Carroll County','Catonsville','Charles County','Cockeysville','College Park',
+  'Columbia','Crofton','Easton','Ellicott City','Frederick','Gaithersburg','Germantown',
+  'Glen Burnie','Greenbelt','Hagerstown','Hanover','Howard County','Hunt Valley','Hyattsville',
+  'Laurel','Montgomery County','Ocean City','Olney','Owings Mills','Pikesville','Potomac',
+  "Prince George's County",'Reisterstown','Rockville','Salisbury','Severna Park','Silver Spring',
+  'Towson','Washington DC','Wheaton','White Marsh','Northern Virginia','Wilmington, DE','Rehoboth, DE',
+];
+---
+<footer class="tw-footer">
+  <div class="tw-container">
+    <div class="tw-footer-grid">
+      <div class="tw-footer-brand">
+        <img src="/assets/logo-main-white.svg" alt="Tidewater" />
+        <p>Family-owned. Community-focused. Always moving forward. Hands-on management and personalized insight for the Mid-Atlantic since 1989.</p>
+        <div class="tw-footer-social">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+      <div>
+        <h4>Companies</h4>
+        <ul>
+          <li><a href="/hoa-management/">HOA Management</a></li>
+          <li><a href="/condo-association-management/">Condo Association Management</a></li>
+          <li><a href="#">Rental Property Management</a></li>
+          <li><a href="#">Tidewater Property Maintenance</a></li>
+          <li><a href="#">Tidewater Realty Group</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Owner Login</a></li>
+          <li><a href="#">Board Education</a></li>
+          <li><a href="#">Insights &amp; Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Pay Your Assessment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Office Locations</h4>
+        <ul>
+          {offices.map(o => (
+            <li style="display:block">
+              <strong style="color:var(--tw-cream);font-weight:600">{o.city}</strong><br />
+              <span style="font-size:13px;color:#9d9b94">{o.sub}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="tw-footer-areas">
+    <div class="tw-footer-areas-inner">
+      <span class="tw-footer-areas-label">Service Area</span>
+      <span class="tw-footer-areas-list">
+        {services.map((s, i) => (
+          <>
+            <span>{s}</span>
+            {i < services.length - 1 && <span style="margin:0 6px;color:#5a5851">·</span>}
+          </>
+        ))}
+      </span>
+    </div>
+  </div>
+
+  <div class="tw-footer-base">
+    <div class="tw-footer-base-inner">
+      <span>© 2026 Tidewater Companies. All rights reserved. AAMC® · A+ BBB · CAI Member.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>

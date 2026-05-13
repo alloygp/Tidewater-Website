@@ -1,0 +1,39 @@
+---
+interface Props {
+  variant?: 'default' | 'homeowner';
+}
+const { variant = 'default' } = Astro.props;
+---
+<div class="tw-topbar">
+  <div class="tw-topbar-inner">
+    {variant === 'homeowner' ? (
+      <>
+        <div class="tw-topbar-left">
+          <a href="#"><span class="tw-topbar-em">Pay Assessment</span></a>
+          <span style="opacity:.4">·</span>
+          <a href="#">Submit a Request</a>
+          <span style="opacity:.4">·</span>
+          <a href="#">Find My Community</a>
+        </div>
+        <div class="tw-topbar-right">
+          <a href="#"><span class="tw-topbar-em">Emergency:</span> 24/7/365</a>
+          <a href="#">(443) 548-0191</a>
+          <a href="#" class="tw-topbar-login">Owner Login →</a>
+        </div>
+      </>
+    ) : (
+      <>
+        <div class="tw-topbar-left">
+          <span><strong>AAMC®</strong> Accredited Association Management Company</span>
+          <span style="opacity:.5">·</span>
+          <span>Family-Owned Since 1989</span>
+        </div>
+        <div class="tw-topbar-right">
+          <a href="#"><span class="tw-topbar-em">Emergency:</span> 24/7/365</a>
+          <a href="#">(443) 548-0191</a>
+          <a href="#">applications@tidewaterproperty.com</a>
+        </div>
+      </>
+    )}
+  </div>
+</div>

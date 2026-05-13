@@ -1,0 +1,106 @@
+---
+import ActivityFeedWidget from './ActivityFeedWidget.jsx';
+import FitCheckWidget from './FitCheckWidget.jsx';
+
+interface ActivityEvent {
+  time: string;
+  region: string;
+  cls: string;
+  label: string;
+  text: string;
+}
+interface HeroConfig {
+  eyebrow?: string;
+  titleHtml?: string;
+  lede?: string;
+  image?: string;
+  imageAlt?: string;
+  scrollLabel?: string;
+  heroWidget?: 'activity' | 'fitcheck';
+  activity?: {
+    title?: string;
+    sub?: string;
+    footNum?: string;
+    footText?: string;
+    events?: ActivityEvent[];
+  };
+}
+interface Props {
+  config?: HeroConfig;
+}
+
+const { config = {} } = Astro.props;
+
+const eyebrow    = config.eyebrow    || 'For HOA, Condo & Co-op Boards';
+const titleHtml  = config.titleHtml  || 'Hands-On Management. <em>Personalized Insight.</em>';
+const lede       = config.lede       || 'We know your community, understand your board’s priorities, and stay connected — down to the details. Family-owned in the Mid-Atlantic since 1989.';
+const scrollTo   = config.scrollLabel || 'Why boards switch';
+const heroImage  = config.image      || '/assets/hero-aerial.jpg';
+const heroImageAlt = config.imageAlt || 'Aerial view of a Mid-Atlantic community managed by Tidewater';
+const heroWidget = config.heroWidget || 'fitcheck';
+const actCfg     = config.activity   || {};
+---
+
+<section class="tw-hero">
+  <div class="tw-hero-bg">
+    <img src={heroImage} alt={heroImageAlt} />
+  </div>
+  <div class="tw-hero-paper" aria-hidden="true"></div>
+
+  <div class="tw-hero-grid">
+    <div class="tw-hero-copy">
+      <div class="tw-hero-eyebrow-row">
+        <div class="tw-divider"></div>
+        <div class="tw-eyebrow">{eyebrow}</div>
+      </div>
+      <h1 class="tw-hero-title" set:html={titleHtml} />
+      <p class="tw-hero-lede">{lede}</p>
+      <div class="tw-hero-actions">
+        <a href="#contact" class="tw-btn tw-btn-primary tw-btn-lg">Request a Proposal</a>
+        <a href="#tiers" class="tw-btn tw-btn-ghost">See our service tiers →</a>
+      </div>
+      <div class="tw-hero-trust">
+        <div class="tw-hero-trust-item"><div class="tw-hero-trust-num"><span class="accent">300+</span></div><div class="tw-hero-trust-label">Communities</div></div>
+        <div class="tw-hero-trust-item"><div class="tw-hero-trust-num"><span class="accent">30,000+</span></div><div class="tw-hero-trust-label">Homes Managed</div></div>
+        <div class="tw-hero-trust-item"><div class="tw-hero-trust-num"><span class="accent">35+</span></div><div class="tw-hero-trust-label">Years Independent</div></div>
+        <div class="tw-hero-trust-item"><div class="tw-hero-trust-num"><span class="accent">6</span></div><div class="tw-hero-trust-label">States Served</div></div>
+      </div>
+    </div>
+
+    <div class="tw-hero-side">
+      <div class="tw-hero-seal">
+        <div class="tw-hero-seal-inner">
+          <div class="tw-hero-seal-label">AAMC®</div>
+          <div class="tw-hero-seal-sub">Accredited Mgmt Co.</div>
+        </div>
+      </div>
+
+      {heroWidget === 'activity'
+        ? <ActivityFeedWidget
+            client:load
+            events={actCfg.events}
+            title={actCfg.title}
+            sub={actCfg.sub}
+            footNum={actCfg.footNum}
+            footText={actCfg.footText}
+          />
+        : <FitCheckWidget client:load />
+      }
+
+      <div class="tw-hero-ticker">
+        <div class="tw-hero-ticker-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="tw-hero-ticker-text">
+          <strong>20-min callback standard</strong> on after-hours emergencies — answered by an actual Tidewater community manager.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tw-hero-scroll">
+    <div class="tw-hero-scroll-line"></div>
+    {scrollTo}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>

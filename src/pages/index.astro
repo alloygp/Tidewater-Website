@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Topbar from '../components/Topbar.astro';
+import Header from '../components/Header.astro';
+import HomeHero from '../components/HomeHero.astro';
+import OwnerActions from '../components/OwnerActions.astro';
+import PillarSplit from '../components/PillarSplit.astro';
+import TrustBar from '../components/TrustBar.astro';
+import HomeReasons from '../components/HomeReasons.astro';
+import Mission from '../components/Mission.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout
+  title="Tidewater Companies — Hands-On Property Management for the Mid-Atlantic"
+  description="Family-owned HOA, condo, and rental property management across Maryland, DC, Virginia, Pennsylvania, Delaware, and West Virginia since 1989. AAMC® accredited."
+>
+  <Topbar variant="homeowner" />
+  <Header activeNav={null} />
+  <HomeHero />
+  <OwnerActions />
+  <PillarSplit />
+  <TrustBar />
+  <HomeReasons />
+  <Mission />
+  <Testimonials />
+  <CTA />
+  <Footer />
+</BaseLayout>

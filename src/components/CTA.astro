@@ -1,0 +1,59 @@
+---
+---
+<section class="tw-cta" id="contact">
+  <div class="tw-cta-inner">
+    <div>
+      <div class="tw-eyebrow">Request a Proposal</div>
+      <h2 class="tw-cta-title">Let&rsquo;s talk about your community.</h2>
+      <p class="tw-cta-body">Tell us a little about your association and a manager from your region will be in touch within one business day.</p>
+      <ul class="tw-cta-points">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>One-business-day response from a regional manager</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free, no-obligation proposal &amp; transition timeline</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Apples-to-apples comparison vs. your current company</li>
+      </ul>
+    </div>
+    <form class="tw-cta-form" id="proposal-form">
+      <div>
+        <h3 class="tw-cta-form-title">Get a proposal</h3>
+        <p class="tw-cta-form-sub">All fields are required. We&rsquo;ll never share your information.</p>
+      </div>
+      <div class="tw-row-2">
+        <div class="tw-field"><label>First name</label><input placeholder="Marcia" /></div>
+        <div class="tw-field"><label>Last name</label><input placeholder="Sullivan" /></div>
+      </div>
+      <div class="tw-field"><label>Board email</label><input type="email" placeholder="treasurer@yourcommunity.org" /></div>
+      <div class="tw-row-2">
+        <div class="tw-field"><label>Community name</label><input placeholder="Wynbrook HOA" /></div>
+        <div class="tw-field">
+          <label>Number of homes</label>
+          <select>
+            <option value="" disabled selected>Select…</option>
+            <option>Under 50</option>
+            <option>50–150</option>
+            <option>150–500</option>
+            <option>500+</option>
+          </select>
+        </div>
+      </div>
+      <div class="tw-field">
+        <label>Service interest</label>
+        <select>
+          <option value="full">Full Service Management</option>
+          <option>Flex Service</option>
+          <option>Financial Only</option>
+          <option>Developer Program</option>
+          <option>Not sure yet — I&rsquo;d like to talk it through</option>
+        </select>
+      </div>
+      <button class="tw-btn tw-btn-primary tw-btn-block tw-btn-lg" type="submit">Request my proposal</button>
+      <p class="tw-field-fine">Or call <strong>(443) 548-0191</strong> · 24/7 emergency line for current communities</p>
+    </form>
+  </div>
+</section>
+
+<script>
+  document.getElementById('proposal-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert("Thanks — we'll be in touch within one business day.");
+  });
+</script>
