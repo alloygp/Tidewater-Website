@@ -59,7 +59,7 @@ img { max-width: 100%; display: block; }
 .tw-header-login svg { width: 14px; height: 14px; }
 
 /* Megamenu */
-.tw-megamenu { position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); min-width: 600px; background: var(--tw-cream); border: 1px solid var(--tw-border); border-radius: 12px; box-shadow: 0 24px 60px rgba(23,35,37,.18); padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; opacity: 0; pointer-events: none; transform: translate(-50%, -8px); transition: all .22s cubic-bezier(.2,.8,.2,1); z-index: 100; }
+.tw-megamenu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 600px; background: var(--tw-cream); border: 1px solid var(--tw-border); border-radius: 12px; box-shadow: 0 24px 60px rgba(23,35,37,.18); padding: 28px 24px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; opacity: 0; pointer-events: none; transform: translate(-50%, -8px); transition: all .22s cubic-bezier(.2,.8,.2,1); z-index: 100; }
 .tw-megamenu.is-open { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
 .tw-megamenu-grid { grid-template-columns: 1fr 1fr; }
 .tw-megamenu-2col { grid-template-columns: 280px 1fr; min-width: 720px; gap: 20px; padding: 20px; }
