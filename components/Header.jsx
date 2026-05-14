@@ -49,7 +49,7 @@ function Header() {
     { label: 'Management', has: true, menu: 'mgmt', href: 'hoa-management.html', match: ['mgmt','hoa','condo','rental'] },
     { label: 'Maintenance', href: 'maintenance.html', match: ['maintenance'] },
     { label: 'Real Estate', href: 'realty.html', match: ['realty'] },
-    { label: 'Resources', href: '/resources/' },
+    { label: 'Resources', href: 'resources.html', match: ['resources'] },
   ];
   const isActive = (n) => {
     if (!active) return false;

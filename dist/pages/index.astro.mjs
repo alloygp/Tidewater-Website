@@ -1,6 +1,7 @@
 import { c as createComponent, m as maybeRenderHead, a as renderTemplate, r as renderComponent } from '../chunks/astro/server_B8N826LR.mjs';
 import 'kleur/colors';
-import { $ as $$BaseLayout, a as $$Topbar, b as $$Header, c as $$TrustBar, d as $$Mission, e as $$Testimonials, f as $$CTA, g as $$Footer } from '../chunks/Footer_D1IVnB22.mjs';
+import { $ as $$BaseLayout, a as $$TrustBar, b as $$Mission, c as $$Testimonials } from '../chunks/Testimonials_CzZe11hA.mjs';
+import { $ as $$Topbar, a as $$Header, b as $$CTA, c as $$Footer } from '../chunks/Footer_DBY5Lpo4.mjs';
 import 'clsx';
 export { renderers } from '../renderers.mjs';
 

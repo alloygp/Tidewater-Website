@@ -66,18 +66,18 @@ function Footer() {
             <ul>
               <li><a href="hoa-management.html">HOA Management</a></li>
               <li><a href="condo-association-management.html">Condo Association Management</a></li>
-              <li><a href="#">Rental Property Management</a></li>
-              <li><a href="#">Tidewater Property Maintenance</a></li>
-              <li><a href="#">Tidewater Realty Group</a></li>
+              <li><a href="rental-property-management.html">Rental Property Management</a></li>
+              <li><a href="maintenance.html">Tidewater Property Maintenance</a></li>
+              <li><a href="realty.html">Tidewater Realty Group</a></li>
             </ul>
           </div>
           <div>
             <h4>Resources</h4>
             <ul>
               <li><a href="#">Owner Login</a></li>
-              <li><a href="#">Board Education</a></li>
-              <li><a href="#">Insights &amp; Blog</a></li>
-              <li><a href="#">Careers</a></li>
+              <li><a href="resources.html">Board Education</a></li>
+              <li><a href="resources.html#insights">Insights &amp; Blog</a></li>
+              <li><a href="about-careers.html">Careers</a></li>
               <li><a href="#">Pay Your Assessment</a></li>
             </ul>
           </div>

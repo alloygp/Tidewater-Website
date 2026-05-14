@@ -1,7 +1,9 @@
 import { c as createComponent, r as renderComponent, a as renderTemplate } from '../chunks/astro/server_B8N826LR.mjs';
 import 'kleur/colors';
-import { $ as $$BaseLayout, a as $$Topbar, b as $$Header, c as $$TrustBar, d as $$Mission, e as $$Testimonials, f as $$CTA, g as $$Footer } from '../chunks/Footer_D1IVnB22.mjs';
-import { $ as $$Hero, a as $$Pains, b as $$Tiers, c as $$HandsOn, d as $$Portal, e as $$Leadership } from '../chunks/Leadership_CB2h4kmx.mjs';
+import { $ as $$BaseLayout, a as $$TrustBar, b as $$Mission, c as $$Testimonials } from '../chunks/Testimonials_CzZe11hA.mjs';
+import { $ as $$Topbar, a as $$Header, b as $$CTA, c as $$Footer } from '../chunks/Footer_DBY5Lpo4.mjs';
+import { $ as $$Hero, a as $$Pains, b as $$Tiers, c as $$HandsOn, d as $$Portal } from '../chunks/Portal_uSJ-Q_iv.mjs';
+import { $ as $$Leadership } from '../chunks/Leadership_DiSRXxgG.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$HoaManagement = createComponent(($$result, $$props, $$slots) => {
