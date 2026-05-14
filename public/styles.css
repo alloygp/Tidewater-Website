@@ -806,3 +806,15 @@ img { max-width: 100%; display: block; }
   .tw-rwhy-cta { padding: 24px; flex-direction: column; align-items: flex-start; }
   .tw-rwhy-cta-text { font-size: 20px; }
 }
+
+/* ============= Mobile toggle ============= */
+.tw-mobile-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; padding: 6px; background: transparent; border: none; cursor: pointer; }
+.tw-mobile-toggle span { display: block; height: 2px; background: var(--tw-dark); border-radius: 2px; transition: all .22s cubic-bezier(.2,.8,.2,1); }
+@media (max-width: 1080px) {
+  .tw-mobile-toggle { display: flex; }
+}
+
+/* ============= Megamenu 3-col + col labels ============= */
+.tw-megamenu-3col { grid-template-columns: 220px 1fr 1fr; min-width: 860px; gap: 20px; padding: 20px; }
+.tw-mega-col { display: flex; flex-direction: column; gap: 4px; }
+.tw-mega-col-label { font-family: var(--tw-font-heading); font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--tw-fg-muted); padding: 0 14px 6px; }

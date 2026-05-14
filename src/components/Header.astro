@@ -4,20 +4,7 @@ interface Props {
 }
 const { activeNav = null } = Astro.props;
 
-const navItems = [
-  { label: 'About',      menu: 'about', href: '/about/' },
-  { label: 'Management', menu: 'mgmt',  href: '/hoa-management/', match: ['mgmt','hoa','condo'] },
-  { label: 'Maintenance',               href: '/maintenance/' },
-  { label: 'Real Estate',               href: '/real-estate/' },
-  { label: 'Resources',                 href: '/resources/' },
-];
-
-const isActive = (n: typeof navItems[0]) => {
-  if (!activeNav) return false;
-  if (n.menu && n.menu === activeNav) return true;
-  if (n.match && n.match.includes(activeNav)) return true;
-  return false;
-};
+const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
 ---
 
 <header class="tw-header">
@@ -27,58 +14,15 @@ const isActive = (n: typeof navItems[0]) => {
     </a>
 
     <nav class="tw-header-nav" id="tw-nav">
-      <!-- About -->
-      <div class="tw-nav-item" data-menu="about">
-        <a href="/about/" class={`tw-header-nav-link ${isActive(navItems[0]) ? 'is-active' : ''}`}>
-          About<svg class="tw-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
-        </a>
-        <div class="tw-megamenu tw-megamenu-grid">
-          <a href="/about/" class="tw-mega-item">
-            <div class="tw-mega-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
-            </div>
-            <div>
-              <div class="tw-mega-title">Our Story</div>
-              <div class="tw-mega-body">Family-owned in the Mid-Atlantic since 1989.</div>
-            </div>
-          </a>
-          <a href="/about/leadership/" class="tw-mega-item">
-            <div class="tw-mega-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="9" cy="6" r="2.5" fill="currentColor"/><circle cx="14" cy="12" r="2.5" fill="currentColor"/><circle cx="7" cy="18" r="2.5" fill="currentColor"/></svg>
-            </div>
-            <div>
-              <div class="tw-mega-title">Leadership</div>
-              <div class="tw-mega-body">PCAM-credentialed team and chapter presidents.</div>
-            </div>
-          </a>
-          <a href="/service-areas/" class="tw-mega-item">
-            <div class="tw-mega-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
-            </div>
-            <div>
-              <div class="tw-mega-title">Service Areas</div>
-              <div class="tw-mega-body">MD, DC, VA, PA, DE, and West Virginia.</div>
-            </div>
-          </a>
-          <a href="/careers/" class="tw-mega-item">
-            <div class="tw-mega-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><line x1="9" y1="13" x2="9.01" y2="13"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
-            </div>
-            <div>
-              <div class="tw-mega-title">Careers</div>
-              <div class="tw-mega-body">Join an independent, board-first management firm.</div>
-            </div>
-          </a>
-        </div>
-      </div>
 
-      <!-- Management -->
+      <!-- Management mega menu -->
       <div class="tw-nav-item" data-menu="mgmt">
-        <a href="/hoa-management/" class={`tw-header-nav-link ${isActive(navItems[1]) ? 'is-active' : ''}`}>
+        <a href="/hoa-management/" class={`tw-header-nav-link ${isActive(['mgmt','hoa','condo','rental','maintenance']) ? 'is-active' : ''}`}>
           Management<svg class="tw-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
         </a>
-        <div class="tw-megamenu tw-megamenu-2col">
-          <a href="#" class="tw-mega-feature">
+        <div class="tw-megamenu tw-megamenu-3col">
+          <!-- Col 1: feature image -->
+          <a href="/request-a-proposal/" class="tw-mega-feature">
             <div class="tw-mega-feature-img">
               <img src="/assets/hero-aerial.jpg" alt="HOA Board Resource Library" />
               <div class="tw-mega-feature-overlay"></div>
@@ -86,52 +30,117 @@ const isActive = (n: typeof navItems[0]) => {
             <div class="tw-mega-feature-body">
               <div class="tw-mega-feature-eyebrow">Free for Boards</div>
               <div class="tw-mega-feature-title">The HOA Board Playbook</div>
-              <div class="tw-mega-feature-sub">Our 32-page guide to reserves, vendor compliance, and meeting cadence — battle-tested across 300+ Mid-Atlantic communities.</div>
+              <div class="tw-mega-feature-sub">Our 32-page guide to reserves, vendor compliance, and meeting cadence.</div>
               <div class="tw-mega-feature-cta">Download the playbook →</div>
             </div>
           </a>
-          <div class="tw-mega-list">
-            <a href="/hoa-management/" class="tw-mega-item">
-              <div class="tw-mega-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
-              </div>
-              <div>
-                <div class="tw-mega-title">HOA Management</div>
-                <div class="tw-mega-body">Full-service management for homeowner associations.</div>
-              </div>
-            </a>
-            <a href="/condo-association-management/" class="tw-mega-item">
-              <div class="tw-mega-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><line x1="9" y1="13" x2="9.01" y2="13"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
-              </div>
-              <div>
-                <div class="tw-mega-title">Condo Association Management</div>
-                <div class="tw-mega-body">High-rise, mid-rise, and garden-style condo expertise.</div>
-              </div>
-            </a>
-            <a href="/rental-property-management/" class="tw-mega-item">
-              <div class="tw-mega-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
-              </div>
-              <div>
-                <div class="tw-mega-title">Rental Property Management</div>
-                <div class="tw-mega-body">Single-family and small-multifamily rental management.</div>
-              </div>
-            </a>
+          <!-- Col 2: services -->
+          <div class="tw-mega-col">
+            <div class="tw-mega-col-label">Services</div>
+            <div class="tw-mega-list">
+              <a href="/hoa-management/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                <div><div class="tw-mega-title">HOA Management</div><div class="tw-mega-body">Full-service management for homeowner associations.</div></div>
+              </a>
+              <a href="/condo-management/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><line x1="9" y1="13" x2="9.01" y2="13"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+                <div><div class="tw-mega-title">Condo Association Management</div><div class="tw-mega-body">High-rise, mid-rise, and garden-style expertise.</div></div>
+              </a>
+              <a href="/rental-management/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                <div><div class="tw-mega-title">Rental Management</div><div class="tw-mega-body">One flat fee. Single-family and multifamily.</div></div>
+              </a>
+              <a href="/maintenance-services/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                <div><div class="tw-mega-title">Maintenance Services</div><div class="tw-mega-body">In-house maintenance and 24/7 emergency response.</div></div>
+              </a>
+              <a href="/hoa-management/hoa-financial-management/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                <div><div class="tw-mega-title">HOA Financial Management</div><div class="tw-mega-body">MBA/CPA Controller. StrongRoom invoice approval.</div></div>
+              </a>
+            </div>
+          </div>
+          <!-- Col 3: solutions -->
+          <div class="tw-mega-col">
+            <div class="tw-mega-col-label">Solutions</div>
+            <div class="tw-mega-list">
+              <a href="/solutions/switching-hoa-management-company/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+                <div><div class="tw-mega-title">Switching Management Companies</div><div class="tw-mega-body">What to look for. How to make the transition.</div></div>
+              </a>
+              <a href="/solutions/self-managed-hoa-transition/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div><div class="tw-mega-title">Self-Managed HOA Transition</div><div class="tw-mega-body">Ready to hand off the day-to-day? We'll guide you.</div></div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Simple links -->
+      <!-- Rental Management standalone -->
       <div class="tw-nav-item">
-        <a href="/maintenance/" class="tw-header-nav-link">Maintenance</a>
+        <a href="/rental-management/" class={`tw-header-nav-link ${isActive(['rental']) ? 'is-active' : ''}`}>Rental Management</a>
       </div>
+
+      <!-- Maintenance Services standalone -->
       <div class="tw-nav-item">
-        <a href="/real-estate/" class="tw-header-nav-link">Real Estate</a>
+        <a href="/maintenance-services/" class={`tw-header-nav-link ${isActive(['maintenance']) ? 'is-active' : ''}`}>Maintenance</a>
       </div>
+
+      <!-- About mega menu -->
+      <div class="tw-nav-item" data-menu="about">
+        <a href="/about/" class={`tw-header-nav-link ${isActive(['about']) ? 'is-active' : ''}`}>
+          About<svg class="tw-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
+        </a>
+        <div class="tw-megamenu tw-megamenu-2col">
+          <!-- Col 1: feature image -->
+          <a href="/about/" class="tw-mega-feature">
+            <div class="tw-mega-feature-img">
+              <img src="/assets/hero-mission.jpg" alt="Tidewater team — Owings Mills, Maryland" />
+              <div class="tw-mega-feature-overlay"></div>
+            </div>
+            <div class="tw-mega-feature-body">
+              <div class="tw-mega-feature-eyebrow">Since 1989</div>
+              <div class="tw-mega-feature-title">Family-owned in the Mid-Atlantic.</div>
+              <div class="tw-mega-feature-sub">Two generations. ~75 in-house staff. 300+ communities. Still independent.</div>
+              <div class="tw-mega-feature-cta">Our story →</div>
+            </div>
+          </a>
+          <!-- Col 2: company links -->
+          <div class="tw-mega-col">
+            <div class="tw-mega-col-label">Company</div>
+            <div class="tw-mega-list">
+              <a href="/about/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                <div><div class="tw-mega-title">Our Story</div><div class="tw-mega-body">Family-owned in the Mid-Atlantic since 1989.</div></div>
+              </a>
+              <a href="/about/leadership/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="9" cy="6" r="2.5" fill="currentColor"/><circle cx="14" cy="12" r="2.5" fill="currentColor"/><circle cx="7" cy="18" r="2.5" fill="currentColor"/></svg></div>
+                <div><div class="tw-mega-title">Leadership</div><div class="tw-mega-body">PCAM-credentialed team and chapter presidents.</div></div>
+              </a>
+              <a href="/careers/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><line x1="9" y1="13" x2="9.01" y2="13"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+                <div><div class="tw-mega-title">Careers</div><div class="tw-mega-body">Join an independent, board-first management firm.</div></div>
+              </a>
+              <a href="/testimonials/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                <div><div class="tw-mega-title">Testimonials</div><div class="tw-mega-body">What boards and owners say about Tidewater.</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Estate standalone -->
       <div class="tw-nav-item">
-        <a href="/resources/" class="tw-header-nav-link">Resources</a>
+        <a href="/real-estate/" class={`tw-header-nav-link ${isActive(['realty']) ? 'is-active' : ''}`}>Real Estate</a>
       </div>
+
+      <!-- Blog & Resources standalone -->
+      <div class="tw-nav-item">
+        <a href="/blog/" class={`tw-header-nav-link ${isActive(['resources','blog']) ? 'is-active' : ''}`}>Blog &amp; Resources</a>
+      </div>
+
     </nav>
 
     <div class="tw-header-actions">
