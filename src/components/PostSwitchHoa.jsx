@@ -86,7 +86,10 @@ function SwitchCover({ post }) {
   return (
     <div className="tw-blog-cover">
       <div className="tw-blog-cover-inner">
-        <div className="tw-blog-cover-placeholder">HOA board members reviewing management company transition steps</div>
+        <img
+          src="/assets/how-to-switch-hoa-management-companies.png"
+          alt="HOA board members reviewing management company transition steps with structured transition timeline documents"
+        />
         <div className="tw-blog-cover-paper"></div>
       </div>
       <p className="tw-blog-cover-caption">{post.coverCaption}</p>
@@ -238,9 +241,14 @@ function SwitchArticleBody() {
       </p>
 
       <figure className="tw-blog-figure">
-        <div className="tw-blog-figure-image">Residential community common area representing an HOA management transition</div>
+        <div className="tw-blog-figure-image">
+          <img
+            src="/assets/hoa-management-transition-community.png"
+            alt="Residential community common area representing an HOA management transition"
+          />
+        </div>
         <figcaption className="tw-blog-figure-caption">
-          Image placeholder: a well-maintained Mid-Atlantic neighborhood streetscape or community common area, natural light. Conveys stability and normalcy during the transition.
+          A well-maintained residential community &mdash; the kind of normalcy a structured HOA management transition is designed to preserve for residents.
         </figcaption>
       </figure>
 
