@@ -1,5 +1,6 @@
 @import url('design-system/colors_and_type.css');
 
+:root { --tw-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1); }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body { font-family: var(--tw-font-body); color: var(--tw-fg); background: var(--tw-cream); }
@@ -2829,4 +2830,228 @@ img { max-width: 100%; display: block; }
   .tw-geo-facts { grid-template-columns: 1fr; }
   .tw-geo-communities-head, .tw-geo-communities-row { grid-template-columns: 1.5fr 1fr; }
   .tw-geo-communities-head > div:nth-child(3), .tw-geo-communities-row > div:nth-child(3) { display: none; }
+}
+/* Service Areas hub — page-specific styles */
+
+/* ===== Regional SVG map ===== */
+.tw-sa-region-map { background: var(--tw-cream); border: 1px solid var(--tw-border); border-radius: 14px; padding: 28px; box-shadow: 0 10px 28px rgba(23,35,37,.08); }
+.tw-sa-region-map svg { width: 100%; height: auto; display: block; }
+.tw-sa-region-state {
+  fill: var(--tw-warm-100);
+  stroke: var(--tw-border-strong);
+  stroke-width: 1.2;
+  cursor: pointer;
+  transition: fill .15s ease;
+}
+.tw-sa-region-state.served { fill: rgba(58,146,166,0.30); stroke: var(--tw-teal); }
+.tw-sa-region-state.served:hover { fill: rgba(58,146,166,0.55); }
+.tw-sa-region-state-label {
+  font-family: var(--tw-font-heading);
+  font-weight: 700; font-size: 13px;
+  fill: var(--tw-dark);
+  letter-spacing: 0.04em; text-anchor: middle;
+  pointer-events: none;
+}
+.tw-sa-region-state-label.muted { fill: var(--tw-fg-subtle); font-weight: 600; }
+.tw-sa-region-hq {
+  fill: var(--tw-gold);
+  stroke: var(--tw-dark); stroke-width: 2;
+}
+.tw-sa-region-hq-label {
+  font-family: var(--tw-font-heading);
+  font-weight: 800; font-size: 11px;
+  fill: var(--tw-dark);
+  letter-spacing: 0.06em;
+}
+
+/* ===== State directory cards ===== */
+.tw-sa-states {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 48px;
+}
+.tw-sa-state {
+  background: var(--tw-cream);
+  border: 1px solid var(--tw-border);
+  border-radius: 14px;
+  padding: 28px 28px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+  text-decoration: none;
+  transition: all .22s var(--tw-ease-standard);
+  position: relative;
+  overflow: hidden;
+}
+.tw-sa-state:hover { transform: translateY(-3px); box-shadow: 0 18px 44px rgba(23,35,37,.12); border-color: var(--tw-teal-100); }
+.tw-sa-state.is-anchor {
+  border: 2px solid var(--tw-teal);
+  box-shadow: 0 16px 40px rgba(23,35,37,.10);
+}
+.tw-sa-state.is-anchor::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 4px; background: var(--tw-gold);
+}
+.tw-sa-state.coming {
+  opacity: 0.78;
+}
+
+.tw-sa-state-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px;
+}
+.tw-sa-state-name {
+  font-family: var(--tw-font-heading);
+  font-weight: 800; font-size: 24px;
+  line-height: 1.15; letter-spacing: -0.01em;
+  color: var(--tw-dark); margin: 0;
+}
+.tw-sa-state-abbr {
+  font-family: var(--tw-font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--tw-fg-subtle);
+  letter-spacing: 0.08em;
+  padding: 3px 7px;
+  background: var(--tw-warm-100);
+  border-radius: 4px;
+}
+.tw-sa-state.is-anchor .tw-sa-state-abbr {
+  background: var(--tw-gold);
+  color: var(--tw-dark);
+}
+
+.tw-sa-state-meta {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  font-family: var(--tw-font-body); font-size: 12.5px;
+  color: var(--tw-fg-muted);
+}
+.tw-sa-state-meta-item {
+  display: flex; align-items: baseline; gap: 4px;
+}
+.tw-sa-state-meta-item strong {
+  font-family: var(--tw-font-heading);
+  font-weight: 800; font-size: 16px;
+  color: var(--tw-teal);
+  letter-spacing: -0.01em;
+}
+.tw-sa-state.is-anchor .tw-sa-state-meta-item strong { color: var(--tw-teal-700); }
+
+.tw-sa-state-body {
+  font-family: var(--tw-font-body); font-size: 14px;
+  line-height: 1.55; color: var(--tw-fg-muted);
+  margin: 0;
+}
+.tw-sa-state-counties {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--tw-divider);
+}
+.tw-sa-state-county {
+  font-family: var(--tw-font-heading);
+  font-weight: 600; font-size: 11.5px;
+  padding: 3px 9px; border-radius: 999px;
+  background: var(--tw-warm-100);
+  color: var(--tw-fg-muted);
+}
+.tw-sa-state-county.served {
+  background: var(--tw-teal-50);
+  color: var(--tw-teal-700);
+}
+.tw-sa-state-cta {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--tw-font-heading);
+  font-weight: 700; font-size: 12.5px;
+  color: var(--tw-teal);
+  margin-top: 2px;
+}
+.tw-sa-state.coming .tw-sa-state-cta {
+  color: var(--tw-fg-muted);
+}
+.tw-sa-state-cta-arrow { transition: transform .15s ease; }
+.tw-sa-state:hover .tw-sa-state-cta-arrow { transform: translateX(3px); }
+
+.tw-sa-state-flag {
+  position: absolute; top: 14px; right: 14px;
+  background: var(--tw-warm-100);
+  color: var(--tw-fg-muted);
+  font-family: var(--tw-font-heading);
+  font-weight: 700; font-size: 9.5px;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  padding: 4px 9px; border-radius: 999px;
+  border: 1px solid var(--tw-border);
+}
+.tw-sa-state.is-anchor .tw-sa-state-flag {
+  background: var(--tw-gold);
+  color: var(--tw-dark);
+  border-color: var(--tw-gold);
+}
+
+/* ===== Offices strip ===== */
+.tw-sa-offices {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  background: var(--tw-cream);
+  border: 1px solid var(--tw-border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 48px;
+}
+.tw-sa-office {
+  padding: 28px 30px;
+  border-right: 1px solid var(--tw-border);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.tw-sa-office:last-child { border-right: 0; }
+.tw-sa-office.is-hq {
+  background: var(--tw-dark);
+  color: var(--tw-cream);
+  border-right-color: rgba(255,255,255,0.10);
+}
+.tw-sa-office-eyebrow {
+  font-family: var(--tw-font-heading);
+  font-weight: 700; font-size: 10.5px;
+  text-transform: uppercase; letter-spacing: 0.16em;
+  color: var(--tw-teal);
+}
+.tw-sa-office.is-hq .tw-sa-office-eyebrow { color: var(--tw-gold); }
+.tw-sa-office h3 {
+  font-family: var(--tw-font-heading);
+  font-weight: 800; font-size: 22px;
+  line-height: 1.2; letter-spacing: -0.01em;
+  color: var(--tw-dark); margin: 0;
+}
+.tw-sa-office.is-hq h3 { color: var(--tw-cream); }
+.tw-sa-office-addr {
+  font-family: var(--tw-font-body); font-size: 14px;
+  line-height: 1.55; color: var(--tw-fg-muted);
+  margin: 4px 0 0;
+}
+.tw-sa-office.is-hq .tw-sa-office-addr { color: rgba(254,252,248,0.78); }
+.tw-sa-office-rows {
+  display: flex; flex-direction: column; gap: 6px;
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--tw-divider);
+}
+.tw-sa-office.is-hq .tw-sa-office-rows { border-top-color: rgba(255,255,255,0.10); }
+.tw-sa-office-row {
+  font-family: var(--tw-font-body); font-size: 13.5px;
+  color: var(--tw-dark);
+  display: flex; align-items: center; gap: 8px;
+}
+.tw-sa-office.is-hq .tw-sa-office-row { color: rgba(254,252,248,0.85); }
+.tw-sa-office-row a { color: var(--tw-teal-500); text-decoration: none; font-weight: 600; }
+.tw-sa-office.is-hq .tw-sa-office-row a { color: var(--tw-gold); }
+.tw-sa-office-row svg { width: 14px; height: 14px; color: var(--tw-fg-muted); flex-shrink: 0; }
+.tw-sa-office.is-hq .tw-sa-office-row svg { color: var(--tw-gold); }
+
+@media (max-width: 1080px) {
+  .tw-sa-states { grid-template-columns: 1fr 1fr; }
+  .tw-sa-offices { grid-template-columns: 1fr; }
+  .tw-sa-office { border-right: 0; border-bottom: 1px solid var(--tw-border); }
+  .tw-sa-office:last-child { border-bottom: 0; }
+}
+@media (max-width: 640px) {
+  .tw-sa-states { grid-template-columns: 1fr; }
 }

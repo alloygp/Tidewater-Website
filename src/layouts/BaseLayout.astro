@@ -45,9 +45,9 @@ const {
 
 // Auto-noindex on any environment that hasn't explicitly set PUBLIC_ENV=production.
 // In Vercel: set PUBLIC_ENV=production on the production project only.
-// Staging / preview deployments will get noindex,nofollow by default.
+// Staging / preview deployments will get noindex (not nofollow — nofollow breaks crawlers like Screaming Frog).
 const isProduction = import.meta.env.PUBLIC_ENV === 'production';
-const robots = robotsProp ?? (isProduction ? undefined : 'noindex,nofollow');
+const robots = robotsProp ?? (isProduction ? undefined : 'noindex');
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? SITE.url).toString();
 
