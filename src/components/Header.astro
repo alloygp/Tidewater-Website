@@ -137,10 +137,29 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
     </nav>
 
     <div class="tw-header-actions">
-      <a href="#" class="tw-header-login">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        Owner Login
-      </a>
+      <div class="tw-account-wrap" id="tw-account-wrap">
+        <button class="tw-header-login tw-account-btn" id="tw-account-btn" aria-haspopup="true" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          My Account
+          <svg class="tw-chev tw-account-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
+        </button>
+        <div class="tw-account-dropdown" id="tw-account-dropdown" role="menu">
+          <a href="https://tidewater.cincwebaxis.com" target="_blank" rel="noopener noreferrer" class="tw-account-item" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <div>
+              <div class="tw-account-item-title">Community Login</div>
+              <div class="tw-account-item-sub">HOA & condo owners</div>
+            </div>
+          </a>
+          <a href="https://account.appfolio.com/realms/foliospace/protocol/openid-connect/auth?activation_state&client_id=client-aa200e11a2d03f6365c1d339b05d19bf63850b9d&portfolio_uuid&redirect_uri=https%3A%2F%2Ftidewater.appfolio.com%2Fconnect%2Fusers%2Foauth%2Fcallback&response_type=code&scope=openid&session_timed_out=false&state" target="_blank" rel="noopener noreferrer" class="tw-account-item" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" rx="2"/><path d="M9 9h6M9 13h4"/></svg>
+            <div>
+              <div class="tw-account-item-title">Rentals Login</div>
+              <div class="tw-account-item-sub">Rental owners & tenants</div>
+            </div>
+          </a>
+        </div>
+      </div>
       <a href="/request-a-proposal/" class="tw-btn tw-btn-primary tw-btn-pill">Request a Proposal</a>
       <button class="tw-mobile-toggle" id="tw-mobile-toggle" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -164,6 +183,36 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
     menu.addEventListener('mouseenter', open);
     menu.addEventListener('mouseleave', close);
   });
+
+  // My Account dropdown
+  const accountWrap = document.getElementById('tw-account-wrap');
+  const accountBtn = document.getElementById('tw-account-btn');
+  const accountDrop = document.getElementById('tw-account-dropdown');
+  if (accountWrap && accountBtn && accountDrop) {
+    let closeTimer: ReturnType<typeof setTimeout>;
+    const openDrop = () => {
+      clearTimeout(closeTimer);
+      accountDrop.classList.add('is-open');
+      accountBtn.setAttribute('aria-expanded', 'true');
+    };
+    const closeDrop = () => {
+      closeTimer = setTimeout(() => {
+        accountDrop.classList.remove('is-open');
+        accountBtn.setAttribute('aria-expanded', 'false');
+      }, 150);
+    };
+    accountBtn.addEventListener('click', () => {
+      accountDrop.classList.contains('is-open') ? closeDrop() : openDrop();
+    });
+    accountWrap.addEventListener('mouseenter', openDrop);
+    accountWrap.addEventListener('mouseleave', closeDrop);
+    document.addEventListener('click', (e) => {
+      if (!accountWrap.contains(e.target as Node)) {
+        accountDrop.classList.remove('is-open');
+        accountBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 
   // Mobile nav toggle
   const toggle = document.getElementById('tw-mobile-toggle');
