@@ -134,7 +134,7 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
         <a href="/resources/" class={`tw-header-nav-link ${isActive(['resources','blog']) ? 'is-active' : ''}`}>
           Resources<svg class="tw-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
         </a>
-        <div class="tw-megamenu tw-megamenu-2col">
+        <div class="tw-megamenu tw-megamenu-3col">
           <!-- Col 1: blog feature -->
           <a href="/blog/" class="tw-mega-feature">
             <div class="tw-mega-feature-img">
@@ -152,17 +152,31 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
           <div class="tw-mega-col">
             <div class="tw-mega-col-label">Resources</div>
             <div class="tw-mega-list">
-              <a href="/blog/" class="tw-mega-item">
-                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
-                <div><div class="tw-mega-title">Blog & Playbooks</div><div class="tw-mega-body">Reserve studies, switching management, Maryland HOA law, and more.</div></div>
+              <a href="/resources/hoa-news/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg></div>
+                <div><div class="tw-mega-title">HOA News</div><div class="tw-mega-body">Industry updates and regulatory news for Mid-Atlantic boards.</div></div>
               </a>
+              <a href="/blog/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                <div><div class="tw-mega-title">Blog</div><div class="tw-mega-body">Reserve studies, switching management, governance, Maryland HOA law.</div></div>
+              </a>
+            </div>
+          </div>
+          <!-- Col 3: top posts -->
+          <div class="tw-mega-col">
+            <div class="tw-mega-col-label">Top Posts</div>
+            <div class="tw-mega-list">
               <a href="/blog/how-to-switch-hoa-management-companies/" class="tw-mega-item">
                 <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
-                <div><div class="tw-mega-title">How to Switch Management Companies</div><div class="tw-mega-body">Step-by-step guide to a smooth HOA management transition.</div></div>
+                <div><div class="tw-mega-title">How to Switch HOA Management Companies</div><div class="tw-mega-body">A step-by-step transition guide for boards.</div></div>
               </a>
-              <a href="/resources/" class="tw-mega-item">
-                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-                <div><div class="tw-mega-title">All Resources</div><div class="tw-mega-body">Tools, guides, and FAQs for boards and homeowners.</div></div>
+              <a href="/blog/reserve-studies-decoded/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                <div><div class="tw-mega-title">Reserve Studies, Decoded</div><div class="tw-mega-body">How often your HOA should update its reserve study.</div></div>
+              </a>
+              <a href="/blog/open-meetings-md-law/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h4"/></svg></div>
+                <div><div class="tw-mega-title">Open Meetings & Maryland HOA Law</div><div class="tw-mega-body">What Maryland actually requires for board meetings.</div></div>
               </a>
             </div>
           </div>
