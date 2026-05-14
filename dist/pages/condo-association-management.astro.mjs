@@ -1,7 +1,7 @@
 import { c as createComponent, r as renderComponent, a as renderTemplate } from '../chunks/astro/server_B8N826LR.mjs';
 import 'kleur/colors';
 import { $ as $$BaseLayout } from '../chunks/BaseLayout_H5ptLu_M.mjs';
-import { $ as $$Topbar, a as $$Header, b as $$Footer } from '../chunks/Footer_BG5QOMJt.mjs';
+import { $ as $$Topbar, a as $$Header, b as $$Footer } from '../chunks/Footer_DPsqkise.mjs';
 import { $ as $$Hero, a as $$Pains, b as $$Tiers, c as $$HandsOn, d as $$Portal } from '../chunks/Portal_uSJ-Q_iv.mjs';
 import { $ as $$TrustBar, a as $$Mission, b as $$Testimonials } from '../chunks/Testimonials_CiYmcXsn.mjs';
 import { $ as $$Leadership } from '../chunks/Leadership_DiSRXxgG.mjs';
