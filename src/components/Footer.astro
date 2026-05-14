@@ -1,17 +1,11 @@
 ---
-const offices = [
-  { city: 'Owings Mills, MD',  sub: 'Headquarters · 3600 Crondall Lane' },
-  { city: 'Silver Spring, MD', sub: 'Washington DC Metro' },
-  { city: 'Eastern Shore, MD', sub: 'Delmarva regional office' },
-];
-const services = [
-  'Anne Arundel','Annapolis','Baltimore','Baltimore County','Bel Air','Bethesda','Bowie',
-  'Cambridge','Carroll County','Catonsville','Charles County','Cockeysville','College Park',
-  'Columbia','Crofton','Easton','Ellicott City','Frederick','Gaithersburg','Germantown',
-  'Glen Burnie','Greenbelt','Hagerstown','Hanover','Howard County','Hunt Valley','Hyattsville',
-  'Laurel','Montgomery County','Ocean City','Olney','Owings Mills','Pikesville','Potomac',
-  "Prince George's County",'Reisterstown','Rockville','Salisbury','Severna Park','Silver Spring',
-  'Towson','Washington DC','Wheaton','White Marsh','Northern Virginia','Wilmington, DE','Rehoboth, DE',
+const regions = [
+  { label: 'Maryland',       sub: 'Baltimore · DC Metro · Eastern Shore · Western MD' },
+  { label: 'Washington DC',  sub: 'District communities & investors' },
+  { label: 'Virginia',       sub: 'Northern Virginia' },
+  { label: 'Delaware',       sub: 'Wilmington · Rehoboth · Coastal DE' },
+  { label: 'Pennsylvania',   sub: 'South-central PA' },
+  { label: 'West Virginia',  sub: 'Eastern Panhandle' },
 ];
 ---
 <footer class="tw-footer">
@@ -64,15 +58,25 @@ const services = [
 
   <div class="tw-footer-areas">
     <div class="tw-footer-areas-inner">
-      <span class="tw-footer-areas-label">Service Area</span>
-      <span class="tw-footer-areas-list">
-        {services.map((s, i) => (
-          <>
-            <span>{s}</span>
-            {i < services.length - 1 && <span style="margin:0 6px;color:#5a5851">·</span>}
-          </>
+      <div class="tw-footer-areas-left">
+        <svg class="tw-footer-areas-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        <div>
+          <span class="tw-footer-areas-label">Serving the Mid-Atlantic</span>
+          <span class="tw-footer-areas-sub">300+ communities across 6 states</span>
+        </div>
+      </div>
+      <div class="tw-footer-areas-regions">
+        {regions.map(r => (
+          <div class="tw-footer-area-pill">
+            <span class="tw-footer-area-name">{r.label}</span>
+            <span class="tw-footer-area-sub">{r.sub}</span>
+          </div>
         ))}
-      </span>
+      </div>
+      <a href="/service-areas/" class="tw-footer-areas-link">View all service areas →</a>
     </div>
   </div>
 
