@@ -52,7 +52,8 @@ img { max-width: 100%; display: block; }
 .tw-header-nav-link:hover { color: var(--tw-teal-500); }
 .tw-header-nav-link:hover::after, .tw-header-nav-link.is-active::after { transform: scaleX(1); }
 .tw-header-nav-link.is-active { color: var(--tw-teal-500); }
-.tw-chev { font-size: 9px; opacity: .7; }
+.tw-chev { width: 11px; height: 11px; opacity: .65; margin-left: 4px; flex-shrink: 0; transition: transform .22s cubic-bezier(.2,.8,.2,1), opacity .2s; }
+.tw-nav-item:hover .tw-chev { transform: rotate(180deg); opacity: 1; }
 .tw-header-actions { display: flex; align-items: center; gap: 18px; }
 .tw-header-login { font-family: var(--tw-font-heading); font-weight: 600; font-size: 13px; color: var(--tw-dark); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
 .tw-header-login:hover { color: var(--tw-teal-500); }
