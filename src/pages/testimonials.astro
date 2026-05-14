@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Topbar from '../components/Topbar.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import TestimonialsGrid from '../components/TestimonialsGrid.jsx';
+---
+<BaseLayout title="Testimonials & Board Reviews — Tidewater Property Management" description="What HOA & condo association boards say about Tidewater.">
+  <style is:global>
+    /* page-level overrides if needed */
+  </style>
+  <Topbar variant="default" />
+  <Header />
+
+  <!-- Testimonials Hero -->
+  <section class="tw-sol-hero">
+    <div class="tw-sol-hero-paper"></div>
+    <div class="tw-sol-hero-grid">
+      <div class="tw-sol-hero-copy">
+        <nav class="tw-sol-hero-crumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span class="sep">/</span>
+          <span class="cur">Testimonials</span>
+        </nav>
+        <h1 class="tw-sol-hero-title">
+          The boards who know us, <em>on the record.</em>
+        </h1>
+        <p class="tw-sol-hero-lede">
+          Reviews from the people who hire us &mdash; named, attributed, and from communities you can call. We&rsquo;ve curated this page to board presidents, treasurers, and developers because they&rsquo;re the buyers; if you want the unfiltered resident view, our 552 Google reviews are one click away.
+        </p>
+        <div class="tw-sol-hero-actions">
+          <a href="/request-a-proposal/" class="tw-btn tw-btn-primary tw-btn-lg">Request a proposal &rarr;</a>
+          <a href="#all-reviews" class="tw-btn tw-btn-ghost">Read all 28 board reviews &rarr;</a>
+        </div>
+        <div class="tw-sol-hero-stats">
+          <div>
+            <div class="tw-sol-hero-stat-num">4.9 &#9733;</div>
+            <div class="tw-sol-hero-stat-label">Avg. board rating across 28 published reviews</div>
+          </div>
+          <div>
+            <div class="tw-sol-hero-stat-num gold">300+</div>
+            <div class="tw-sol-hero-stat-label">Communities managed across the Mid-Atlantic</div>
+          </div>
+          <div>
+            <div class="tw-sol-hero-stat-num">97%</div>
+            <div class="tw-sol-hero-stat-label">12-month board retention rate</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tw-sol-hero-side">
+        <div style="padding:28px 30px 26px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--tw-border)">
+            <div>
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.16em;color:var(--tw-teal);margin-bottom:4px">Latest board review</div>
+              <div style="font-family:var(--tw-font-mono);font-size:10.5px;color:var(--tw-fg-subtle);letter-spacing:0.04em">POSTED 3 DAYS AGO</div>
+            </div>
+            <div style="display:inline-flex;gap:2px;color:var(--tw-gold)">
+              {[0,1,2,3,4].map(i => (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              ))}
+            </div>
+          </div>
+          <blockquote style="font-family:var(--tw-font-heading);font-weight:300;font-style:italic;font-size:19px;line-height:1.45;color:var(--tw-dark);margin:0 0 22px;letter-spacing:-0.005em">
+            &ldquo;Three years in. Our financials are clean, our reserves are funded properly for the first time in a decade, and our manager remembers every resident&rsquo;s name. I cannot recommend Tidewater highly enough.&rdquo;
+          </blockquote>
+          <div style="display:flex;align-items:center;gap:14px;padding-top:18px;border-top:1px solid var(--tw-border)">
+            <div style="width:42px;height:42px;border-radius:50%;background:var(--tw-teal);color:var(--tw-cream);display:flex;align-items:center;justify-content:center;font-family:var(--tw-font-heading);font-weight:800;font-size:14px">MV</div>
+            <div>
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:14px;color:var(--tw-dark);margin-bottom:2px">Margaret Vance</div>
+              <div style="font-family:var(--tw-font-body);font-size:12px;color:var(--tw-fg-muted)">President &middot; Brightwood Hills Condo Assoc.</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Context Strip -->
+  <section class="tw-tst-context">
+    <div class="tw-tst-context-inner">
+      <div class="tw-tst-context-note">
+        <strong>About our 3.2&#9733; on Google.</strong> Most of our 552 Google reviews come from individual residents in the 300+ communities we manage. Resident reviews tend to skew toward complaint (every late fee, every covenant letter), which is normal for the industry. We don&rsquo;t hide them &mdash; <a href="https://www.google.com/search?q=tidewater+property+management+maryland" target="_blank" rel="noopener">read every one here</a>. What you see on this page is curated for the board buyer.
+      </div>
+      <div class="tw-tst-context-stat">
+        <div class="tw-tst-context-stat-num teal">4.9&#9733;</div>
+        <div class="tw-tst-context-stat-label">Avg. board rating<br/>(28 reviews, named)</div>
+      </div>
+      <div class="tw-tst-context-stat">
+        <div class="tw-tst-context-stat-num gold">3.2&#9733;</div>
+        <div class="tw-tst-context-stat-label">Google composite<br/>(552 reviews, mixed)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Quote -->
+  <section class="tw-tst-featured">
+    <div class="tw-container-wide">
+      <div class="tw-tst-featured-grid">
+        <div>
+          <div class="tw-tst-featured-eyebrow-row">
+            <span class="tw-divider"></span>
+            <span class="tw-eyebrow tw-eyebrow-gold">Featured &middot; Switched-Board Story</span>
+          </div>
+          <p class="tw-tst-featured-quote">
+            We&rsquo;d been with our previous company for 11 years and didn&rsquo;t realize how much we&rsquo;d normalized. Six months with Tidewater and our treasurer stopped dreading Sunday nights. That&rsquo;s the only review you need.
+          </p>
+          <div class="tw-tst-featured-attr">
+            <div class="tw-tst-featured-avatar">JT</div>
+            <div>
+              <div class="tw-tst-featured-name">Jonathan Tellier</div>
+              <div class="tw-tst-featured-meta">
+                <span class="accent">President</span> &middot; Lakeview Crossing HOA &middot; Howard County, MD
+                <div style="margin-top:4px;color:var(--tw-fg-subtle);font-family:var(--tw-font-mono);font-size:11px;letter-spacing:0.04em">184 UNITS &middot; CLIENT SINCE 2023 &middot; SWITCHED FROM AAA MGMT</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="tw-tst-featured-side">
+          <div class="tw-tst-featured-side-eyebrow">Lakeview Crossing &middot; Year 1</div>
+          <h3>What changed after the switch</h3>
+          <ul class="tw-tst-featured-side-list">
+            <li class="tw-tst-featured-side-row">
+              <span class="tw-tst-featured-side-label">Reserves recovered</span>
+              <span class="tw-tst-featured-side-val gold">+$94K</span>
+            </li>
+            <li class="tw-tst-featured-side-row">
+              <span class="tw-tst-featured-side-label">Manager response time</span>
+              <span class="tw-tst-featured-side-val">3.1 days &rarr; 6 hrs</span>
+            </li>
+            <li class="tw-tst-featured-side-row">
+              <span class="tw-tst-featured-side-label">A/R recovery rate</span>
+              <span class="tw-tst-featured-side-val">71% &rarr; 94%</span>
+            </li>
+            <li class="tw-tst-featured-side-row">
+              <span class="tw-tst-featured-side-label">Board renewals</span>
+              <span class="tw-tst-featured-side-val gold">3 / 3</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter + Cards grid (React island) -->
+  <TestimonialsGrid client:load />
+
+  <CTA />
+  <Footer />
+</BaseLayout>

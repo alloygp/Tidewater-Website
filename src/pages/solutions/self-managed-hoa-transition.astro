@@ -1,0 +1,302 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Topbar from '../../components/Topbar.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+import FaqAccordion from '../../components/FaqAccordion.jsx';
+
+const faqItems = [
+  { q: 'Will we lose control of our community?', a: 'No. The board retains <strong>all governance authority</strong> — budget, vendor selection, covenant policy, ARC, reserve funding, communications tone. We handle execution, not governance. If a manager ever recommends something the board disagrees with, the board\'s decision is final.' },
+  { q: 'How do we explain this to residents without it sounding like a tax increase?', a: ['Most residents are already aware that the board is volunteer-run — they\'re not opposed to professional help, they just want assurance that the community\'s character won\'t change.', '<strong>The honest framing works best:</strong> &ldquo;Our board is donating 60+ hours a month to administer this community. Bringing in professional management lets us focus on the decisions that matter, with the same monthly assessments paying for both the work and the time.&rdquo; We provide a template letter and FAQ for boards to customize.'] },
+  { q: 'What does it actually cost?', a: 'For a typical community in the 80&ndash;250 unit range in Maryland, management fees run <strong>$28&ndash;$42 per unit per month</strong>. We provide line-item quotes &mdash; no hidden setup fees, no transition fees, no per-resident surcharges. We\'ll run the numbers against your actual operating budget on the first call.' },
+  { q: 'We have a good thing going. Why fix what isn\'t broken?', a: 'Most self-managed boards we meet aren\'t broken &mdash; they\'re <strong>one resignation away from being broken.</strong> The treasurer who\'s been doing books for 8 years is moving. The president\'s job got demanding. The fact that it works today is exactly why now is the right time to professionalize, while you can do it on your terms.' },
+  { q: 'How do we keep our reserves & bank accounts safe during the change?', a: 'You stay on every account &mdash; we are added as authorized signers with limits, but the board owns the funds. Your reserve account never leaves your association\'s name or your bank if you don\'t want it to. We also recommend an independent CPA audit at year-end, which most insurance carriers require anyway.' },
+  { q: 'What if we hire you and it doesn\'t work out?', a: 'Our contracts default to <strong>30-day termination, no penalty.</strong> Some companies bury 12-month auto-renewals with massive exit fees &mdash; we don\'t. We\'d rather earn your renewal each year than trap you. Our 12-month retention rate is 97%, which we\'d rather speak for itself.' },
+  { q: 'How quickly can the transition happen?', a: 'For a self-managed community, the transition is <strong>simpler than switching from another company</strong> &mdash; no notice period, no termination fees, no records held hostage. Most self-managed boards complete the transition in <strong>4&ndash;5 weeks</strong>, from signed proposal to your first managed board meeting.' },
+  { q: 'Do we need a lawyer to do this?', a: 'No. Your management agreement is the only new document; we provide it and your association attorney (or ours) can review it. No bylaw amendment, no board vote, no homeowner approval is required to retain a management company.' },
+];
+
+const checkIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+---
+<BaseLayout title="Self-Managed HOA Transition to Professional Management — Tidewater" description="A guide for self-managed HOAs ready to move to professional management.">
+  <style is:global>
+    /* page-level overrides if needed */
+  </style>
+  <Topbar variant="default" />
+  <Header activeNav="mgmt" />
+
+  <!-- Hero -->
+  <section class="tw-sol-hero">
+    <div class="tw-sol-hero-paper"></div>
+    <div class="tw-sol-hero-grid">
+      <div class="tw-sol-hero-copy">
+        <nav class="tw-sol-hero-crumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span class="sep">/</span>
+          <span>Solutions</span>
+          <span class="sep">/</span>
+          <span class="cur">Self-Managed Transition</span>
+        </nav>
+        <h1 class="tw-sol-hero-title">
+          You&rsquo;re not failing &mdash; <em>you&rsquo;re scaling.</em>
+        </h1>
+        <p class="tw-sol-hero-lede">
+          Self-managing a community is admirable, exhausting, and not built to last. The boards we meet aren&rsquo;t struggling because they did anything wrong &mdash; they&rsquo;re running out of evenings and weekends. Here&rsquo;s what happens when you hand the admin to professionals while keeping every decision that matters in your hands.
+        </p>
+        <div class="tw-sol-hero-actions">
+          <a href="/request-a-proposal/" class="tw-btn tw-btn-primary tw-btn-lg">Request a proposal &rarr;</a>
+          <a href="#stays-changes" class="tw-btn tw-btn-ghost">See what stays vs. changes &rarr;</a>
+        </div>
+        <div class="tw-sol-hero-stats">
+          <div>
+            <div class="tw-sol-hero-stat-num">62%</div>
+            <div class="tw-sol-hero-stat-label">Of self-managed boards report volunteer burnout as their top risk</div>
+          </div>
+          <div>
+            <div class="tw-sol-hero-stat-num gold">14</div>
+            <div class="tw-sol-hero-stat-label">Self-managed communities Tidewater has onboarded in the past 24 months</div>
+          </div>
+          <div>
+            <div class="tw-sol-hero-stat-num">100%</div>
+            <div class="tw-sol-hero-stat-label">Of them say the board kept full decision authority</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tw-sol-hero-side">
+        <div style="padding:24px 26px 26px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--tw-border)">
+            <div>
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.16em;color:var(--tw-clay);margin-bottom:4px">Your typical week</div>
+              <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:17px;color:var(--tw-dark);letter-spacing:-0.01em">Board President &middot; 132-unit HOA</div>
+            </div>
+            <div style="font-family:var(--tw-font-mono);font-size:10.5px;color:var(--tw-fg-subtle);letter-spacing:0.04em">SAMPLE DIARY</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            {[
+              { day:'Mon', tasks:['Plumber for unit 14 voicemail','Approve landscaping invoice'], hrs:1.5 },
+              { day:'Wed', tasks:['Board meeting prep + agenda'], hrs:3.0 },
+              { day:'Thu', tasks:['Resident complaint about parking'], hrs:0.8 },
+              { day:'Sat', tasks:['ARC review for new fence'], hrs:1.2 },
+              { day:'Sun', tasks:['Reconcile June bank statements'], hrs:2.5 },
+            ].map(r => (
+              <div style="display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center;padding:10px 12px;background:var(--tw-warm-100);border:1px solid var(--tw-border);border-radius:8px">
+                <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:11px;color:var(--tw-fg-muted);letter-spacing:0.08em;text-transform:uppercase">{r.day}</div>
+                <div>
+                  {r.tasks.map(task => <div style="font-family:var(--tw-font-body);font-size:12.5px;color:var(--tw-dark);line-height:1.4">{task}</div>)}
+                </div>
+                <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:13px;color:var(--tw-clay);padding:4px 8px;background:rgba(206,142,114,0.10);border-radius:4px;white-space:nowrap">{r.hrs}h</div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top:14px;padding:14px 16px;background:var(--tw-dark);color:var(--tw-cream);border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.14em;color:var(--tw-gold)">This week alone</div>
+            <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:20px;color:var(--tw-cream);letter-spacing:-0.01em">9 hrs <span style="color:rgba(254,252,248,0.5);font-weight:500;font-size:13px">/ unpaid</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Stays vs Changes -->
+  <section id="stays-changes" class="tw-section tw-sol-two-col-section">
+    <div class="tw-container-wide">
+      <div class="tw-section-head" style="text-align:center;max-width:760px;margin:0 auto">
+        <div class="tw-eyebrow">The Honest Picture</div>
+        <h2 class="tw-section-title">The board still <em>decides.</em> The admin moves to us.</h2>
+        <p class="tw-section-lede">Boards lose sleep over this question. The actual answer is simpler than most management companies make it: governance stays with the board, operations move to a professional team.</p>
+      </div>
+
+      <div class="tw-sol-two-col">
+        <div class="tw-sol-two-col-card stays">
+          <div class="tw-sol-two-col-eyebrow">What stays the same</div>
+          <h3>You still run your community.</h3>
+          <p class="lede">Every decision that defines life in your community remains a board decision &mdash; we just hand you the agenda, the financials, and the recommendation.</p>
+          <ul class="tw-sol-two-col-list">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Annual budget &amp; assessment rate</strong><span style="display:block;color:var(--tw-fg-muted);font-size:13.5px">Approved by the board, every year, no exceptions.</span></div>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Vendor selection &amp; contract approvals</strong><span style="display:block;color:var(--tw-fg-muted);font-size:13.5px">We present 3 bids; you pick the vendor.</span></div>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Covenant enforcement policy</strong><span style="display:block;color:var(--tw-fg-muted);font-size:13.5px">The board sets the rules; we apply them consistently.</span></div>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Reserve funding strategy</strong><span style="display:block;color:var(--tw-fg-muted);font-size:13.5px">You decide funding level; we run the study every 3 years.</span></div>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Architectural review</strong><span style="display:block;color:var(--tw-fg-muted);font-size:13.5px">Your ARC committee, your rulebook, your decisions.</span></div>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Community culture &amp; tone</strong><span style="display:block;color:var(--tw-fg-muted);font-size:13.5px">Newsletters, events, communications &mdash; in your voice.</span></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tw-sol-two-col-card changes">
+          <div class="tw-sol-two-col-eyebrow">What changes</div>
+          <h3>The admin no longer comes home with you.</h3>
+          <p class="lede">The stuff your treasurer dreads on Sunday nights &mdash; that&rsquo;s what professional management is for. We handle the operational machinery so your board can focus on the decisions.</p>
+          <ul class="tw-sol-two-col-list">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Monthly bookkeeping &amp; financials</strong><span style="display:block;color:var(--tw-fg-muted);font-size:13.5px">MBA/CPA-led; statements within 15 days of month-end.</span></div>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Assessment collection &amp; A/R</strong><span style="display:block;color:var(--tw-fg-muted);font-size:13.5px">Lockbox, late notices, payment plans, attorney handoff.</span></div>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Vendor invoicing &amp; payments</strong><span style="display:block;color:var(--tw-fg-muted);font-size:13.5px">Two-signer approvals; you see every invoice.</span></div>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Maintenance request workflow</strong><span style="display:block;color:var(--tw-fg-muted);font-size:13.5px">Owners use the portal; we dispatch &amp; close out tickets.</span></div>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Insurance &amp; compliance tracking</strong><span style="display:block;color:var(--tw-fg-muted);font-size:13.5px">Renewals, COIs, state filings, election filings.</span></div>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Resident inquiries &amp; correspondence</strong><span style="display:block;color:var(--tw-fg-muted);font-size:13.5px">Your manager answers, with cc to the board on anything material.</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cost Rebuttal -->
+  <section class="tw-section tw-sol-cost-section">
+    <div class="tw-container-wide">
+      <div class="tw-sol-cost-grid">
+        <div>
+          <div class="tw-eyebrow">The Real Math</div>
+          <h2 class="tw-section-title" style="margin:10px 0 18px">
+            It costs <em>less</em> than your board is already spending.
+          </h2>
+          <p class="tw-section-lede" style="margin:0 0 20px">
+            The line item is real &mdash; but it&rsquo;s the smallest part of the picture. Most self-managed boards are already paying more in hidden costs, missed discounts, and volunteer time than the management fee would total. Here&rsquo;s the napkin math for a typical 120-unit community.
+          </p>
+          <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:10px">
+            <li style="font-family:var(--tw-font-body);font-size:14.5px;color:var(--tw-dark);display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="font-weight:600">Bulk insurance buying</strong> usually saves 8&ndash;14% on master policy premiums.</span>
+            </li>
+            <li style="font-family:var(--tw-font-body);font-size:14.5px;color:var(--tw-dark);display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="font-weight:600">Vendor pre-negotiated rates</strong> &mdash; landscaping, snow, repairs &mdash; typically run 10&ndash;20% under retail.</span>
+            </li>
+            <li style="font-family:var(--tw-font-body);font-size:14.5px;color:var(--tw-dark);display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="font-weight:600">Delinquency recovery</strong> &mdash; a managed community recovers 92% on average vs. 71% for DIY collection.</span>
+            </li>
+            <li style="font-family:var(--tw-font-body);font-size:14.5px;color:var(--tw-dark);display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="font-weight:600">Reserve study refresh</strong> avoids 80% of unbudgeted special assessments &mdash; the single biggest hit a self-managed community takes.</span>
+            </li>
+          </ul>
+          <a href="/request-a-proposal/" class="tw-btn tw-btn-primary">Get your community&rsquo;s napkin math &rarr;</a>
+        </div>
+
+        <div class="tw-sol-cost-table">
+          <div class="tw-sol-cost-row">
+            <div class="tw-sol-cost-row-label">Current management fee<span class="sub">Today, self-managed</span></div>
+            <div class="tw-sol-cost-row-val cost">$0/mo</div>
+          </div>
+          <div class="tw-sol-cost-row">
+            <div class="tw-sol-cost-row-label">Insurance premium overage<span class="sub">Lost group-buying discount, est.</span></div>
+            <div class="tw-sol-cost-row-val cost">+$580/mo</div>
+          </div>
+          <div class="tw-sol-cost-row">
+            <div class="tw-sol-cost-row-label">Vendor retail markups<span class="sub">Landscaping &amp; snow vs. group rate</span></div>
+            <div class="tw-sol-cost-row-val cost">+$310/mo</div>
+          </div>
+          <div class="tw-sol-cost-row">
+            <div class="tw-sol-cost-row-label">Volunteer hours (5 board &times; 12 hrs)<span class="sub">At $75/hr opportunity cost</span></div>
+            <div class="tw-sol-cost-row-val cost">+$4,500/mo</div>
+          </div>
+          <div class="tw-sol-cost-row">
+            <div class="tw-sol-cost-row-label">Tidewater management fee<span class="sub">Full-service, named regional mgr.</span></div>
+            <div class="tw-sol-cost-row-val savings">&minus;$3,840/mo</div>
+          </div>
+          <div class="tw-sol-cost-row is-total">
+            <div class="tw-sol-cost-row-label">Net monthly position<span class="sub">for a typical 120-unit community</span></div>
+            <div class="tw-sol-cost-row-val">+$1,550<div class="sub">saved every month</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Switch Story -->
+  <section class="tw-section tw-sol-story-section">
+    <div class="tw-container-wide">
+      <div class="tw-sol-story">
+        <div>
+          <div class="tw-eyebrow" style="color:var(--tw-gold)">From self-managed to Tidewater</div>
+          <p class="tw-sol-story-quote">
+            We were proud of running our own community for 14 years. By year 13 our treasurer was on antidepressants and our president was sleeping with a phone next to her bed. We didn&rsquo;t fail &mdash; we just got tired. Tidewater took the admin, not the community.
+          </p>
+          <div class="tw-sol-story-attr">
+            <div class="tw-sol-story-avatar">DR</div>
+            <div>
+              <div class="tw-sol-story-name">David Reinhardt</div>
+              <div class="tw-sol-story-role">Past President, Board of Directors &middot; <span class="gold">Wynbrook Townhomes &middot; Howard County, MD</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tw-sol-story-side">
+          <div class="tw-sol-story-side-eyebrow">Wynbrook Townhomes &middot; Year 1</div>
+          <h3>From self-managed to Tidewater</h3>
+          <div class="tw-sol-story-stats">
+            <div class="tw-sol-story-stat">
+              <div class="tw-sol-story-stat-num"><span class="gold">156</span></div>
+              <div class="tw-sol-story-stat-label">Volunteer hours/month recovered across the board</div>
+            </div>
+            <div class="tw-sol-story-stat">
+              <div class="tw-sol-story-stat-num">4 weeks</div>
+              <div class="tw-sol-story-stat-label">From signed agreement to first managed meeting</div>
+            </div>
+            <div class="tw-sol-story-stat">
+              <div class="tw-sol-story-stat-num"><span class="gold">$0</span></div>
+              <div class="tw-sol-story-stat-label">Special assessments since transition (reserve study fixed it)</div>
+            </div>
+            <div class="tw-sol-story-stat">
+              <div class="tw-sol-story-stat-num">3 yrs</div>
+              <div class="tw-sol-story-stat-label">With Tidewater &mdash; renewed twice without question</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="tw-section tw-sol-faq-section">
+    <div class="tw-container-wide">
+      <div class="tw-sol-faq-grid">
+        <div class="tw-sol-faq-head">
+          <div class="tw-eyebrow">Honest Answers</div>
+          <h2>The questions self-managed boards <em>actually</em> ask.</h2>
+          <p>The most common fears we hear, answered without the sales gloss.</p>
+          <a href="/request-a-proposal/" class="tw-btn tw-btn-primary">Ask your own question &rarr;</a>
+        </div>
+        <FaqAccordion client:load items={faqItems} defaultOpen={0} />
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+  <Footer />
+</BaseLayout>
