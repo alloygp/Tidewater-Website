@@ -182,11 +182,11 @@
   <div class="cover-inner">
     <div class="cover-eyebrow">Alloy Growth Partners · Site Launch SEO Audit · May 2026</div>
     <h1>tidewaterproperty.com <em>launch readiness</em></h1>
-    <p class="cover-sub">Live re-check — May 14, 2026. All blockers, title tags, and trailing-slash 308s resolved. 18 pages confirmed live. No open warnings. 87 old-site redirects still need to be loaded into vercel.json before the domain flip.</p>
+    <p class="cover-sub">Live re-check — May 14, 2026. 24 pages confirmed live. 27/29 must-live destination pages built. Two new issues surfaced: <code>/hoa-management/covenant-enforcement</code> is a 404 redirect destination (563 inlinks), and <code>/rental-management/maryland</code> parent is missing while two child geo pages are live. 87 old-site redirects still pending.</p>
     <div class="score-grid">
-      <div class="score-card"><div class="sv green">0</div><div class="sl">Open Warnings</div></div>
+      <div class="score-card"><div class="sv amber">2</div><div class="sl">Open Issues</div></div>
       <div class="score-card"><div class="sv green">8</div><div class="sl">Issues Resolved</div></div>
-      <div class="score-card"><div class="sv white">18</div><div class="sl">Pages Built on Staging</div></div>
+      <div class="score-card"><div class="sv white">24</div><div class="sl">Pages Built on Staging</div></div>
       <div class="score-card"><div class="sv green">0</div><div class="sl">Nav-Linked 404s</div></div>
       <div class="score-card"><div class="sv amber">87</div><div class="sl">Redirects Pending</div></div>
     </div>
@@ -201,7 +201,7 @@
 <section class="section" id="blockers">
   <div class="eyebrow red">Stop-Ship · Fix Before Going Live</div>
   <h2>Critical blockers</h2>
-  <p class="section-intro">Screaming Frog crawl — May 14, 2026. All blockers resolved: 4 original stop-ships, nav 404s, 9 overlong title tags, and trailing-slash 308s. No open warnings remain.</p>
+  <p class="section-intro">Live re-check — May 14, 2026. 8 cumulative issues resolved. Two new issues surfaced on this pass: <code>/hoa-management/covenant-enforcement</code> is a 404 redirect destination, and <code>/rental-management/maryland</code> parent page is missing. Details below.</p>
 
   <!-- ALL RESOLVED -->
   <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
@@ -224,7 +224,7 @@
     <div class="alert-icon">✅</div>
     <div class="alert-body">
       <strong>RESOLVED — Staging noindex fully in place</strong>
-      <p>Screaming Frog confirms all 18 HTML pages on staging show <code>Non-Indexable · Canonicalised,noindex</code> — including <code>/about/</code>, <code>/about/leadership/</code>, and <code>/careers/</code> (AboutLayout fix deployed). The <code>PUBLIC_ENV=production</code> variable still needs to be set on the Vercel production project before the domain flip (see checklist item 5b).</p>
+      <p>Screaming Frog confirms all HTML pages on staging show <code>Non-Indexable · Canonicalised,noindex</code> — including <code>/about/</code>, <code>/about/leadership/</code>, and <code>/careers/</code> (AboutLayout fix deployed). 24 pages confirmed live as of May 14, 2026. The <code>PUBLIC_ENV=production</code> variable still needs to be set on the Vercel production project before the domain flip (see checklist item 5b).</p>
     </div>
   </div>
 
@@ -260,6 +260,23 @@
       <p>Root cause was <code>public/sitemap.xml</code> — all <code>&lt;loc&gt;</code> URLs had trailing slashes, so Screaming Frog crawled them and hit Vercel's 308 normalisation on every URL. <code>astro.config.mjs</code> already had <code>trailingSlash: 'never'</code> and all internal hrefs were clean. Fixed by stripping trailing slashes from all sitemap <code>&lt;loc&gt;</code> entries (homepage <code>/</code> left as-is). Screaming Frog will now crawl direct 200s on all sitemap URLs — no redirect chains.</p>
     </div>
   </div>
+
+  <!-- NEW OPEN ISSUES (surfaced May 14, 2026 re-check) -->
+  <div class="alert crit" style="border-color:var(--red-border);background:var(--red-bg);">
+    <div class="alert-icon">🚨</div>
+    <div class="alert-body">
+      <strong>MUST FIX — <code>/hoa-management/covenant-enforcement</code> is a 404 redirect destination</strong>
+      <p>The redirect map sends <code>/code-enforcement-services/</code> → <code>/hoa-management/covenant-enforcement/</code>. That destination page returns 404 on staging. At launch, 563 inlinks worth of equity will flow into a dead end. Either build the page before launch, or update the vercel.json redirect to point to <code>/hoa-management/</code> as a fallback.</p>
+    </div>
+  </div>
+
+  <div class="alert warn">
+    <div class="alert-icon">⚠️</div>
+    <div class="alert-body">
+      <strong>OPEN — <code>/rental-management/maryland</code> parent page is 404</strong>
+      <p>Two child pages are now live — <code>/rental-management/maryland/anne-arundel-county</code> and <code>/rental-management/maryland/silver-spring</code> — but their parent state hub returns 404. This creates orphaned pages with no parent to link to or receive internal link equity. Build <code>/rental-management/maryland</code> before launching the geo pages, or internal linking from those pages will dead-end. Note: the Phase 3 sitemap had this planned for Month 2+ — it should move to pre-launch.</p>
+    </div>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════
@@ -268,7 +285,7 @@
 <section class="section" id="must-live">
   <div class="eyebrow red">Day 1 Non-Negotiables</div>
   <h2>Pages that must be live at launch</h2>
-  <p class="section-intro">These 29 pages represent the authority core — the URLs that Google currently has indexed and that carry real inlinks, rankings, or traffic. If any of them land as a 404 on launch day (even briefly), you'll bleed link equity and rankings. All need to either exist at their new URL <em>or</em> have a 301 redirect in place before the domain goes live. <strong>Status checked live against stg-tidewater.alloygp.co — May 14, 2026.</strong> 25 of 29 destination URLs are built. 4 remain.</p>
+  <p class="section-intro">These 29 pages represent the authority core — the URLs that Google currently has indexed and that carry real inlinks, rankings, or traffic. If any of them land as a 404 on launch day (even briefly), you'll bleed link equity and rankings. All need to either exist at their new URL <em>or</em> have a 301 redirect in place before the domain goes live. <strong>Status re-checked live against stg-tidewater.alloygp.co — May 14, 2026.</strong> 27 of 29 destination URLs are built. 2 remain: both blog posts.</p>
 
   <div class="tbl-wrap">
     <table class="tbl">
@@ -308,8 +325,8 @@
         <tr><td class="code amber">/services/emergency-repairs/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/lender-questionnaire-services/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/condo-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/communityassociations/accounting-services/</td><td>590</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/hoa-financial-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
-        <tr><td class="code amber">/service-area/anne-arundel-county-md/</td><td>14</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/anne-arundel-county/ (301)</td><td>157 clicks/mo — top non-branded ranking. ⚠ Note: /hoa-management/maryland/anne-arundel-county/ is live but the <em>rental</em> version needed for this redirect is still missing.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
-        <tr><td class="code amber">/service-area/silver-spring-md/</td><td>11</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/silver-spring/ (301)</td><td>Top rental geo — not yet built</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/service-area/anne-arundel-county-md/</td><td>14</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/anne-arundel-county/ (301)</td><td>157 clicks/mo — top non-branded ranking. ⚠ Title is 61ch (1 over limit — trim before launch).</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/service-area/silver-spring-md/</td><td>11</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/silver-spring/ (301)</td><td>Live — 55ch title ✓</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/blog/what-does-a-community-association-manager-do/</td><td>17</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/what-does-a-community-association-manager-do/ (keep)</td><td>Keep URL. Strong HOA blog post. Needs to be migrated.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
         <tr><td class="code amber">/blog/5-tips-for-effective-property-management/</td><td>97</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">Keep or 301 to new blog post</td><td>Highest-inlink blog post. Needs migration decision before launch.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
       </tbody>
@@ -319,8 +336,8 @@
   <div class="alert info">
     <div class="alert-icon">ℹ️</div>
     <div class="alert-body">
-      <strong>Also must be live: the 8 new rental geo pages</strong>
-      <p>These are <em>new</em> URLs per the sitemap that don't exist yet on the current site but are referenced in the redirect map. They must be built and live at launch: <code>/rental-management/maryland/anne-arundel-county/</code>, <code>/rental-management/maryland/silver-spring/</code>, <code>/rental-management/maryland/baltimore-county/</code>, <code>/rental-management/maryland/howard-county/</code>, <code>/rental-management/maryland/prince-georges-county/</code>, <code>/rental-management/maryland/montgomery-county/</code>, <code>/rental-management/maryland/ocean-city/</code>, <code>/rental-management/delaware/lewes/</code>.</p>
+      <strong>New rental geo pages — 2 of 8 built, 6 remaining</strong>
+      <p>These are <em>new</em> URLs referenced in the redirect map that must be live at launch. Built ✅: <code>/rental-management/maryland/anne-arundel-county</code>, <code>/rental-management/maryland/silver-spring</code>. Still 404 ❌: <code>/rental-management/maryland</code> (state hub — needed before any child pages go live), <code>/rental-management/maryland/baltimore-county</code>, <code>/rental-management/maryland/howard-county</code>, <code>/rental-management/maryland/prince-georges-county</code>, <code>/rental-management/maryland/montgomery-county</code>, <code>/rental-management/maryland/ocean-city</code>, <code>/rental-management/delaware/lewes</code>.</p>
     </div>
   </div>
 </section>
@@ -333,11 +350,33 @@
   <h2>Every redirect that needs to be in place</h2>
   <p class="section-intro">The sitemap v5.1 documents 25 redirects. The current site has <strong>276 indexable pages</strong>. Below is the full map — all old URLs that need a 301 before launch day. The sitemap's 25 are marked ✓; gaps I've filled based on the new URL structure are marked NEW. Implement all of these in one pass; don't do them piecemeal.</p>
 
-  <div class="alert warn">
-    <div class="alert-icon">⚠️</div>
+  <div class="alert info" style="border-color:var(--blue-border);background:var(--blue-bg);">
+    <div class="alert-icon">📋</div>
     <div class="alert-body">
-      <strong>The 99 service-area/* pages need a decision</strong>
-      <p>There are 75 top-level <code>/service-area/[city]/</code> pages and 24 sub-pages (<code>/rental-services/</code>, <code>/property-services/</code>, <code>/sales/</code>). The sitemap maps 10 of them explicitly. The rest — especially the high-inlink ones like <code>/service-area/owings-mills-md/</code> (8 inlinks), <code>/service-area/bowie-md/</code> (7), etc. — need a decision: are they being rebuilt as HOA geo pages? If not, they need 301s to the parent <code>/hoa-management/</code> pillar. Don't let 99 pages 404.</p>
+      <strong>Decision — 99 service-area/* pages: wildcard redirect at launch, build out one at a time</strong>
+      <p>At launch, cover all 99 with a single wildcard rule in vercel.json:</p>
+      <pre style="background:rgba(0,0,0,0.06);border-radius:6px;padding:10px 14px;font-size:12px;margin:10px 0;overflow-x:auto;">[
+  { "source": "/service-area/:city",      "destination": "/hoa-management", "permanent": true },
+  { "source": "/service-area/:city/:sub", "destination": "/hoa-management", "permanent": true }
+]</pre>
+      <p>As geo pages get built, swap out the wildcard entry for a specific 301 pointing to the real page. Google will follow the updated redirect and reattribute equity to the new destination. No page ever 404s; equity is always flowing somewhere useful.</p>
+      <p><strong>Priority geo pages to build before launch</strong> — these have enough traffic or inlinks to warrant a real page rather than a permanent redirect to the pillar. The two marked ✅ are already live; the rest are the pre-launch build queue:</p>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;">
+        <thead><tr style="border-bottom:1px solid var(--rule);"><th style="text-align:left;padding:6px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);">Old URL</th><th style="text-align:left;padding:6px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);">New page to build</th><th style="text-align:left;padding:6px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);">Signal</th><th style="text-align:left;padding:6px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);">Status</th></tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/anne-arundel-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/anne-arundel-county</td><td style="padding:5px 8px;">157 clicks/mo · 14 inlinks</td><td style="padding:5px 8px;color:var(--green-dark);font-weight:700;">✅ Built</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/silver-spring-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/silver-spring</td><td style="padding:5px 8px;">11 inlinks</td><td style="padding:5px 8px;color:var(--green-dark);font-weight:700;">✅ Built</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/baltimore-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/baltimore-county</td><td style="padding:5px 8px;">8 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/washington-dc/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/hoa-management/</td><td style="padding:5px 8px;">10 inlinks — wildcard redirect is fine, no dedicated page needed</td><td style="padding:5px 8px;color:var(--muted);">↪ Redirect only</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/columbia-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/howard-county</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/prince-georges-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/prince-georges-county</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/montgomery-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/montgomery-county</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/ocean-city-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/ocean-city</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/harford-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/harford-county</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
+          <tr><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/lewes-de/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/delaware/lewes</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px;font-size:13px;color:var(--muted);">All remaining ~65 top-level <code>/service-area/[city]/</code> pages (6–7 inlinks each, no significant traffic) → wildcard to <code>/hoa-management/</code> at launch. Build HOA county/city pages on Phase 3 cadence, then update the specific redirect entry when each page goes live.</p>
     </div>
   </div>
 
@@ -710,7 +749,7 @@
 <div class="footer">
   <div class="wrap">
     <strong>Tidewater Property Management — SEO Launch Readiness Report</strong>
-    <span>Alloy Growth Partners · Crawl #3 · May 14, 2026 · Screaming Frog full crawl (58 URLs) · 18 HTML pages confirmed · All blockers resolved · 0 open warnings · 87 redirects + PUBLIC_ENV pending before domain flip</span>
+    <span>Alloy Growth Partners · Re-check #4 · May 14, 2026 · Live HTTP checks (35 URLs) · 24 HTML pages confirmed · 27/29 must-live built · 2 new issues: covenant-enforcement 404, rental/maryland parent missing · 87 redirects + PUBLIC_ENV pending</span>
   </div>
 </div>
 
