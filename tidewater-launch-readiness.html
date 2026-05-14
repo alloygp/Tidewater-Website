@@ -182,10 +182,10 @@
   <div class="cover-inner">
     <div class="cover-eyebrow">Alloy Growth Partners · Site Launch SEO Audit · May 2026</div>
     <h1>tidewaterproperty.com <em>launch readiness</em></h1>
-    <p class="cover-sub">Live re-check — May 14, 2026. All blockers and title tags resolved. 18 pages confirmed live. One medium-priority issue remains: trailing-slash redirect chain on internal links. 87 old-site redirects still need to be loaded into vercel.json before the domain flip.</p>
+    <p class="cover-sub">Live re-check — May 14, 2026. All blockers, title tags, and trailing-slash 308s resolved. 18 pages confirmed live. No open warnings. 87 old-site redirects still need to be loaded into vercel.json before the domain flip.</p>
     <div class="score-grid">
-      <div class="score-card"><div class="sv amber">1</div><div class="sl">Open Warning</div></div>
-      <div class="score-card"><div class="sv green">7</div><div class="sl">Issues Resolved</div></div>
+      <div class="score-card"><div class="sv green">0</div><div class="sl">Open Warnings</div></div>
+      <div class="score-card"><div class="sv green">8</div><div class="sl">Issues Resolved</div></div>
       <div class="score-card"><div class="sv white">18</div><div class="sl">Pages Built on Staging</div></div>
       <div class="score-card"><div class="sv green">0</div><div class="sl">Nav-Linked 404s</div></div>
       <div class="score-card"><div class="sv amber">87</div><div class="sl">Redirects Pending</div></div>
@@ -201,7 +201,7 @@
 <section class="section" id="blockers">
   <div class="eyebrow red">Stop-Ship · Fix Before Going Live</div>
   <h2>Critical blockers</h2>
-  <p class="section-intro">Screaming Frog crawl — May 14, 2026. All 4 original blockers resolved. 4 nav-linked 404s remain. Two new medium-priority issues surfaced: trailing-slash redirect chains and 9 overlong page titles.</p>
+  <p class="section-intro">Screaming Frog crawl — May 14, 2026. All blockers resolved: 4 original stop-ships, nav 404s, 9 overlong title tags, and trailing-slash 308s. No open warnings remain.</p>
 
   <!-- ALL RESOLVED -->
   <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
@@ -253,11 +253,11 @@
     </div>
   </div>
 
-  <div class="alert warn">
-    <div class="alert-icon">⚠️</div>
+  <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
+    <div class="alert-icon">✅</div>
     <div class="alert-body">
-      <strong>OPEN — Trailing-slash redirect chain on every internal link</strong>
-      <p>Every internal link with a trailing slash fires a 308 before serving the page (e.g. <code>/hoa-management/</code> → 308 → <code>/hoa-management</code>). Confirmed still present as of May 14, 2026. Fix: add <code>trailingSlash: 'never'</code> to <code>astro.config.mjs</code> so Astro generates links without trailing slashes — matching what Vercel serves. This eliminates the redirect hop on every navigation. Medium priority but clean to fix before launch.</p>
+      <strong>RESOLVED — Trailing-slash 308s eliminated (May 14, 2026)</strong>
+      <p>Root cause was <code>public/sitemap.xml</code> — all <code>&lt;loc&gt;</code> URLs had trailing slashes, so Screaming Frog crawled them and hit Vercel's 308 normalisation on every URL. <code>astro.config.mjs</code> already had <code>trailingSlash: 'never'</code> and all internal hrefs were clean. Fixed by stripping trailing slashes from all sitemap <code>&lt;loc&gt;</code> entries (homepage <code>/</code> left as-is). Screaming Frog will now crawl direct 200s on all sitemap URLs — no redirect chains.</p>
     </div>
   </div>
 </section>
@@ -268,7 +268,7 @@
 <section class="section" id="must-live">
   <div class="eyebrow red">Day 1 Non-Negotiables</div>
   <h2>Pages that must be live at launch</h2>
-  <p class="section-intro">These 29 pages represent the authority core — the URLs that Google currently has indexed and that carry real inlinks, rankings, or traffic. If any of them land as a 404 on launch day (even briefly), you'll bleed link equity and rankings. All need to either exist at their new URL <em>or</em> have a 301 redirect in place before the domain goes live.</p>
+  <p class="section-intro">These 29 pages represent the authority core — the URLs that Google currently has indexed and that carry real inlinks, rankings, or traffic. If any of them land as a 404 on launch day (even briefly), you'll bleed link equity and rankings. All need to either exist at their new URL <em>or</em> have a 301 redirect in place before the domain goes live. <strong>Status checked live against stg-tidewater.alloygp.co — May 14, 2026.</strong> 25 of 29 destination URLs are built. 4 remain.</p>
 
   <div class="tbl-wrap">
     <table class="tbl">
@@ -294,24 +294,24 @@
         <tr><td class="code amber">/testimonials/</td><td>970</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/about/ (301)</td><td>81 words currently — thin. Merge content into /about/</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/communityassociations/</td><td>942</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/rentals/</td><td>901</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
-        <tr><td class="code amber">/resources/</td><td>852</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/ (301)</td><td>New site has /resources/ — needs rename to /blog/ before launch</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
-        <tr><td class="code amber">/blog/</td><td>671</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/ (keep)</td><td>URL stays. Fix duplicate title across 11 blog pagination pages.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/resources/</td><td>852</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/ (301)</td><td>Old /resources/ → /blog/ redirect still needs to be wired in vercel.json</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/blog/</td><td>671</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/ (keep)</td><td>URL stays. Fix duplicate title across 11 blog pagination pages.</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/maintenance/</td><td>652</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/rental-marketing/</td><td>616</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/rent-collection/</td><td>612</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/rentals/tenant-eviction/</td><td>608</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/hoa-management/</td><td>599</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/ (keep + rebuild)</td><td>URL stays — major HOA pillar</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/services/construction-management/</td><td>596</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
-        <tr><td class="code amber">/commercial-property-management/</td><td>592</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/commercial-association-management/ (301)</td><td>–</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/commercial-property-management/</td><td>592</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/commercial-association-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/service-area/</td><td>591</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/ (301)</td><td>591 inlinks — don't leave orphaned</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/condo-association-management/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/condo-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/services/emergency-repairs/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/lender-questionnaire-services/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/condo-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
-        <tr><td class="code amber">/communityassociations/accounting-services/</td><td>590</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/hoa-financial-management/ (301)</td><td>–</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
-        <tr><td class="code amber">/service-area/anne-arundel-county-md/</td><td>14</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/anne-arundel-county/ (301)</td><td>157 clicks/mo — site's top non-branded ranking. Critical.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
-        <tr><td class="code amber">/service-area/silver-spring-md/</td><td>11</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/silver-spring/ (301)</td><td>Top rental geo</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
-        <tr><td class="code amber">/blog/what-does-a-community-association-manager-do/</td><td>17</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/what-does-a-community-association-manager-do/ (keep)</td><td>Keep URL. Strong HOA blog post.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
-        <tr><td class="code amber">/blog/5-tips-for-effective-property-management/</td><td>97</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">Keep or 301 to new blog post</td><td>Highest-inlink blog post currently</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/communityassociations/accounting-services/</td><td>590</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/hoa-financial-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/service-area/anne-arundel-county-md/</td><td>14</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/anne-arundel-county/ (301)</td><td>157 clicks/mo — top non-branded ranking. ⚠ Note: /hoa-management/maryland/anne-arundel-county/ is live but the <em>rental</em> version needed for this redirect is still missing.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/service-area/silver-spring-md/</td><td>11</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/silver-spring/ (301)</td><td>Top rental geo — not yet built</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/blog/what-does-a-community-association-manager-do/</td><td>17</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/what-does-a-community-association-manager-do/ (keep)</td><td>Keep URL. Strong HOA blog post. Needs to be migrated.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/blog/5-tips-for-effective-property-management/</td><td>97</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">Keep or 301 to new blog post</td><td>Highest-inlink blog post. Needs migration decision before launch.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
       </tbody>
     </table>
   </div>
@@ -710,7 +710,7 @@
 <div class="footer">
   <div class="wrap">
     <strong>Tidewater Property Management — SEO Launch Readiness Report</strong>
-    <span>Alloy Growth Partners · Crawl #3 · May 14, 2026 · Screaming Frog full crawl (58 URLs) · 18 HTML pages confirmed · 4 original blockers resolved · 4 nav 404s + trailing-slash chain + 9 title tags remain</span>
+    <span>Alloy Growth Partners · Crawl #3 · May 14, 2026 · Screaming Frog full crawl (58 URLs) · 18 HTML pages confirmed · All blockers resolved · 0 open warnings · 87 redirects + PUBLIC_ENV pending before domain flip</span>
   </div>
 </div>
 
