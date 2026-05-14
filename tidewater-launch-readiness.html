@@ -135,6 +135,8 @@
   .ph-url-list li { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted); padding:4px 8px; background:var(--alt); border-radius:5px; word-break:break-all; }
   .ph-url-list li.critical { color:var(--red); background:var(--red-bg); }
   .ph-url-list li.traffic { color:var(--green-dark); background:var(--green-bg); font-weight:700; }
+  .ph-url-list li.built { color:var(--green-dark); background:var(--green-bg); }
+  .ph-url-list li.missing { color:var(--red); background:var(--red-bg); }
 
   /* TWO-COL */
   .g2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
@@ -180,13 +182,13 @@
   <div class="cover-inner">
     <div class="cover-eyebrow">Alloy Growth Partners · Site Launch SEO Audit · May 2026</div>
     <h1>tidewaterproperty.com <em>launch readiness</em></h1>
-    <p class="cover-sub">Cross-referenced the full Screaming Frog crawl (555 URLs, 276 indexable pages), sitemap v5.1, and current inlink/traffic data to identify what must be live Day 1, what redirects are missing, and what needs fixing before you flip the switch.</p>
+    <p class="cover-sub">Updated May 14, 2026 — refreshed against staged site crawl (stg-tidewater.alloygp.co). Original blockers resolved. New issues surfaced. 11 pages now built on staging; 10 nav-linked 404s remain before launch.</p>
     <div class="score-grid">
-      <div class="score-card"><div class="sv red">2</div><div class="sl">Critical Blockers</div></div>
-      <div class="score-card"><div class="sv amber">8</div><div class="sl">High-Priority Fixes</div></div>
-      <div class="score-card"><div class="sv white">29</div><div class="sl">Must-Live Day 1 Pages</div></div>
+      <div class="score-card"><div class="sv red">2</div><div class="sl">Open Blockers</div></div>
+      <div class="score-card"><div class="sv green">2</div><div class="sl">Blockers Resolved</div></div>
+      <div class="score-card"><div class="sv white">11</div><div class="sl">Pages Built on Staging</div></div>
+      <div class="score-card"><div class="sv amber">10</div><div class="sl">Nav-Linked 404s</div></div>
       <div class="score-card"><div class="sv green">87</div><div class="sl">Redirects Needed</div></div>
-      <div class="score-card"><div class="sv blue">182</div><div class="sl">Images Missing Alt</div></div>
     </div>
   </div>
 </div>
@@ -199,21 +201,54 @@
 <section class="section" id="blockers">
   <div class="eyebrow red">Stop-Ship · Fix Before Going Live</div>
   <h2>Critical blockers</h2>
-  <p class="section-intro">These two issues will cause immediate traffic loss or ranking damage if not resolved before launch day.</p>
+  <p class="section-intro">Two original blockers have been resolved. Two new ones surfaced from the staged site crawl.</p>
 
+  <!-- RESOLVED -->
+  <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
+    <div class="alert-icon">✅</div>
+    <div class="alert-body">
+      <strong>RESOLVED — /property-management/ 404 (confirmed fixed)</strong>
+      <p>Live site now returns <code>301 → /tidewater-property-management/ → 200</code>. Rank Math redirect is in place. Link equity is flowing correctly. No action needed on the current site.</p>
+    </div>
+  </div>
+
+  <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
+    <div class="alert-icon">✅</div>
+    <div class="alert-body">
+      <strong>RESOLVED — Zero structured data (SEO foundation retrofit complete)</strong>
+      <p>The SEO foundation has been retrofitted into the staged build. All 11 live pages now emit <code>LocalBusiness</code> / <code>Organization</code> JSON-LD on every page. Service pages additionally have <code>Service</code> + <code>BreadcrumbList</code>. About page has <code>LocalBusiness</code> + <code>BreadcrumbList</code>. Canonical tags added to all pages. <code>robots.txt</code> and <code>sitemap.xml</code> created. Security headers wired in <code>vercel.json</code>.</p>
+    </div>
+  </div>
+
+  <!-- OPEN BLOCKERS -->
   <div class="alert blocker">
     <div class="alert-icon">🚨</div>
     <div class="alert-body">
-      <strong>BLOCKER 1 — /property-management/ returns 404 on the CURRENT site</strong>
-      <p>The current live site has a page linking to <code>/property-management/"</code> (with a rogue quote character) which 301-redirects to <code>/property-management/</code> — which itself returns a <strong>404</strong>. This is live right now and already a crawl error. Before launch, fix the internal link to remove the rogue quote. Then on the new site, ensure <code>/property-management/</code> 301-redirects to <code>/rental-management/</code>. Leaving this broken means Google is already seeing a 404 on an intended service page.</p>
+      <strong>BLOCKER 1 — Staging site is fully indexable (no noindex protection)</strong>
+      <p>The staged domain <code>stg-tidewater.alloygp.co</code> has no <code>meta robots noindex</code>, no <code>X-Robots-Tag</code>, and no <code>robots.txt Disallow</code>. Every page is crawlable and indexable right now. If Google indexes the staging domain before launch, you'll have duplicate content split across two domains the moment tidewaterproperty.com goes live. Fix: add a Vercel environment variable check so staging deployments emit <code>&lt;meta name="robots" content="noindex,nofollow"&gt;</code>. Use <code>import.meta.env.PROD</code> in the BaseLayout — render the noindex tag when <code>PROD === false</code>.</p>
     </div>
   </div>
 
   <div class="alert blocker">
     <div class="alert-icon">🚨</div>
     <div class="alert-body">
-      <strong>BLOCKER 2 — Zero structured data on any page (current site)</strong>
-      <p>Screaming Frog found <strong>0 structured data types</strong> across all 276 indexable pages — no LocalBusiness, no Organization, no BreadcrumbList, no FAQPage, nothing. The new sitemap specifies schema requirements for every page. These <em>must be implemented on the new site before launch</em> — not after. Schema is a known ranking signal and the FAQ + review schema will help immediately in SERPs. Don't launch without at minimum: <code>LocalBusiness</code> on the homepage, <code>Organization</code>, <code>FAQPage</code> on /faq/ and any FAQ sections, and <code>BreadcrumbList</code> on all interior pages.</p>
+      <strong>BLOCKER 2 — 10 nav-linked pages are 404 on the staged site</strong>
+      <p>The nav and footer link to pages that don't exist yet. Every visitor (and Googlebot) who clicks these hits a dead end. <strong>Resolve each before launch</strong> — either build the page or remove/redirect the nav link.</p>
+      <table class="tbl" style="margin-top:12px;">
+        <thead><tr><th>404 URL</th><th>Nav Inlinks</th><th>Action needed</th></tr></thead>
+        <tbody>
+          <tr><td class="code">/testimonials/</td><td>22</td><td>Build page or 301 → /about/ and remove nav link</td></tr>
+          <tr><td class="code">/hoa-management/hoa-financial-management/</td><td>22</td><td>Build page (high-value sub-service)</td></tr>
+          <tr><td class="code">/hoa-management/commercial-association-management/</td><td>11</td><td>Build page (also redirect target from /commercial-property-management/)</td></tr>
+          <tr><td class="code">/hoa-management/townhome-community-management/</td><td>11</td><td>Build page</td></tr>
+          <tr><td class="code">/faq/</td><td>11</td><td>Build page or remove from nav until built</td></tr>
+          <tr><td class="code">/solutions/switching-hoa-management-company/</td><td>11</td><td>Build page or remove from nav until built</td></tr>
+          <tr><td class="code">/solutions/self-managed-hoa-transition/</td><td>11</td><td>Build page or remove from nav until built</td></tr>
+          <tr><td class="code">/blog/</td><td>11</td><td>Build index page or remove from nav (Phase 2 — but nav link must be resolved)</td></tr>
+          <tr><td class="code">/service-areas/</td><td>11</td><td>Build page or 301 → /hoa-management/ and remove footer link</td></tr>
+          <tr><td class="code">/condo-association-management/</td><td>1</td><td>301 → /condo-management/ (old URL redirect only)</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -235,38 +270,39 @@
           <th>Priority</th>
           <th>New URL / Action</th>
           <th>Note</th>
+          <th>Staged?</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td class="code amber">/</td><td>1,430</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/</td><td>Homepage — rebuild, not redirect</td></tr>
-        <tr><td class="code amber">/contact/</td><td>1,401</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/request-a-proposal/ (301)</td><td>Highest-inlink page after homepage</td></tr>
-        <tr><td class="code amber">/tidewater-real-estate-services/</td><td>1,186</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/about/ (301)</td><td>Massive inlinks — confirm /about/ is live</td></tr>
-        <tr><td class="code amber">/tidewater-property-maintenance/</td><td>1,171</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/tidewater-property-management/</td><td>1,170</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/about/ (301)</td><td>⚠ Sitemap redirects here to /about/ — confirm</td></tr>
-        <tr><td class="code amber">/featured-listings/</td><td>1,155</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/current-listings/</td><td>1,136</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/about/</td><td>1,131</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/about/ (keep)</td><td>URL stays, page must be rebuilt</td></tr>
-        <tr><td class="code amber">/testimonials/</td><td>970</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/about/ (301)</td><td>81 words currently — thin. Merge content into /about/</td></tr>
-        <tr><td class="code amber">/communityassociations/</td><td>942</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/rentals/</td><td>901</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/resources/</td><td>852</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/blog/</td><td>671</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/ (keep)</td><td>URL stays. Fix duplicate title across 11 blog pagination pages.</td></tr>
-        <tr><td class="code amber">/maintenance/</td><td>652</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/rental-marketing/</td><td>616</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/rent-collection/</td><td>612</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/rentals/tenant-eviction/</td><td>608</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/hoa-management/</td><td>599</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/ (keep + rebuild)</td><td>URL stays — major HOA pillar</td></tr>
-        <tr><td class="code amber">/services/construction-management/</td><td>596</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/commercial-property-management/</td><td>592</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/commercial-association-management/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/service-area/</td><td>591</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/ (301)</td><td>591 inlinks — don't leave orphaned</td></tr>
-        <tr><td class="code amber">/condo-association-management/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/condo-management/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/services/emergency-repairs/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/lender-questionnaire-services/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/condo-management/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/communityassociations/accounting-services/</td><td>590</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/hoa-financial-management/ (301)</td><td>–</td></tr>
-        <tr><td class="code amber">/service-area/anne-arundel-county-md/</td><td>14</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/anne-arundel-county/ (301)</td><td>157 clicks/mo — site's top non-branded ranking. Critical.</td></tr>
-        <tr><td class="code amber">/service-area/silver-spring-md/</td><td>11</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/silver-spring/ (301)</td><td>Top rental geo</td></tr>
-        <tr><td class="code amber">/blog/what-does-a-community-association-manager-do/</td><td>17</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/what-does-a-community-association-manager-do/ (keep)</td><td>Keep URL. Strong HOA blog post.</td></tr>
-        <tr><td class="code amber">/blog/5-tips-for-effective-property-management/</td><td>97</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">Keep or 301 to new blog post</td><td>Highest-inlink blog post currently</td></tr>
+        <tr><td class="code amber">/</td><td>1,430</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/</td><td>Homepage — rebuild, not redirect</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/contact/</td><td>1,401</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/request-a-proposal/ (301)</td><td>Highest-inlink page after homepage</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/tidewater-real-estate-services/</td><td>1,186</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/about/ (301)</td><td>Massive inlinks — confirm /about/ is live</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/tidewater-property-maintenance/</td><td>1,171</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/tidewater-property-management/</td><td>1,170</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/about/ (301)</td><td>⚠ Sitemap redirects here to /about/ — confirm</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/featured-listings/</td><td>1,155</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/current-listings/</td><td>1,136</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/about/</td><td>1,131</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/about/ (keep)</td><td>URL stays, page must be rebuilt</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/testimonials/</td><td>970</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/about/ (301)</td><td>81 words currently — thin. Merge content into /about/</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/communityassociations/</td><td>942</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/rentals/</td><td>901</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/resources/</td><td>852</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/ (301)</td><td>New site has /resources/ — needs rename to /blog/ before launch</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/blog/</td><td>671</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/ (keep)</td><td>URL stays. Fix duplicate title across 11 blog pagination pages.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/maintenance/</td><td>652</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/rental-marketing/</td><td>616</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/rent-collection/</td><td>612</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/rentals/tenant-eviction/</td><td>608</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/hoa-management/</td><td>599</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/ (keep + rebuild)</td><td>URL stays — major HOA pillar</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/services/construction-management/</td><td>596</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/commercial-property-management/</td><td>592</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/commercial-association-management/ (301)</td><td>–</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/service-area/</td><td>591</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/ (301)</td><td>591 inlinks — don't leave orphaned</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/condo-association-management/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/condo-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/services/emergency-repairs/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/lender-questionnaire-services/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/condo-management/ (301)</td><td>–</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
+        <tr><td class="code amber">/communityassociations/accounting-services/</td><td>590</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/hoa-financial-management/ (301)</td><td>–</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/service-area/anne-arundel-county-md/</td><td>14</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/anne-arundel-county/ (301)</td><td>157 clicks/mo — site's top non-branded ranking. Critical.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/service-area/silver-spring-md/</td><td>11</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/silver-spring/ (301)</td><td>Top rental geo</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/blog/what-does-a-community-association-manager-do/</td><td>17</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/what-does-a-community-association-manager-do/ (keep)</td><td>Keep URL. Strong HOA blog post.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/blog/5-tips-for-effective-property-management/</td><td>97</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">Keep or 301 to new blog post</td><td>Highest-inlink blog post currently</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
       </tbody>
     </table>
   </div>
@@ -539,34 +575,35 @@
       </div>
       <div class="ph-body">
         <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">29 pages. All redirects active. Everything below must be live and indexable.</p>
+        <p style="font-size:11px;color:var(--muted);margin-bottom:8px;margin-top:-4px;"><span style="color:var(--green-dark);font-weight:700;">✅ = built on staging</span> &nbsp;·&nbsp; <span style="color:var(--red);font-weight:700;">❌ = 404 on staging</span></p>
         <ul class="ph-url-list">
-          <li class="traffic">/ (homepage — rebuilt)</li>
-          <li class="traffic">/hoa-management/ (pillar — rebuilt)</li>
-          <li class="traffic">/rental-management/ (new — redirects from /rentals/)</li>
-          <li class="traffic">/maintenance-services/ (new)</li>
-          <li class="traffic">/condo-management/ (new)</li>
-          <li>/about/</li>
-          <li>/faq/</li>
-          <li>/blog/</li>
-          <li>/request-a-proposal/</li>
-          <li>/hoa-management/hoa-financial-management/</li>
-          <li>/hoa-management/covenant-enforcement/</li>
-          <li>/hoa-management/commercial-association-management/</li>
-          <li>/hoa-management/townhome-community-management/</li>
-          <li class="traffic">/rental-management/maryland/anne-arundel-county/</li>
-          <li class="traffic">/rental-management/maryland/silver-spring/</li>
-          <li>/rental-management/maryland/baltimore-county/</li>
-          <li>/rental-management/maryland/howard-county/</li>
-          <li>/rental-management/maryland/prince-georges-county/</li>
-          <li>/rental-management/maryland/montgomery-county/</li>
-          <li>/rental-management/maryland/ocean-city/</li>
-          <li>/rental-management/delaware/lewes/</li>
-          <li>/solutions/switching-hoa-management-company/</li>
-          <li>/solutions/self-managed-hoa-transition/</li>
-          <li>/blog/what-does-a-community-association-manager-do/ (keep)</li>
-          <li>/blog/5-tips-for-effective-property-management/ (keep or 301)</li>
-          <li>/blog/what-is-quorum-and-why-is-it-important/ (new — 43K SV)</li>
-          <li class="critical">ALL 87 REDIRECTS active in .htaccess / Nginx</li>
+          <li class="built">✅ / (homepage — rebuilt)</li>
+          <li class="built">✅ /hoa-management/ (pillar — rebuilt)</li>
+          <li class="built">✅ /rental-management/ (new — redirects from /rentals/)</li>
+          <li class="built">✅ /maintenance-services/ (new)</li>
+          <li class="built">✅ /condo-management/ (new)</li>
+          <li class="built">✅ /about/</li>
+          <li class="built">✅ /request-a-proposal/</li>
+          <li class="missing">❌ /faq/ — not built yet</li>
+          <li class="missing">❌ /blog/ — not built yet (staging has /resources/)</li>
+          <li class="missing">❌ /hoa-management/hoa-financial-management/</li>
+          <li class="missing">❌ /hoa-management/covenant-enforcement/</li>
+          <li class="missing">❌ /hoa-management/commercial-association-management/</li>
+          <li class="missing">❌ /hoa-management/townhome-community-management/</li>
+          <li class="missing">❌ /rental-management/maryland/anne-arundel-county/ ⚠ top traffic page</li>
+          <li class="missing">❌ /rental-management/maryland/silver-spring/ ⚠ top traffic page</li>
+          <li class="missing">❌ /rental-management/maryland/baltimore-county/</li>
+          <li class="missing">❌ /rental-management/maryland/howard-county/</li>
+          <li class="missing">❌ /rental-management/maryland/prince-georges-county/</li>
+          <li class="missing">❌ /rental-management/maryland/montgomery-county/</li>
+          <li class="missing">❌ /rental-management/maryland/ocean-city/</li>
+          <li class="missing">❌ /rental-management/delaware/lewes/</li>
+          <li class="missing">❌ /solutions/switching-hoa-management-company/</li>
+          <li class="missing">❌ /solutions/self-managed-hoa-transition/</li>
+          <li class="missing">❌ /blog/what-does-a-community-association-manager-do/ (keep)</li>
+          <li class="missing">❌ /blog/5-tips-for-effective-property-management/ (keep or 301)</li>
+          <li class="missing">❌ /blog/what-is-quorum-and-why-is-it-important/ (new — 43K SV)</li>
+          <li class="critical">ALL 87 REDIRECTS active in vercel.json — pending</li>
         </ul>
       </div>
     </div>
@@ -638,10 +675,10 @@
   <p class="section-intro">Run through this before pointing the domain. Items are roughly in order of importance.</p>
 
   <div class="checklist">
-    <div class="cl-item"><div class="cl-num">1</div><div class="cl-text"><strong>Fix /property-management/ 404 on current site NOW</strong><span>Remove the rogue quote character from the internal link that creates <code>/property-management/"</code>. This is a live issue independent of the launch.</span></div><span class="sev-crit">Critical</span></div>
+    <div class="cl-item" style="opacity:0.6;"><div class="cl-num">✅</div><div class="cl-text"><strong style="text-decoration:line-through;">Fix /property-management/ 404 on current site NOW</strong><span>DONE — Rank Math redirect confirmed live. 301 → /tidewater-property-management/ → 200.</span></div><span class="badge p1">Resolved</span></div>
     <div class="cl-item"><div class="cl-num">2</div><div class="cl-text"><strong>Load all 87+ redirects into staging</strong><span>Verify every redirect in this document is in the .htaccess / Nginx config. Test each one with a redirect checker before going live.</span></div><span class="sev-crit">Critical</span></div>
     <div class="cl-item"><div class="cl-num">3</div><div class="cl-text"><strong>Crawl staged site with Screaming Frog</strong><span>Run a full crawl of the staged domain. Zero 404s on internal links. Every page has a title, meta description, H1. No redirect chains (A→B→C — fix to A→C). No redirect loops.</span></div><span class="sev-crit">Critical</span></div>
-    <div class="cl-item"><div class="cl-num">4</div><div class="cl-text"><strong>Implement schema markup on new site</strong><span>At minimum: <code>LocalBusiness</code> + <code>Organization</code> on homepage, <code>FAQPage</code> on /faq/, <code>BreadcrumbList</code> on all interior pages, <code>Service</code> on /hoa-management/, /rental-management/, /maintenance-services/, /condo-management/. Validate in Google's Rich Results Test.</span></div><span class="sev-crit">Critical</span></div>
+    <div class="cl-item" style="opacity:0.6;"><div class="cl-num">✅</div><div class="cl-text"><strong style="text-decoration:line-through;">Implement schema markup on new site</strong><span>DONE — SEO foundation retrofitted. All 11 staged pages emit <code>LocalBusiness</code> JSON-LD. Service pages have <code>Service</code> + <code>BreadcrumbList</code>. <code>robots.txt</code>, <code>sitemap.xml</code>, and canonical tags in place. Still needed: <code>FAQPage</code> schema once /faq/ is built. Validate in Rich Results Test before launch.</span></div><span class="badge p1">Resolved</span></div>
     <div class="cl-item"><div class="cl-num">5</div><div class="cl-text"><strong>Verify robots.txt on new site</strong><span>Confirm that <code>/hoa-management/</code>, <code>/rental-management/</code>, <code>/maintenance-services/</code>, <code>/condo-management/</code>, <code>/request-a-proposal/</code> are all crawlable. Block: <code>/wp-admin/</code>, <code>/?</code> filter URLs, thank-you pages.</span></div><span class="sev-high">High</span></div>
     <div class="cl-item"><div class="cl-num">6</div><div class="cl-text"><strong>Generate and submit XML sitemap</strong><span>Only include indexable, canonical, live pages. Exclude redirected old URLs, paginated blog pages (if redirected), gallery pages. Submit to GSC immediately after launch.</span></div><span class="sev-high">High</span></div>
     <div class="cl-item"><div class="cl-num">7</div><div class="cl-text"><strong>Fix all 182 images missing alt text on new site</strong><span>Don't migrate any images to the new site without alt text. This is a baseline accessibility and SEO requirement. Priority: homepage hero images, team photos on /about/, service page images.</span></div><span class="sev-high">High</span></div>
@@ -661,7 +698,7 @@
 <div class="footer">
   <div class="wrap">
     <strong>Tidewater Property Management — SEO Launch Readiness Report</strong>
-    <span>Alloy Growth Partners · Generated May 14, 2026 · Based on Screaming Frog crawl (555 URLs) + Sitemap v5.1</span>
+    <span>Alloy Growth Partners · Updated May 14, 2026 · Refreshed against staged site crawl (stg-tidewater.alloygp.co) · 11 pages built · 2 blockers resolved · 2 new blockers surfaced</span>
   </div>
 </div>
 
