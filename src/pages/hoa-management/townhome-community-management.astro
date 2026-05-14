@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Topbar from '../../components/Topbar.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Pains from '../../components/Pains.astro';
+import Tiers from '../../components/Tiers.astro';
+import Mission from '../../components/Mission.astro';
+import HandsOn from '../../components/HandsOn.astro';
+import Portal from '../../components/Portal.astro';
+import Leadership from '../../components/Leadership.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { serviceSchema, breadcrumbSchema } from '../../lib/schema';
+import { SITE } from '../../config/site';
+
+const pageUrl = `${SITE.url}/hoa-management/townhome-community-management`;
+const pageDesc = "Townhome HOA and planned community management across Maryland and the Mid-Atlantic. Block walks, ARC review, deed restriction enforcement, and exterior maintenance. Family-owned since 1989. AAMC® accredited.";
+
+const schemas = [
+  serviceSchema({
+    name: 'Townhome & Planned Community Management',
+    description: pageDesc,
+    url: pageUrl,
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'HOA Management', url: SITE.url + '/hoa-management' },
+    { name: 'Townhome & Planned Community Management', url: pageUrl },
+  ]),
+];
+
+const townhomeActivity = {
+  title: 'What townhome management looks like, right now',
+  sub: 'Live across the townhome and planned-community HOAs in our Maryland portfolio.',
+  footNum: '2,400+',
+  footText: 'Townhome work items resolved across the portfolio this week',
+  events: [
+    { time: '10:08am',    region: 'Howard Co, MD',    cls: 'teal', label: 'Exterior maintenance', text: 'Roof inspection cycle started on Block C — 24 units, photo log uploaded to CINC.' },
+    { time: '9:22am',     region: 'Anne Arundel, MD', cls: 'gold', label: 'ARC decision',         text: 'Front-door color change approved against community palette — owner notified in 36 hrs.' },
+    { time: 'Yesterday',  region: 'Harford Co, MD',   cls: 'sage', label: 'Deed restriction',     text: 'Parked-vehicle violation logged with photo, owner notice issued per CC&R 4.7.' },
+    { time: 'Yesterday',  region: 'Frederick, MD',    cls: 'teal', label: 'Common-area',          text: 'Mulch refresh complete across 4 island beds + 2 entry signs. Documented in mgmt plan.' },
+    { time: '2 days ago', region: 'Carroll Co, MD',   cls: 'clay', label: 'Fence repair',         text: 'Storm-damaged perimeter fence on common boundary — vendor on-site within 4 hours.' },
+    { time: '2 days ago', region: 'Howard Co, MD',    cls: 'gold', label: 'Reserve',              text: 'Asphalt overlay for Phase II parking court funded; 10-year plan rebalanced.' },
+  ],
+};
+
+const townhomePains = {
+  eyebrow: 'Why Townhome Boards Switch to Tidewater',
+  titleHtml: 'Townhomes have <em>townhome</em> problems. Most managers treat them like condos or single-family homes.',
+  lede: 'Townhome HOAs sit between condo and single-family — with attached exteriors but individual lots, shared walls but separate deeds, and the deepest architectural standards of any community type. We resolve the six issues that drive most townhome management changes.',
+  items: [
+    { n: '01', pain: 'Shared Exterior Maintenance',
+      head: 'Where the owner ends and the association begins.',
+      body: 'Roofs, siding, gutters, front doors, fences — the boundary between owner and association responsibility is the #1 source of townhome friction. We <strong>document each component\'s responsibility in CINC</strong> with photo standards, so the answer is the same every time.' },
+    { n: '02', pain: 'Deed Restriction Enforcement',
+      head: 'Same standard for parking, exteriors, pets, and trash — every time.',
+      body: 'Townhome covenants are typically more detailed than single-family HOAs (paint colors, fences, parking, holiday displays). <strong>Photo-documented, template-driven correspondence</strong>, applied consistently to every owner.' },
+    { n: '03', pain: 'Architectural Standards',
+      head: 'Fences, decks, sheds, doors, and lighting on a documented standard.',
+      body: 'ARC requests are processed against the community\'s approved palette, materials list, and dimensions — logged in CINC with photos. <strong>Most ARC decisions delivered within 14 days</strong>, with full audit trail.' },
+    { n: '04', pain: 'Large Footprint, Spread-Out Common Areas',
+      head: 'Maryland townhome communities can span 80 acres.',
+      body: 'Multiple entry signs, parking courts, sidewalks, tot-lots, landscape islands, perimeter fencing. Our community managers walk on a <strong>documented cadence</strong> — not drive-by inspections from the street.' },
+    { n: '05', pain: 'Parking &amp; Visitor Management',
+      head: 'The single most contentious issue in any townhome HOA.',
+      body: 'Reserved spots, visitor parking, oversized vehicles, trailers, RVs — every community has its own rulebook. We <strong>enforce yours consistently</strong>, with photo logs and a documented warning ladder before fines.' },
+    { n: '06', pain: 'Volunteer Burnout',
+      head: 'A manager who runs the day-to-day so the board doesn\'t.',
+      body: 'Townhome boards in Maryland\'s suburban counties tend to be working professionals. <strong>Most reclaim 5–10 hours a month</strong> after switching to Tidewater, while keeping every decision they want to make.' },
+  ],
+};
+---
+<BaseLayout
+  title="Townhome & Planned Community Management | Tidewater"
+  description={pageDesc}
+  pageSchema={schemas}
+>
+  <Topbar variant="default" />
+  <Header activeNav="hoa" />
+  <Breadcrumb crumbs={[{ label: "HOA Management", href: "/hoa-management" }, { label: "Townhome & Planned Community Management" }]} />
+  <Hero config={{
+    eyebrow: 'For Townhome & Planned Community HOAs',
+    titleHtml: 'Townhome management for <em>communities that share walls and standards.</em>',
+    lede: 'Townhome HOAs and planned communities have their own challenges — shared exterior maintenance, deed restrictions, architectural standards across hundreds of attached units, and the larger geographic footprints common in Maryland\'s suburban counties. We\'ve been managing them since 1989.',
+    image: '/assets/hero-aerial.jpg',
+    imageAlt: 'Aerial view of a Maryland townhome planned community managed by Tidewater',
+    scrollLabel: 'Why townhome boards switch',
+    heroWidget: 'activity',
+    activity: townhomeActivity,
+  }} />
+  <TrustBar />
+  <Pains {...townhomePains} />
+  <Tiers />
+  <Mission />
+  <HandsOn />
+  <Portal />
+  <Leadership />
+  <Testimonials />
+  <CTA />
+  <Footer />
+</BaseLayout>

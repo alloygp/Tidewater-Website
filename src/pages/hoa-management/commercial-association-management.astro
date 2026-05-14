@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Topbar from '../../components/Topbar.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Pains from '../../components/Pains.astro';
+import Tiers from '../../components/Tiers.astro';
+import Mission from '../../components/Mission.astro';
+import HandsOn from '../../components/HandsOn.astro';
+import Portal from '../../components/Portal.astro';
+import Leadership from '../../components/Leadership.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { serviceSchema, breadcrumbSchema } from '../../lib/schema';
+import { SITE } from '../../config/site';
+
+const pageUrl = `${SITE.url}/hoa-management/commercial-association-management`;
+const pageDesc = "Commercial condo association and mixed-use CID management across the Mid-Atlantic. Office condos, retail boards, and community improvement districts. Family-owned since 1989. AAMC® accredited.";
+
+const schemas = [
+  serviceSchema({
+    name: 'Commercial Association Management',
+    description: pageDesc,
+    url: pageUrl,
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'HOA Management', url: SITE.url + '/hoa-management' },
+    { name: 'Commercial Association Management', url: pageUrl },
+  ]),
+];
+
+const commercialActivity = {
+  title: 'What commercial association management looks like, right now',
+  sub: 'Live across the office, retail, and mixed-use commercial condo associations in our Maryland portfolio.',
+  footNum: '740+',
+  footText: 'Commercial-association work items resolved across the portfolio this week',
+  events: [
+    { time: '10:32am',    region: 'Baltimore, MD',    cls: 'teal', label: 'Vendor compliance',       text: 'Elevator-service COI renewed 7 days before expiry on a 6-story office condo. Auto-tracked.' },
+    { time: '9:18am',     region: 'Annapolis, MD',    cls: 'gold', label: 'Mixed-use coordination',  text: 'Retail HVAC overlap with residential units — rebalanced load schedule, owner notice drafted.' },
+    { time: 'Yesterday',  region: 'Bethesda, MD',     cls: 'sage', label: 'Master policy',           text: 'Commercial general-liability renewal completed across 14 unit owners; binder distributed.' },
+    { time: 'Yesterday',  region: 'Columbia, MD',     cls: 'teal', label: 'Fire system',             text: 'Sprinkler inspection passed; backflow recertification scheduled inside Q1 window.' },
+    { time: '2 days ago', region: 'Towson, MD',       cls: 'clay', label: 'Tenant turnover',         text: 'New retail tenant onboarded — ARC review for storefront signage approved per CC&Rs.' },
+    { time: '2 days ago', region: 'Owings Mills, MD', cls: 'gold', label: 'CID coordination',        text: 'Community improvement district landscape vendor invoice routed for dual approval.' },
+  ],
+};
+
+const commercialPains = {
+  eyebrow: 'Why Commercial Boards Switch to Tidewater',
+  titleHtml: 'Commercial condos aren\'t residential. <em>Most management companies treat them like they are.</em>',
+  lede: 'A residential HOA playbook doesn\'t fit an office condo or a mixed-use CID. We resolve the six issues that drive most commercial association management changes — each backed by an operational standard.',
+  items: [
+    { n: '01', pain: 'Business-Owner Boards',
+      head: 'Board members are running businesses, not volunteering on weekends.',
+      body: 'Commercial boards have less patience for slow turnaround than residential ones. <strong>Same-business-day response standard</strong>, with documentation routed directly to the owner\'s LLC contact — not their personal email.' },
+    { n: '02', pain: 'Tenant Turnover',
+      head: 'Unit-tenant churn is the operating reality.',
+      body: 'Most commercial condos have unit-owners who lease to operating tenants. We track <strong>tenant onboarding, ARC review for signage &amp; build-outs, and lease-rider compliance</strong> as a continuous workflow — not an exception.' },
+    { n: '03', pain: 'Mixed-Use Complexity',
+      head: 'Residential, office, and retail in one declaration.',
+      body: 'Mixed-use commercial improvement districts (CIDs) have to coordinate HVAC, parking, hours-of-operation, deliveries, and trash across uses. <strong>We staff a coordination cadence</strong>, not a complaint queue.' },
+    { n: '04', pain: 'Master Policy &amp; Liability',
+      head: 'Commercial coverage is where small mistakes get expensive.',
+      body: 'General liability limits, business-interruption coverage, certificate-of-insurance tracking, and master-policy versus unit-owner split need <strong>active management, not annual renewal.</strong> Every COI is logged in CINC.' },
+    { n: '05', pain: 'Fire Code, ADA &amp; Inspections',
+      head: 'Inspections are scheduled before letters arrive.',
+      body: 'Sprinkler, elevator, alarm, backflow, ADA compliance, building permits — mapped on the annual management plan with auto-triggers 15 days out. <strong>No surprise notices of violation.</strong>' },
+    { n: '06', pain: 'Transition From Residential Mgmt',
+      head: 'Switching from a residential company is the most common move.',
+      body: 'Most commercial boards we onboard are leaving a residential property manager whose playbook didn\'t fit. Our transition team has a <strong>commercial-condo onboarding playbook</strong> with vendor handoff, tenant communication, and CC&R reconciliation.' },
+  ],
+};
+---
+<BaseLayout
+  title="Commercial Association Management MD | Tidewater"
+  description={pageDesc}
+  pageSchema={schemas}
+>
+  <Topbar variant="default" />
+  <Header activeNav="mgmt" />
+  <Breadcrumb crumbs={[{ label: "HOA Management", href: "/hoa-management" }, { label: "Commercial Association Management" }]} />
+  <Hero config={{
+    eyebrow: 'For Commercial Condo Boards & Mixed-Use Districts',
+    titleHtml: 'Commercial association management for <em>the buildings that work for a living.</em>',
+    lede: 'Office condo associations, retail condo boards, and mixed-use community improvement districts have their own machinery: business-owner directors, tenant turnover, fire code, ADA, and master-policy complexity. Tidewater was founded inside commercial condos — it\'s where our hands-on standard came from.',
+    image: '/assets/hero-aerial.jpg',
+    imageAlt: 'Commercial mixed-use condo building managed by Tidewater',
+    scrollLabel: 'Why commercial boards switch',
+    heroWidget: 'activity',
+    activity: commercialActivity,
+  }} />
+  <TrustBar />
+  <Pains {...commercialPains} />
+  <Tiers />
+  <Mission />
+  <HandsOn />
+  <Portal />
+  <Leadership />
+  <Testimonials />
+  <CTA />
+  <Footer />
+</BaseLayout>

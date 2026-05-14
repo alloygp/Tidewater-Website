@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Topbar from '../../components/Topbar.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import BlogIndex from '../../components/BlogIndex.jsx';
+import { breadcrumbSchema } from '../../lib/schema';
+import { SITE } from '../../config/site';
+
+const pageUrl = `${SITE.url}/blog`;
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Resources', url: SITE.url + '/resources' },
+    { name: 'Blog', url: pageUrl },
+  ]),
+];
+---
+
+<BaseLayout
+  title="HOA Board Blog & Playbooks | Tidewater"
+  description="Practical playbooks for HOA and condo boards across Maryland and the Mid-Atlantic. Reserve studies, switching management, governance mechanics, Maryland HOA law, and the operational systems that work in practice."
+  ogType="website"
+  pageSchema={schemas}
+  pageStylesheet="styles-blog-index.css"
+>
+  <link rel="stylesheet" href="/styles-blog.css" slot="head" />
+  <Topbar />
+  <Header activeNav="resources" />
+  <BlogIndex client:load perPage={6} showSearch={true} showFeatured={true} showNewsletter={true} />
+  <Footer />
+</BaseLayout>
