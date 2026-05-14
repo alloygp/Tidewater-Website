@@ -1,0 +1,335 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Topbar from '../components/Topbar.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../components/CTA.astro';
+import { serviceSchema, breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../config/site';
+
+const pageUrl = `${SITE.url}/service-areas/`;
+const pageDesc = "Tidewater manages HOA and condo associations across Maryland, Washington DC, Virginia, Pennsylvania, Delaware, and West Virginia. AAMC-accredited regional managers. Headquartered in Owings Mills since 1989.";
+
+const schemas = [
+  serviceSchema({
+    name: 'HOA & Condo Management — Mid-Atlantic Service Areas',
+    description: pageDesc,
+    url: pageUrl,
+    areaServed: 'Maryland, Washington DC, Virginia, Pennsylvania, Delaware, West Virginia',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Service Areas', url: pageUrl },
+  ]),
+];
+
+const states = [
+  {
+    name: 'Maryland',
+    abbr: 'MD',
+    flag: 'Anchor · 35 yrs',
+    anchor: true,
+    communities: '300+',
+    counties: 11,
+    body: 'Our home state. HQ in Owings Mills since 1989. The deepest portfolio in our region — from Annapolis waterfront to Howard County master-planned to Eastern Shore condo associations.',
+    countyList: [
+      { name: 'Anne Arundel', served: true },
+      { name: 'Baltimore Co.', served: true },
+      { name: 'Howard', served: true },
+      { name: 'Montgomery', served: true },
+      { name: "Prince George's", served: true },
+      { name: 'Frederick', served: true },
+      { name: 'Carroll' }, { name: 'Harford' }, { name: 'Talbot' }, { name: 'Dorchester' }, { name: 'Wicomico' },
+    ],
+    href: '/hoa-management/maryland/',
+    cta: 'View Maryland hub',
+  },
+  {
+    name: 'Washington, DC',
+    abbr: 'DC',
+    flag: 'Active',
+    communities: '40+',
+    countyLabel: 'DC neighborhoods',
+    body: 'Mid-rise condo associations across Northwest, Capitol Hill, and the U Street corridor. Our Silver Spring office covers DC inside the Beltway.',
+    countyList: [
+      { name: 'Northwest DC', served: true },
+      { name: 'Capitol Hill', served: true },
+      { name: 'U Street', served: true },
+      { name: 'Petworth', served: true },
+      { name: 'Logan Circle' }, { name: 'Adams Morgan' },
+    ],
+    href: '/request-a-proposal/',
+    cta: 'Request DC proposal',
+  },
+  {
+    name: 'Virginia',
+    abbr: 'VA',
+    flag: 'Northern VA',
+    communities: '60+',
+    counties: 5,
+    body: 'Northern Virginia HOAs and condo associations — Fairfax, Loudoun, Arlington, Alexandria. Hub page coming Q3 2026; in the meantime, request a proposal directly.',
+    countyList: [
+      { name: 'Fairfax', served: true },
+      { name: 'Loudoun', served: true },
+      { name: 'Arlington', served: true },
+      { name: 'Alexandria', served: true },
+      { name: 'Prince William', served: true },
+      { name: 'Stafford' }, { name: 'Spotsylvania' },
+    ],
+    href: '/request-a-proposal/',
+    cta: 'Request VA proposal',
+    coming: true,
+  },
+  {
+    name: 'Pennsylvania',
+    abbr: 'PA',
+    flag: 'Southeastern PA',
+    communities: '25+',
+    counties: 4,
+    body: 'Chester, Lancaster, York, and Adams County HOAs. Bordering communities along the Maryland line. Hub page coming Q4 2026.',
+    countyList: [
+      { name: 'Chester', served: true },
+      { name: 'Lancaster', served: true },
+      { name: 'York', served: true },
+      { name: 'Adams', served: true },
+      { name: 'Cumberland' }, { name: 'Franklin' },
+    ],
+    href: '/request-a-proposal/',
+    cta: 'Request PA proposal',
+    coming: true,
+  },
+  {
+    name: 'Delaware',
+    abbr: 'DE',
+    flag: 'Coastal',
+    communities: '20+',
+    counties: 3,
+    body: 'Lewes, Rehoboth, and the Sussex County coast — resort and second-home HOAs with seasonal management requirements. Hub page coming Q4 2026.',
+    countyList: [
+      { name: 'Sussex', served: true },
+      { name: 'Kent', served: true },
+      { name: 'New Castle', served: true },
+    ],
+    href: '/request-a-proposal/',
+    cta: 'Request DE proposal',
+    coming: true,
+  },
+  {
+    name: 'West Virginia',
+    abbr: 'WV',
+    flag: 'Eastern panhandle',
+    communities: '8+',
+    counties: 3,
+    body: 'Eastern panhandle HOAs — Berkeley, Jefferson, Morgan. Smaller portfolio, same regional service standard. Hub page coming Q4 2026.',
+    countyList: [
+      { name: 'Berkeley', served: true },
+      { name: 'Jefferson', served: true },
+      { name: 'Morgan', served: true },
+    ],
+    href: '/request-a-proposal/',
+    cta: 'Request WV proposal',
+    coming: true,
+  },
+];
+---
+<BaseLayout
+  title="Service Areas — HOA & Condo Management Across the Mid-Atlantic | Tidewater"
+  description={pageDesc}
+  pageSchema={schemas}
+>
+  <Topbar variant="default" />
+  <Header activeNav="mgmt" />
+
+  <!-- Hero -->
+  <section class="tw-geo-hero">
+    <div class="tw-geo-hero-bg"></div>
+    <div class="tw-geo-hero-paper"></div>
+    <div class="tw-geo-hero-grid">
+      <div class="tw-geo-hero-copy">
+        <div class="tw-geo-hero-crumb">
+          <a href="/">Home</a>
+          <span class="sep">›</span>
+          <span class="cur">Service Areas</span>
+        </div>
+        <h1 class="tw-geo-hero-title">
+          Six states. One <em>family-owned</em> management firm.
+        </h1>
+        <p class="tw-geo-hero-lede">
+          Tidewater manages HOA and condo associations across the Mid-Atlantic &mdash; Maryland, DC, Virginia, Pennsylvania, Delaware, and West Virginia. AAMC-accredited regional managers in every territory we serve. Headquartered in Owings Mills since 1989.
+        </p>
+        <div class="tw-geo-hero-actions">
+          <a href="/request-a-proposal/" class="tw-btn tw-btn-primary tw-btn-lg">Request a proposal &rarr;</a>
+          <a href="#states" class="tw-btn tw-btn-ghost">Find your state &rarr;</a>
+        </div>
+        <div class="tw-geo-hero-stats">
+          <div>
+            <div class="tw-geo-hero-stat-num">450+</div>
+            <div class="tw-geo-hero-stat-label">Communities under management region-wide</div>
+          </div>
+          <div>
+            <div class="tw-geo-hero-stat-num gold">6 states</div>
+            <div class="tw-geo-hero-stat-label">Maryland, DC, VA, PA, DE, WV</div>
+          </div>
+          <div>
+            <div class="tw-geo-hero-stat-num">3</div>
+            <div class="tw-geo-hero-stat-label">Regional offices, all family-owned</div>
+          </div>
+        </div>
+      </div>
+      <aside class="tw-geo-hero-side">
+        <div class="tw-geo-hero-side-eyebrow">The Region</div>
+        <h3>Mid-Atlantic, six states</h3>
+        <!-- Stylized Mid-Atlantic map -->
+        <svg viewBox="0 0 420 320" class="tw-geo-map" xmlns="http://www.w3.org/2000/svg" aria-label="Mid-Atlantic region map">
+          <!-- Atlantic ocean hint -->
+          <path d="M380 60 Q400 150 395 240 L420 240 L420 60 Z" fill="rgba(58,146,166,0.10)"/>
+          <!-- Pennsylvania -->
+          <path d="M30 30 L380 30 L380 110 L30 110 Z" class="tw-geo-map-county served"><title>Pennsylvania · served</title></path>
+          <text x="200" y="78" class="tw-sa-region-state-label">PENNSYLVANIA</text>
+          <!-- West Virginia -->
+          <path d="M30 110 L160 110 L155 215 L40 200 Z" class="tw-geo-map-county served"><title>West Virginia · served</title></path>
+          <text x="95" y="165" class="tw-sa-region-state-label">WV</text>
+          <!-- Maryland — highlighted -->
+          <path d="M160 110 L350 110 L355 180 L320 195 L260 175 L160 180 Z" class="tw-geo-map-county served is-highlight"><title>Maryland · served · HQ</title></path>
+          <text x="240" y="148" class="tw-sa-region-state-label" style="fill:var(--tw-dark)">MARYLAND</text>
+          <!-- DC -->
+          <path d="M200 180 L240 178 L235 200 L205 200 Z" class="tw-geo-map-county served"><title>Washington, DC · served</title></path>
+          <text x="220" y="195" class="tw-sa-region-state-label" style="font-size:9px">DC</text>
+          <!-- Delaware -->
+          <path d="M350 110 L380 110 L380 200 L355 200 L355 180 Z" class="tw-geo-map-county served"><title>Delaware · served</title></path>
+          <text x="365" y="155" class="tw-sa-region-state-label" style="font-size:10px">DE</text>
+          <!-- Virginia -->
+          <path d="M155 215 L260 200 L355 200 L365 270 L150 285 Z" class="tw-geo-map-county served"><title>Virginia · served</title></path>
+          <text x="255" y="248" class="tw-sa-region-state-label">VIRGINIA</text>
+          <!-- HQ marker -->
+          <circle class="tw-geo-map-dot-pulse" cx="245" cy="142" r="6"/>
+          <circle class="tw-geo-map-dot" cx="245" cy="142" r="5"/>
+          <text x="255" y="140" fill="var(--tw-gold)" font-family="var(--tw-font-heading)" font-weight="800" font-size="9" letter-spacing="0.06em">HQ</text>
+        </svg>
+        <div class="tw-geo-map-legend">
+          <div class="tw-geo-map-legend-row">
+            <span class="tw-geo-map-legend-swatch served"></span>
+            States we serve
+          </div>
+          <div class="tw-geo-map-legend-row">
+            <span class="tw-geo-map-legend-swatch hq"></span>
+            HQ &middot; Owings Mills, MD
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- States directory -->
+  <section id="states" class="tw-geo-section cream">
+    <div class="tw-container-wide">
+      <div class="tw-section-head" style="text-align:center;max-width:760px;margin:0 auto">
+        <div class="tw-eyebrow">Where We Serve</div>
+        <h2 class="tw-section-title">Six states, <em>one regional standard.</em></h2>
+        <p class="tw-section-lede">Maryland is our anchor &mdash; the deepest county-level coverage. We&rsquo;re building parallel hubs for the other 5 states through 2026. In the meantime, every state is fully serviced.</p>
+      </div>
+      <div class="tw-sa-states">
+        {states.map(s => (
+          <a href={s.href} class={`tw-sa-state${s.anchor ? ' is-anchor' : ''}${s.coming ? ' coming' : ''}`}>
+            {s.flag && <span class="tw-sa-state-flag">{s.flag}</span>}
+            <div class="tw-sa-state-head">
+              <h3 class="tw-sa-state-name">{s.name}</h3>
+              <span class="tw-sa-state-abbr">{s.abbr}</span>
+            </div>
+            <div class="tw-sa-state-meta">
+              <div class="tw-sa-state-meta-item"><strong>{s.communities}</strong> communities</div>
+              {s.counties && s.counties > 0 && (
+                <div class="tw-sa-state-meta-item"><strong>{s.counties}</strong> {s.countyLabel || 'counties'}</div>
+              )}
+            </div>
+            <p class="tw-sa-state-body">{s.body}</p>
+            <div class="tw-sa-state-counties">
+              {s.countyList.map(c => (
+                <span class={`tw-sa-state-county${c.served ? ' served' : ''}`}>{c.name}</span>
+              ))}
+            </div>
+            <div class="tw-sa-state-cta">
+              {s.cta} <span class="tw-sa-state-cta-arrow">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Offices strip -->
+  <section class="tw-geo-section linen">
+    <div class="tw-container-wide">
+      <div class="tw-section-head" style="text-align:center;max-width:760px;margin:0 auto">
+        <div class="tw-eyebrow">Where We Work From</div>
+        <h2 class="tw-section-title">Three offices, <em>one phone number.</em></h2>
+        <p class="tw-section-lede">Family-owned. Regional managers work from the office closest to your community.</p>
+      </div>
+      <div class="tw-sa-offices">
+        <!-- HQ -->
+        <div class="tw-sa-office is-hq">
+          <div class="tw-sa-office-eyebrow">Headquarters &middot; since 1989</div>
+          <h3>Owings Mills, MD</h3>
+          <p class="tw-sa-office-addr">3600 Crondall Lane, Suite 100<br/>Owings Mills, MD 21117</p>
+          <div class="tw-sa-office-rows">
+            <div class="tw-sa-office-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2L8 9.7a16 16 0 0 0 6 6l1.3-1.1a2 2 0 0 1 2-.5c.9.3 1.8.5 2.7.6A2 2 0 0 1 22 16.9z"/></svg>
+              <a href="tel:+14435480191">(443) 548-0191</a>
+            </div>
+            <div class="tw-sa-office-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Mon&ndash;Fri &middot; 8:30am&ndash;5:30pm ET
+            </div>
+            <div class="tw-sa-office-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Serves: MD, PA, WV
+            </div>
+          </div>
+        </div>
+        <!-- DC Metro -->
+        <div class="tw-sa-office">
+          <div class="tw-sa-office-eyebrow">DC Metro</div>
+          <h3>Silver Spring, MD</h3>
+          <p class="tw-sa-office-addr">Serving Montgomery, Prince George&rsquo;s,<br/>Washington DC, and Northern Virginia</p>
+          <div class="tw-sa-office-rows">
+            <div class="tw-sa-office-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2L8 9.7a16 16 0 0 0 6 6l1.3-1.1a2 2 0 0 1 2-.5c.9.3 1.8.5 2.7.6A2 2 0 0 1 22 16.9z"/></svg>
+              <a href="tel:+14435480191">(443) 548-0191</a>
+            </div>
+            <div class="tw-sa-office-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Mon&ndash;Fri &middot; 8:30am&ndash;5:30pm ET
+            </div>
+            <div class="tw-sa-office-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Serves: DC, VA, southern MD
+            </div>
+          </div>
+        </div>
+        <!-- Delmarva -->
+        <div class="tw-sa-office">
+          <div class="tw-sa-office-eyebrow">Delmarva</div>
+          <h3>Eastern Shore, MD</h3>
+          <p class="tw-sa-office-addr">Serving Talbot, Dorchester, Wicomico,<br/>Worcester, Sussex (DE), and Worcester County</p>
+          <div class="tw-sa-office-rows">
+            <div class="tw-sa-office-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2L8 9.7a16 16 0 0 0 6 6l1.3-1.1a2 2 0 0 1 2-.5c.9.3 1.8.5 2.7.6A2 2 0 0 1 22 16.9z"/></svg>
+              <a href="tel:+14435480191">(443) 548-0191</a>
+            </div>
+            <div class="tw-sa-office-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Mon&ndash;Fri &middot; 8:30am&ndash;5:30pm ET
+            </div>
+            <div class="tw-sa-office-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Serves: Eastern Shore, DE
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+  <Footer />
+</BaseLayout>
