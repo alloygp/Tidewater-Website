@@ -33,7 +33,7 @@ const FAQ_CATEGORIES = [
       },
       {
         q: 'Do small communities (under 50 homes) need a management company?',
-        a: 'Most don’t &mdash; until they do. The threshold most boards hit is around <strong>30&ndash;50 doors</strong>, when assessment volume, vendor count, and resident requests exceed what one volunteer treasurer can responsibly manage on weekends. We work with small associations through our <a href="/hoa-management/hoa-financial-management/">financial-only service tier</a> &mdash; books, A/R, audit support &mdash; without the cost of full management.',
+        a: 'Most don’t &mdash; until they do. The threshold most boards hit is around <strong>30&ndash;50 doors</strong>, when assessment volume, vendor count, and resident requests exceed what one volunteer treasurer can responsibly manage on weekends. We work with small associations through our <a href="/hoa-management/hoa-financial-management">financial-only service tier</a> &mdash; books, A/R, audit support &mdash; without the cost of full management.',
       },
     ],
   },
@@ -76,7 +76,7 @@ const FAQ_CATEGORIES = [
       {
         q: 'What’s the proposal process like?',
         a: [
-          '<strong>Step 1:</strong> Submit the form on our <a href="/request-a-proposal/">contact page</a>. A regional manager &mdash; not a sales rep &mdash; reads every submission. <strong>Step 2:</strong> A 30-minute discovery call, usually within one business day. <strong>Step 3:</strong> We tour your community (free, no obligation). <strong>Step 4:</strong> Apples-to-apples proposal vs. your current company, line-by-line, with our standard agreement attached.',
+          '<strong>Step 1:</strong> Submit the form on our <a href="/request-a-proposal">contact page</a>. A regional manager &mdash; not a sales rep &mdash; reads every submission. <strong>Step 2:</strong> A 30-minute discovery call, usually within one business day. <strong>Step 3:</strong> We tour your community (free, no obligation). <strong>Step 4:</strong> Apples-to-apples proposal vs. your current company, line-by-line, with our standard agreement attached.',
           'No deck. No pressure. We never follow up more than twice after a no.',
         ],
       },
@@ -166,7 +166,7 @@ const FAQ_CATEGORIES = [
     iconTone: 'dark',
     eyebrow: 'Category 05',
     title: 'For boards considering a change.',
-    sub: 'The most-asked questions from boards in proposal stage. For deeper walkthroughs see <a href="/solutions/switching-hoa-management-company/">Switching HOA Management</a> and <a href="/solutions/self-managed-hoa-transition/">Self-Managed Transition</a>.',
+    sub: 'The most-asked questions from boards in proposal stage. For deeper walkthroughs see <a href="/solutions/switching-hoa-management-company">Switching HOA Management</a> and <a href="/solutions/self-managed-hoa-transition">Self-Managed Transition</a>.',
     audience: 'boards',
     qs: [
       {
@@ -248,7 +248,7 @@ function FaqHero({ query, onQuery, onSearch }) {
         <div className="tw-faq-hero-crumb">
           <a href="/">Home</a>
           <span className="sep">›</span>
-          <a href="/resources/">Resources</a>
+          <a href="/resources">Resources</a>
           <span className="sep">›</span>
           <span className="cur">FAQ</span>
         </div>
@@ -354,7 +354,7 @@ function SearchResults({ query, results, onClear }) {
         <p>Try a different word or two &mdash; or send us the question directly and we&rsquo;ll add it.</p>
         <div style={{display:'flex',gap:10,justifyContent:'center',flexWrap:'wrap'}}>
           <button onClick={onClear} className="tw-btn tw-btn-outline">Clear search</button>
-          <a href="/request-a-proposal/" className="tw-btn tw-btn-primary">Ask the question →</a>
+          <a href="/request-a-proposal" className="tw-btn tw-btn-primary">Ask the question →</a>
         </div>
       </div>
     );
@@ -384,7 +384,7 @@ function StillHave() {
           <p>Boards: send us your question through the contact form &mdash; we&rsquo;ll answer it and add it here. Residents: call the main line and we&rsquo;ll route you to your community manager.</p>
         </div>
         <div className="tw-faq-still-actions">
-          <a href="/request-a-proposal/" className="tw-btn tw-btn-primary tw-btn-lg">Ask a question →</a>
+          <a href="/request-a-proposal" className="tw-btn tw-btn-primary tw-btn-lg">Ask a question →</a>
           <a href="tel:+14435480191" className="tw-btn tw-btn-outline-cream tw-btn-lg">(443) 548-0191</a>
         </div>
       </div>

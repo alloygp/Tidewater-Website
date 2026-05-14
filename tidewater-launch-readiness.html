@@ -182,13 +182,13 @@
   <div class="cover-inner">
     <div class="cover-eyebrow">Alloy Growth Partners · Site Launch SEO Audit · May 2026</div>
     <h1>tidewaterproperty.com <em>launch readiness</em></h1>
-    <p class="cover-sub">Screaming Frog crawl — May 14, 2026. 18 pages built on staging. All 4 original blockers resolved. 4 nav-linked 404s remain. Trailing-slash redirect chain and 9 overlong title tags surfaced as new medium-priority issues.</p>
+    <p class="cover-sub">Live re-check — May 14, 2026. All blockers and title tags resolved. 18 pages confirmed live. One medium-priority issue remains: trailing-slash redirect chain on internal links. 87 old-site redirects still need to be loaded into vercel.json before the domain flip.</p>
     <div class="score-grid">
-      <div class="score-card"><div class="sv red">4</div><div class="sl">Must-Fix Before Launch</div></div>
-      <div class="score-card"><div class="sv green">4</div><div class="sl">Blockers Resolved</div></div>
+      <div class="score-card"><div class="sv amber">1</div><div class="sl">Open Warning</div></div>
+      <div class="score-card"><div class="sv green">7</div><div class="sl">Issues Resolved</div></div>
       <div class="score-card"><div class="sv white">18</div><div class="sl">Pages Built on Staging</div></div>
-      <div class="score-card"><div class="sv amber">9</div><div class="sl">Title Tags Too Long</div></div>
-      <div class="score-card"><div class="sv green">87</div><div class="sl">Redirects Needed</div></div>
+      <div class="score-card"><div class="sv green">0</div><div class="sl">Nav-Linked 404s</div></div>
+      <div class="score-card"><div class="sv amber">87</div><div class="sl">Redirects Pending</div></div>
     </div>
   </div>
 </div>
@@ -237,51 +237,27 @@
   </div>
 
   <!-- REMAINING OPEN ITEMS -->
-  <div class="alert blocker">
-    <div class="alert-icon">🚨</div>
+  <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
+    <div class="alert-icon">✅</div>
     <div class="alert-body">
-      <strong>MUST FIX — 4 nav-linked pages still 404</strong>
-      <p>Every visitor and Googlebot who clicks these hits a dead end. Resolve before launch — build the page or remove from nav.</p>
-      <table class="tbl" style="margin-top:12px;">
-        <thead><tr><th>404 URL</th><th>Action needed</th></tr></thead>
-        <tbody>
-          <tr><td class="code red">/blog/</td><td>Blog is built but lives at <code>/resources/</code> — rename <code>src/pages/resources.astro</code> → <code>blog.astro</code> and update the nav link. Also update the old-site redirect in vercel.json: <code>/resources/ → /blog/</code>.</td></tr>
-          <tr><td class="code red">/hoa-management/commercial-association-management/</td><td>Build page. Critical — 592 inlinks on current site point here as redirect destination.</td></tr>
-          <tr><td class="code red">/hoa-management/townhome-community-management/</td><td>Build page or remove from nav until built.</td></tr>
-          <tr><td class="code red">/service-areas/</td><td>Build page or add 301 → <code>/hoa-management/</code> in vercel.json and remove footer link.</td></tr>
-          <tr><td class="code amber">/condo-association-management/</td><td>Old URL only — no new page needed. Add <code>301 → /condo-management/</code> in vercel.json.</td></tr>
-        </tbody>
-      </table>
+      <strong>RESOLVED — All nav-linked 404s fixed (re-checked May 14, 2026)</strong>
+      <p><code>/blog</code>, <code>/hoa-management/commercial-association-management</code>, <code>/hoa-management/townhome-community-management</code>, and <code>/service-areas</code> all return 200. <code>/condo-association-management</code> 308s → <code>/condo-management</code> (redirect wired in vercel.json). Zero nav-linked dead ends remain.</p>
+    </div>
+  </div>
+
+  <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
+    <div class="alert-icon">✅</div>
+    <div class="alert-body">
+      <strong>RESOLVED — All 9 overlong title tags fixed (re-checked May 14, 2026)</strong>
+      <p>All page titles now under 60 characters. Verified titles: <code>/</code> 54ch · <code>/rental-management</code> 50ch · <code>/resources</code> 40ch · <code>/real-estate</code> 53ch · <code>/hoa-management/maryland</code> 35ch · <code>/maintenance-services</code> 41ch · <code>/hoa-management/hoa-financial-management</code> 45ch · <code>/solutions/self-managed-hoa-transition</code> 39ch · <code>/about</code> 41ch.</p>
     </div>
   </div>
 
   <div class="alert warn">
     <div class="alert-icon">⚠️</div>
     <div class="alert-body">
-      <strong>NEW — Trailing-slash redirect chain on every internal link</strong>
-      <p>Screaming Frog shows every internal link as a 308 redirect. The Astro build generates hrefs with trailing slashes (<code>/hoa-management/</code>) but <code>vercel.json</code> has <code>trailingSlash: false</code>, so Vercel strips the slash and 308s the request before serving the page. This adds a redirect hop to every navigation on the site. Fix: in <code>astro.config.mjs</code> add <code>trailingSlash: 'never'</code> so Astro generates links without trailing slashes — matching what Vercel serves. Alternatively, flip <code>trailingSlash</code> to <code>true</code> in vercel.json to canonicalize with slashes (requires updating all canonicals). Fix before launch to avoid the redirect overhead.</p>
-    </div>
-  </div>
-
-  <div class="alert warn">
-    <div class="alert-icon">⚠️</div>
-    <div class="alert-body">
-      <strong>NEW — 9 page titles exceed 60 characters (will truncate in SERPs)</strong>
-      <p>Google truncates titles at ~60 characters. All 9 of these need to be shortened in their respective <code>.astro</code> page files before launch:</p>
-      <table class="tbl" style="margin-top:12px;">
-        <thead><tr><th>Page</th><th>Current Title</th><th>Chars</th></tr></thead>
-        <tbody>
-          <tr><td class="code">/rental-management</td><td>Tidewater Companies — Rental Property Management for Maryland &amp; DC Landlords</td><td><span class="sev-high">76</span></td></tr>
-          <tr><td class="code">/resources</td><td>Tidewater Resources — Board Playbooks, Landlord Guides &amp; Maryland Rental Rules</td><td><span class="sev-high">78</span></td></tr>
-          <tr><td class="code">/real-estate</td><td>Tidewater Realty Group — Your Guide in Buying &amp; Selling Investment Property</td><td><span class="sev-high">75</span></td></tr>
-          <tr><td class="code">/hoa-management/maryland</td><td>HOA Management Maryland | Community Association Manager MD — Tidewater</td><td><span class="sev-high">70</span></td></tr>
-          <tr><td class="code">/</td><td>Tidewater Companies — Hands-On Property Management for the Mid-Atlantic</td><td><span class="sev-high">71</span></td></tr>
-          <tr><td class="code">/maintenance-services</td><td>Tidewater Property Maintenance — Reliable. Professional. Detail-Driven.</td><td><span class="sev-high">71</span></td></tr>
-          <tr><td class="code">/hoa-management/hoa-financial-management</td><td>HOA Financial Management &amp; Accounting Services Maryland — Tidewater</td><td><span class="sev-med">67</span></td></tr>
-          <tr><td class="code">/solutions/self-managed-hoa-transition</td><td>Self-Managed HOA Transition to Professional Management — Tidewater</td><td><span class="sev-med">66</span></td></tr>
-          <tr><td class="code">/about</td><td>About Tidewater — Family-Owned in the Mid-Atlantic Since 1989</td><td><span class="sev-low">61</span></td></tr>
-        </tbody>
-      </table>
+      <strong>OPEN — Trailing-slash redirect chain on every internal link</strong>
+      <p>Every internal link with a trailing slash fires a 308 before serving the page (e.g. <code>/hoa-management/</code> → 308 → <code>/hoa-management</code>). Confirmed still present as of May 14, 2026. Fix: add <code>trailingSlash: 'never'</code> to <code>astro.config.mjs</code> so Astro generates links without trailing slashes — matching what Vercel serves. This eliminates the redirect hop on every navigation. Medium priority but clean to fix before launch.</p>
     </div>
   </div>
 </section>

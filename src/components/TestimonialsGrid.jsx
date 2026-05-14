@@ -219,7 +219,7 @@ export default function TestimonialsGrid() {
             <div>
               <h3>How this page is built</h3>
               <p>
-                Every review on this page is from a named board member, treasurer, or development partner whose community we currently manage or recently transitioned. <strong>We provide their direct contact</strong> on request &mdash; if you&rsquo;re evaluating Tidewater, we&rsquo;d rather you talk to them than read about them. <a href="/request-a-proposal/">Request reference contacts &rarr;</a>
+                Every review on this page is from a named board member, treasurer, or development partner whose community we currently manage or recently transitioned. <strong>We provide their direct contact</strong> on request &mdash; if you&rsquo;re evaluating Tidewater, we&rsquo;d rather you talk to them than read about them. <a href="/request-a-proposal">Request reference contacts &rarr;</a>
               </p>
             </div>
           </div>

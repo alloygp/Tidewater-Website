@@ -57,7 +57,7 @@ export default function ProposalForm() {
           <p style={{ fontFamily: 'var(--tw-font-body)', fontSize: 14, color: 'var(--tw-fg-muted)', margin: '0 0 16px', lineHeight: 1.6 }}>
             While you wait, our most popular board resource:
           </p>
-          <a className="tw-btn tw-btn-outline" href="/resources/">Download the HOA Board Playbook →</a>
+          <a className="tw-btn tw-btn-outline" href="/resources">Download the HOA Board Playbook →</a>
         </div>
       </div>
     );
