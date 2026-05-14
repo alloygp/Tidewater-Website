@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Topbar from '../components/Topbar.astro';
+import Header from '../components/Header.astro';
+import ResourcesHero from '../components/ResourcesHero.astro';
+import ResourcesFeatured from '../components/ResourcesFeatured.astro';
+import ResourcesLibrary from '../components/ResourcesLibrary.astro';
+import ResourcesSeasonal from '../components/ResourcesSeasonal.astro';
+import ResourcesNewsletter from '../components/ResourcesNewsletter.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout
+  title="Tidewater Resources — Board Playbooks, Landlord Guides & Maryland Rental Rules"
+  description="A library of HOA board playbooks, county-by-county rental rule guides, seasonal maintenance checklists, and investor reports."
+  bodyClass="tw-acc-teal"
+  pageStylesheet="styles-pages.css"
+>
+  <Topbar variant="homeowner" />
+  <Header activeNav="resources" />
+  <ResourcesHero />
+  <ResourcesFeatured />
+  <ResourcesLibrary />
+  <ResourcesSeasonal />
+  <ResourcesNewsletter />
+  <Footer />
+</BaseLayout>

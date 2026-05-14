@@ -1,0 +1,44 @@
+---
+const rows = [
+  { city: 'Odenton',       sub: 'Anne Arundel · Fort Meade corridor', rent: '$2,375', cap: '7.4%', vac: '< 18 days', trend: '↑ rents up 4.1% YoY',  trendCls: 'up' },
+  { city: 'Silver Spring', sub: 'Montgomery · DC border',             rent: '$2,650', cap: '5.8%', vac: '22 days',   trend: '→ stable',              trendCls: '' },
+  { city: 'Towson',        sub: 'Baltimore County',                   rent: '$1,950', cap: '6.9%', vac: '14 days',   trend: '↑ rents up 3.4% YoY',   trendCls: 'up' },
+  { city: 'Easton',        sub: 'Talbot · Eastern Shore',             rent: '$1,725', cap: '7.1%', vac: '26 days',   trend: '↓ inventory tightening', trendCls: 'down' },
+  { city: 'Bowie',         sub: "Prince George's · I-495 ring",       rent: '$2,225', cap: '6.4%', vac: '19 days',   trend: '↑ rents up 3.8% YoY',   trendCls: 'up' },
+];
+---
+<section class="tw-rinsider" id="insider">
+  <div class="tw-container">
+    <div class="tw-rinsider-head">
+      <div>
+        <div class="tw-eyebrow">Rental-Market Insider Knowledge</div>
+        <h2 class="tw-rinsider-title">A Zestimate guesses. <em>We&rsquo;ve seen the rent rolls.</em></h2>
+      </div>
+      <p class="tw-rinsider-lede">Because Tidewater manages thousands of rentals across Maryland, our agents quote real numbers &mdash; not algorithm output. A snapshot of what we&rsquo;re seeing in five investment-active corridors right now.</p>
+    </div>
+
+    <div class="tw-rinsider-table">
+      <div class="tw-rinsider-row head">
+        <div>Submarket</div>
+        <div>Median rent</div>
+        <div>Est. cap rate</div>
+        <div>Days vacant</div>
+        <div>Direction</div>
+      </div>
+      {rows.map(r => (
+        <div class="tw-rinsider-row">
+          <div class="tw-rinsider-city">{r.city}<span>{r.sub}</span></div>
+          <div class="tw-rinsider-val">{r.rent}</div>
+          <div class="tw-rinsider-val accent">{r.cap}</div>
+          <div class="tw-rinsider-val">{r.vac}</div>
+          <div class={`tw-rinsider-trend ${r.trendCls}`}>{r.trend}</div>
+        </div>
+      ))}
+    </div>
+
+    <div class="tw-rinsider-foot">
+      <div class="tw-rinsider-foot-text">Numbers are <strong>illustrative ranges from Tidewater&rsquo;s managed portfolio</strong> &mdash; not MLS averages. Your property gets its own analysis.</div>
+      <a href="#contact" class="tw-btn tw-btn-primary" style="background:var(--tw-gold);border-color:var(--tw-gold);color:#2b260f;white-space:nowrap">Get my property&rsquo;s number</a>
+    </div>
+  </div>
+</section>

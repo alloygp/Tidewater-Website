@@ -2,8 +2,10 @@
 interface Props {
   title: string;
   description: string;
+  bodyClass?: string;
+  pageStylesheet?: string;
 }
-const { title, description } = Astro.props;
+const { title, description, bodyClass = '', pageStylesheet } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -13,8 +15,10 @@ const { title, description } = Astro.props;
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="stylesheet" href="/styles.css" />
+  {pageStylesheet && <link rel="stylesheet" href={`/${pageStylesheet}`} />}
+  <slot name="head" />
 </head>
-<body>
+<body class={bodyClass}>
   <slot />
 </body>
 </html>
