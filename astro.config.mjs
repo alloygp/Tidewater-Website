@@ -5,4 +5,5 @@ export default defineConfig({
   integrations: [react()],
   output: 'static',
   site: 'https://www.tidewaterproperty.com',
+  trailingSlash: 'never',
 });
