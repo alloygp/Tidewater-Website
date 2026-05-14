@@ -169,56 +169,62 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
 </header>
 
 <script>
-  // Megamenu — desktop hover with close delay to bridge the CSS gap
-  document.querySelectorAll<HTMLElement>('.tw-nav-item[data-menu]').forEach(item => {
-    const menu = item.querySelector<HTMLElement>('.tw-megamenu');
-    if (!menu) return;
-    let closeTimer: ReturnType<typeof setTimeout>;
+  // Re-init on every page load AND after every ViewTransition swap
+  function initNav() {
+    // Megamenu — desktop hover with close delay to bridge the CSS gap
+    document.querySelectorAll<HTMLElement>('.tw-nav-item[data-menu]').forEach(item => {
+      const menu = item.querySelector<HTMLElement>('.tw-megamenu');
+      if (!menu) return;
+      let closeTimer: ReturnType<typeof setTimeout>;
 
-    const open = () => { clearTimeout(closeTimer); menu.classList.add('is-open'); };
-    const close = () => { closeTimer = setTimeout(() => menu.classList.remove('is-open'), 150); };
+      const open = () => { clearTimeout(closeTimer); menu.classList.add('is-open'); };
+      const close = () => { closeTimer = setTimeout(() => menu.classList.remove('is-open'), 150); };
 
-    item.addEventListener('mouseenter', open);
-    item.addEventListener('mouseleave', close);
-    menu.addEventListener('mouseenter', open);
-    menu.addEventListener('mouseleave', close);
-  });
-
-  // My Account dropdown
-  const accountWrap = document.getElementById('tw-account-wrap');
-  const accountBtn = document.getElementById('tw-account-btn');
-  const accountDrop = document.getElementById('tw-account-dropdown');
-  if (accountWrap && accountBtn && accountDrop) {
-    let closeTimer: ReturnType<typeof setTimeout>;
-    const openDrop = () => {
-      clearTimeout(closeTimer);
-      accountDrop.classList.add('is-open');
-      accountBtn.setAttribute('aria-expanded', 'true');
-    };
-    const closeDrop = () => {
-      closeTimer = setTimeout(() => {
-        accountDrop.classList.remove('is-open');
-        accountBtn.setAttribute('aria-expanded', 'false');
-      }, 150);
-    };
-    accountBtn.addEventListener('click', () => {
-      accountDrop.classList.contains('is-open') ? closeDrop() : openDrop();
+      item.addEventListener('mouseenter', open);
+      item.addEventListener('mouseleave', close);
+      menu.addEventListener('mouseenter', open);
+      menu.addEventListener('mouseleave', close);
     });
-    accountWrap.addEventListener('mouseenter', openDrop);
-    accountWrap.addEventListener('mouseleave', closeDrop);
-    document.addEventListener('click', (e) => {
-      if (!accountWrap.contains(e.target as Node)) {
-        accountDrop.classList.remove('is-open');
-        accountBtn.setAttribute('aria-expanded', 'false');
-      }
+
+    // My Account dropdown
+    const accountWrap = document.getElementById('tw-account-wrap');
+    const accountBtn = document.getElementById('tw-account-btn');
+    const accountDrop = document.getElementById('tw-account-dropdown');
+    if (accountWrap && accountBtn && accountDrop) {
+      let closeTimer: ReturnType<typeof setTimeout>;
+      const openDrop = () => {
+        clearTimeout(closeTimer);
+        accountDrop.classList.add('is-open');
+        accountBtn.setAttribute('aria-expanded', 'true');
+      };
+      const closeDrop = () => {
+        closeTimer = setTimeout(() => {
+          accountDrop.classList.remove('is-open');
+          accountBtn.setAttribute('aria-expanded', 'false');
+        }, 150);
+      };
+      accountBtn.addEventListener('click', () => {
+        accountDrop.classList.contains('is-open') ? closeDrop() : openDrop();
+      });
+      accountWrap.addEventListener('mouseenter', openDrop);
+      accountWrap.addEventListener('mouseleave', closeDrop);
+      document.addEventListener('click', (e) => {
+        if (!accountWrap.contains(e.target as Node)) {
+          accountDrop.classList.remove('is-open');
+          accountBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+  }
+
+    // Mobile nav toggle
+    const toggle = document.getElementById('tw-mobile-toggle');
+    const nav = document.getElementById('tw-nav');
+    toggle?.addEventListener('click', () => {
+      nav?.classList.toggle('is-mobile-open');
+      toggle.classList.toggle('is-active');
     });
   }
 
-  // Mobile nav toggle
-  const toggle = document.getElementById('tw-mobile-toggle');
-  const nav = document.getElementById('tw-nav');
-  toggle?.addEventListener('click', () => {
-    nav?.classList.toggle('is-mobile-open');
-    toggle.classList.toggle('is-active');
-  });
+  // Fires on hard load and after every ViewTransition
+  document.addEventListener('astro:page-load', initNav);
 </script>
