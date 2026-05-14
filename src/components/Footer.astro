@@ -1,6 +1,6 @@
 ---
 const regions = [
-  { label: 'Maryland',       sub: 'Baltimore · DC Metro · Eastern Shore · Western MD' },
+  { label: 'Maryland',       sub: 'Baltimore · DC Metro · Eastern Shore · Western MD', href: '/hoa-management/maryland/' },
   { label: 'Washington DC',  sub: 'District communities & investors' },
   { label: 'Virginia',       sub: 'Northern Virginia' },
   { label: 'Delaware',       sub: 'Wilmington · Rehoboth · Coastal DE' },
@@ -71,10 +71,15 @@ const regions = [
       </div>
       <div class="tw-footer-areas-regions">
         {regions.map(r => (
-          <div class="tw-footer-area-pill">
-            <span class="tw-footer-area-name">{r.label}</span>
-            <span class="tw-footer-area-sub">{r.sub}</span>
-          </div>
+          r.href
+            ? <a href={r.href} class="tw-footer-area-pill">
+                <span class="tw-footer-area-name">{r.label}</span>
+                <span class="tw-footer-area-sub">{r.sub}</span>
+              </a>
+            : <div class="tw-footer-area-pill">
+                <span class="tw-footer-area-name">{r.label}</span>
+                <span class="tw-footer-area-sub">{r.sub}</span>
+              </div>
         ))}
       </div>
       <a href="/service-areas/" class="tw-footer-areas-link">View all service areas →</a>
