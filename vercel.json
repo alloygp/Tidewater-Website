@@ -7,7 +7,11 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/condo-association-management", "destination": "/condo-management", "permanent": true },
-    { "source": "/condo-association-management/", "destination": "/condo-management", "permanent": true }
+    { "source": "/condo-association-management/", "destination": "/condo-management", "permanent": true },
+    { "source": "/service-area/anne-arundel-county-md", "destination": "/rental-management/maryland/anne-arundel-county", "permanent": true },
+    { "source": "/service-area/anne-arundel-county-md/", "destination": "/rental-management/maryland/anne-arundel-county", "permanent": true },
+    { "source": "/service-area/silver-spring-md", "destination": "/rental-management/maryland/silver-spring", "permanent": true },
+    { "source": "/service-area/silver-spring-md/", "destination": "/rental-management/maryland/silver-spring", "permanent": true }
   ],
   "headers": [
     {

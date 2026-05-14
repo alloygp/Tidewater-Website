@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Topbar from '../../../components/Topbar.astro';
+import Header from '../../../components/Header.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Footer from '../../../components/Footer.astro';
+import CTA from '../../../components/CTA.astro';
+import RentalGeo, { GEO_DATA_ANNE_ARUNDEL as geo } from '../../../components/RentalGeo.jsx';
+import { breadcrumbSchema, serviceSchema } from '../../../lib/schema';
+import { SITE } from '../../../config/site';
+
+const pageUrl = `${SITE.url}/rental-management/maryland/anne-arundel-county`;
+
+const schemas = [
+  serviceSchema({
+    name: 'Rental Property Management — Anne Arundel County, MD',
+    description: geo.schemaDesc,
+    url: pageUrl,
+    areaServed: 'Anne Arundel County, Maryland',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Rental Management', url: SITE.url + '/rental-management' },
+    { name: 'Maryland', url: SITE.url + '/rental-management/maryland' },
+    { name: 'Anne Arundel County', url: pageUrl },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Rental Property Management Anne Arundel County MD | Tidewater"
+  description="Single-family and small-multifamily rental property management across Anne Arundel County, MD — Annapolis, Severna Park, Crofton, Glen Burnie, Odenton. Flat 8.5% fee. AppFolio-backed. Local manager."
+  ogType="website"
+  pageSchema={schemas}
+  pageStylesheet="styles-geo.css"
+>
+  <Topbar />
+  <Header activeNav="rental" />
+  <Breadcrumb crumbs={[
+    { label: 'Rental Management', href: '/rental-management' },
+    { label: 'Maryland', href: '/rental-management/maryland' },
+    { label: 'Anne Arundel County' },
+  ]} />
+  <RentalGeo geo={geo} client:load />
+  <CTA />
+  <Footer />
+</BaseLayout>
