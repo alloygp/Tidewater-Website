@@ -182,12 +182,12 @@
   <div class="cover-inner">
     <div class="cover-eyebrow">Alloy Growth Partners · Site Launch SEO Audit · May 2026</div>
     <h1>tidewaterproperty.com <em>launch readiness</em></h1>
-    <p class="cover-sub">Re-crawled May 14, 2026 — live check against stg-tidewater.alloygp.co. Strong progress: noindex working on most pages, 5 of 10 nav 404s fixed, 16+ pages now built. 5 nav 404s + 1 noindex gap remain before launch.</p>
+    <p class="cover-sub">Screaming Frog crawl — May 14, 2026. 18 pages built on staging. All 4 original blockers resolved. 4 nav-linked 404s remain. Trailing-slash redirect chain and 9 overlong title tags surfaced as new medium-priority issues.</p>
     <div class="score-grid">
-      <div class="score-card"><div class="sv amber">2</div><div class="sl">Warnings (Partial)</div></div>
+      <div class="score-card"><div class="sv red">4</div><div class="sl">Must-Fix Before Launch</div></div>
       <div class="score-card"><div class="sv green">4</div><div class="sl">Blockers Resolved</div></div>
-      <div class="score-card"><div class="sv white">16+</div><div class="sl">Pages Built on Staging</div></div>
-      <div class="score-card"><div class="sv amber">5</div><div class="sl">Nav-Linked 404s Left</div></div>
+      <div class="score-card"><div class="sv white">18</div><div class="sl">Pages Built on Staging</div></div>
+      <div class="score-card"><div class="sv amber">9</div><div class="sl">Title Tags Too Long</div></div>
       <div class="score-card"><div class="sv green">87</div><div class="sl">Redirects Needed</div></div>
     </div>
   </div>
@@ -201,14 +201,14 @@
 <section class="section" id="blockers">
   <div class="eyebrow red">Stop-Ship · Fix Before Going Live</div>
   <h2>Critical blockers</h2>
-  <p class="section-intro">Re-crawled May 14, 2026. Both original blockers resolved. The two issues surfaced from the first staged crawl are now partially fixed — noindex is working on BaseLayout pages but missing from AboutLayout; 5 of 10 nav 404s are built.</p>
+  <p class="section-intro">Screaming Frog crawl — May 14, 2026. All 4 original blockers resolved. 4 nav-linked 404s remain. Two new medium-priority issues surfaced: trailing-slash redirect chains and 9 overlong page titles.</p>
 
-  <!-- RESOLVED -->
+  <!-- ALL RESOLVED -->
   <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
     <div class="alert-icon">✅</div>
     <div class="alert-body">
       <strong>RESOLVED — /property-management/ 404 (confirmed fixed)</strong>
-      <p>Live site now returns <code>301 → /tidewater-property-management/ → 200</code>. Rank Math redirect is in place. Link equity is flowing correctly. No action needed on the current site.</p>
+      <p>Live site returns <code>301 → /tidewater-property-management/ → 200</code>. No action needed.</p>
     </div>
   </div>
 
@@ -216,38 +216,70 @@
     <div class="alert-icon">✅</div>
     <div class="alert-body">
       <strong>RESOLVED — Zero structured data (SEO foundation retrofit complete)</strong>
-      <p>The SEO foundation has been retrofitted into the staged build. All 11 live pages now emit <code>LocalBusiness</code> / <code>Organization</code> JSON-LD on every page. Service pages additionally have <code>Service</code> + <code>BreadcrumbList</code>. About page has <code>LocalBusiness</code> + <code>BreadcrumbList</code>. Canonical tags added to all pages. <code>robots.txt</code> and <code>sitemap.xml</code> created. Security headers wired in <code>vercel.json</code>.</p>
+      <p>All 18 staged pages emit <code>LocalBusiness</code> JSON-LD. Service pages have <code>Service</code> + <code>BreadcrumbList</code>. Canonicals, <code>robots.txt</code>, <code>sitemap.xml</code>, and security headers all wired.</p>
     </div>
   </div>
 
-  <!-- OPEN BLOCKERS -->
-  <div class="alert warn" style="border-color:var(--amber-border);background:var(--amber-bg);border-left-color:var(--amber);">
-    <div class="alert-icon">⚠️</div>
+  <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
+    <div class="alert-icon">✅</div>
     <div class="alert-body">
-      <strong>BLOCKER 1 — Partial fix: noindex working on BaseLayout pages, missing on AboutLayout pages</strong>
-      <p>Crawled May 14, 2026. <code>BaseLayout</code> pages (<code>/</code>, <code>/hoa-management/</code>, <code>/rental-management/</code>, etc.) now correctly emit <code>&lt;meta name="robots" content="noindex,nofollow"&gt;</code> on staging. ✅</p>
-      <p style="margin-top:8px;">However, <strong><code>AboutLayout</code> pages are still indexable</strong> — <code>/about/</code>, <code>/about/leadership/</code>, and <code>/careers/</code> have no noindex tag. The env-variable check was added to <code>BaseLayout.astro</code> but not ported to <code>AboutLayout.astro</code>. Fix: add the same <code>PUBLIC_ENV</code> check to <code>AboutLayout.astro</code> so those three pages also get noindexed on staging.</p>
+      <strong>RESOLVED — Staging noindex fully in place</strong>
+      <p>Screaming Frog confirms all 18 HTML pages on staging show <code>Non-Indexable · Canonicalised,noindex</code> — including <code>/about/</code>, <code>/about/leadership/</code>, and <code>/careers/</code> (AboutLayout fix deployed). The <code>PUBLIC_ENV=production</code> variable still needs to be set on the Vercel production project before the domain flip (see checklist item 5b).</p>
     </div>
   </div>
 
-  <div class="alert warn" style="border-color:var(--amber-border);background:var(--amber-bg);border-left-color:var(--amber);">
-    <div class="alert-icon">⚠️</div>
+  <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
+    <div class="alert-icon">✅</div>
     <div class="alert-body">
-      <strong>BLOCKER 2 — Progress: 5 of 10 nav-linked 404s fixed. 5 remain.</strong>
-      <p>Crawled May 14, 2026. Five pages that were previously 404 are now live. Five remain unresolved before launch.</p>
+      <strong>RESOLVED — Nav-linked 404s: 6 of 10 fixed (10 → 4 remaining)</strong>
+      <p>Built and live: <code>/testimonials/</code>, <code>/hoa-management/hoa-financial-management/</code>, <code>/faq/</code>, <code>/solutions/switching-hoa-management-company/</code>, <code>/solutions/self-managed-hoa-transition/</code>, <code>/hoa-management/maryland/</code>. Two bonus pages also live: <code>/hoa-management/maryland/anne-arundel-county/</code>.</p>
+    </div>
+  </div>
+
+  <!-- REMAINING OPEN ITEMS -->
+  <div class="alert blocker">
+    <div class="alert-icon">🚨</div>
+    <div class="alert-body">
+      <strong>MUST FIX — 4 nav-linked pages still 404</strong>
+      <p>Every visitor and Googlebot who clicks these hits a dead end. Resolve before launch — build the page or remove from nav.</p>
       <table class="tbl" style="margin-top:12px;">
-        <thead><tr><th>URL</th><th>Status</th><th>Action needed</th></tr></thead>
+        <thead><tr><th>404 URL</th><th>Action needed</th></tr></thead>
         <tbody>
-          <tr><td class="code green">✅ /testimonials/</td><td style="color:var(--green-dark);font-weight:700;">200 Built</td><td>Done</td></tr>
-          <tr><td class="code green">✅ /hoa-management/hoa-financial-management/</td><td style="color:var(--green-dark);font-weight:700;">200 Built</td><td>Done</td></tr>
-          <tr><td class="code green">✅ /faq/</td><td style="color:var(--green-dark);font-weight:700;">200 Built</td><td>Done</td></tr>
-          <tr><td class="code green">✅ /solutions/switching-hoa-management-company/</td><td style="color:var(--green-dark);font-weight:700;">200 Built</td><td>Done</td></tr>
-          <tr><td class="code green">✅ /solutions/self-managed-hoa-transition/</td><td style="color:var(--green-dark);font-weight:700;">200 Built</td><td>Done</td></tr>
-          <tr><td class="code red">❌ /hoa-management/commercial-association-management/</td><td style="color:var(--red);font-weight:700;">404</td><td>Build page — also the redirect target from /commercial-property-management/ (592 inlinks)</td></tr>
-          <tr><td class="code red">❌ /hoa-management/townhome-community-management/</td><td style="color:var(--red);font-weight:700;">404</td><td>Build page</td></tr>
-          <tr><td class="code red">❌ /blog/</td><td style="color:var(--red);font-weight:700;">404</td><td>Blog is currently at /resources/ — rename route to /blog/ before launch</td></tr>
-          <tr><td class="code red">❌ /service-areas/</td><td style="color:var(--red);font-weight:700;">404</td><td>Build page or 301 → /hoa-management/ and remove footer link</td></tr>
-          <tr><td class="code red">❌ /condo-association-management/</td><td style="color:var(--red);font-weight:700;">404</td><td>Add 301 → /condo-management/ in vercel.json (old URL only, no page needed)</td></tr>
+          <tr><td class="code red">/blog/</td><td>Blog is built but lives at <code>/resources/</code> — rename <code>src/pages/resources.astro</code> → <code>blog.astro</code> and update the nav link. Also update the old-site redirect in vercel.json: <code>/resources/ → /blog/</code>.</td></tr>
+          <tr><td class="code red">/hoa-management/commercial-association-management/</td><td>Build page. Critical — 592 inlinks on current site point here as redirect destination.</td></tr>
+          <tr><td class="code red">/hoa-management/townhome-community-management/</td><td>Build page or remove from nav until built.</td></tr>
+          <tr><td class="code red">/service-areas/</td><td>Build page or add 301 → <code>/hoa-management/</code> in vercel.json and remove footer link.</td></tr>
+          <tr><td class="code amber">/condo-association-management/</td><td>Old URL only — no new page needed. Add <code>301 → /condo-management/</code> in vercel.json.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="alert warn">
+    <div class="alert-icon">⚠️</div>
+    <div class="alert-body">
+      <strong>NEW — Trailing-slash redirect chain on every internal link</strong>
+      <p>Screaming Frog shows every internal link as a 308 redirect. The Astro build generates hrefs with trailing slashes (<code>/hoa-management/</code>) but <code>vercel.json</code> has <code>trailingSlash: false</code>, so Vercel strips the slash and 308s the request before serving the page. This adds a redirect hop to every navigation on the site. Fix: in <code>astro.config.mjs</code> add <code>trailingSlash: 'never'</code> so Astro generates links without trailing slashes — matching what Vercel serves. Alternatively, flip <code>trailingSlash</code> to <code>true</code> in vercel.json to canonicalize with slashes (requires updating all canonicals). Fix before launch to avoid the redirect overhead.</p>
+    </div>
+  </div>
+
+  <div class="alert warn">
+    <div class="alert-icon">⚠️</div>
+    <div class="alert-body">
+      <strong>NEW — 9 page titles exceed 60 characters (will truncate in SERPs)</strong>
+      <p>Google truncates titles at ~60 characters. All 9 of these need to be shortened in their respective <code>.astro</code> page files before launch:</p>
+      <table class="tbl" style="margin-top:12px;">
+        <thead><tr><th>Page</th><th>Current Title</th><th>Chars</th></tr></thead>
+        <tbody>
+          <tr><td class="code">/rental-management</td><td>Tidewater Companies — Rental Property Management for Maryland &amp; DC Landlords</td><td><span class="sev-high">76</span></td></tr>
+          <tr><td class="code">/resources</td><td>Tidewater Resources — Board Playbooks, Landlord Guides &amp; Maryland Rental Rules</td><td><span class="sev-high">78</span></td></tr>
+          <tr><td class="code">/real-estate</td><td>Tidewater Realty Group — Your Guide in Buying &amp; Selling Investment Property</td><td><span class="sev-high">75</span></td></tr>
+          <tr><td class="code">/hoa-management/maryland</td><td>HOA Management Maryland | Community Association Manager MD — Tidewater</td><td><span class="sev-high">70</span></td></tr>
+          <tr><td class="code">/</td><td>Tidewater Companies — Hands-On Property Management for the Mid-Atlantic</td><td><span class="sev-high">71</span></td></tr>
+          <tr><td class="code">/maintenance-services</td><td>Tidewater Property Maintenance — Reliable. Professional. Detail-Driven.</td><td><span class="sev-high">71</span></td></tr>
+          <tr><td class="code">/hoa-management/hoa-financial-management</td><td>HOA Financial Management &amp; Accounting Services Maryland — Tidewater</td><td><span class="sev-med">67</span></td></tr>
+          <tr><td class="code">/solutions/self-managed-hoa-transition</td><td>Self-Managed HOA Transition to Professional Management — Tidewater</td><td><span class="sev-med">66</span></td></tr>
+          <tr><td class="code">/about</td><td>About Tidewater — Family-Owned in the Mid-Atlantic Since 1989</td><td><span class="sev-low">61</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -576,22 +608,26 @@
       </div>
       <div class="ph-body">
         <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">29 pages. All redirects active. Everything below must be live and indexable.</p>
-        <p style="font-size:11px;color:var(--muted);margin-bottom:8px;margin-top:-4px;"><span style="color:var(--green-dark);font-weight:700;">✅ = built on staging</span> &nbsp;·&nbsp; <span style="color:var(--red);font-weight:700;">❌ = 404 on staging</span></p>
+        <p style="font-size:11px;color:var(--muted);margin-bottom:8px;margin-top:-4px;"><span style="color:var(--green-dark);font-weight:700;">✅ = confirmed 200 in Screaming Frog</span> &nbsp;·&nbsp; <span style="color:var(--red);font-weight:700;">❌ = 404</span> &nbsp;·&nbsp; last crawl: May 14, 2026</p>
         <ul class="ph-url-list">
-          <li class="built">✅ / (homepage — rebuilt)</li>
-          <li class="built">✅ /hoa-management/ (pillar — rebuilt)</li>
-          <li class="built">✅ /rental-management/ (new — redirects from /rentals/)</li>
-          <li class="built">✅ /maintenance-services/ (new)</li>
-          <li class="built">✅ /condo-management/ (new)</li>
+          <li class="built">✅ / (homepage)</li>
+          <li class="built">✅ /hoa-management/</li>
+          <li class="built">✅ /rental-management/</li>
+          <li class="built">✅ /maintenance-services/</li>
+          <li class="built">✅ /condo-management/</li>
           <li class="built">✅ /about/</li>
           <li class="built">✅ /request-a-proposal/</li>
-          <li class="missing">❌ /faq/ — not built yet</li>
-          <li class="missing">❌ /blog/ — not built yet (staging has /resources/)</li>
-          <li class="missing">❌ /hoa-management/hoa-financial-management/</li>
-          <li class="missing">❌ /hoa-management/covenant-enforcement/</li>
-          <li class="missing">❌ /hoa-management/commercial-association-management/</li>
+          <li class="built">✅ /faq/</li>
+          <li class="built">✅ /testimonials/</li>
+          <li class="built">✅ /solutions/switching-hoa-management-company/</li>
+          <li class="built">✅ /solutions/self-managed-hoa-transition/</li>
+          <li class="built">✅ /hoa-management/hoa-financial-management/</li>
+          <li class="built">✅ /hoa-management/maryland/ (bonus — Phase 2 page already live)</li>
+          <li class="built">✅ /hoa-management/maryland/anne-arundel-county/ (bonus)</li>
+          <li class="missing">❌ /blog/ — route is at /resources/, needs rename before launch</li>
+          <li class="missing">❌ /hoa-management/commercial-association-management/ — 592 inlinks redirect here</li>
           <li class="missing">❌ /hoa-management/townhome-community-management/</li>
-          <li class="missing">❌ /rental-management/maryland/anne-arundel-county/ ⚠ top traffic page</li>
+          <li class="missing">❌ /hoa-management/covenant-enforcement/</li>
           <li class="missing">❌ /rental-management/maryland/silver-spring/ ⚠ top traffic page</li>
           <li class="missing">❌ /rental-management/maryland/baltimore-county/</li>
           <li class="missing">❌ /rental-management/maryland/howard-county/</li>
@@ -599,8 +635,6 @@
           <li class="missing">❌ /rental-management/maryland/montgomery-county/</li>
           <li class="missing">❌ /rental-management/maryland/ocean-city/</li>
           <li class="missing">❌ /rental-management/delaware/lewes/</li>
-          <li class="missing">❌ /solutions/switching-hoa-management-company/</li>
-          <li class="missing">❌ /solutions/self-managed-hoa-transition/</li>
           <li class="missing">❌ /blog/what-does-a-community-association-manager-do/ (keep)</li>
           <li class="missing">❌ /blog/5-tips-for-effective-property-management/ (keep or 301)</li>
           <li class="missing">❌ /blog/what-is-quorum-and-why-is-it-important/ (new — 43K SV)</li>
@@ -700,7 +734,7 @@
 <div class="footer">
   <div class="wrap">
     <strong>Tidewater Property Management — SEO Launch Readiness Report</strong>
-    <span>Alloy Growth Partners · Updated May 14, 2026 · Refreshed against staged site crawl (stg-tidewater.alloygp.co) · 11 pages built · 2 blockers resolved · 2 new blockers surfaced</span>
+    <span>Alloy Growth Partners · Crawl #3 · May 14, 2026 · Screaming Frog full crawl (58 URLs) · 18 HTML pages confirmed · 4 original blockers resolved · 4 nav 404s + trailing-slash chain + 9 title tags remain</span>
   </div>
 </div>
 
