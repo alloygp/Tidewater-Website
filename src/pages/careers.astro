@@ -9,10 +9,17 @@ import JobsList from '../components/JobsList.jsx';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import { breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../config/site';
+
+const schemas = [
+  breadcrumbSchema([{ name: 'Home', url: SITE.url + '/' }, { name: 'About', url: `${SITE.url}/about` }, { name: 'Careers', url: `${SITE.url}/careers` }]),
+];
 ---
 <AboutLayout
   title="Careers — Tidewater Companies"
   description="Join the largest privately-owned community management firm in the Mid-Atlantic. CAI designations paid upfront, in-house everything, real career runway."
+  pageSchema={schemas}
 >
   <Topbar variant="default" />
   <Header activeNav="about" />

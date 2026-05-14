@@ -55,9 +55,21 @@ img { max-width: 100%; display: block; }
 .tw-chev { width: 11px; height: 11px; opacity: .65; margin-left: 4px; flex-shrink: 0; transition: transform .22s cubic-bezier(.2,.8,.2,1), opacity .2s; }
 .tw-nav-item:hover .tw-chev { transform: rotate(180deg); opacity: 1; }
 .tw-header-actions { display: flex; align-items: center; gap: 18px; }
-.tw-header-login { font-family: var(--tw-font-heading); font-weight: 600; font-size: 13px; color: var(--tw-dark); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.tw-header-login { font-family: var(--tw-font-heading); font-weight: 600; font-size: 13px; color: var(--tw-dark); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; padding: 0; }
 .tw-header-login:hover { color: var(--tw-teal-500); }
 .tw-header-login svg { width: 14px; height: 14px; }
+.tw-account-chev { transition: transform .22s cubic-bezier(.2,.8,.2,1); }
+.tw-account-btn[aria-expanded="true"] .tw-account-chev { transform: rotate(180deg); }
+
+/* My Account dropdown */
+.tw-account-wrap { position: relative; }
+.tw-account-dropdown { position: absolute; top: calc(100% + 10px); right: 0; min-width: 220px; background: var(--tw-cream); border: 1px solid var(--tw-border); border-radius: 10px; box-shadow: 0 16px 40px rgba(23,35,37,.15); padding: 6px; opacity: 0; pointer-events: none; transform: translateY(-6px); transition: all .2s cubic-bezier(.2,.8,.2,1); z-index: 200; }
+.tw-account-dropdown.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.tw-account-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 7px; text-decoration: none; color: var(--tw-dark); transition: background .15s; }
+.tw-account-item:hover { background: var(--tw-linen); color: var(--tw-dark); }
+.tw-account-item svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--tw-teal-500); }
+.tw-account-item-title { font-family: var(--tw-font-heading); font-weight: 600; font-size: 13px; line-height: 1.2; }
+.tw-account-item-sub { font-family: var(--tw-font-body); font-size: 11px; color: var(--tw-fg-muted); margin-top: 1px; }
 
 /* Megamenu */
 .tw-megamenu { position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); min-width: 600px; background: var(--tw-cream); border: 1px solid var(--tw-border); border-radius: 12px; box-shadow: 0 24px 60px rgba(23,35,37,.18); padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; opacity: 0; pointer-events: none; transform: translate(-50%, -8px); transition: all .22s cubic-bezier(.2,.8,.2,1); z-index: 100; }

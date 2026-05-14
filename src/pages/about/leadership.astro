@@ -9,10 +9,17 @@ import CredentialsWall from '../../components/CredentialsWall.astro';
 import CTA from '../../components/CTA.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import { breadcrumbSchema } from '../../lib/schema';
+import { SITE } from '../../config/site';
+
+const schemas = [
+  breadcrumbSchema([{ name: 'Home', url: SITE.url + '/' }, { name: 'About', url: `${SITE.url}/about` }, { name: 'Leadership', url: `${SITE.url}/about/leadership` }]),
+];
 ---
 <AboutLayout
   title="Leadership — Tidewater Companies"
   description="The Tidewater leadership team — two generations of ownership, 4 PCAM holders, 2 former CAI Chesapeake Chapter Presidents, and the directors running every regional office."
+  pageSchema={schemas}
 >
   <Topbar variant="default" />
   <Header activeNav="about" />

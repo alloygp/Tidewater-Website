@@ -5,10 +5,17 @@ import Header from '../components/Header.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import ProposalForm from '../components/ProposalForm.jsx';
 import Footer from '../components/Footer.astro';
+import { breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../config/site';
+
+const schemas = [
+  breadcrumbSchema([{ name: 'Home', url: SITE.url + '/' }, { name: 'Request a Proposal', url: `${SITE.url}/request-a-proposal` }]),
+];
 ---
 <BaseLayout
   title="Request a Proposal — Tidewater Companies"
   description="Get in touch with Tidewater Companies. Boards: request a no-pressure proposal. Homeowners, tenants, and vendors: find the fastest way to what you need."
+  pageSchema={schemas}
 >
   <style is:global>
     /* ===== Deflection bar ===== */

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tidewater — Site Launch SEO Readiness Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #150828; --pink: #E94560; --green-dark: #1B4D3E; --green: #1B7A4A;
+    --green-light: #4FA571; --amber: #D4850A; --blue: #1E40AF; --teal: #0E7490;
+    --red: #DC2626; --bg: #FAFAF8; --surface: #FFFFFF; --alt: #F5F3EF;
+    --rule: #E6E1D9; --ink: #1A1414; --muted: #5A544F; --dim: #8C8680;
+    --amber-bg: #FFF8EB; --amber-border: #E8C894;
+    --green-bg: #E8F5EE; --green-border: #B5D9C1;
+    --blue-bg: #EFF6FF; --blue-border: #B8D1EC;
+    --pink-bg: #FEF0F3; --pink-border: #F7B8C3;
+    --red-bg: #FEF2F2; --red-border: #FCA5A5;
+    --teal-bg: #ECFEFF; --teal-border: #A5D8E0;
+    --purple-bg: #F2EFF6; --purple-border: #D4CADD;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; font-size: 15px; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3,h4 { font-family: 'Montserrat', sans-serif; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
+  p { margin: 0 0 12px; } p:last-child { margin-bottom: 0; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 44px; }
+  section[id] { scroll-margin-top: 58px; }
+
+  /* NAV */
+  .topnav { position: sticky; top: 0; z-index: 50; background: rgba(250,250,248,0.97); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+  .topnav-inner { max-width: 1160px; margin: 0 auto; padding: 0 44px; display: flex; align-items: center; justify-content: space-between; height: 50px; gap: 20px; }
+  .topnav-brand { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 11px; color: var(--purple); white-space: nowrap; }
+  .topnav-brand span { color: var(--pink); }
+  .topnav-links { display: flex; gap: 14px; font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; flex-wrap: wrap; }
+  .topnav-links a { color: var(--muted); text-decoration: none; transition: color 0.1s; white-space: nowrap; }
+  .topnav-links a:hover { color: var(--purple); }
+
+  /* COVER */
+  .cover { background: var(--purple); padding: 64px 44px 56px; position: relative; overflow: hidden; }
+  .cover::after { content:""; position:absolute; top:-200px; right:-200px; width:600px; height:600px; background:radial-gradient(circle,rgba(27,122,74,0.18) 0%,transparent 68%); pointer-events:none; }
+  .cover-inner { max-width: 1160px; margin: 0 auto; position: relative; z-index: 1; }
+  .cover-eyebrow { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+  .cover-eyebrow::before { content:""; width:24px; height:2px; background:rgba(255,255,255,0.3); }
+  .cover h1 { font-size: clamp(30px,4vw,48px); color:#fff; font-weight:900; margin-bottom:12px; max-width:820px; }
+  .cover h1 em { color: var(--green-light); font-style:normal; }
+  .cover-sub { font-size:15px; color:rgba(255,255,255,0.6); max-width:640px; margin-bottom:40px; line-height:1.6; }
+  .score-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; max-width:900px; }
+  .score-card { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:16px 18px; }
+  .score-card .sv { font-family:'Montserrat',sans-serif; font-weight:900; font-size:28px; line-height:1; margin-bottom:4px; }
+  .score-card .sv.red { color:#f87171; }
+  .score-card .sv.amber { color:#fcd34d; }
+  .score-card .sv.green { color:#6ee7b7; }
+  .score-card .sv.blue { color:#93c5fd; }
+  .score-card .sv.white { color:#fff; }
+  .score-card .sl { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.4); }
+
+  /* SECTIONS */
+  .section { padding: 52px 0; border-top: 1px solid var(--rule); }
+  .eyebrow { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+  .eyebrow::before { content:""; width:20px; height:2px; background:currentColor; }
+  .eyebrow.red { color:var(--red); }
+  .eyebrow.amber { color:var(--amber); }
+  .eyebrow.green { color:var(--green); }
+  .eyebrow.blue { color:var(--blue); }
+  .eyebrow.teal { color:var(--teal); }
+  .eyebrow.pink { color:var(--pink); }
+  .eyebrow.purple { color:var(--purple); }
+  .section h2 { font-size:clamp(22px,3vw,30px); color:var(--purple); margin-bottom:8px; }
+  .section-intro { font-size:14px; color:var(--muted); max-width:720px; margin-bottom:28px; line-height:1.65; }
+
+  /* ALERT BOXES */
+  .alert { border-radius:10px; padding:16px 20px; margin-bottom:16px; display:flex; gap:14px; align-items:flex-start; }
+  .alert.blocker { background:var(--red-bg); border:1px solid var(--red-border); border-left:4px solid var(--red); }
+  .alert.warn { background:var(--amber-bg); border:1px solid var(--amber-border); border-left:4px solid var(--amber); }
+  .alert.info { background:var(--blue-bg); border:1px solid var(--blue-border); border-left:4px solid var(--blue); }
+  .alert.ok { background:var(--green-bg); border:1px solid var(--green-border); border-left:4px solid var(--green); }
+  .alert-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
+  .alert-body strong { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:800; display:block; margin-bottom:4px; }
+  .alert-body p { font-size:13px; color:var(--muted); }
+  .alert.blocker .alert-body strong { color:var(--red); }
+  .alert.warn .alert-body strong { color:var(--amber); }
+  .alert.info .alert-body strong { color:var(--blue); }
+  .alert.ok .alert-body strong { color:var(--green-dark); }
+
+  /* TABLES */
+  .tbl-wrap { overflow-x:auto; margin-bottom:24px; border-radius:10px; border:1px solid var(--rule); }
+  table.tbl { width:100%; border-collapse:collapse; font-size:12px; }
+  table.tbl th { background:var(--alt); padding:10px 12px; text-align:left; font-family:'Montserrat',sans-serif; font-size:9px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--purple); border-bottom:2px solid var(--rule); white-space:nowrap; }
+  table.tbl td { padding:9px 12px; border-bottom:1px solid var(--rule); color:var(--ink); vertical-align:top; }
+  table.tbl tr:last-child td { border-bottom:none; }
+  table.tbl tr:hover td { background:var(--alt); }
+  td.code { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted); }
+  td.code.amber { color:var(--amber); }
+  td.code.green { color:var(--green-dark); }
+  td.code.red { color:var(--red); }
+  td.sev-crit { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:800; color:var(--red); background:var(--red-bg); padding:3px 8px; border-radius:4px; white-space:nowrap; }
+  td.sev-high { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:800; color:var(--amber); background:var(--amber-bg); padding:3px 8px; border-radius:4px; white-space:nowrap; }
+  td.sev-med { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:800; color:var(--blue); background:var(--blue-bg); padding:3px 8px; border-radius:4px; white-space:nowrap; }
+  td.sev-low { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:800; color:var(--muted); background:var(--alt); padding:3px 8px; border-radius:4px; white-space:nowrap; }
+  .badge { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; padding:2px 7px; border-radius:4px; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap; }
+  .badge.must { background:var(--red-bg); color:var(--red); border:1px solid var(--red-border); }
+  .badge.p1 { background:var(--green-bg); color:var(--green-dark); border:1px solid var(--green-border); }
+  .badge.p2 { background:var(--blue-bg); color:var(--blue); border:1px solid var(--blue-border); }
+  .badge.p3 { background:var(--purple-bg); color:var(--purple); border:1px solid var(--purple-border); }
+  .badge.drip { background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-border); }
+  .badge.kill { background:var(--pink-bg); color:var(--pink); border:1px solid var(--pink-border); }
+
+  /* REDIRECT TABLE special */
+  .rd-old { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--amber); word-break:break-all; }
+  .rd-new { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--green-dark); word-break:break-all; }
+
+  /* CHECKLIST */
+  .checklist { display:flex; flex-direction:column; gap:6px; max-width:860px; }
+  .cl-item { display:grid; grid-template-columns:24px 1fr auto; gap:12px; align-items:center; padding:10px 14px; background:var(--surface); border:1px solid var(--rule); border-radius:8px; }
+  .cl-item:hover { background:var(--alt); }
+  .cl-num { font-family:'Montserrat',sans-serif; font-weight:900; font-size:11px; color:var(--purple); }
+  .cl-text strong { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:800; color:var(--purple); display:block; }
+  .cl-text span { font-size:12px; color:var(--muted); line-height:1.5; }
+
+  /* LAUNCH PHASE CARDS */
+  .phase-cards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-top:8px; }
+  .phase-card { background:var(--surface); border:1px solid var(--rule); border-radius:12px; overflow:hidden; }
+  .phase-card .ph-head { padding:16px 20px; }
+  .phase-card.ph1 .ph-head { background:var(--green-bg); border-bottom:1px solid var(--green-border); }
+  .phase-card.ph2 .ph-head { background:var(--blue-bg); border-bottom:1px solid var(--blue-border); }
+  .phase-card.ph3 .ph-head { background:var(--purple-bg); border-bottom:1px solid var(--purple-border); }
+  .phase-card .ph-label { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+  .phase-card.ph1 .ph-label { color:var(--green-dark); }
+  .phase-card.ph2 .ph-label { color:var(--blue); }
+  .phase-card.ph3 .ph-label { color:var(--purple); }
+  .phase-card h3 { font-family:'Montserrat',sans-serif; font-size:14px; font-weight:800; color:var(--purple); }
+  .phase-card .ph-body { padding:16px 20px; }
+  .ph-url-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:4px; }
+  .ph-url-list li { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted); padding:4px 8px; background:var(--alt); border-radius:5px; word-break:break-all; }
+  .ph-url-list li.critical { color:var(--red); background:var(--red-bg); }
+  .ph-url-list li.traffic { color:var(--green-dark); background:var(--green-bg); font-weight:700; }
+
+  /* TWO-COL */
+  .g2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+
+  /* MINI CARD */
+  .mini-card { background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:18px 20px; }
+  .mini-card.warn { border-left:4px solid var(--amber); }
+  .mini-card.crit { border-left:4px solid var(--red); }
+  .mini-card.ok { border-left:4px solid var(--green); }
+  .mini-card h4 { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:800; color:var(--purple); margin-bottom:8px; }
+  .mini-card ul { margin:0; padding-left:16px; font-size:12px; color:var(--muted); line-height:1.7; }
+  .mini-card ul li { font-family:'JetBrains Mono',monospace; font-size:10px; }
+
+  .footer { padding:40px 0 60px; border-top:2px solid var(--purple); text-align:center; margin-top:60px; }
+  .footer strong { color:var(--purple); font-family:'Montserrat',sans-serif; font-size:12px; display:block; margin-bottom:4px; }
+  .footer span { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--dim); }
+
+  @media(max-width:800px){
+    .score-grid,.phase-cards,.g2,.g3{ grid-template-columns:1fr; }
+    .wrap, .topnav-inner { padding-left:20px; padding-right:20px; }
+    .cover { padding:48px 20px 44px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="topnav-brand">Tidewater <span>·</span> Launch SEO Readiness</div>
+    <div class="topnav-links">
+      <a href="#blockers">Blockers</a>
+      <a href="#must-live">Must-Live Pages</a>
+      <a href="#redirects">Redirect Map</a>
+      <a href="#on-page">On-Page Issues</a>
+      <a href="#drip">Drip Plan</a>
+      <a href="#checklist">Launch Checklist</a>
+    </div>
+  </div>
+</nav>
+
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">Alloy Growth Partners · Site Launch SEO Audit · May 2026</div>
+    <h1>tidewaterproperty.com <em>launch readiness</em></h1>
+    <p class="cover-sub">Cross-referenced the full Screaming Frog crawl (555 URLs, 276 indexable pages), sitemap v5.1, and current inlink/traffic data to identify what must be live Day 1, what redirects are missing, and what needs fixing before you flip the switch.</p>
+    <div class="score-grid">
+      <div class="score-card"><div class="sv red">2</div><div class="sl">Critical Blockers</div></div>
+      <div class="score-card"><div class="sv amber">8</div><div class="sl">High-Priority Fixes</div></div>
+      <div class="score-card"><div class="sv white">29</div><div class="sl">Must-Live Day 1 Pages</div></div>
+      <div class="score-card"><div class="sv green">87</div><div class="sl">Redirects Needed</div></div>
+      <div class="score-card"><div class="sv blue">182</div><div class="sl">Images Missing Alt</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══════════════════════════════
+     SECTION 1 — CRITICAL BLOCKERS
+═══════════════════════════════ -->
+<section class="section" id="blockers">
+  <div class="eyebrow red">Stop-Ship · Fix Before Going Live</div>
+  <h2>Critical blockers</h2>
+  <p class="section-intro">These two issues will cause immediate traffic loss or ranking damage if not resolved before launch day.</p>
+
+  <div class="alert blocker">
+    <div class="alert-icon">🚨</div>
+    <div class="alert-body">
+      <strong>BLOCKER 1 — /property-management/ returns 404 on the CURRENT site</strong>
+      <p>The current live site has a page linking to <code>/property-management/"</code> (with a rogue quote character) which 301-redirects to <code>/property-management/</code> — which itself returns a <strong>404</strong>. This is live right now and already a crawl error. Before launch, fix the internal link to remove the rogue quote. Then on the new site, ensure <code>/property-management/</code> 301-redirects to <code>/rental-management/</code>. Leaving this broken means Google is already seeing a 404 on an intended service page.</p>
+    </div>
+  </div>
+
+  <div class="alert blocker">
+    <div class="alert-icon">🚨</div>
+    <div class="alert-body">
+      <strong>BLOCKER 2 — Zero structured data on any page (current site)</strong>
+      <p>Screaming Frog found <strong>0 structured data types</strong> across all 276 indexable pages — no LocalBusiness, no Organization, no BreadcrumbList, no FAQPage, nothing. The new sitemap specifies schema requirements for every page. These <em>must be implemented on the new site before launch</em> — not after. Schema is a known ranking signal and the FAQ + review schema will help immediately in SERPs. Don't launch without at minimum: <code>LocalBusiness</code> on the homepage, <code>Organization</code>, <code>FAQPage</code> on /faq/ and any FAQ sections, and <code>BreadcrumbList</code> on all interior pages.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SECTION 2 — MUST-LIVE PAGES
+═══════════════════════════════ -->
+<section class="section" id="must-live">
+  <div class="eyebrow red">Day 1 Non-Negotiables</div>
+  <h2>Pages that must be live at launch</h2>
+  <p class="section-intro">These 29 pages represent the authority core — the URLs that Google currently has indexed and that carry real inlinks, rankings, or traffic. If any of them land as a 404 on launch day (even briefly), you'll bleed link equity and rankings. All need to either exist at their new URL <em>or</em> have a 301 redirect in place before the domain goes live.</p>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>Current URL</th>
+          <th>Inlinks</th>
+          <th>Priority</th>
+          <th>New URL / Action</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="code amber">/</td><td>1,430</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/</td><td>Homepage — rebuild, not redirect</td></tr>
+        <tr><td class="code amber">/contact/</td><td>1,401</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/request-a-proposal/ (301)</td><td>Highest-inlink page after homepage</td></tr>
+        <tr><td class="code amber">/tidewater-real-estate-services/</td><td>1,186</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/about/ (301)</td><td>Massive inlinks — confirm /about/ is live</td></tr>
+        <tr><td class="code amber">/tidewater-property-maintenance/</td><td>1,171</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/tidewater-property-management/</td><td>1,170</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/about/ (301)</td><td>⚠ Sitemap redirects here to /about/ — confirm</td></tr>
+        <tr><td class="code amber">/featured-listings/</td><td>1,155</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/current-listings/</td><td>1,136</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/about/</td><td>1,131</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/about/ (keep)</td><td>URL stays, page must be rebuilt</td></tr>
+        <tr><td class="code amber">/testimonials/</td><td>970</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/about/ (301)</td><td>81 words currently — thin. Merge content into /about/</td></tr>
+        <tr><td class="code amber">/communityassociations/</td><td>942</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/rentals/</td><td>901</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/resources/</td><td>852</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/blog/</td><td>671</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/ (keep)</td><td>URL stays. Fix duplicate title across 11 blog pagination pages.</td></tr>
+        <tr><td class="code amber">/maintenance/</td><td>652</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/rental-marketing/</td><td>616</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/rent-collection/</td><td>612</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/rentals/tenant-eviction/</td><td>608</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/hoa-management/</td><td>599</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/ (keep + rebuild)</td><td>URL stays — major HOA pillar</td></tr>
+        <tr><td class="code amber">/services/construction-management/</td><td>596</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/commercial-property-management/</td><td>592</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/commercial-association-management/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/service-area/</td><td>591</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/ (301)</td><td>591 inlinks — don't leave orphaned</td></tr>
+        <tr><td class="code amber">/condo-association-management/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/condo-management/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/services/emergency-repairs/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/maintenance-services/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/lender-questionnaire-services/</td><td>587</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/condo-management/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/communityassociations/accounting-services/</td><td>590</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/hoa-management/hoa-financial-management/ (301)</td><td>–</td></tr>
+        <tr><td class="code amber">/service-area/anne-arundel-county-md/</td><td>14</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/anne-arundel-county/ (301)</td><td>157 clicks/mo — site's top non-branded ranking. Critical.</td></tr>
+        <tr><td class="code amber">/service-area/silver-spring-md/</td><td>11</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/silver-spring/ (301)</td><td>Top rental geo</td></tr>
+        <tr><td class="code amber">/blog/what-does-a-community-association-manager-do/</td><td>17</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/what-does-a-community-association-manager-do/ (keep)</td><td>Keep URL. Strong HOA blog post.</td></tr>
+        <tr><td class="code amber">/blog/5-tips-for-effective-property-management/</td><td>97</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">Keep or 301 to new blog post</td><td>Highest-inlink blog post currently</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert info">
+    <div class="alert-icon">ℹ️</div>
+    <div class="alert-body">
+      <strong>Also must be live: the 8 new rental geo pages</strong>
+      <p>These are <em>new</em> URLs per the sitemap that don't exist yet on the current site but are referenced in the redirect map. They must be built and live at launch: <code>/rental-management/maryland/anne-arundel-county/</code>, <code>/rental-management/maryland/silver-spring/</code>, <code>/rental-management/maryland/baltimore-county/</code>, <code>/rental-management/maryland/howard-county/</code>, <code>/rental-management/maryland/prince-georges-county/</code>, <code>/rental-management/maryland/montgomery-county/</code>, <code>/rental-management/maryland/ocean-city/</code>, <code>/rental-management/delaware/lewes/</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SECTION 3 — COMPLETE REDIRECT MAP
+═══════════════════════════════ -->
+<section class="section" id="redirects">
+  <div class="eyebrow amber">301 Redirect Map · Complete</div>
+  <h2>Every redirect that needs to be in place</h2>
+  <p class="section-intro">The sitemap v5.1 documents 25 redirects. The current site has <strong>276 indexable pages</strong>. Below is the full map — all old URLs that need a 301 before launch day. The sitemap's 25 are marked ✓; gaps I've filled based on the new URL structure are marked NEW. Implement all of these in one pass; don't do them piecemeal.</p>
+
+  <div class="alert warn">
+    <div class="alert-icon">⚠️</div>
+    <div class="alert-body">
+      <strong>The 99 service-area/* pages need a decision</strong>
+      <p>There are 75 top-level <code>/service-area/[city]/</code> pages and 24 sub-pages (<code>/rental-services/</code>, <code>/property-services/</code>, <code>/sales/</code>). The sitemap maps 10 of them explicitly. The rest — especially the high-inlink ones like <code>/service-area/owings-mills-md/</code> (8 inlinks), <code>/service-area/bowie-md/</code> (7), etc. — need a decision: are they being rebuilt as HOA geo pages? If not, they need 301s to the parent <code>/hoa-management/</code> pillar. Don't let 99 pages 404.</p>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead>
+        <tr><th>Old URL (current site)</th><th>→ New URL</th><th>Source</th><th>Inlinks</th></tr>
+      </thead>
+      <tbody>
+        <!-- Core navigation pages -->
+        <tr><td class="rd-old">/contact/</td><td class="rd-new">/request-a-proposal/</td><td>NEW</td><td>1,401</td></tr>
+        <tr><td class="rd-old">/tidewater-real-estate-services/</td><td class="rd-new">/about/</td><td>NEW</td><td>1,186</td></tr>
+        <tr><td class="rd-old">/tidewater-property-maintenance/</td><td class="rd-new">/maintenance-services/</td><td>✓ Sitemap</td><td>1,171</td></tr>
+        <tr><td class="rd-old">/tidewater-property-management/</td><td class="rd-new">/about/</td><td>✓ Sitemap</td><td>1,170</td></tr>
+        <tr><td class="rd-old">/featured-listings/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>1,155</td></tr>
+        <tr><td class="rd-old">/current-listings/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>1,136</td></tr>
+        <tr><td class="rd-old">/testimonials/</td><td class="rd-new">/about/</td><td>NEW</td><td>970</td></tr>
+        <tr><td class="rd-old">/communityassociations/</td><td class="rd-new">/hoa-management/</td><td>NEW</td><td>942</td></tr>
+        <tr><td class="rd-old">/rentals/</td><td class="rd-new">/rental-management/</td><td>✓ Sitemap</td><td>901</td></tr>
+        <tr><td class="rd-old">/resources/</td><td class="rd-new">/blog/</td><td>NEW</td><td>852</td></tr>
+        <tr><td class="rd-old">/maintenance/</td><td class="rd-new">/maintenance-services/</td><td>✓ Sitemap</td><td>652</td></tr>
+        <tr><td class="rd-old">/rental-marketing/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>616</td></tr>
+        <tr><td class="rd-old">/rent-collection/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>612</td></tr>
+        <tr><td class="rd-old">/rentals/tenant-eviction/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>608</td></tr>
+        <tr><td class="rd-old">/services/construction-management/</td><td class="rd-new">/maintenance-services/</td><td>NEW</td><td>596</td></tr>
+        <tr><td class="rd-old">/commercial-property-management/</td><td class="rd-new">/hoa-management/commercial-association-management/</td><td>✓ Sitemap</td><td>592</td></tr>
+        <tr><td class="rd-old">/service-area/</td><td class="rd-new">/hoa-management/</td><td>NEW</td><td>591</td></tr>
+        <tr><td class="rd-old">/communityassociations/accounting-services/</td><td class="rd-new">/hoa-management/hoa-financial-management/</td><td>NEW</td><td>590</td></tr>
+        <tr><td class="rd-old">/lender-questionnaire-services/</td><td class="rd-new">/condo-management/</td><td>NEW</td><td>587</td></tr>
+        <tr><td class="rd-old">/condo-association-management/</td><td class="rd-new">/condo-management/</td><td>NEW</td><td>587</td></tr>
+        <tr><td class="rd-old">/services/emergency-repairs/</td><td class="rd-new">/maintenance-services/</td><td>NEW</td><td>587</td></tr>
+        <tr><td class="rd-old">/24-hour-property-repair/</td><td class="rd-new">/maintenance-services/</td><td>NEW</td><td>586</td></tr>
+        <tr><td class="rd-old">/communityassociations/human-resource-management/</td><td class="rd-new">/hoa-management/</td><td>NEW</td><td>584</td></tr>
+        <tr><td class="rd-old">/selftourproperties/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>581</td></tr>
+        <tr><td class="rd-old">/background-checks/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>581</td></tr>
+        <tr><td class="rd-old">/overdue-rent-collection/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>581</td></tr>
+        <tr><td class="rd-old">/property-management-for-single-family-homes/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>580</td></tr>
+        <tr><td class="rd-old">/communityassociations/faqs/</td><td class="rd-new">/faq/</td><td>NEW</td><td>579</td></tr>
+        <tr><td class="rd-old">/communityassociations/financial-controls-management/</td><td class="rd-new">/hoa-management/hoa-financial-management/</td><td>NEW</td><td>579</td></tr>
+        <tr><td class="rd-old">/sales/</td><td class="rd-new">/</td><td>NEW</td><td>579</td></tr>
+        <tr><td class="rd-old">/property-management-for-apartments/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>578</td></tr>
+        <tr><td class="rd-old">/services/maintenance-inspections/</td><td class="rd-new">/maintenance-services/</td><td>NEW</td><td>578</td></tr>
+        <tr><td class="rd-old">/association-billings/</td><td class="rd-new">/hoa-management/hoa-financial-management/</td><td>NEW</td><td>578</td></tr>
+        <tr><td class="rd-old">/property-management-for-townhomes/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>578</td></tr>
+        <tr><td class="rd-old">/cinc-faq/</td><td class="rd-new">/faq/</td><td>✓ Sitemap</td><td>576</td></tr>
+        <tr><td class="rd-old">/services/resale-packages-inspections/</td><td class="rd-new">/condo-management/</td><td>NEW</td><td>574</td></tr>
+        <tr><td class="rd-old">/services/accounts-receivable/</td><td class="rd-new">/hoa-management/hoa-financial-management/</td><td>NEW</td><td>574</td></tr>
+        <tr><td class="rd-old">/theteam/</td><td class="rd-new">/about/</td><td>NEW</td><td>574</td></tr>
+        <tr><td class="rd-old">/vendors/</td><td class="rd-new">/</td><td>NEW</td><td>570</td></tr>
+        <tr><td class="rd-old">/construction-budget-management/</td><td class="rd-new">/maintenance-services/</td><td>NEW</td><td>570</td></tr>
+        <tr><td class="rd-old">/maintenance/formsandrequests/</td><td class="rd-new">/maintenance-services/</td><td>NEW</td><td>570</td></tr>
+        <tr><td class="rd-old">/upcoming-events/</td><td class="rd-new">/about/</td><td>NEW</td><td>569</td></tr>
+        <tr><td class="rd-old">/hoa-expense-reserve-projection-services/</td><td class="rd-new">/hoa-management/hoa-financial-management/</td><td>NEW</td><td>569</td></tr>
+        <tr><td class="rd-old">/property-management-for-housing-developments/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>568</td></tr>
+        <tr><td class="rd-old">/hoa-governance-legal-issues-management/</td><td class="rd-new">/hoa-management/</td><td>NEW</td><td>568</td></tr>
+        <tr><td class="rd-old">/communityassociations/governance-legal-issues-management/</td><td class="rd-new">/hoa-management/</td><td>NEW</td><td>567</td></tr>
+        <tr><td class="rd-old">/communityassociations/payroll-administration/</td><td class="rd-new">/hoa-management/</td><td>NEW</td><td>564</td></tr>
+        <tr><td class="rd-old">/code-enforcement-services/</td><td class="rd-new">/hoa-management/covenant-enforcement/</td><td>NEW</td><td>563</td></tr>
+        <tr><td class="rd-old">/board-member-education/</td><td class="rd-new">/hoa-management/</td><td>NEW</td><td>562</td></tr>
+        <tr><td class="rd-old">/hoa-meeting-management/</td><td class="rd-new">/hoa-management/</td><td>NEW</td><td>560</td></tr>
+        <tr><td class="rd-old">/monthly-delinquency-reports/</td><td class="rd-new">/hoa-management/hoa-financial-management/</td><td>NEW</td><td>558</td></tr>
+        <tr><td class="rd-old">/services/bookkeeping-reporting/</td><td class="rd-new">/hoa-management/hoa-financial-management/</td><td>NEW</td><td>556</td></tr>
+        <tr><td class="rd-old">/services/vendor-contract-bidding/</td><td class="rd-new">/maintenance-services/</td><td>NEW</td><td>555</td></tr>
+        <tr><td class="rd-old">/services/utility-collection/</td><td class="rd-new">/maintenance-services/</td><td>NEW</td><td>553</td></tr>
+        <tr><td class="rd-old">/lease-administration-management/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>553</td></tr>
+        <tr><td class="rd-old">/contractor-hiring-management/</td><td class="rd-new">/maintenance-services/</td><td>NEW</td><td>551</td></tr>
+        <tr><td class="rd-old">/tenant-screening/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>550</td></tr>
+        <tr><td class="rd-old">/find-a-tenant/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>549</td></tr>
+        <tr><td class="rd-old">/tenant-requests-complaints/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>547</td></tr>
+        <tr><td class="rd-old">/lease-negotiations/</td><td class="rd-new">/rental-management/</td><td>✓ Sitemap</td><td>543</td></tr>
+        <tr><td class="rd-old">/press-releases/</td><td class="rd-new">/about/</td><td>NEW</td><td>540</td></tr>
+        <tr><td class="rd-old">/whatsnew/</td><td class="rd-new">/blog/</td><td>NEW</td><td>532</td></tr>
+        <tr><td class="rd-old">/tidewateralliance/</td><td class="rd-new">/about/</td><td>NEW</td><td>529</td></tr>
+        <tr><td class="rd-old">/tidewaterexclusive/</td><td class="rd-new">/about/</td><td>NEW</td><td>520</td></tr>
+        <tr><td class="rd-old">/company-events/</td><td class="rd-new">/about/</td><td>NEW</td><td>569</td></tr>
+        <tr><td class="rd-old">/hoa-management/</td><td class="rd-new">/hoa-management/ (keep — rebuild in place)</td><td>–</td><td>599</td></tr>
+        <tr><td class="rd-old">/sitemap/</td><td class="rd-new">/</td><td>NEW</td><td>–</td></tr>
+        <tr><td class="rd-old">/sales/foreclosures-short-sales/</td><td class="rd-new">/</td><td>NEW</td><td>575</td></tr>
+        <tr><td class="rd-old">/sales/rental-market-analyses/</td><td class="rd-new">/rental-management/</td><td>NEW</td><td>–</td></tr>
+        <tr><td class="rd-old">/applicationsandrequests/</td><td class="rd-new">/request-a-proposal/</td><td>NEW</td><td>–</td></tr>
+        <tr><td class="rd-old">/privacypolicy/</td><td class="rd-new">/privacy-policy/ or keep</td><td>NEW</td><td>–</td></tr>
+        <!-- KEY GEO REDIRECTS -->
+        <tr><td class="rd-old">/service-area/anne-arundel-county-md/</td><td class="rd-new">/rental-management/maryland/anne-arundel-county/</td><td>✓ Sitemap</td><td>14 (157 clicks/mo)</td></tr>
+        <tr><td class="rd-old">/service-area/silver-spring-md/</td><td class="rd-new">/rental-management/maryland/silver-spring/</td><td>✓ Sitemap</td><td>11</td></tr>
+        <tr><td class="rd-old">/service-area/baltimore-county-md/</td><td class="rd-new">/rental-management/maryland/baltimore-county/</td><td>✓ Sitemap</td><td>8</td></tr>
+        <tr><td class="rd-old">/service-area/columbia-md/</td><td class="rd-new">/rental-management/maryland/howard-county/</td><td>✓ Sitemap</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/harford-county-md/</td><td class="rd-new">/rental-management/maryland/harford-county/</td><td>✓ Sitemap</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/prince-georges-county-md/</td><td class="rd-new">/rental-management/maryland/prince-georges-county/</td><td>✓ Sitemap</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/bowie-md/</td><td class="rd-new">/rental-management/maryland/prince-georges-county/</td><td>✓ Sitemap</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/montgomery-county-md/</td><td class="rd-new">/rental-management/maryland/montgomery-county/</td><td>✓ Sitemap</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/ocean-city-md/</td><td class="rd-new">/rental-management/maryland/ocean-city/</td><td>✓ Sitemap</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/lewes-de/</td><td class="rd-new">/rental-management/delaware/lewes/</td><td>✓ Sitemap</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/owings-mills-md/</td><td class="rd-new">/</td><td>✓ Sitemap</td><td>8</td></tr>
+        <!-- ALL OTHER GEO → HOA parent or rental parent -->
+        <tr><td class="rd-old">/service-area/baltimore-md/</td><td class="rd-new">/hoa-management/maryland/baltimore-county/</td><td>NEW</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/annapolis-md/</td><td class="rd-new">/hoa-management/maryland/anne-arundel-county/</td><td>NEW</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/towson-md/</td><td class="rd-new">/hoa-management/maryland/baltimore-county/</td><td>NEW</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/ellicott-city-md/</td><td class="rd-new">/hoa-management/maryland/howard-county/</td><td>NEW</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/bethesda-md/</td><td class="rd-new">/hoa-management/maryland/montgomery-county/</td><td>NEW</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/rockville-md/</td><td class="rd-new">/rental-management/maryland/montgomery-county/</td><td>✓ Sitemap</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/washington-dc/</td><td class="rd-new">/hoa-management/</td><td>NEW</td><td>10</td></tr>
+        <tr><td class="rd-old">/service-area/dover-de/</td><td class="rd-new">/rental-management/delaware/</td><td>NEW</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/easton-md/</td><td class="rd-new">/rental-management/maryland/</td><td>✓ Sitemap</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/hanover-pa/</td><td class="rd-new">/rental-management/</td><td>✓ Sitemap</td><td>6</td></tr>
+        <tr><td class="rd-old">/service-area/middletown-de/</td><td class="rd-new">/rental-management/delaware/</td><td>✓ Sitemap</td><td>7</td></tr>
+        <tr><td class="rd-old">/service-area/georgetown-de/</td><td class="rd-new">/rental-management/delaware/</td><td>✓ Sitemap</td><td>7</td></tr>
+        <!-- Remaining top-level geo → hoa-management parent -->
+        <tr><td class="rd-old">/service-area/[all remaining cities]/</td><td class="rd-new">/hoa-management/ (or matching county pillar)</td><td>NEW — batch rule</td><td>6–7 each</td></tr>
+        <!-- Sub-directory geos -->
+        <tr><td class="rd-old">/service-area/rental-services/[city]/</td><td class="rd-new">/rental-management/maryland/ (or specific county)</td><td>NEW — batch rule</td><td>10–14 each</td></tr>
+        <tr><td class="rd-old">/service-area/property-services/[city]/</td><td class="rd-new">/maintenance-services/</td><td>NEW — batch rule</td><td>14 each</td></tr>
+        <tr><td class="rd-old">/service-area/sales/[city]/</td><td class="rd-new">/</td><td>NEW — batch rule</td><td>–</td></tr>
+        <!-- Old blog pagination -->
+        <tr><td class="rd-old">/blog/page/[2-11]/</td><td class="rd-new">/blog/ (301 all to parent)</td><td>NEW</td><td>–</td></tr>
+        <!-- Gallery junk -->
+        <tr><td class="rd-old">/gallery/[*]/</td><td class="rd-new">/about/</td><td>NEW — batch rule</td><td>–</td></tr>
+        <!-- Old propertyservices -->
+        <tr><td class="rd-old">/propertyservices/</td><td class="rd-new">/maintenance-services/</td><td>NEW</td><td>–</td></tr>
+        <tr><td class="rd-old">/property-management/</td><td class="rd-new">/rental-management/</td><td>NEW — currently 404!</td><td>⚠ FIX NOW</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SECTION 4 — ON-PAGE ISSUES
+═══════════════════════════════ -->
+<section class="section" id="on-page">
+  <div class="eyebrow amber">On-Page SEO · Fix Before or Shortly After Launch</div>
+  <h2>On-page issues found in the crawl</h2>
+  <p class="section-intro">These issues exist on the <em>current</em> site and need to be resolved on the new site. Some are pre-launch requirements; others can be fixed in the first sprint post-launch.</p>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead>
+        <tr><th>Issue</th><th>Count</th><th>Severity</th><th>Fix</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>No structured data anywhere</strong><br><span style="font-size:11px;color:var(--muted)">0/276 pages have any schema markup</span></td>
+          <td>276 pages</td>
+          <td><span class="sev-crit">Critical</span></td>
+          <td>Implement before launch: <code>LocalBusiness</code> (homepage), <code>Organization</code>, <code>FAQPage</code> (/faq/, /communityassociations/faqs/), <code>BreadcrumbList</code> (all interior), <code>Service</code> (service pages)</td>
+        </tr>
+        <tr>
+          <td><strong>182 images missing alt text</strong></td>
+          <td>182 images</td>
+          <td><span class="sev-high">High</span></td>
+          <td>Add descriptive alt text. Top offending pages: homepage, testimonials, about. Must fix before launch — affects accessibility compliance + image SEO.</td>
+        </tr>
+        <tr>
+          <td><strong>/property-management/ → 404</strong><br><span style="font-size:11px;color:var(--muted)">Linked internally via rogue-quote URL</span></td>
+          <td>1 page</td>
+          <td><span class="sev-crit">Critical</span></td>
+          <td>Fix the internal link that produces <code>/property-management/"</code> on the current site. Then ensure new site has 301 from <code>/property-management/</code> → <code>/rental-management/</code>.</td>
+        </tr>
+        <tr>
+          <td><strong>5 page titles over 60 characters</strong></td>
+          <td>5 pages</td>
+          <td><span class="sev-med">Medium</span></td>
+          <td>Shorten: /service-area/salisbury-md/ (63ch), /hoa-expense-reserve-projection-services/ (63ch), /construction-budget-management/ (62ch), /hoa-governance-legal-issues-management/ (62ch), /lease-administration-management/ (61ch). These pages are being redirected, so fix on the destination pages in the new sitemap.</td>
+        </tr>
+        <tr>
+          <td><strong>19 page titles under 30 characters</strong></td>
+          <td>19 pages</td>
+          <td><span class="sev-med">Medium</span></td>
+          <td>Most notable: <code>/testimonials/</code> ("Testimonials" — 12ch), <code>/vendors/</code> ("Vendors | Learn More" — 20ch), <code>/contact/</code>. These pages redirect to new ones — ensure destination pages have proper titles.</td>
+        </tr>
+        <tr>
+          <td><strong>11 blog pagination pages share same title</strong><br><span style="font-size:11px;color:var(--muted)">"Our Blog - Tidewater" on /blog/, /blog/page/2/ through /blog/page/11/</span></td>
+          <td>11 pages</td>
+          <td><span class="sev-med">Medium</span></td>
+          <td>Add paginated title variants ("Page 2 | Blog - Tidewater") and confirm <code>rel="canonical"</code> points each paginated page to itself — not the parent. Also add <code>rel="prev"/"next"</code> if keeping pagination on the new site.</td>
+        </tr>
+        <tr>
+          <td><strong>/current-listings/ missing H1</strong></td>
+          <td>1 page</td>
+          <td><span class="sev-med">Medium</span></td>
+          <td>Add an H1. This page is being redirected to /rental-management/ so confirm the destination has a proper H1.</td>
+        </tr>
+        <tr>
+          <td><strong>Thin content pages (under 300 words)</strong></td>
+          <td>3 pages</td>
+          <td><span class="sev-med">Medium</span></td>
+          <td>/testimonials/ (81w) and /contact/ (164w). Thin is fine for these page types if the new versions are richer. /blog/page/11/ (298w) is just low pagination — redirect to /blog/.</td>
+        </tr>
+        <tr>
+          <td><strong>1 meta description over 160 chars</strong></td>
+          <td>1 page</td>
+          <td><span class="sev-low">Low</span></td>
+          <td>/hoa-governance-legal-issues-management/ at 173 chars. Will be redirected — fix on destination page.</td>
+        </tr>
+        <tr>
+          <td><strong>Broken external links (outbound)</strong></td>
+          <td>~180 links</td>
+          <td><span class="sev-med">Medium</span></td>
+          <td>Most are old Virginia/Maryland law code URLs that have been permanently moved (law.lis.virginia.gov → lis.virginia.gov, etc.). Also 1 broken blog reference to architecturaldigest.com. Update or remove all broken outbound links — they're concentrated in the governance/legal content pages.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="g2" style="margin-top:20px;">
+    <div class="mini-card ok">
+      <h4>✓ Things that look good</h4>
+      <ul>
+        <li>0 missing meta descriptions (all 276 pages have one)</li>
+        <li>0 missing page titles</li>
+        <li>Only 1 internal 404 (already flagged)</li>
+        <li>Only 5 non-self-referencing canonicals (all are correct parameter variants)</li>
+        <li>HTTPS on all pages, no mixed content</li>
+        <li>Response times fast (homepage 77ms)</li>
+        <li>No duplicate content issues except blog pagination titles</li>
+      </ul>
+    </div>
+    <div class="mini-card warn">
+      <h4>⚠ Verify on staged site before launch</h4>
+      <ul>
+        <li>XML sitemap generated and submitted</li>
+        <li>robots.txt does not block /hoa-management/, /rental-management/, etc.</li>
+        <li>Gravity Forms thank-you page has noindex</li>
+        <li>/request-a-proposal/ confirmation page excluded from analytics</li>
+        <li>AppFolio/portal links updated to current endpoints</li>
+        <li>Google Tag Manager firing correctly on new URLs</li>
+        <li>Google Analytics GA4 property updated with new URL paths</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SECTION 5 — DRIP PLAN
+═══════════════════════════════ -->
+<section class="section" id="drip">
+  <div class="eyebrow teal">Phased Launch · What to Drip</div>
+  <h2>Launch drip strategy — what goes live when</h2>
+  <p class="section-intro">You've said you're not going live with everything at once. Here's the recommended staging. Phase 1 is what goes live Day 1 — the pages that protect existing traffic and establish the new architecture. Phases 2 and 3 expand the HOA footprint once the foundation is solid.</p>
+
+  <div class="phase-cards">
+    <div class="phase-card ph1">
+      <div class="ph-head">
+        <div class="ph-label">Phase 1 · Day 1 — Must Ship</div>
+        <h3>Traffic protection + core architecture</h3>
+      </div>
+      <div class="ph-body">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">29 pages. All redirects active. Everything below must be live and indexable.</p>
+        <ul class="ph-url-list">
+          <li class="traffic">/ (homepage — rebuilt)</li>
+          <li class="traffic">/hoa-management/ (pillar — rebuilt)</li>
+          <li class="traffic">/rental-management/ (new — redirects from /rentals/)</li>
+          <li class="traffic">/maintenance-services/ (new)</li>
+          <li class="traffic">/condo-management/ (new)</li>
+          <li>/about/</li>
+          <li>/faq/</li>
+          <li>/blog/</li>
+          <li>/request-a-proposal/</li>
+          <li>/hoa-management/hoa-financial-management/</li>
+          <li>/hoa-management/covenant-enforcement/</li>
+          <li>/hoa-management/commercial-association-management/</li>
+          <li>/hoa-management/townhome-community-management/</li>
+          <li class="traffic">/rental-management/maryland/anne-arundel-county/</li>
+          <li class="traffic">/rental-management/maryland/silver-spring/</li>
+          <li>/rental-management/maryland/baltimore-county/</li>
+          <li>/rental-management/maryland/howard-county/</li>
+          <li>/rental-management/maryland/prince-georges-county/</li>
+          <li>/rental-management/maryland/montgomery-county/</li>
+          <li>/rental-management/maryland/ocean-city/</li>
+          <li>/rental-management/delaware/lewes/</li>
+          <li>/solutions/switching-hoa-management-company/</li>
+          <li>/solutions/self-managed-hoa-transition/</li>
+          <li>/blog/what-does-a-community-association-manager-do/ (keep)</li>
+          <li>/blog/5-tips-for-effective-property-management/ (keep or 301)</li>
+          <li>/blog/what-is-quorum-and-why-is-it-important/ (new — 43K SV)</li>
+          <li class="critical">ALL 87 REDIRECTS active in .htaccess / Nginx</li>
+        </ul>
+      </div>
+    </div>
+    <div class="phase-card ph2">
+      <div class="ph-head">
+        <div class="ph-label">Phase 2 · Weeks 2–6</div>
+        <h3>HOA geo expansion + blog spokes</h3>
+      </div>
+      <div class="ph-body">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Build out HOA geo pages and priority blog content once P1 is indexed.</p>
+        <ul class="ph-url-list">
+          <li>/hoa-management/maryland/ (state hub)</li>
+          <li>/hoa-management/maryland/anne-arundel-county/</li>
+          <li>/hoa-management/maryland/baltimore-county/</li>
+          <li>/hoa-management/maryland/howard-county/</li>
+          <li>/hoa-management/maryland/montgomery-county/</li>
+          <li>/hoa-management/maryland/prince-georges-county/</li>
+          <li>/hoa-management/maryland/harford-county/</li>
+          <li>/hoa-management/delaware/ + /delaware/lewes/</li>
+          <li>/blog/hoa-board-responsibilities/</li>
+          <li>/blog/how-to-switch-hoa-management-companies/</li>
+          <li>/blog/hoa-reserve-study-maryland/</li>
+          <li>/blog/hoa-violations-and-covenant-enforcement/</li>
+          <li>/blog/hoa-financial-management-best-practices/</li>
+          <li>/case-studies/ (at least 1 live)</li>
+          <li>/hoa-management/hoa-financial-management/hoa-accounting-services/</li>
+        </ul>
+      </div>
+    </div>
+    <div class="phase-card ph3">
+      <div class="ph-head">
+        <div class="ph-label">Phase 3 · Month 2+</div>
+        <h3>Authority deepening + spoke expansion</h3>
+      </div>
+      <div class="ph-body">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Remaining geo pages, additional case studies, additional blog spokes.</p>
+        <ul class="ph-url-list">
+          <li>/hoa-management/virginia/ hub + pages</li>
+          <li>/hoa-management/pennsylvania/ hub + pages</li>
+          <li>/hoa-management/west-virginia/ hub</li>
+          <li>/rental-management/maryland/ (state hub)</li>
+          <li>/rental-management/delaware/ (state hub)</li>
+          <li>/about/team/ (full team page)</li>
+          <li>Remaining blog posts (migrate best from current)</li>
+          <li>Additional case studies (3–5 target)</li>
+          <li>Remaining HOA county/city geo pages</li>
+          <li>Reindex old blog posts worth keeping</li>
+          <li>Retire/404 old blog posts not worth migrating</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert warn" style="margin-top:20px;">
+    <div class="alert-icon">⚠️</div>
+    <div class="alert-body">
+      <strong>Blog migration decision needed</strong>
+      <p>The current site has 93 blog posts. Most are thin (under 600 words) and targeting rental/generic topics that don't fit the new HOA-first strategy. Recommendation: <strong>keep and improve the top 15–20 posts</strong> with the most inlinks/traffic; <strong>301-redirect the rest</strong> to the most relevant new pillar page. Don't migrate junk content to the new site — it dilutes the HOA topical authority you're trying to build. The quorum post and any HOA-focused posts should be kept and refreshed as priority.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SECTION 6 — LAUNCH CHECKLIST
+═══════════════════════════════ -->
+<section class="section" id="checklist">
+  <div class="eyebrow green">Launch Checklist · Pre-Flight</div>
+  <h2>Pre-launch technical checklist</h2>
+  <p class="section-intro">Run through this before pointing the domain. Items are roughly in order of importance.</p>
+
+  <div class="checklist">
+    <div class="cl-item"><div class="cl-num">1</div><div class="cl-text"><strong>Fix /property-management/ 404 on current site NOW</strong><span>Remove the rogue quote character from the internal link that creates <code>/property-management/"</code>. This is a live issue independent of the launch.</span></div><span class="sev-crit">Critical</span></div>
+    <div class="cl-item"><div class="cl-num">2</div><div class="cl-text"><strong>Load all 87+ redirects into staging</strong><span>Verify every redirect in this document is in the .htaccess / Nginx config. Test each one with a redirect checker before going live.</span></div><span class="sev-crit">Critical</span></div>
+    <div class="cl-item"><div class="cl-num">3</div><div class="cl-text"><strong>Crawl staged site with Screaming Frog</strong><span>Run a full crawl of the staged domain. Zero 404s on internal links. Every page has a title, meta description, H1. No redirect chains (A→B→C — fix to A→C). No redirect loops.</span></div><span class="sev-crit">Critical</span></div>
+    <div class="cl-item"><div class="cl-num">4</div><div class="cl-text"><strong>Implement schema markup on new site</strong><span>At minimum: <code>LocalBusiness</code> + <code>Organization</code> on homepage, <code>FAQPage</code> on /faq/, <code>BreadcrumbList</code> on all interior pages, <code>Service</code> on /hoa-management/, /rental-management/, /maintenance-services/, /condo-management/. Validate in Google's Rich Results Test.</span></div><span class="sev-crit">Critical</span></div>
+    <div class="cl-item"><div class="cl-num">5</div><div class="cl-text"><strong>Verify robots.txt on new site</strong><span>Confirm that <code>/hoa-management/</code>, <code>/rental-management/</code>, <code>/maintenance-services/</code>, <code>/condo-management/</code>, <code>/request-a-proposal/</code> are all crawlable. Block: <code>/wp-admin/</code>, <code>/?</code> filter URLs, thank-you pages.</span></div><span class="sev-high">High</span></div>
+    <div class="cl-item"><div class="cl-num">6</div><div class="cl-text"><strong>Generate and submit XML sitemap</strong><span>Only include indexable, canonical, live pages. Exclude redirected old URLs, paginated blog pages (if redirected), gallery pages. Submit to GSC immediately after launch.</span></div><span class="sev-high">High</span></div>
+    <div class="cl-item"><div class="cl-num">7</div><div class="cl-text"><strong>Fix all 182 images missing alt text on new site</strong><span>Don't migrate any images to the new site without alt text. This is a baseline accessibility and SEO requirement. Priority: homepage hero images, team photos on /about/, service page images.</span></div><span class="sev-high">High</span></div>
+    <div class="cl-item"><div class="cl-num">8</div><div class="cl-text"><strong>Update Google Analytics + GSC</strong><span>Add new site property to GA4 if using a new domain/subdomain staging setup. In GSC, add the new property and verify. Use Change of Address tool in GSC if domain is changing. Set up GSC URL inspection for top 10 priority pages immediately post-launch.</span></div><span class="sev-high">High</span></div>
+    <div class="cl-item"><div class="cl-num">9</div><div class="cl-text"><strong>Confirm all 29 must-live pages return 200</strong><span>Use Screaming Frog or httpstat.us to verify every URL in the must-live list returns 200, not 301/302/404. Especially check the 8 new rental geo pages that didn't exist before.</span></div><span class="sev-high">High</span></div>
+    <div class="cl-item"><div class="cl-num">10</div><div class="cl-text"><strong>Canonical tags on all pages</strong><span>Every page must have a self-referencing canonical. Verify no pages are canonicalizing to a 404 or redirect chain. AppFolio listing filter URLs must canonicalize to the parent page.</span></div><span class="sev-high">High</span></div>
+    <div class="cl-item"><div class="cl-num">11</div><div class="cl-text"><strong>Update broken outbound links</strong><span>~180 outbound links to old Virginia/Maryland law code URLs are broken (301 to new locations). Update or remove. Also fix the 1 broken blog reference to architecturaldigest.com.</span></div><span class="sev-med">Medium</span></div>
+    <div class="cl-item"><div class="cl-num">12</div><div class="cl-text"><strong>Blog migration — keep/kill decision on 93 posts</strong><span>Recommend keeping top ~15–20 by inlinks + topical fit (HOA/rental focused). 301 the rest to the closest pillar page. Don't just migrate all 93 — thin rental content dilutes HOA topical authority.</span></div><span class="sev-med">Medium</span></div>
+    <div class="cl-item"><div class="cl-num">13</div><div class="cl-text"><strong>Portal/tool links updated</strong><span>AppFolio listings URL, Rently self-tour link, CINC portal link, Condo Certs link — verify all external tool links on the new site are current and not pointing to old/deprecated endpoints.</span></div><span class="sev-med">Medium</span></div>
+    <div class="cl-item"><div class="cl-num">14</div><div class="cl-text"><strong>Post-launch: request indexing of top 10 pages in GSC</strong><span>Within 24 hours of launch, use GSC URL Inspection to request crawling on: homepage, /hoa-management/, /rental-management/, /condo-management/, /maintenance-services/, /request-a-proposal/, and the 4 highest-priority rental geo pages.</span></div><span class="sev-med">Medium</span></div>
+    <div class="cl-item"><div class="cl-num">15</div><div class="cl-text"><strong>Monitor Search Console for 7 days post-launch</strong><span>Watch for: spike in 404 errors (missing redirects), any noindex issues, crawl anomalies, drops in impressions/clicks for the money keywords. Have the redirect file ready to update quickly.</span></div><span class="sev-med">Medium</span></div>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<div class="footer">
+  <div class="wrap">
+    <strong>Tidewater Property Management — SEO Launch Readiness Report</strong>
+    <span>Alloy Growth Partners · Generated May 14, 2026 · Based on Screaming Frog crawl (555 URLs) + Sitemap v5.1</span>
+  </div>
+</div>
+
+</body>
+</html>

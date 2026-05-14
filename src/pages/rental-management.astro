@@ -14,10 +14,21 @@ import Testimonials from '../components/Testimonials.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import { serviceSchema, breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../config/site';
+
+const pageUrl = `${SITE.url}/rental-management`;
+const pageDesc = "One flat, all-inclusive fee. Full rental property management for landlords across Maryland and DC. Built for deployed, out-of-state, and second-home owners. Family-owned since 1989.";
+
+const schemas = [
+  serviceSchema({ name: 'Rental Property Management', description: pageDesc, url: pageUrl, areaServed: ['Maryland', 'Washington DC'] }),
+  breadcrumbSchema([{ name: 'Home', url: SITE.url + '/' }, { name: 'Rental Management', url: pageUrl }]),
+];
 ---
 <BaseLayout
   title="Tidewater Companies — Rental Property Management for Maryland & DC Landlords"
-  description="One flat, all-inclusive fee. Full rental property management for landlords across Maryland and DC. Built for deployed, out-of-state, and second-home owners. Family-owned since 1989."
+  description={pageDesc}
+  pageSchema={schemas}
 >
   <Topbar variant="homeowner" />
   <Header activeNav="rental" />

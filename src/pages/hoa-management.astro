@@ -14,10 +14,28 @@ import Testimonials from '../components/Testimonials.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import { serviceSchema, breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../config/site';
+
+const pageUrl = `${SITE.url}/hoa-management`;
+const pageDesc = "Family-owned HOA, condo, and co-op management for Maryland, DC, Virginia, Pennsylvania, Delaware, and West Virginia since 1989. AAMC® accredited.";
+
+const schemas = [
+  serviceSchema({
+    name: 'HOA & Community Association Management',
+    description: pageDesc,
+    url: pageUrl,
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'HOA Management', url: pageUrl },
+  ]),
+];
 ---
 <BaseLayout
   title="Tidewater Companies — HOA Management for the Mid-Atlantic"
-  description="Family-owned HOA, condo, and co-op management for Maryland, DC, Virginia, Pennsylvania, Delaware, and West Virginia since 1989. AAMC® accredited."
+  description={pageDesc}
+  pageSchema={schemas}
 >
   <Topbar variant="default" />
   <Header activeNav="hoa" />
