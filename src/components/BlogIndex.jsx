@@ -163,13 +163,6 @@ function BlogIndexHero({ showSearch, query, onQuery, onSubmit }) {
       <div className="tw-bi-hero-bg"></div>
       <div className="tw-bi-hero-paper"></div>
       <div className="tw-bi-hero-inner">
-        <div className="tw-bi-hero-crumb">
-          <a href="/">Home</a>
-          <span className="sep">›</span>
-          <a href="/resources">Resources</a>
-          <span className="sep">›</span>
-          <span className="cur">Blog</span>
-        </div>
         <h1>The Tidewater <em>board playbook.</em></h1>
         <p>Practical playbooks for HOA and condo boards across Maryland and the Mid-Atlantic. Reserve studies, switching management, governance mechanics, Maryland HOA law, and the operational systems that work in practice.</p>
 

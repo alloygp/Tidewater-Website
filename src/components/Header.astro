@@ -129,9 +129,44 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
         <a href="/real-estate/" class={`tw-header-nav-link ${isActive(['realty']) ? 'is-active' : ''}`}>Real Estate</a>
       </div>
 
-      <!-- Blog & Resources standalone -->
-      <div class="tw-nav-item">
-        <a href="/resources/" class={`tw-header-nav-link ${isActive(['resources','blog']) ? 'is-active' : ''}`}>Resources</a>
+      <!-- Resources mega menu -->
+      <div class="tw-nav-item" data-menu="resources">
+        <a href="/resources/" class={`tw-header-nav-link ${isActive(['resources','blog']) ? 'is-active' : ''}`}>
+          Resources<svg class="tw-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
+        </a>
+        <div class="tw-megamenu tw-megamenu-2col">
+          <!-- Col 1: blog feature -->
+          <a href="/blog/" class="tw-mega-feature">
+            <div class="tw-mega-feature-img">
+              <img src="/assets/how-to-switch-hoa-management-companies.png" alt="Tidewater HOA Board Playbook blog" />
+              <div class="tw-mega-feature-overlay"></div>
+            </div>
+            <div class="tw-mega-feature-body">
+              <div class="tw-mega-feature-eyebrow">The Blog</div>
+              <div class="tw-mega-feature-title">The HOA Board Playbook</div>
+              <div class="tw-mega-feature-sub">Practical guides for HOA and condo boards — written by PCAM-credentialed managers from what we've seen on real agendas.</div>
+              <div class="tw-mega-feature-cta">Browse all posts →</div>
+            </div>
+          </a>
+          <!-- Col 2: resource links -->
+          <div class="tw-mega-col">
+            <div class="tw-mega-col-label">Resources</div>
+            <div class="tw-mega-list">
+              <a href="/blog/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+                <div><div class="tw-mega-title">Blog & Playbooks</div><div class="tw-mega-body">Reserve studies, switching management, Maryland HOA law, and more.</div></div>
+              </a>
+              <a href="/blog/how-to-switch-hoa-management-companies/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+                <div><div class="tw-mega-title">How to Switch Management Companies</div><div class="tw-mega-body">Step-by-step guide to a smooth HOA management transition.</div></div>
+              </a>
+              <a href="/resources/" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+                <div><div class="tw-mega-title">All Resources</div><div class="tw-mega-body">Tools, guides, and FAQs for boards and homeowners.</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
     </nav>

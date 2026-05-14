@@ -43,16 +43,6 @@ function SwitchHero({ post }) {
   return (
     <section className="tw-blog-hero">
       <div className="tw-blog-hero-inner">
-        <div className="tw-blog-crumb">
-          <a href="/">Home</a>
-          <span className="sep">›</span>
-          <a href="/resources">Resources</a>
-          <span className="sep">›</span>
-          <a href="/resources#blog">Blog</a>
-          <span className="sep">›</span>
-          <span className="cur">{post.category.label}</span>
-        </div>
-
         <span className={`tw-blog-category ${post.category.tone}`}>{post.category.label}</span>
 
         <h1 className="tw-blog-title" dangerouslySetInnerHTML={{ __html: post.title }} />
@@ -92,7 +82,6 @@ function SwitchCover({ post }) {
         />
         <div className="tw-blog-cover-paper"></div>
       </div>
-      <p className="tw-blog-cover-caption">{post.coverCaption}</p>
     </div>
   );
 }
@@ -247,9 +236,6 @@ function SwitchArticleBody() {
             alt="Residential community common area representing an HOA management transition"
           />
         </div>
-        <figcaption className="tw-blog-figure-caption">
-          A well-maintained residential community &mdash; the kind of normalcy a structured HOA management transition is designed to preserve for residents.
-        </figcaption>
       </figure>
 
       <h2 id="evaluate">How to Evaluate Your Next Management Company</h2>
