@@ -1,8 +1,10 @@
 import { c as createComponent, m as maybeRenderHead, a as renderTemplate, r as renderComponent } from '../chunks/astro/server_B8N826LR.mjs';
 import 'kleur/colors';
-import { $ as $$BaseLayout, a as $$TrustBar, b as $$Mission, c as $$Testimonials } from '../chunks/Testimonials_CzZe11hA.mjs';
-import { $ as $$Topbar, a as $$Header, b as $$CTA, c as $$Footer } from '../chunks/Footer_KGfjdaX-.mjs';
+import { $ as $$BaseLayout } from '../chunks/BaseLayout_H5ptLu_M.mjs';
+import { $ as $$Topbar, a as $$Header, b as $$Footer } from '../chunks/Footer_BG5QOMJt.mjs';
 import 'clsx';
+import { $ as $$TrustBar, a as $$Mission, b as $$Testimonials } from '../chunks/Testimonials_CiYmcXsn.mjs';
+import { $ as $$CTA } from '../chunks/CTA_B0qIY4uZ.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$HomeHero = createComponent(($$result, $$props, $$slots) => {
