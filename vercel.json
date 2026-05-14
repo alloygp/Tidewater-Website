@@ -5,7 +5,10 @@
   "installCommand": "npm install",
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [],
+  "redirects": [
+    { "source": "/condo-association-management", "destination": "/condo-management", "permanent": true },
+    { "source": "/condo-association-management/", "destination": "/condo-management", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
