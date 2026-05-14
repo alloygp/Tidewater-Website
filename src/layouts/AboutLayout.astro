@@ -3,7 +3,6 @@
 // Layout for About-section pages (about, leadership, careers).
 // Identical SEO infrastructure to BaseLayout + styles-about.css + Caveat font.
 
-import { ViewTransitions } from 'astro:transitions';
 import { SITE } from '../config/site';
 
 interface Props {
@@ -103,7 +102,6 @@ const orgLd = {
     <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
   )}
 
-  <ViewTransitions />
 </head>
 <body>
   <slot />

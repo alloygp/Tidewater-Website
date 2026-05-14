@@ -11,7 +11,6 @@
 // Usage (noindex):
 //   <BaseLayout title="…" description="…" robots="noindex,nofollow">
 
-import { ViewTransitions } from 'astro:transitions';
 import { SITE } from '../config/site';
 
 interface Props {
@@ -119,7 +118,6 @@ const orgLd = {
   )}
 
   <slot name="head" />
-  <ViewTransitions />
 </head>
 <body class={bodyClass}>
   <slot />
