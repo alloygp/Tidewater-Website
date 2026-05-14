@@ -1,0 +1,410 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Topbar from '../../components/Topbar.astro';
+import Footer from '../../components/Footer.astro';
+import CTA from '../../components/CTA.astro';
+import { serviceSchema, breadcrumbSchema } from '../../lib/schema';
+import { SITE } from '../../config/site';
+
+const schemas = [
+  serviceSchema({
+    name: 'HOA Management Maryland',
+    description: "AAMC-accredited HOA and condo association management across Maryland — Anne Arundel, Baltimore, Howard, Montgomery, Prince George's, and Frederick counties.",
+    url: SITE.url + '/hoa-management/maryland/',
+    areaServed: 'Maryland',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'HOA Management', url: SITE.url + '/hoa-management/' },
+    { name: 'Maryland', url: SITE.url + '/hoa-management/maryland/' },
+  ]),
+];
+---
+<BaseLayout
+  title="HOA Management Maryland | Community Association Manager MD — Tidewater"
+  description="HOA & condo association management across Maryland — Anne Arundel, Baltimore, Howard, Montgomery, Prince George's, Frederick. AAMC accredited. PCAM-credentialed managers. Family-owned since 1989."
+  pageSchema={schemas}
+>
+  <Topbar variant="default" />
+  <Header activeNav="mgmt" />
+
+  <!-- Hero -->
+  <section class="tw-geo-hero">
+    <div class="tw-geo-hero-bg"></div>
+    <div class="tw-geo-hero-paper"></div>
+    <div class="tw-geo-hero-grid">
+      <div class="tw-geo-hero-copy">
+        <div class="tw-geo-hero-crumb">
+          <a href="/">Home</a>
+          <span class="sep">›</span>
+          <a href="/hoa-management/">HOA Management</a>
+          <span class="sep">›</span>
+          <span class="cur">Maryland</span>
+        </div>
+        <h1 class="tw-geo-hero-title">
+          HOA management <em>across Maryland</em> &mdash; from the Bay to the Blue Ridge.
+        </h1>
+        <p class="tw-geo-hero-lede">
+          Tidewater has managed Maryland communities since 1989. Our regional managers know your county recorder, your CAI Chesapeake chapter, and the bylaw conventions that vary from Talbot to Garrett. AAMC accredited. PCAM-credentialed.
+        </p>
+        <div class="tw-geo-hero-actions">
+          <a href="/request-a-proposal/" class="tw-btn tw-btn-primary tw-btn-lg">Request a proposal &rarr;</a>
+          <a href="#counties" class="tw-btn tw-btn-ghost">Find your county &rarr;</a>
+        </div>
+        <div class="tw-geo-hero-stats">
+          <div>
+            <div class="tw-geo-hero-stat-num">300+</div>
+            <div class="tw-geo-hero-stat-label">Maryland communities under management</div>
+          </div>
+          <div>
+            <div class="tw-geo-hero-stat-num gold">11</div>
+            <div class="tw-geo-hero-stat-label">Counties served, plus Baltimore City</div>
+          </div>
+          <div>
+            <div class="tw-geo-hero-stat-num">35 yrs</div>
+            <div class="tw-geo-hero-stat-label">In the Mid-Atlantic, family-owned</div>
+          </div>
+        </div>
+      </div>
+      <aside class="tw-geo-hero-side">
+        <div class="tw-geo-hero-side-eyebrow">Where we are</div>
+        <h3>11 counties + Baltimore City</h3>
+        <!-- Maryland SVG Map -->
+        <svg viewBox="0 0 450 320" class="tw-geo-map" xmlns="http://www.w3.org/2000/svg" aria-label="Map of Maryland counties served by Tidewater">
+          <!-- Chesapeake bay subtle abstract shape -->
+          <path d="M325 115 Q335 155 335 195 Q330 220 320 240 Q330 200 325 175 Q320 145 325 115 Z" fill="rgba(58,146,166,0.15)"/>
+          <!-- Western Maryland -->
+          <path d="M20 60 L60 50 L80 65 L70 90 L25 88 Z" class="tw-geo-map-county"><title>Garrett County</title></path>
+          <path d="M80 65 L120 60 L130 85 L70 90 Z" class="tw-geo-map-county"><title>Allegany County</title></path>
+          <path d="M120 60 L165 55 L180 80 L130 85 Z" class="tw-geo-map-county"><title>Washington County</title></path>
+          <path d="M165 55 L210 50 L230 95 L180 90 L180 80 Z" class="tw-geo-map-county served"><title>Frederick County · served by Tidewater</title></path>
+          <!-- Central -->
+          <path d="M210 50 L255 50 L260 88 L230 95 Z" class="tw-geo-map-county served"><title>Carroll County · served by Tidewater</title></path>
+          <path d="M255 50 L305 55 L320 95 L290 105 L260 88 Z" class="tw-geo-map-county served"><title>Baltimore County · served by Tidewater</title></path>
+          <path d="M305 55 L355 60 L355 95 L320 95 Z" class="tw-geo-map-county served"><title>Harford County · served by Tidewater</title></path>
+          <path d="M355 60 L395 70 L385 100 L355 95 Z" class="tw-geo-map-county"><title>Cecil County</title></path>
+          <path d="M230 95 L260 88 L290 105 L275 130 L235 130 Z" class="tw-geo-map-county served"><title>Howard County · served by Tidewater</title></path>
+          <path d="M290 105 L320 95 L325 115 L300 118 Z" class="tw-geo-map-county served"><title>Baltimore City · served by Tidewater</title></path>
+          <path d="M180 90 L235 130 L210 165 L165 155 Z" class="tw-geo-map-county served"><title>Montgomery County · served by Tidewater</title></path>
+          <path d="M210 165 L275 145 L290 195 L230 200 Z" class="tw-geo-map-county served"><title>Prince George's County · served by Tidewater</title></path>
+          <path d="M275 130 L325 115 L335 175 L290 195 L275 145 Z" class="tw-geo-map-county served is-highlight"><title>Anne Arundel County · served by Tidewater</title></path>
+          <!-- Southern MD -->
+          <path d="M290 195 L320 200 L315 245 L280 240 Z" class="tw-geo-map-county"><title>Calvert County</title></path>
+          <path d="M230 200 L290 195 L280 240 L235 240 Z" class="tw-geo-map-county"><title>Charles County</title></path>
+          <path d="M280 240 L315 245 L305 290 L260 280 L235 240 Z" class="tw-geo-map-county"><title>St. Mary's County</title></path>
+          <!-- Eastern Shore -->
+          <path d="M355 95 L385 100 L380 130 L350 125 Z" class="tw-geo-map-county"><title>Kent County</title></path>
+          <path d="M350 125 L380 130 L375 160 L345 155 Z" class="tw-geo-map-county"><title>Queen Anne's County</title></path>
+          <path d="M345 155 L375 160 L370 190 L340 185 Z" class="tw-geo-map-county"><title>Caroline County</title></path>
+          <path d="M335 175 L345 155 L370 190 L340 200 Z" class="tw-geo-map-county served"><title>Talbot County · served by Tidewater</title></path>
+          <path d="M340 185 L370 190 L380 235 L335 230 Z" class="tw-geo-map-county served"><title>Dorchester County · served by Tidewater</title></path>
+          <path d="M380 235 L405 240 L400 265 L370 260 L335 230 Z" class="tw-geo-map-county served"><title>Wicomico County · served by Tidewater</title></path>
+          <path d="M370 260 L400 265 L395 295 L365 290 Z" class="tw-geo-map-county"><title>Somerset County</title></path>
+          <path d="M405 240 L430 250 L425 295 L395 295 L400 265 Z" class="tw-geo-map-county"><title>Worcester County</title></path>
+          <!-- HQ marker — Owings Mills -->
+          <circle class="tw-geo-map-dot-pulse" cx="285" cy="80" r="6"/>
+          <circle class="tw-geo-map-dot" cx="285" cy="80" r="5"/>
+          <text x="295" y="78" fill="var(--tw-gold)" font-family="var(--tw-font-heading)" font-weight="800" font-size="9" letter-spacing="0.06em">HQ</text>
+        </svg>
+        <div class="tw-geo-map-legend">
+          <div class="tw-geo-map-legend-row">
+            <span class="tw-geo-map-legend-swatch served"></span>
+            Counties we currently serve
+          </div>
+          <div class="tw-geo-map-legend-row">
+            <span class="tw-geo-map-legend-swatch hq"></span>
+            Headquarters &middot; Owings Mills
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Counties directory -->
+  <section id="counties" class="tw-geo-section cream">
+    <div class="tw-container-wide">
+      <div class="tw-section-head" style="text-align:center;max-width:760px;margin:0 auto">
+        <div class="tw-eyebrow">By County</div>
+        <h2 class="tw-section-title">Maryland HOA management, by <em>where you live.</em></h2>
+        <p class="tw-section-lede">Each county has its own bylaw conventions, recorder, and density of HOA-governed communities. Pick yours for county-specific resources and our local manager.</p>
+      </div>
+      <div class="tw-geo-counties">
+        <!-- Anne Arundel — featured -->
+        <a href="/hoa-management/maryland/anne-arundel-county/" class="tw-geo-county-card featured">
+          <span class="tw-geo-county-flag">Highest density</span>
+          <div class="tw-geo-county-head">
+            <h3 class="tw-geo-county-name">Anne Arundel County</h3>
+          </div>
+          <div class="tw-geo-county-meta" style="font-family:var(--tw-font-mono);font-size:11px;color:var(--tw-fg-subtle);letter-spacing:0.04em">157 active communities &middot; Annapolis seat</div>
+          <p class="tw-geo-county-body">Highest density of HOA-governed communities in Maryland. From Annapolis waterfront to the Severna Park / Crofton corridor to Glen Burnie townhomes.</p>
+          <div class="tw-geo-county-cities">
+            <span class="tw-geo-county-city">Annapolis</span>
+            <span class="tw-geo-county-city">Severna Park</span>
+            <span class="tw-geo-county-city">Crofton</span>
+            <span class="tw-geo-county-city">Pasadena</span>
+            <span class="tw-geo-county-city">Glen Burnie</span>
+            <span class="tw-geo-county-city">Odenton</span>
+          </div>
+          <div class="tw-geo-county-cta">
+            View county page <span class="tw-geo-county-cta-arrow">&rarr;</span>
+          </div>
+        </a>
+        <!-- Baltimore County -->
+        <a href="#" class="tw-geo-county-card">
+          <div class="tw-geo-county-head">
+            <h3 class="tw-geo-county-name">Baltimore County</h3>
+          </div>
+          <div class="tw-geo-county-meta" style="font-family:var(--tw-font-mono);font-size:11px;color:var(--tw-fg-subtle);letter-spacing:0.04em">HQ county &middot; Owings Mills</div>
+          <p class="tw-geo-county-body">Tidewater&rsquo;s home. Strong condo &amp; townhome density in Towson, Cockeysville, Pikesville, and the Hunt Valley corridor. Mature communities with reserve-study attention.</p>
+          <div class="tw-geo-county-cities">
+            <span class="tw-geo-county-city">Towson</span>
+            <span class="tw-geo-county-city">Cockeysville</span>
+            <span class="tw-geo-county-city">Pikesville</span>
+            <span class="tw-geo-county-city">Owings Mills</span>
+            <span class="tw-geo-county-city">Hunt Valley</span>
+          </div>
+          <div class="tw-geo-county-cta">
+            County page coming soon <span class="tw-geo-county-cta-arrow">&rarr;</span>
+          </div>
+        </a>
+        <!-- Howard County -->
+        <a href="#" class="tw-geo-county-card">
+          <div class="tw-geo-county-head">
+            <h3 class="tw-geo-county-name">Howard County</h3>
+          </div>
+          <div class="tw-geo-county-meta" style="font-family:var(--tw-font-mono);font-size:11px;color:var(--tw-fg-subtle);letter-spacing:0.04em">Columbia &middot; planned community</div>
+          <p class="tw-geo-county-body">America&rsquo;s archetypal planned community. Columbia&rsquo;s village structure layers HOAs over sub-associations &mdash; complex covenant work, well-documented governance.</p>
+          <div class="tw-geo-county-cities">
+            <span class="tw-geo-county-city">Columbia</span>
+            <span class="tw-geo-county-city">Ellicott City</span>
+            <span class="tw-geo-county-city">Elkridge</span>
+            <span class="tw-geo-county-city">Glenelg</span>
+          </div>
+          <div class="tw-geo-county-cta">
+            County page coming soon <span class="tw-geo-county-cta-arrow">&rarr;</span>
+          </div>
+        </a>
+        <!-- Montgomery County -->
+        <a href="#" class="tw-geo-county-card">
+          <div class="tw-geo-county-head">
+            <h3 class="tw-geo-county-name">Montgomery County</h3>
+          </div>
+          <div class="tw-geo-county-meta" style="font-family:var(--tw-font-mono);font-size:11px;color:var(--tw-fg-subtle);letter-spacing:0.04em">DC Metro &middot; Silver Spring office</div>
+          <p class="tw-geo-county-body">Dense suburban portfolio across Rockville, Bethesda, Gaithersburg, and Silver Spring. Strong mix of mid-rise condo and townhome HOA work.</p>
+          <div class="tw-geo-county-cities">
+            <span class="tw-geo-county-city">Rockville</span>
+            <span class="tw-geo-county-city">Bethesda</span>
+            <span class="tw-geo-county-city">Gaithersburg</span>
+            <span class="tw-geo-county-city">Silver Spring</span>
+          </div>
+          <div class="tw-geo-county-cta">
+            County page coming soon <span class="tw-geo-county-cta-arrow">&rarr;</span>
+          </div>
+        </a>
+        <!-- Prince George's County -->
+        <a href="#" class="tw-geo-county-card">
+          <div class="tw-geo-county-head">
+            <h3 class="tw-geo-county-name">Prince George&rsquo;s County</h3>
+          </div>
+          <div class="tw-geo-county-meta" style="font-family:var(--tw-font-mono);font-size:11px;color:var(--tw-fg-subtle);letter-spacing:0.04em">DC Metro &middot; Bowie, Largo</div>
+          <p class="tw-geo-county-body">Townhome and garden-style condo concentration. Tidewater&rsquo;s PG portfolio includes both established and newer master-planned communities.</p>
+          <div class="tw-geo-county-cities">
+            <span class="tw-geo-county-city">Bowie</span>
+            <span class="tw-geo-county-city">Largo</span>
+            <span class="tw-geo-county-city">Greenbelt</span>
+            <span class="tw-geo-county-city">Hyattsville</span>
+          </div>
+          <div class="tw-geo-county-cta">
+            County page coming soon <span class="tw-geo-county-cta-arrow">&rarr;</span>
+          </div>
+        </a>
+        <!-- Frederick County -->
+        <a href="#" class="tw-geo-county-card">
+          <div class="tw-geo-county-head">
+            <h3 class="tw-geo-county-name">Frederick County</h3>
+          </div>
+          <div class="tw-geo-county-meta" style="font-family:var(--tw-font-mono);font-size:11px;color:var(--tw-fg-subtle);letter-spacing:0.04em">Western anchor</div>
+          <p class="tw-geo-county-body">Mix of city-of-Frederick mid-rise condos and the newer Urbana / Mt. Airy planned communities. Strong reserve-study cadence requirement.</p>
+          <div class="tw-geo-county-cities">
+            <span class="tw-geo-county-city">Frederick</span>
+            <span class="tw-geo-county-city">Urbana</span>
+            <span class="tw-geo-county-city">Mt. Airy</span>
+            <span class="tw-geo-county-city">Brunswick</span>
+          </div>
+          <div class="tw-geo-county-cta">
+            County page coming soon <span class="tw-geo-county-cta-arrow">&rarr;</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Maryland Law strip -->
+  <section class="tw-geo-section linen">
+    <div class="tw-container-wide">
+      <div class="tw-section-head-left" style="max-width:760px;margin:0 0 12px">
+        <div class="tw-eyebrow">Maryland HOA Law &amp; Affiliations</div>
+        <h2 class="tw-section-title" style="margin:10px 0 14px">The statutes &amp; bodies that <em>govern</em> Maryland associations.</h2>
+        <p class="tw-section-lede">Maryland is among the most rigorous Mid-Atlantic states on HOA &amp; condo governance. We track every statutory update &mdash; you don&rsquo;t have to.</p>
+      </div>
+      <div class="tw-geo-law-grid">
+        <!-- Law card 1 -->
+        <div class="tw-geo-law-card">
+          <div class="tw-geo-law-meta">Md. Code &middot; Real Property &sect; 11B</div>
+          <h3>Maryland Homeowners Association Act</h3>
+          <p>Maryland&rsquo;s primary statute governing HOAs. Sets minimum standards for open meetings, document access, election procedures, fining rights, and assessment collection. Every Maryland board should keep a current copy in the document library.</p>
+          <div class="tw-geo-law-foot">We track this on your behalf</div>
+        </div>
+        <!-- Law card 2 -->
+        <div class="tw-geo-law-card gold">
+          <div class="tw-geo-law-meta">Md. Code &middot; Real Property &sect; 11</div>
+          <h3>Maryland Condominium Act</h3>
+          <p>The condo equivalent of 11B. Covers master-policy insurance requirements, unit-owner rights, council elections, and the reserve-study mandate. Maryland is one of the stricter states on condo reserves &mdash; we keep your funding ratio current.</p>
+          <div class="tw-geo-law-foot">Critical for high-rise condos</div>
+        </div>
+        <!-- Law card 3 -->
+        <div class="tw-geo-law-card sage">
+          <div class="tw-geo-law-meta">CAI Chesapeake Chapter &middot; since 1990</div>
+          <h3>Community Associations Institute</h3>
+          <p>Tidewater is an active member of CAI&rsquo;s Chesapeake Chapter, the regional body for Maryland community-association professionals. Our managers attend chapter education, legislative briefings, and the annual conference. PCAM-credentialed staff.</p>
+          <div class="tw-geo-law-foot">Tidewater is an AAMC member</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community types -->
+  <section class="tw-geo-section cream">
+    <div class="tw-container-wide">
+      <div class="tw-section-head" style="text-align:center;max-width:760px;margin:0 auto">
+        <div class="tw-eyebrow">Community Types</div>
+        <h2 class="tw-section-title">Every Maryland community type, <em>with conviction.</em></h2>
+        <p class="tw-section-lede">Maryland&rsquo;s HOA landscape is wider than most states &mdash; from Annapolis waterfront condos to Howard County master plans to Eastern Shore second-home associations. We work with all of them.</p>
+      </div>
+      <div class="tw-geo-types">
+        <!-- Townhome HOAs -->
+        <div class="tw-geo-type">
+          <div class="tw-geo-type-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 11l9-8 9 8"/>
+              <path d="M5 10v10h14V10"/>
+              <path d="M10 20v-6h4v6"/>
+            </svg>
+          </div>
+          <h4>Townhome HOAs</h4>
+          <p>Cluster homes with shared exterior maintenance, common areas, and architectural standards. Howard, Anne Arundel, and PG concentration.</p>
+          <div class="tw-geo-type-count">120+ MD communities</div>
+        </div>
+        <!-- Single-family HOAs -->
+        <div class="tw-geo-type">
+          <div class="tw-geo-type-icon gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l5-5 5 5"/>
+              <path d="M5 9v10h6V9"/>
+              <path d="M11 13l5-5 5 5"/>
+              <path d="M13 13v6h6v-6"/>
+            </svg>
+          </div>
+          <h4>Single-family HOAs</h4>
+          <p>Detached homes with shared amenities &mdash; pool, clubhouse, landscaping, private streets. Strong reserve-study work.</p>
+          <div class="tw-geo-type-count">90+ MD communities</div>
+        </div>
+        <!-- Mid-rise condos -->
+        <div class="tw-geo-type">
+          <div class="tw-geo-type-icon sage">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="3" width="16" height="18" rx="1"/>
+              <line x1="9" y1="9" x2="9.01" y2="9"/>
+              <line x1="15" y1="9" x2="15.01" y2="9"/>
+              <line x1="9" y1="13" x2="9.01" y2="13"/>
+              <line x1="15" y1="13" x2="15.01" y2="13"/>
+              <line x1="9" y1="17" x2="15" y2="17"/>
+            </svg>
+          </div>
+          <h4>Mid-rise condos</h4>
+          <p>Mid-Atlantic condo towers in Baltimore, Bethesda, Annapolis, Frederick. Master-policy, elevator, mechanical systems.</p>
+          <div class="tw-geo-type-count">60+ MD buildings</div>
+        </div>
+        <!-- Master-planned communities -->
+        <div class="tw-geo-type">
+          <div class="tw-geo-type-icon clay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 11h3v9h14v-9h3z"/>
+              <circle cx="12" cy="14" r="2"/>
+            </svg>
+          </div>
+          <h4>Master-planned communities</h4>
+          <p>Layered HOAs with village sub-associations. Columbia, Bowie, Urbana &mdash; complex covenant + sub-association work.</p>
+          <div class="tw-geo-type-count">30+ MD developments</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAI Chesapeake band -->
+  <section class="tw-section-tight" style="background:var(--tw-dark);color:var(--tw-cream);padding:56px 0">
+    <div class="tw-container-wide">
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center">
+        <div>
+          <div class="tw-eyebrow tw-eyebrow-gold">CAI Chesapeake</div>
+          <h2 style="font-family:var(--tw-font-heading);font-weight:800;font-size:clamp(28px, 2.8vw, 36px);line-height:1.15;letter-spacing:-0.015em;color:var(--tw-cream);margin:10px 0 18px;text-wrap:balance">
+            The Maryland community-association industry, <em style="font-style:italic;font-weight:300;color:var(--tw-gold)">by Maryland professionals.</em>
+          </h2>
+          <p style="font-family:var(--tw-font-body);font-size:16px;line-height:1.65;color:rgba(254,252,248,0.78);margin:0 0 18px;max-width:560px">
+            Tidewater has been an active member of CAI&rsquo;s Chesapeake Chapter for over 30 years &mdash; the regional body for community-association management across Maryland, DC, and parts of Virginia. Our managers sit on chapter committees, attend monthly education, and have testified at the Annapolis legislative session on HOA reform.
+          </p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+            <li style="font-family:var(--tw-font-body);font-size:14.5px;color:rgba(254,252,248,0.78);display:grid;grid-template-columns:22px 1fr;gap:10px">
+              <span style="color:var(--tw-gold);margin-top:2px">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span><strong style="color:var(--tw-cream);font-weight:600">AAMC accredited</strong> &mdash; fewer than 1% of management firms hold this designation</span>
+            </li>
+            <li style="font-family:var(--tw-font-body);font-size:14.5px;color:rgba(254,252,248,0.78);display:grid;grid-template-columns:22px 1fr;gap:10px">
+              <span style="color:var(--tw-gold);margin-top:2px">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span>Multiple <strong style="color:var(--tw-cream);font-weight:600">PCAM-credentialed managers</strong> on staff (Professional Community Association Manager &mdash; CAI&rsquo;s top credential)</span>
+            </li>
+            <li style="font-family:var(--tw-font-body);font-size:14.5px;color:rgba(254,252,248,0.78);display:grid;grid-template-columns:22px 1fr;gap:10px">
+              <span style="color:var(--tw-gold);margin-top:2px">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span>Active <strong style="color:var(--tw-cream);font-weight:600">CAI Chesapeake Chapter membership</strong> since 1990</span>
+            </li>
+          </ul>
+        </div>
+        <aside style="background:rgba(254,252,248,0.04);border:1px solid rgba(254,252,248,0.12);border-radius:14px;padding:32px;backdrop-filter:blur(8px)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 24px">
+            <div style="border-left:2px solid var(--tw-gold);padding-left:14px">
+              <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:24px;color:var(--tw-cream);letter-spacing:-0.01em;line-height:1">AAMC</div>
+              <div style="font-family:var(--tw-font-heading);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(254,252,248,0.65);margin-top:6px;line-height:1.4">Industry top accreditation</div>
+            </div>
+            <div style="border-left:2px solid var(--tw-gold);padding-left:14px">
+              <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:24px;color:var(--tw-cream);letter-spacing:-0.01em;line-height:1">CAI</div>
+              <div style="font-family:var(--tw-font-heading);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(254,252,248,0.65);margin-top:6px;line-height:1.4">Chesapeake Chapter member</div>
+            </div>
+            <div style="border-left:2px solid var(--tw-gold);padding-left:14px">
+              <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:24px;color:var(--tw-cream);letter-spacing:-0.01em;line-height:1">PCAM</div>
+              <div style="font-family:var(--tw-font-heading);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(254,252,248,0.65);margin-top:6px;line-height:1.4">Credentialed managers on staff</div>
+            </div>
+            <div style="border-left:2px solid var(--tw-gold);padding-left:14px">
+              <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:24px;color:var(--tw-cream);letter-spacing:-0.01em;line-height:1">A+</div>
+              <div style="font-family:var(--tw-font-heading);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(254,252,248,0.65);margin-top:6px;line-height:1.4">BBB rating, no complaints</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+  <Footer />
+</BaseLayout>
