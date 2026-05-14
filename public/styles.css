@@ -497,7 +497,7 @@ img { max-width: 100%; display: block; }
 .tw-footer-areas-label { font-family: var(--tw-font-heading); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--tw-gold); display: block; }
 .tw-footer-areas-sub { font-family: var(--tw-font-body); font-size: 11px; color: rgba(255,255,255,.35); display: block; margin-top: 1px; }
 .tw-footer-areas-regions { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
-.tw-footer-area-pill { display: flex; flex-direction: column; gap: 1px; padding: 6px 12px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); border-radius: 6px; transition: border-color .15s ease; }
+.tw-footer-area-pill { display: flex; flex-direction: column; gap: 1px; padding: 6px 12px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); border-radius: 6px; transition: border-color .15s ease; text-decoration: none; }
 .tw-footer-area-pill:hover { border-color: rgba(191,172,95,.35); }
 .tw-footer-area-name { font-family: var(--tw-font-heading); font-weight: 700; font-size: 12px; color: rgba(255,255,255,.75); line-height: 1.2; }
 .tw-footer-area-sub { font-family: var(--tw-font-body); font-size: 10.5px; color: rgba(255,255,255,.35); line-height: 1.3; }
