@@ -3,11 +3,146 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Tidewater Companies — HOA Management for the Mid-Atlantic</title>
-<meta name="description" content="Family-owned HOA, condo, and co-op management for Maryland, DC, Virginia, Pennsylvania, Delaware, and West Virginia since 1989. AAMC® accredited."/>
+<title>Tidewater Companies — HOA Management for Single-Family & Townhome Communities</title>
+<meta name="description" content="Single-family and townhome HOA management across Maryland, DC, Virginia, Pennsylvania, Delaware, and West Virginia. Family-owned since 1989. AAMC® accredited."/>
 <link rel="stylesheet" href="styles.css"/>
 <script>
-window.PAGE_CONFIG = { nav: { active: 'hoa' } };
+window.PAGE_CONFIG = {
+  nav: { active: 'hoa' },
+  hero: {
+    eyebrow: 'For Single-Family & Townhome HOA Boards',
+    titleHtml: 'HOA Management Built for the <em>Way Neighborhoods Actually Run.</em>',
+    lede: 'Covenants, amenities, common-area landscaping, ARC requests, and volunteer turnover — single-family and townhome HOAs have their own rhythm. We know it. Family-owned in the Mid-Atlantic since 1989.',
+    image: 'assets/hero-aerial.jpg',
+    imageAlt: 'Aerial view of a Mid-Atlantic single-family neighborhood managed by Tidewater',
+    scrollLabel: 'Why HOA boards switch',
+    defaults: { heroWidget: 'activity' },
+    activity: {
+      title: 'What HOA management looks like, right now',
+      sub: 'Live across the single-family and townhome communities in our portfolio — the daily details that keep neighborhoods running and boards out of crisis mode.',
+      footNum: '1,800+',
+      footText: 'HOA work items resolved across the portfolio this week',
+      events: [
+        { time: '9:14am', region: 'Howard Co, MD', cls: 'teal', label: 'QA review', text: 'Manager flagged drainage erosion at clubhouse — work order issued before board notice.' },
+        { time: '8:42am', region: 'Anne Arundel, MD', cls: 'gold', label: 'After-hours call', text: 'Downed tree on common area answered in 9 min by on-call CAM. Crew dispatched at first light.' },
+        { time: 'Yesterday', region: 'Sussex, DE', cls: 'sage', label: 'Vendor compliance', text: 'Landscape contractor COI renewed 4 days before expiry. Auto-tracked in CINC.' },
+        { time: 'Yesterday', region: 'Frederick, MD', cls: 'teal', label: 'ARC decision', text: 'Fence modification approved within 48 hrs of complete submission — owner notified via Tidewater PM app.' },
+        { time: '2 days ago', region: 'Loudoun, VA', cls: 'clay', label: 'Pool opening', text: 'Seasonal pool inspection passed. Lifeguard contracts and chemical logs filed with QA.' },
+        { time: '2 days ago', region: 'Bel Air, MD', cls: 'gold', label: 'Reserve update', text: 'Tot-lot replacement and asphalt overlay funded in updated 10-year plan; delivered to board.' }
+      ]
+    },
+    fitcheck: {}
+  },
+  pains: {
+    eyebrow: 'Why HOA Boards Switch to Tidewater',
+    titleHtml: 'The headaches that <em>shouldn\u2019t</em> come with HOA management.',
+    lede: 'Volunteer board members already have day jobs. We resolve the six issues that drive most HOA management changes in single-family and townhome communities — and back each one with an operational standard.',
+    items: [
+      { n: '01', pain: 'Volunteer Burnout',
+        head: 'A manager who runs the day-to-day so the board doesn\u2019t.',
+        body: 'You make the decisions. We handle vendor calls, owner inquiries, ARC processing, and covenant enforcement. <strong>Most of our boards reclaim 5\u201310 hours a month</strong> after switching to Tidewater.' },
+      { n: '02', pain: 'Slow Response',
+        head: 'Next-business-day response. Real managers on call.',
+        body: 'Our after-hours line is answered by Tidewater community managers — not an answering service. <strong>20-minute callback standard</strong>, with all emergency information loaded in CINC.' },
+      { n: '03', pain: 'Covenant Enforcement',
+        head: 'Fair, consistent, documented enforcement.',
+        body: 'Covenant violations and ARC requests are tracked in real time on the board portal. <strong>Same standard, every owner</strong> — backed by photo documentation and template-driven correspondence.' },
+      { n: '04', pain: 'Common-Area Costs',
+        head: 'Landscaping, amenities, and capital projects, on a plan.',
+        body: 'Pool openings, asphalt overlays, tot-lot replacements, mulch cycles — captured in the annual management plan and funded against your reserve study. <strong>No surprise assessments.</strong>' },
+      { n: '05', pain: 'Loss of Control',
+        head: 'You retain authority. We run the day-to-day.',
+        body: 'Boards can opt into secondary invoice approval via StrongRoom. Real-time visibility into violations, ARC requests, and action items. Your decisions, our execution.' },
+      { n: '06', pain: 'Transition Anxiety',
+        head: 'Switching is smoother than you expect.',
+        body: 'Dedicated transition team. Structured timeline document. Bank account openings, homeowner letters, and balance verification handled — with formal sign-off when complete.' }
+    ]
+  },
+  handson: {
+    eyebrow: 'How Hands-On Actually Works',
+    titleHtml: 'Proactive isn\u2019t a slogan.<br/>It\u2019s the way HOA management should run.',
+    lede: 'Four operational systems that give your neighborhood the resources of a large company \u2014 and the personal attention of a small one.',
+    items: [
+      { icon: 'eye', cls:'', title: 'Property walks, not drive-bys.', body: 'Community managers walk your neighborhood on a documented cadence \u2014 not just driving past. Photos, notes, and follow-ups go straight into CINC, visible to the board the same day.', meta: 'Community Manager · Documented walks' },
+      { icon: 'calendar', cls:'tw-handson-icon-gold', title: 'Annual management plans, scheduled in CINC.', body: 'Pool openings, mulch cycles, asphalt seal coats, ARC review windows, and budget milestones \u2014 mapped at the start of each year. Action items auto-trigger 15 days before deadlines.', meta: 'CINC Systems · Tidewater PM portal' },
+      { icon: 'phone', cls:'tw-handson-icon-clay', title: 'After-hours, you reach a manager.', body: 'Our 24/7 emergency line rotates through actual Tidewater community managers \u2014 not a third-party answering service. Each on-call manager has emergency information for every community pre-loaded in CINC.', meta: '20-minute callback standard' },
+      { icon: 'handshake', cls:'tw-handson-icon-sage', title: 'Vendor compliance, in-house. No third-party fees.', body: 'Most regional competitors use platforms that charge boards or vendors \u2014 costs that flow back to your community. We vet vendors through our own CINC-integrated app at no charge to either side.', meta: 'Proprietary compliance app' }
+    ]
+  },
+  tiers: {
+    eyebrow: 'Three Tiers. One Standard of Care.',
+    titleHtml: 'A fit for <em>every HOA.</em>',
+    lede: 'From 40-home pocket neighborhoods to 2,000-home master-planned communities. Three service models so the size of your HOA, your budget, and your board\u2019s appetite for involvement all stay yours to decide.',
+    featuredBestFor: 'Single-family & townhome HOAs',
+    featuredTagline: 'Comprehensive management — community walks, covenants, amenities, and finances handled.',
+    featuredFeatures: [
+      'Dedicated community manager &amp; documented neighborhood walks',
+      'Board meeting support, attendance &amp; recording',
+      'ARC request processing &amp; covenant enforcement',
+      'Common-area landscaping, amenity &amp; capital project oversight',
+      'Annual management plan via CINC Systems',
+      'In-house vendor compliance &mdash; no third-party fees',
+      '24/7 emergency line &mdash; real managers, 20-min callback'
+    ],
+    flexBestFor: 'Mature, self-directed HOA boards',
+    flexTagline: 'Lower base fee for HOAs that don\u2019t need standing on-site presence.',
+    flexFeatures: [
+      { text: 'Reduced base HOA management fee' },
+      { text: 'Hourly rate for board meeting attendance' },
+      { text: 'Property walks &amp; ARC review on-demand' },
+      { text: 'Full financial controls &amp; collections' },
+      { text: 'Owner portal &amp; CINC management plan' },
+      { text: '24/7 emergency coverage' },
+      { text: 'Standing on-site presence', muted: true }
+    ],
+    financialBestFor: 'Self-managed HOAs',
+    financialTagline: 'Accounting depth for HOA boards that handle their own day-to-day.',
+    financialFeatures: [
+      { text: 'Full AR / AP processing &amp; assessment billing' },
+      { text: 'Bank reconciliations &amp; account management' },
+      { text: 'HOA budget assistance &amp; reserve transfers' },
+      { text: 'Collections coordination &amp; attorney handoff' },
+      { text: 'Tax return coordination' },
+      { text: 'Property walks &amp; covenant enforcement', muted: true },
+      { text: 'Board meeting attendance', muted: true }
+    ],
+    footHtml: 'All tiers include the Tidewater PM owner portal, the Stanley AI assistant, and our in-house client services team. <a href="#">See full HOA feature comparison →</a>'
+  },
+  portal: {
+    eyebrow: 'Built On CINC Systems',
+    titleHtml: 'A board portal you&rsquo;ll actually use. <em class="gold">An AI assistant named after our founder.</em>',
+    lede: 'HOA boards see the full operational picture in real time \u2014 covenant violations, ARC requests, delinquencies, common-area work orders, and management plan progress. Owners get 24/7 access on every device.',
+    features: [
+      'Real-time covenant violation &amp; compliance monitoring',
+      'Live ARC request tracking &amp; resident communications',
+      'Annual management plan status &amp; action items',
+      'Optional StrongRoom invoice approval for boards'
+    ],
+    stanleyText: 'Spring mulch refresh is scheduled in 9 days across the front entrance and clubhouse. I\u2019ve drafted owner notice \u2014 review?',
+    ctaLabel: 'Tour the HOA board portal \u2192',
+    mock: {
+      url: 'tidewater.cincwebaxis.com / hoa-board',
+      greeting: 'Good morning, Marcia.',
+      sub: 'Wynbrook HOA \u00b7 Board Treasurer \u00b7 220 homes',
+      nav: ['Dashboard','Financials','Covenant Violations','ARC Requests','Mgmt Plan','Documents','Resources'],
+      cards: [
+        { label: 'Operating Acct', num: '$184,420', trend: '\u25b2 on budget' },
+        { label: 'Reserve', num: '$612,910', trend: '98% funded', cls:'teal' },
+        { label: 'Delinquent', num: '3 owners', trend: '2 in attorney review', trendClay: true },
+        { label: 'Open ARC', num: '5', trend: '3 awaiting board' }
+      ]
+    }
+  },
+  testimonials: {
+    eyebrow: 'Voices From Our HOA Boards',
+    titleHtml: 'The way we work \u2014 <em class="gold">in your neighborhood, every day.</em>',
+    items: [
+      { quote: 'Our manager walks the neighborhood every two weeks and writes it up the same day. We catch the small stuff before it turns into a special assessment conversation.', name: 'Board President', initials: 'MS', meta: 'Towson HOA \u00b7 220 homes' },
+      { quote: 'ARC requests used to be the most contentious thing on every agenda. Now they\u2019re processed against documented standards \u2014 with photos, dates, and the same answer for every owner.', name: 'ARC Chair', initials: 'JK', meta: 'Howard County HOA \u00b7 410 homes' },
+      { quote: 'After three management companies in five years, we have stability. Our manager has been with us for six years. Our covenant enforcement is finally consistent.', name: 'Board Director', initials: 'AB', meta: 'Anne Arundel HOA \u00b7 165 homes' }
+    ]
+  }
+};
 </script>
 </head>
 <body>
@@ -30,7 +165,7 @@ window.PAGE_CONFIG = { nav: { active: 'hoa' } };
 <script type="text/babel">
 function App() {
   return (
-    <div data-screen-label="HOA Homepage">
+    <div data-screen-label="HOA Management">
       <Topbar/>
       <Header/>
       <Hero/>
