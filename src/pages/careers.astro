@@ -8,6 +8,7 @@ import WhyWorkHere from '../components/WhyWorkHere.astro';
 import JobsList from '../components/JobsList.jsx';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 ---
 <AboutLayout
   title="Careers — Tidewater Companies"
@@ -15,6 +16,7 @@ import Footer from '../components/Footer.astro';
 >
   <Topbar variant="default" />
   <Header activeNav="about" />
+  <Breadcrumb crumbs={[{ label: "About", href: "/about/" }, { label: "Careers" }]} />
   <CareersHero />
   <NumbersStrip />
   <WhyWorkHere />

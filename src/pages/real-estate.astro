@@ -11,6 +11,7 @@ import Mission from '../components/Mission.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 ---
 <BaseLayout
   title="Tidewater Realty Group — Your Guide in Buying & Selling Investment Property"
@@ -20,6 +21,7 @@ import Footer from '../components/Footer.astro';
 >
   <Topbar variant="homeowner" />
   <Header activeNav="realty" />
+  <Breadcrumb crumbs={[{ label: "Real Estate" }]} />
   <RealtyHero />
   <TrustBar />
   <RealtyLifecycle />

@@ -8,6 +8,7 @@ import ResourcesLibrary from '../components/ResourcesLibrary.astro';
 import ResourcesSeasonal from '../components/ResourcesSeasonal.astro';
 import ResourcesNewsletter from '../components/ResourcesNewsletter.astro';
 import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 ---
 <BaseLayout
   title="Tidewater Resources — Board Playbooks, Landlord Guides & Maryland Rental Rules"
@@ -17,6 +18,7 @@ import Footer from '../components/Footer.astro';
 >
   <Topbar variant="homeowner" />
   <Header activeNav="resources" />
+  <Breadcrumb crumbs={[{ label: "Resources" }]} />
   <ResourcesHero />
   <ResourcesFeatured />
   <ResourcesLibrary />

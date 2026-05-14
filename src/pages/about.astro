@@ -12,6 +12,7 @@ import CredentialsWall from '../components/CredentialsWall.astro';
 import Leadership from '../components/Leadership.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 ---
 <AboutLayout
   title="About Tidewater — Family-Owned in the Mid-Atlantic Since 1989"
@@ -19,6 +20,7 @@ import Footer from '../components/Footer.astro';
 >
   <Topbar variant="default" />
   <Header activeNav="about" />
+  <Breadcrumb crumbs={[{ label: "About" }]} />
   <AboutHero
     eyebrow="About Tidewater"
     titleHtml="Family-owned in the Mid-Atlantic <em>since 1989.</em>"

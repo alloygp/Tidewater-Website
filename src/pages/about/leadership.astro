@@ -8,6 +8,7 @@ import LeadershipFull from '../../components/LeadershipFull.astro';
 import CredentialsWall from '../../components/CredentialsWall.astro';
 import CTA from '../../components/CTA.astro';
 import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 ---
 <AboutLayout
   title="Leadership — Tidewater Companies"
@@ -15,6 +16,7 @@ import Footer from '../../components/Footer.astro';
 >
   <Topbar variant="default" />
   <Header activeNav="about" />
+  <Breadcrumb crumbs={[{ label: "About", href: "/about/" }, { label: "Leadership" }]} />
   <AboutHero
     eyebrow="Leadership at Tidewater"
     titleHtml="The team boards <em>actually meet.</em>"
