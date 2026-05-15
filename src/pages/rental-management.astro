@@ -35,6 +35,12 @@ const schemas = [
   <Breadcrumb crumbs={[{ label: "Management", href: "/hoa-management/" }, { label: "Rental Management" }]} />
   <RentalHero />
   <TrustBar />
+
+  <!-- TODO #27: ADD PROPERTY TRUST SIGNALS HERE
+       Suggested content: # of rental units managed, years managing rental properties,
+       licensed broker credentials, avg days to lease, occupancy rate, tenant screening stats,
+       or owner-specific testimonials. Replace with a dedicated RentalTrustSignals component. -->
+
   <RentalPains />
   <RentalFee />
   <RentalCounty client:visible />

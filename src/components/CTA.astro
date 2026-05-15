@@ -1,15 +1,20 @@
 ---
+const {
+  eyebrow = 'Request a Proposal',
+  title = "Let’s talk about your community.",
+  body = 'Tell us a little about your association and a manager from your region will be in touch within one business day.',
+} = Astro.props;
 ---
 <section class="tw-cta" id="contact">
   <div class="tw-cta-inner">
     <div>
-      <div class="tw-eyebrow">Request a Proposal</div>
-      <h2 class="tw-cta-title">Let&rsquo;s talk about your community.</h2>
-      <p class="tw-cta-body">Tell us a little about your association and a manager from your region will be in touch within one business day.</p>
+      <div class="tw-eyebrow">{eyebrow}</div>
+      <h2 class="tw-cta-title">{title}</h2>
+      <p class="tw-cta-body">{body}</p>
       <ul class="tw-cta-points">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>One-business-day response from a regional manager</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free, no-obligation proposal &amp; transition timeline</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Apples-to-apples comparison vs. your current company</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Transparent pricing breakdown with no setup or exit fees</li>
       </ul>
     </div>
     <form class="tw-cta-form" id="proposal-form">
