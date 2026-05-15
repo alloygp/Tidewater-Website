@@ -4,6 +4,7 @@ import Header from '../../../components/Header.astro';
 import Topbar from '../../../components/Topbar.astro';
 import Footer from '../../../components/Footer.astro';
 import CTA from '../../../components/CTA.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
 import { serviceSchema, breadcrumbSchema } from '../../../lib/schema';
 import { SITE } from '../../../config/site';
 
@@ -28,6 +29,10 @@ const schemas = [
 >
   <Topbar variant="default" />
   <Header activeNav="mgmt" />
+  <Breadcrumb crumbs={[
+    { label: 'HOA Management', href: '/hoa-management' },
+    { label: 'Maryland' },
+  ]} />
 
   <!-- Hero -->
   <section class="tw-geo-hero">
@@ -35,13 +40,6 @@ const schemas = [
     <div class="tw-geo-hero-paper"></div>
     <div class="tw-geo-hero-grid">
       <div class="tw-geo-hero-copy">
-        <div class="tw-geo-hero-crumb">
-          <a href="/">Home</a>
-          <span class="sep">›</span>
-          <a href="/hoa-management">HOA Management</a>
-          <span class="sep">›</span>
-          <span class="cur">Maryland</span>
-        </div>
         <h1 class="tw-geo-hero-title">
           HOA management <em>across Maryland</em> &mdash; from the Bay to the Blue Ridge.
         </h1>

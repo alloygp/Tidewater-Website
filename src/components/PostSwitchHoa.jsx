@@ -441,16 +441,20 @@ export default function PostSwitchHoa() {
       date: 'April 30, 2026', readTime: 7, href: '/solutions/switching-hoa-management-company',
     },
     {
-      tone: 'finance', category: 'HOA Finance',
-      title: 'Reserve studies, decoded: how often should your HOA update yours?',
-      dek: 'A board’s guide to reserve study cadence — when to refresh, what triggers an off-cycle study, and how to read the funding ratio.',
-      date: 'May 14, 2026', readTime: 7, href: '/resources',
+      tone: ‘’, category: ‘HOA Management’,
+      title: ‘What is a community association manager? Roles, responsibilities, and what your board should expect.’,
+      dek: ‘A community association manager (CAM) is the professional hired by an HOA or condo board to handle day-to-day operations. This guide covers what a CAM does, how the role works with the board, and what credentials matter.’,
+      date: ‘May 15, 2026’, readTime: 9, href: ‘/blog/what-is-a-community-association-manager’,
+      coverImage: ‘/assets/what-is-a-community-association-manager.png’,
+      coverAlt: ‘Community association manager meeting with HOA board members’,
     },
     {
-      tone: 'law', category: 'Maryland HOA Law',
-      title: 'Open meetings, executive sessions, and what Maryland actually requires.',
-      dek: 'Maryland’s HOA & condo open-meeting statute, the executive-session carveouts, and the documentation boards owe their residents.',
-      date: 'March 31, 2026', readTime: 8, href: '/resources',
+      tone: ‘’, category: ‘Board Governance’,
+      title: ‘What is a quorum? Definition, requirements, and why it matters for your board.’,
+      dek: ‘A quorum is the minimum number of members who must be present for a meeting\’s decisions to be legally valid. This guide covers how quorum works for HOA meetings and what happens when quorum isn\’t met.’,
+      date: ‘May 14, 2026’, readTime: 8, href: ‘/blog/what-is-quorum-and-why-is-it-important’,
+      coverImage: ‘/assets/quorum-community-manager.jpg’,
+      coverAlt: ‘Community association manager at an HOA meeting’,
     },
   ];
 

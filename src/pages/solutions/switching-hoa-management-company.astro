@@ -5,6 +5,7 @@ import Topbar from '../../components/Topbar.astro';
 import CTA from '../../components/CTA.astro';
 import Footer from '../../components/Footer.astro';
 import FaqAccordion from '../../components/FaqAccordion.jsx';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 
 const warningSigns = [
   'Your manager hasn’t attended a board meeting in the last 6 months',
@@ -59,19 +60,16 @@ const faqItems = [
   </style>
   <Topbar variant="default" />
   <Header activeNav="mgmt" />
+  <Breadcrumb crumbs={[
+    { label: 'Solutions' },
+    { label: 'Switching HOA Management' },
+  ]} />
 
   <!-- Hero -->
   <section class="tw-sol-hero">
     <div class="tw-sol-hero-paper"></div>
     <div class="tw-sol-hero-grid">
       <div class="tw-sol-hero-copy">
-        <nav class="tw-sol-hero-crumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span class="sep">/</span>
-          <span>Solutions</span>
-          <span class="sep">/</span>
-          <span class="cur">Switching HOA Management</span>
-        </nav>
         <h1 class="tw-sol-hero-title">
           Switching management companies, <em>done right.</em>
         </h1>

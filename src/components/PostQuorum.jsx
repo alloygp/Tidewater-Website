@@ -436,16 +436,20 @@ export default function PostQuorum() {
       coverImage: '/assets/how-to-switch-hoa-management-companies.png', coverAlt: 'HOA board members reviewing management company transition documents',
     },
     {
-      tone: 'finance', category: 'HOA Finance',
-      title: 'Reserve studies, decoded: how often should your HOA update yours?',
-      dek: "A board's guide to reserve study cadence — when to refresh, what triggers an off-cycle study, and how to read the funding ratio.",
-      date: 'May 14, 2026', readTime: 7, href: '#',
+      tone: '', category: 'HOA Management',
+      title: 'What is a community association manager? Roles, responsibilities, and what your board should expect.',
+      dek: 'A community association manager (CAM) is the professional hired by an HOA or condo board to handle day-to-day operations. This guide covers what a CAM does, how the role works with the board, and what credentials matter.',
+      date: 'May 15, 2026', readTime: 9, href: '/blog/what-is-a-community-association-manager',
+      coverImage: '/assets/what-is-a-community-association-manager.png',
+      coverAlt: 'Community association manager meeting with HOA board members',
     },
     {
-      tone: 'law', category: 'Maryland HOA Law',
-      title: 'Open meetings, executive sessions, and what Maryland actually requires.',
-      dek: "Maryland's HOA & condo open-meeting statute, the executive-session carveouts, and the documentation boards owe their residents.",
-      date: 'March 31, 2026', readTime: 8, href: '#',
+      tone: '', category: 'Solutions',
+      title: 'From self-managed to professional: what actually changes.',
+      dek: 'The board still decides; the admin moves to us. A clear-eyed framework for self-managed boards considering professional management.',
+      date: 'March 18, 2026', readTime: 6, href: '/solutions/self-managed-hoa-transition',
+      coverImage: '/assets/tidewater-self-managed-hoa-board-members-frustrated.png',
+      coverAlt: 'Self-managed HOA board members reviewing financial documents at a community meeting',
     },
   ];
 

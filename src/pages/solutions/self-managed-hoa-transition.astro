@@ -5,6 +5,7 @@ import Topbar from '../../components/Topbar.astro';
 import CTA from '../../components/CTA.astro';
 import Footer from '../../components/Footer.astro';
 import FaqAccordion from '../../components/FaqAccordion.jsx';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 
 const faqItems = [
   { q: 'Will we lose control of our community?', a: 'No. The board retains <strong>all governance authority</strong> — budget, vendor selection, covenant policy, ARC, reserve funding, communications tone. We handle execution, not governance. If a manager ever recommends something the board disagrees with, the board\'s decision is final.' },
@@ -25,19 +26,16 @@ const checkIcon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" s
   </style>
   <Topbar variant="default" />
   <Header activeNav="mgmt" />
+  <Breadcrumb crumbs={[
+    { label: 'Solutions' },
+    { label: 'Self-Managed Transition' },
+  ]} />
 
   <!-- Hero -->
   <section class="tw-sol-hero">
     <div class="tw-sol-hero-paper"></div>
     <div class="tw-sol-hero-grid">
       <div class="tw-sol-hero-copy">
-        <nav class="tw-sol-hero-crumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span class="sep">/</span>
-          <span>Solutions</span>
-          <span class="sep">/</span>
-          <span class="cur">Self-Managed Transition</span>
-        </nav>
         <h1 class="tw-sol-hero-title">
           You&rsquo;re not failing &mdash; <em>you&rsquo;re scaling.</em>
         </h1>

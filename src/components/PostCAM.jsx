@@ -479,6 +479,8 @@ export default function PostCAM() {
       dek: 'The board still decides; the admin moves to us. A clear-eyed framework for self-managed boards considering professional management.',
       date: 'March 18, 2026', readTime: 6,
       href: '/solutions/self-managed-hoa-transition',
+      coverImage: '/assets/tidewater-self-managed-hoa-board-members-frustrated.png',
+      coverAlt: 'Self-managed HOA board members reviewing financial documents at a community meeting',
     },
   ];
 

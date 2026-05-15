@@ -5,6 +5,7 @@ import Topbar from '../components/Topbar.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import TestimonialsGrid from '../components/TestimonialsGrid.jsx';
+import Breadcrumb from '../components/Breadcrumb.astro';
 ---
 <BaseLayout title="HOA Board Reviews & Testimonials | Tidewater" description="What HOA and condo association boards across Maryland and the Mid-Atlantic say about working with Tidewater — reviews from boards we manage today.">
   <style is:global>
@@ -12,17 +13,15 @@ import TestimonialsGrid from '../components/TestimonialsGrid.jsx';
   </style>
   <Topbar variant="default" />
   <Header />
+  <Breadcrumb crumbs={[
+    { label: 'Testimonials' },
+  ]} />
 
   <!-- Testimonials Hero -->
   <section class="tw-sol-hero">
     <div class="tw-sol-hero-paper"></div>
     <div class="tw-sol-hero-grid">
       <div class="tw-sol-hero-copy">
-        <nav class="tw-sol-hero-crumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span class="sep">/</span>
-          <span class="cur">Testimonials</span>
-        </nav>
         <h1 class="tw-sol-hero-title">
           The boards who know us, <em>on the record.</em>
         </h1>

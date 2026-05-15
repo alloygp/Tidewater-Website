@@ -5,6 +5,7 @@ import Topbar from '../../../components/Topbar.astro';
 import Footer from '../../../components/Footer.astro';
 import CTA from '../../../components/CTA.astro';
 import FaqAccordion from '../../../components/FaqAccordion.jsx';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
 import { serviceSchema, breadcrumbSchema, faqSchema } from '../../../lib/schema';
 import { SITE } from '../../../config/site';
 
@@ -43,6 +44,11 @@ const schemas = [
   </style>
   <Topbar variant="default" />
   <Header activeNav="mgmt" />
+  <Breadcrumb crumbs={[
+    { label: 'HOA Management', href: '/hoa-management' },
+    { label: 'Maryland', href: '/hoa-management/maryland' },
+    { label: 'Anne Arundel County' },
+  ]} />
 
   <!-- Hero -->
   <section class="tw-geo-hero">
@@ -50,15 +56,6 @@ const schemas = [
     <div class="tw-geo-hero-paper"></div>
     <div class="tw-geo-hero-grid">
       <div class="tw-geo-hero-copy">
-        <div class="tw-geo-hero-crumb">
-          <a href="/">Home</a>
-          <span class="sep">›</span>
-          <a href="/hoa-management">HOA Management</a>
-          <span class="sep">›</span>
-          <a href="/hoa-management/maryland">Maryland</a>
-          <span class="sep">›</span>
-          <span class="cur">Anne Arundel County</span>
-        </div>
         <h1 class="tw-geo-hero-title">
           HOA management in <em>Anne Arundel County.</em>
         </h1>
