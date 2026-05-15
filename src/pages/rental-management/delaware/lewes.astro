@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Topbar from '../../../components/Topbar.astro';
+import Header from '../../../components/Header.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Footer from '../../../components/Footer.astro';
+import CTA from '../../../components/CTA.astro';
+import RentalGeo, { GEO_DATA_LEWES as geo } from '../../../components/RentalGeo.jsx';
+import { breadcrumbSchema, serviceSchema } from '../../../lib/schema';
+import { SITE } from '../../../config/site';
+
+const pageUrl = `${SITE.url}/rental-management/delaware/lewes`;
+
+const schemas = [
+  serviceSchema({
+    name: 'Rental Property Management — Lewes, Delaware',
+    description: geo.schemaDesc,
+    url: pageUrl,
+    areaServed: 'Lewes, Delaware',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Rental Management', url: SITE.url + '/rental-management' },
+    { name: 'Delaware', url: SITE.url + '/rental-management/delaware' },
+    { name: 'Lewes', url: pageUrl },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Lewes DE Rental Property Management | Tidewater"
+  description="Rental property management in Lewes, Delaware — Old Town Lewes, Cape Henlopen, Henlopen Acres, Milton. Second-home and investor rentals in Sussex County's coastal market. Flat fee."
+  ogType="website"
+  pageSchema={schemas}
+  pageStylesheet="styles-geo.css"
+>
+  <Topbar />
+  <Header activeNav="rental" />
+  <Breadcrumb crumbs={[
+    { label: 'Rental Management', href: '/rental-management' },
+    { label: 'Delaware', href: '/rental-management/delaware' },
+    { label: 'Lewes' },
+  ]} />
+  <RentalGeo geo={geo} client:load />
+  <CTA />
+  <Footer />
+</BaseLayout>
