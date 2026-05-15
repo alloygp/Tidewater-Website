@@ -254,7 +254,7 @@ export const GEO_DATA_ANNE_ARUNDEL = {
   url: '/rental-management/maryland/anne-arundel-county',
   scope: 'county',
   heroTitle: 'Rental property management in <em>Anne Arundel County.</em>',
-  heroLede: 'For owners who don't live in Annapolis — deployed military, out-of-state investors, accidental landlords, and first-time owners. We've been managing single-family and small-multifamily rentals across Anne Arundel since 1996. Flat monthly fee. AppFolio-backed. Real property managers.',
+  heroLede: 'For owners who don\'t live in Annapolis — deployed military, out-of-state investors, accidental landlords, and first-time owners. We\'ve been managing single-family and small-multifamily rentals across Anne Arundel since 1996. Flat monthly fee. AppFolio-backed. Real property managers.',
   heroStats: [
     { num: '420+', label: 'Anne Arundel single-family &amp; small-multi rentals managed' },
     { num: '21 days', tone: 'gold', label: 'Avg. days-to-lease across the county' },
@@ -308,10 +308,10 @@ export const GEO_DATA_ANNE_ARUNDEL = {
   schemaDesc: 'Single-family and small-multifamily rental property management across Anne Arundel County, Maryland — Annapolis, Severna Park, Crofton, Pasadena, Glen Burnie, Odenton.',
   faqs: [
     {
-      q: 'I'm deployed — can you manage my Anne Arundel rental remotely?',
+      q: 'I\'m deployed — can you manage my Anne Arundel rental remotely?',
       a: [
         '<strong>Yes — this is one of our core specialties.</strong> Anne Arundel has the Naval Academy and a heavy active-duty footprint; roughly a third of our county portfolio is owned by deployed or out-of-state military personnel.',
-        'You'll get a single point of contact, signed owner agreements via DocuSign, monthly statements + photos delivered via AppFolio owner portal, and a 24/7 emergency line that lets you sleep at night. We can also act under power of attorney where needed.',
+        'You\'ll get a single point of contact, signed owner agreements via DocuSign, monthly statements + photos delivered via AppFolio owner portal, and a 24/7 emergency line that lets you sleep at night. We can also act under power of attorney where needed.',
       ],
     },
     {
@@ -319,16 +319,16 @@ export const GEO_DATA_ANNE_ARUNDEL = {
       a: 'Our Anne Arundel portfolio averages <strong>21 days from listing to lease signing</strong> for properly-priced single-family homes. Severna Park, Annapolis downtown, and Odenton (Fort Meade) typically lease in 14–18 days; waterfront and rural Davidsonville/Mayo can take longer.',
     },
     {
-      q: 'What's your management fee structure?',
-      a: '<strong>Flat 8.5% of monthly rent collected.</strong> No tenant-placement fee (most companies charge 50–100% of one month's rent). No maintenance markup. No annual renewal fees. Free rental market analysis before you sign anything.',
+      q: 'What\'s your management fee structure?',
+      a: '<strong>Flat 8.5% of monthly rent collected.</strong> No tenant-placement fee (most companies charge 50–100% of one month\'s rent). No maintenance markup. No annual renewal fees. Free rental market analysis before you sign anything.',
     },
     {
       q: 'Do you handle Anne Arundel-specific landlord requirements?',
-      a: 'Yes — including the Anne Arundel County rental property registration, lead-paint compliance for pre-1978 properties, Maryland security-deposit interest accrual, and the Annapolis short-term rental ordinance (we don't manage STRs, but we'll tell you what compliance looks like if you're considering it).',
+      a: 'Yes — including the Anne Arundel County rental property registration, lead-paint compliance for pre-1978 properties, Maryland security-deposit interest accrual, and the Annapolis short-term rental ordinance (we don\'t manage STRs, but we\'ll tell you what compliance looks like if you\'re considering it).',
     },
     {
       q: 'What kinds of properties do you manage?',
-      a: 'Single-family homes, townhomes, condos, and 2–4 unit buildings. We don't manage apartment complexes (5+ units), commercial property, or short-term rentals.',
+      a: 'Single-family homes, townhomes, condos, and 2–4 unit buildings. We don\'t manage apartment complexes (5+ units), commercial property, or short-term rentals.',
     },
     {
       q: 'How do you handle maintenance?',
@@ -398,19 +398,19 @@ export const GEO_DATA_SILVER_SPRING = {
     },
     {
       q: 'Do you handle condo association rules & rental caps?',
-      a: '<strong>Yes.</strong> Many Silver Spring condo buildings have rental caps (e.g. 25% of units), waiting lists for landlord status, and screening overlays the HOA itself runs. We track every association's rule book for the buildings we manage in and prep tenants accordingly.',
+      a: '<strong>Yes.</strong> Many Silver Spring condo buildings have rental caps (e.g. 25% of units), waiting lists for landlord status, and screening overlays the HOA itself runs. We track every association\'s rule book for the buildings we manage in and prep tenants accordingly.',
     },
     {
       q: 'How fast will my Silver Spring property lease?',
       a: 'Median 17 days listing-to-lease in our Silver Spring portfolio. Metro-corridor condos can lease in under 10 days. Single-family in Four Corners and Forest Glen averages 14–21 days.',
     },
     {
-      q: 'What's your management fee?',
+      q: 'What\'s your management fee?',
       a: '<strong>Flat 8.5% of monthly rent collected.</strong> No tenant-placement fee, no maintenance markup, no annual renewal fees. Free rental market analysis before you sign anything.',
     },
     {
       q: 'Do you serve Takoma Park and Wheaton too?',
-      a: 'For properties on the immediate Silver Spring border, yes — same manager, same coverage. For deeper Takoma Park or Wheaton, we recommend a brief intro call so we can confirm we're the right fit before we list.',
+      a: 'For properties on the immediate Silver Spring border, yes — same manager, same coverage. For deeper Takoma Park or Wheaton, we recommend a brief intro call so we can confirm we\'re the right fit before we list.',
     },
     {
       q: 'Can you manage a property I just moved out of?',
@@ -428,7 +428,7 @@ export const GEO_DATA_BALTIMORE_COUNTY = {
   url: '/rental-management/maryland/baltimore-county',
   scope: 'county',
   heroTitle: 'Rental property management in <em>Baltimore County.</em>',
-  heroLede: 'Tidewater's home county. Our headquarters is in Owings Mills and our managers know every corridor from Towson to Catonsville to White Marsh. Single-family, townhome, and condo rentals across the county — one flat monthly fee, AppFolio-backed, named local property manager.',
+  heroLede: 'Tidewater\'s home county. Our headquarters is in Owings Mills and our managers know every corridor from Towson to Catonsville to White Marsh. Single-family, townhome, and condo rentals across the county — one flat monthly fee, AppFolio-backed, named local property manager.',
   heroStats: [
     { num: '150+', label: 'Baltimore County rentals managed' },
     { num: '~21 days', tone: 'gold', label: 'Avg. days-to-lease [confirm county-level metric]' },
@@ -486,28 +486,28 @@ export const GEO_DATA_BALTIMORE_COUNTY = {
       q: 'Why does headquartering in Baltimore County matter for my rental?',
       a: [
         'Our HQ is in Owings Mills and most of our operations and accounting staff are based there. For Baltimore County owners that means faster response times, in-person showings without travel time, and a maintenance dispatch desk that has worked with Baltimore County vendors for decades.',
-        'It also means our team knows the county rental license process and the local inspector cadence — we've filed thousands of them.',
+        'It also means our team knows the county rental license process and the local inspector cadence — we\'ve filed thousands of them.',
       ],
     },
     {
       q: 'Does Baltimore County require a rental license?',
-      a: '<strong>Yes.</strong> Baltimore County requires rental property registration and inspection on a multi-year cycle. We file the initial registration, schedule the inspection, address any deficiencies through our vendor network, and track renewal dates. Lapsed registrations carry penalties and can void evictions — we don't let that happen.',
+      a: '<strong>Yes.</strong> Baltimore County requires rental property registration and inspection on a multi-year cycle. We file the initial registration, schedule the inspection, address any deficiencies through our vendor network, and track renewal dates. Lapsed registrations carry penalties and can void evictions — we don\'t let that happen.',
     },
     {
       q: 'How fast will my Baltimore County property lease?',
       a: 'Our Baltimore County portfolio typically averages around 21 days from listing to lease signing for properly-priced single-family homes. Towson University-area properties and Hunt Valley corridor condos lease faster; rural northern county properties take longer.',
     },
     {
-      q: 'What's your management fee structure?',
-      a: '<strong>Flat 8.5% of monthly rent collected.</strong> No tenant-placement fee (most companies charge 50–100% of one month's rent). No maintenance markup. No annual renewal fees. Free rental market analysis before you sign anything.',
+      q: 'What\'s your management fee structure?',
+      a: '<strong>Flat 8.5% of monthly rent collected.</strong> No tenant-placement fee (most companies charge 50–100% of one month\'s rent). No maintenance markup. No annual renewal fees. Free rental market analysis before you sign anything.',
     },
     {
       q: 'Do you manage condos with HOA rental caps?',
-      a: 'Yes. Many Baltimore County condo associations — especially in Towson, Pikesville, and Owings Mills — have rental caps or landlord registration requirements. We track every association's rule book for the buildings we manage in and prep tenants accordingly.',
+      a: 'Yes. Many Baltimore County condo associations — especially in Towson, Pikesville, and Owings Mills — have rental caps or landlord registration requirements. We track every association\'s rule book for the buildings we manage in and prep tenants accordingly.',
     },
     {
       q: 'What kinds of properties do you manage?',
-      a: 'Single-family homes, townhomes, condos, and 2–4 unit buildings. We don't manage apartment complexes (5+ units), commercial property, or short-term rentals.',
+      a: 'Single-family homes, townhomes, condos, and 2–4 unit buildings. We don\'t manage apartment complexes (5+ units), commercial property, or short-term rentals.',
     },
   ],
 };
@@ -521,7 +521,7 @@ export const GEO_DATA_HOWARD_COUNTY = {
   url: '/rental-management/maryland/howard-county',
   scope: 'county',
   heroTitle: 'Rental property management in <em>Howard County.</em>',
-  heroLede: 'Columbia's village structure layered HOAs over rental properties — we navigate both. Single-family, townhome, and condo rentals across Columbia, Ellicott City, Elkridge, and the Route 32 corridor. AppFolio-backed. Flat monthly fee. Local manager who knows the village covenants.',
+  heroLede: 'Columbia\'s village structure layered HOAs over rental properties — we navigate both. Single-family, townhome, and condo rentals across Columbia, Ellicott City, Elkridge, and the Route 32 corridor. AppFolio-backed. Flat monthly fee. Local manager who knows the village covenants.',
   heroStats: [
     { num: '80+', label: 'Howard County rentals managed' },
     { num: '~18 days', tone: 'gold', label: 'Avg. days-to-lease [confirm]' },
@@ -542,7 +542,7 @@ export const GEO_DATA_HOWARD_COUNTY = {
   ],
   factsEyebrow: 'By the Numbers',
   factsTitle: 'The Howard County rental market, <em>in data.</em>',
-  factsLede: 'Strong rental demand from corporate transferees (NSA, Verizon, GEICO at Route 32), Johns Hopkins APL, and Columbia's built-in pull as a planned community. Higher median rents than Baltimore or PG counties.',
+  factsLede: 'Strong rental demand from corporate transferees (NSA, Verizon, GEICO at Route 32), Johns Hopkins APL, and Columbia\'s built-in pull as a planned community. Higher median rents than Baltimore or PG counties.',
   facts: [
     { label: 'Median single-family rent', val: '$2,750 <span class="gold">/mo</span>', sub: '3BR/2BA — 2026 estimate [confirm]' },
     { label: 'Median condo rent', val: '$1,950 <span class="gold">/mo</span>', sub: '2BR · Columbia [confirm]' },
@@ -551,7 +551,7 @@ export const GEO_DATA_HOWARD_COUNTY = {
   ],
   neighborsEyebrow: 'Where We Manage',
   neighborsTitle: 'Howard County submarkets, <em>by rental density.</em>',
-  neighborsLede: 'Columbia's 10 villages plus Ellicott City, Elkridge, and the western county corridor.',
+  neighborsLede: 'Columbia\'s 10 villages plus Ellicott City, Elkridge, and the western county corridor.',
   neighbors: [
     { name: 'Columbia',        meta: '~32 units · village-structured',   tag: 'Planned' },
     { name: 'Ellicott City',   meta: '~22 units · historic + suburban',  tag: 'County seat' },
@@ -571,9 +571,9 @@ export const GEO_DATA_HOWARD_COUNTY = {
   schemaDesc: 'Single-family, townhome, and condo rental property management across Howard County, Maryland — Columbia, Ellicott City, Elkridge, Clarksville, Fulton, and surrounding markets.',
   faqs: [
     {
-      q: 'Do you handle Columbia's village association rules?',
+      q: 'Do you handle Columbia\'s village association rules?',
       a: [
-        '<strong>Yes.</strong> Columbia's 10 villages each layer their own covenants over Howard County rules — architectural review, exterior maintenance standards, rental notification requirements, sometimes rental caps. We track each village association's rule book for the properties we manage and prep tenants accordingly.',
+        '<strong>Yes.</strong> Columbia\'s 10 villages each layer their own covenants over Howard County rules — architectural review, exterior maintenance standards, rental notification requirements, sometimes rental caps. We track each village association\'s rule book for the properties we manage and prep tenants accordingly.',
         'Because Tidewater is a CAI-affiliated HOA management company in addition to a rental manager, we know how to talk to village associations and resolve issues before they become violations.',
       ],
     },
@@ -586,7 +586,7 @@ export const GEO_DATA_HOWARD_COUNTY = {
       a: 'Our Howard County rentals typically average around 18 days from listing to lease signing. Columbia condos and Elkridge townhomes lease fastest; larger single-family homes in Clarksville and the western county take 21–30 days.',
     },
     {
-      q: 'What's your management fee?',
+      q: 'What\'s your management fee?',
       a: '<strong>Flat 8.5% of monthly rent collected.</strong> No tenant-placement fee, no maintenance markup, no annual renewal fees. Free rental market analysis before you sign anything.',
     },
     {
@@ -609,7 +609,7 @@ export const GEO_DATA_MONTGOMERY_COUNTY = {
   url: '/rental-management/maryland/montgomery-county',
   scope: 'county',
   heroTitle: 'Rental property management in <em>Montgomery County.</em>',
-  heroLede: 'Beyond Silver Spring — Rockville, Gaithersburg, Bethesda, Germantown. The country's densest federal workforce, the NIH/FDA corridor, and the Metro Red Line spine all run through this county. We manage single-family, townhome, and condo rentals across the whole footprint.',
+  heroLede: 'Beyond Silver Spring — Rockville, Gaithersburg, Bethesda, Germantown. The country\'s densest federal workforce, the NIH/FDA corridor, and the Metro Red Line spine all run through this county. We manage single-family, townhome, and condo rentals across the whole footprint.',
   heroStats: [
     { num: '200+', label: 'Montgomery County rentals managed (incl. Silver Spring)' },
     { num: '~17 days', tone: 'gold', label: 'Avg. days-to-lease [confirm]' },
@@ -631,7 +631,7 @@ export const GEO_DATA_MONTGOMERY_COUNTY = {
   ],
   factsEyebrow: 'By the Numbers',
   factsTitle: 'The Montgomery County rental market, <em>in data.</em>',
-  factsLede: 'Federal workforce, biotech (NIH, FDA, NIST), and DC commuter demand make this Maryland's tightest rental submarket. Median rents run 20–30% above the state average.',
+  factsLede: 'Federal workforce, biotech (NIH, FDA, NIST), and DC commuter demand make this Maryland\'s tightest rental submarket. Median rents run 20–30% above the state average.',
   facts: [
     { label: 'Median single-family rent', val: '$3,100 <span class="gold">/mo</span>', sub: '3BR/2BA — 2026 estimate [confirm]' },
     { label: 'Median condo rent', val: '$2,250 <span class="gold">/mo</span>', sub: '2BR · Metro corridor [confirm]' },
@@ -664,13 +664,13 @@ export const GEO_DATA_MONTGOMERY_COUNTY = {
     {
       q: 'Does Montgomery County have its own rental license?',
       a: [
-        '<strong>Yes — and Montgomery County's rental rules are among the strictest in Maryland.</strong> Single-family rental licenses, condo & co-op landlord registration, and the county's Commission on Common Ownership Communities (CCOC) for HOA-layered properties.',
-        'We file the initial license, schedule the inspection, address deficiencies through our vendor network, and track renewal dates. Lapsed licenses carry penalties and can void evictions — we don't let that happen.',
+        '<strong>Yes — and Montgomery County\'s rental rules are among the strictest in Maryland.</strong> Single-family rental licenses, condo & co-op landlord registration, and the county\'s Commission on Common Ownership Communities (CCOC) for HOA-layered properties.',
+        'We file the initial license, schedule the inspection, address deficiencies through our vendor network, and track renewal dates. Lapsed licenses carry penalties and can void evictions — we don\'t let that happen.',
       ],
     },
     {
-      q: 'What's the rent control situation in Montgomery County?',
-      a: '<strong>Montgomery County's rent stabilization law limits annual rent increases for many rental units.</strong> The formula is tied to CPI plus a fixed percentage [confirm current cap]. We track which of your properties are covered, run the math for compliant increases at renewal, and document the calculation for your records.',
+      q: 'What\'s the rent control situation in Montgomery County?',
+      a: '<strong>Montgomery County\'s rent stabilization law limits annual rent increases for many rental units.</strong> The formula is tied to CPI plus a fixed percentage [confirm current cap]. We track which of your properties are covered, run the math for compliant increases at renewal, and document the calculation for your records.',
     },
     {
       q: 'How fast will my Montgomery County property lease?',
@@ -678,31 +678,31 @@ export const GEO_DATA_MONTGOMERY_COUNTY = {
     },
     {
       q: 'Do you manage condos with HOA rental caps?',
-      a: 'Yes. Many Bethesda, Rockville, and Silver Spring condo buildings have rental caps (typically 20–30% of units), landlord registration with the association, and HOA-side screening. We track every association's rule book for the buildings we manage in.',
+      a: 'Yes. Many Bethesda, Rockville, and Silver Spring condo buildings have rental caps (typically 20–30% of units), landlord registration with the association, and HOA-side screening. We track every association\'s rule book for the buildings we manage in.',
     },
     {
-      q: 'What's your management fee?',
+      q: 'What\'s your management fee?',
       a: '<strong>Flat 8.5% of monthly rent collected.</strong> No tenant-placement fee, no maintenance markup, no annual renewal fees. Free rental market analysis before you sign anything.',
     },
     {
       q: 'Do you serve all of Montgomery County?',
-      a: 'Most of it — the Beltway-to-Frederick-County footprint. Deeper northwest (Damascus, Poolesville) we handle case-by-case based on our manager's coverage radius. We'll be honest with you on the first call.',
+      a: 'Most of it — the Beltway-to-Frederick-County footprint. Deeper northwest (Damascus, Poolesville) we handle case-by-case based on our manager\'s coverage radius. We\'ll be honest with you on the first call.',
     },
   ],
 };
 
 // ─────────────────────────────────────────────────────────────
-// PRINCE GEORGE'S COUNTY — /rental-management/maryland/prince-georges-county
+// PRINCE GEORGE\'S COUNTY — /rental-management/maryland/prince-georges-county
 // ─────────────────────────────────────────────────────────────
 export const GEO_DATA_PRINCE_GEORGES_COUNTY = {
-  name: "Prince George's County",
-  fullName: "Prince George's County",
+  name: "Prince George\'s County",
+  fullName: "Prince George\'s County",
   url: '/rental-management/maryland/prince-georges-county',
   scope: 'county',
-  heroTitle: "Rental property management in <em>Prince George's County.</em>",
+  heroTitle: "Rental property management in <em>Prince George\'s County.</em>",
   heroLede: 'Bowie, Largo, Greenbelt, Hyattsville, Laurel. Townhome and garden-style rentals with heavy demand from federal workforce (NASA Goddard, Census Bureau), University of Maryland-bound households, and DC commuters east of the Anacostia. We handle the county rental license, lead-paint compliance, and the inspection cadence.',
   heroStats: [
-    { num: '100+', label: "Prince George's County rentals managed" },
+    { num: '100+', label: "Prince George\'s County rentals managed" },
     { num: '~22 days', tone: 'gold', label: 'Avg. days-to-lease [confirm]' },
     { num: '8.5%', label: 'Flat monthly management fee — no upcharges' },
   ],
@@ -721,7 +721,7 @@ export const GEO_DATA_PRINCE_GEORGES_COUNTY = {
     { name: 'Upper Marlboro', x: 175, y: 200, hq: true },
   ],
   factsEyebrow: 'By the Numbers',
-  factsTitle: "The Prince George's County rental market, <em>in data.</em>",
+  factsTitle: "The Prince George\'s County rental market, <em>in data.</em>",
   factsLede: 'Federal-workforce demand from NASA Goddard, the Census Bureau, the IRS, and University of Maryland faculty & staff. Townhome and garden-condo heavy, with single-family pockets in Bowie and Fort Washington.',
   facts: [
     { label: 'Median single-family rent', val: '$2,450 <span class="gold">/mo</span>', sub: '3BR/2BA — 2026 estimate [confirm]' },
@@ -730,7 +730,7 @@ export const GEO_DATA_PRINCE_GEORGES_COUNTY = {
     { label: 'County rental license', val: 'Required', sub: 'Tidewater files & tracks renewal' },
   ],
   neighborsEyebrow: 'Where We Manage',
-  neighborsTitle: "Prince George's County submarkets, <em>by rental density.</em>",
+  neighborsTitle: "Prince George\'s County submarkets, <em>by rental density.</em>",
   neighborsLede: 'From the U of MD corridor at College Park to the Bowie/Largo townhome belt and the Fort Washington Potomac frontage.',
   neighbors: [
     { name: 'Bowie',          meta: '~26 units · single-family + townhome', tag: '' },
@@ -748,14 +748,14 @@ export const GEO_DATA_PRINCE_GEORGES_COUNTY = {
     name: '[Manager TBD]',
     creds: '',
     initials: 'TB',
-    bio: "<strong>[PLACEHOLDER — confirm assigned manager]</strong> Prince George's County rentals are overseen by Kate Cornell, Baltimore & DC Metro Regional Director. Our manager knows the county rental license cycle, the lead-paint compliance flow, and the heavy federal-workforce tenant pool.",
+    bio: "<strong>[PLACEHOLDER — confirm assigned manager]</strong> Prince George\'s County rentals are overseen by Kate Cornell, Baltimore & DC Metro Regional Director. Our manager knows the county rental license cycle, the lead-paint compliance flow, and the heavy federal-workforce tenant pool.",
   },
-  schemaDesc: "Single-family, townhome, and condo rental property management across Prince George's County, Maryland — Bowie, Largo, Greenbelt, Hyattsville, Laurel, College Park, Upper Marlboro, Fort Washington, and the DC commuter corridor.",
+  schemaDesc: "Single-family, townhome, and condo rental property management across Prince George\'s County, Maryland — Bowie, Largo, Greenbelt, Hyattsville, Laurel, College Park, Upper Marlboro, Fort Washington, and the DC commuter corridor.",
   faqs: [
     {
-      q: "Does Prince George's County require a rental license?",
+      q: "Does Prince George\'s County require a rental license?",
       a: [
-        "<strong>Yes — and PG County's rental license rules are among the most actively enforced in Maryland.</strong> Annual rental license, lead-paint compliance for pre-1978 properties, and an inspection cadence with real penalties for non-compliance.",
+        "<strong>Yes — and PG County\'s rental license rules are among the most actively enforced in Maryland.</strong> Annual rental license, lead-paint compliance for pre-1978 properties, and an inspection cadence with real penalties for non-compliance.",
         'We file the initial license, schedule the inspection, address any deficiencies through our vendor network, and track renewal dates. Owners coming to us from other companies are often surprised how many licenses had quietly lapsed under prior management.',
       ],
     },
@@ -769,15 +769,15 @@ export const GEO_DATA_PRINCE_GEORGES_COUNTY = {
     },
     {
       q: 'Do you manage in the Bowie planned-community structure?',
-      a: "Yes. Bowie's neighborhoods are largely HOA-governed and many have rental restrictions or landlord registration with the association on top of the county license. We track each HOA's rule book for the properties we manage in.",
+      a: "Yes. Bowie\'s neighborhoods are largely HOA-governed and many have rental restrictions or landlord registration with the association on top of the county license. We track each HOA\'s rule book for the properties we manage in.",
     },
     {
-      q: "What's your management fee?",
+      q: "What\'s your management fee?",
       a: '<strong>Flat 8.5% of monthly rent collected.</strong> No tenant-placement fee, no maintenance markup, no annual renewal fees. Free rental market analysis before you sign anything.',
     },
     {
       q: 'Do you handle Section 8 / Housing Choice Voucher tenants in PG?',
-      a: 'Maryland and PG County both have specific landlord obligations around source-of-income protections and HCV inspection. We'll walk through your options on the first call [confirm policy].',
+      a: 'Maryland and PG County both have specific landlord obligations around source-of-income protections and HCV inspection. We\'ll walk through your options on the first call [confirm policy].',
     },
   ],
 };
@@ -791,7 +791,7 @@ export const GEO_DATA_OCEAN_CITY = {
   url: '/rental-management/maryland/ocean-city',
   scope: 'city',
   heroTitle: 'Rental property management in <em>Ocean City, MD.</em>',
-  heroLede: 'A different market than the rest of the state — seasonal demand, condo-dense, and a tenant pool that turns over with the rental season. Tidewater's Ocean City office at 8101 Coastal Highway has run rentals on the island and the West OC mainland for years. [PLACEHOLDER — confirm OC service scope: long-term vs. seasonal/weekly mix.]',
+  heroLede: 'A different market than the rest of the state — seasonal demand, condo-dense, and a tenant pool that turns over with the rental season. Tidewater\'s Ocean City office at 8101 Coastal Highway has run rentals on the island and the West OC mainland for years. [PLACEHOLDER — confirm OC service scope: long-term vs. seasonal/weekly mix.]',
   heroStats: [
     { num: '60+', label: 'Ocean City rentals managed [confirm]' },
     { num: 'Seasonal', tone: 'gold', label: 'Lease cadence varies by property type [confirm]' },
@@ -843,8 +843,8 @@ export const GEO_DATA_OCEAN_CITY = {
     {
       q: 'Do you manage long-term, seasonal, or weekly rentals?',
       a: [
-        '<strong>[PLACEHOLDER — confirm with client.]</strong> Ocean City's rental market spans year-round long-term leases, May–September seasonal leases, and weekly vacation rentals.',
-        "Tell us what your property is and what you want — we'll be straight about whether we're the right fit.",
+        '<strong>[PLACEHOLDER — confirm with client.]</strong> Ocean City\'s rental market spans year-round long-term leases, May–September seasonal leases, and weekly vacation rentals.',
+        "Tell us what your property is and what you want — we\'ll be straight about whether we\'re the right fit.",
       ],
     },
     {
@@ -853,14 +853,14 @@ export const GEO_DATA_OCEAN_CITY = {
     },
     {
       q: 'What about the OC short-term rental ordinance?',
-      a: 'Ocean City regulates short-term rentals through licensing, occupancy limits, and noise/parking rules. Some condo associations also prohibit STRs entirely. [PLACEHOLDER — confirm scope.] We can walk you through what's permitted at your address.',
+      a: 'Ocean City regulates short-term rentals through licensing, occupancy limits, and noise/parking rules. Some condo associations also prohibit STRs entirely. [PLACEHOLDER — confirm scope.] We can walk you through what\'s permitted at your address.',
     },
     {
       q: 'Do you manage Ocean Pines and Berlin properties?',
-      a: "Yes — Ocean Pines is one of Maryland's largest HOAs and many of its rentals are year-round single-family homes. Berlin's historic district has its own architectural and rental conventions. Our Ocean City office covers both.",
+      a: "Yes — Ocean Pines is one of Maryland\'s largest HOAs and many of its rentals are year-round single-family homes. Berlin\'s historic district has its own architectural and rental conventions. Our Ocean City office covers both.",
     },
     {
-      q: "What's your fee structure for Ocean City?",
+      q: "What\'s your fee structure for Ocean City?",
       a: '[PLACEHOLDER — confirm OC fee structure.] Long-term rentals: typically flat 8.5% of monthly rent collected. Seasonal/weekly vacation rental management uses a different fee model.',
     },
     {
@@ -884,7 +884,7 @@ export const GEO_DATA_LEWES = {
     urlPath: 'delaware',
   },
   heroTitle: 'Rental property management in <em>Lewes, Delaware.</em>',
-  heroLede: 'Sussex County's "first town" — coastal, second-home heavy, and a different rental rhythm than the Mid-Atlantic mainland. Tidewater's Delaware office at 20375 John J Williams Highway sits in the Lewes–Rehoboth corridor. We manage single-family, condo, and townhome rentals across Lewes, Cape Henlopen, and the Route 1 coastal communities.',
+  heroLede: 'Sussex County\'s "first town" — coastal, second-home heavy, and a different rental rhythm than the Mid-Atlantic mainland. Tidewater\'s Delaware office at 20375 John J Williams Highway sits in the Lewes–Rehoboth corridor. We manage single-family, condo, and townhome rentals across Lewes, Cape Henlopen, and the Route 1 coastal communities.',
   heroStats: [
     { num: '40+', label: 'Lewes-area rentals managed [confirm]' },
     { num: 'Seasonal mix', tone: 'gold', label: 'Long-term + seasonal split [confirm]' },
@@ -933,7 +933,7 @@ export const GEO_DATA_LEWES = {
   schemaDesc: 'Rental property management in Lewes, Delaware — single-family, condo, and townhome rentals across Old Town Lewes, Cape Henlopen, Pilottown, Henlopen Acres, Milton, and the Sussex County coastal corridor.',
   faqs: [
     {
-      q: "How is Delaware's rental landscape different from Maryland's?",
+      q: "How is Delaware\'s rental landscape different from Maryland\'s?",
       a: [
         '<strong>Delaware is meaningfully friendlier to landlords than Maryland.</strong> Faster eviction timelines, no statewide rent control, no county rental licenses in most of Sussex, and no state sales tax.',
         'That said, Sussex County coastal communities run their own HOA rules — architectural review, rental caps, short-term rental restrictions — and those can be more restrictive than anything the state imposes. We track the rules per association.',
@@ -941,11 +941,11 @@ export const GEO_DATA_LEWES = {
     },
     {
       q: 'Do you manage long-term, seasonal, or weekly rentals?',
-      a: '<strong>[PLACEHOLDER — confirm with client.]</strong> Lewes spans year-round long-term leases, summer-season leases, and weekly vacation rentals. We'll be straight about which scope is right for your property.',
+      a: '<strong>[PLACEHOLDER — confirm with client.]</strong> Lewes spans year-round long-term leases, summer-season leases, and weekly vacation rentals. We\'ll be straight about which scope is right for your property.',
     },
     {
       q: 'Do you handle the Cape Henlopen / coastal HOA rules?',
-      a: 'Yes. Many Cape Henlopen and Henlopen Acres communities have rental caps, minimum lease terms (e.g. no rentals under 30 days), and architectural review requirements. We track each association's rule book for the buildings we manage in.',
+      a: 'Yes. Many Cape Henlopen and Henlopen Acres communities have rental caps, minimum lease terms (e.g. no rentals under 30 days), and architectural review requirements. We track each association\'s rule book for the buildings we manage in.',
     },
     {
       q: 'How fast will my Lewes property lease?',
@@ -956,7 +956,7 @@ export const GEO_DATA_LEWES = {
       a: 'Pre-season inspections, storm-prep coordination with vendors, post-storm damage walks, and insurance-claim documentation are part of the package. Don Gentry has 20+ years of Delmarva coastal experience.',
     },
     {
-      q: "What's your management fee?",
+      q: "What\'s your management fee?",
       a: '[PLACEHOLDER — confirm DE fee structure.] Long-term rentals are typically flat 8.5% of monthly rent collected. Seasonal/weekly vacation rental management uses a different fee model.',
     },
   ],
