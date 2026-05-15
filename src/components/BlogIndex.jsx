@@ -63,51 +63,7 @@ const ALL_POSTS = [
     coverAlt: 'HOA board members reviewing management company transition documents',
   },
   {
-    slug: 'reserve-studies-decoded',
-    href: '#',
-    title: 'Reserve studies, decoded: how often should your HOA update yours?',
-    dek: 'A board’s guide to reserve study cadence — when to refresh, what triggers an off-cycle study, and how to read the funding ratio.',
-    category: { id: 'finance', label: 'HOA Finance', tone: 'gold' },
-    date: 'May 14, 2026', dateIso: '2026-05-14',
-    readTime: 7,
-    author: 'Rachel Halverson',
-    tone: 'gold',
-  },
-  {
-    slug: 'two-signer-rule',
-    href: '#',
-    title: 'The 2-signer rule, and why your association needs it.',
-    dek: 'Why every vendor payment over $500 should require dual approval — and what to do if your current management company doesn’t enforce it.',
-    category: { id: 'finance', label: 'HOA Finance', tone: 'gold' },
-    date: 'April 28, 2026', dateIso: '2026-04-28',
-    readTime: 5,
-    author: 'Rachel Halverson',
-    tone: 'gold',
-  },
-  {
-    slug: 'covenant-enforcement-without-friction',
-    href: '#',
-    title: 'Covenant enforcement without the friction.',
-    dek: 'A documented, photo-driven, fair-to-everyone enforcement workflow — the playbook we use across 300+ Mid-Atlantic communities.',
-    category: { id: 'ops', label: 'Operations', tone: 'sage' },
-    date: 'April 14, 2026', dateIso: '2026-04-14',
-    readTime: 6,
-    author: 'Cody Whitman',
-    tone: 'sage',
-  },
-  {
-    slug: 'open-meetings-md-law',
-    href: '#',
-    title: 'Open meetings, executive sessions, and what Maryland actually requires.',
-    dek: 'Maryland’s HOA & condo open-meeting statute, the executive-session carveouts, and the documentation boards owe their residents.',
-    category: { id: 'md-law', label: 'Maryland HOA Law', tone: 'clay' },
-    date: 'March 31, 2026', dateIso: '2026-03-31',
-    readTime: 8,
-    author: 'Cody Whitman',
-    tone: 'clay',
-  },
-  {
-    slug: 'self-managed-to-professional',
+    slug: ‘self-managed-to-professional’,
     href: '/solutions/self-managed-hoa-transition',
     title: 'From self-managed to professional: what actually changes.',
     dek: 'The board still decides; the admin moves to us. A clear-eyed framework for self-managed boards considering professional management.',
@@ -117,82 +73,13 @@ const ALL_POSTS = [
     author: 'Marcia Goldstein',
     tone: '',
   },
-  {
-    slug: 'first-100-days',
-    href: '#',
-    title: 'The first 100 days on an HOA board: a survival guide.',
-    dek: 'New to your board? Here’s how to get oriented quickly without making the rookie mistakes that haunt every community for a decade.',
-    category: { id: 'governance', label: 'Board Governance', tone: '' },
-    date: 'March 4, 2026', dateIso: '2026-03-04',
-    readTime: 7,
-    author: 'Marcia Goldstein',
-    tone: '',
-  },
-  {
-    slug: 'reading-financial-statements',
-    href: '#',
-    title: 'How to read your association’s financial statements.',
-    dek: 'Balance sheet, income statement, budget-vs-actual, reserve schedule. What every board member should be able to read in 90 seconds.',
-    category: { id: 'finance', label: 'HOA Finance', tone: 'gold' },
-    date: 'February 18, 2026', dateIso: '2026-02-18',
-    readTime: 8,
-    author: 'Rachel Halverson',
-    tone: 'gold',
-  },
-  {
-    slug: 'snow-removal-contracts',
-    href: '#',
-    title: 'Snow removal contracts: per-push, seasonal, or hybrid?',
-    dek: 'Three contract structures, real cost data from 60+ Maryland communities, and how to pick the right one before next winter.',
-    category: { id: 'ops', label: 'Operations', tone: 'sage' },
-    date: 'February 4, 2026', dateIso: '2026-02-04',
-    readTime: 6,
-    author: 'Cody Whitman',
-    tone: 'sage',
-  },
-  {
-    slug: 'arc-process-design',
-    href: '#',
-    title: 'Designing an ARC process homeowners don’t hate.',
-    dek: 'Documented standards, 14-day turnaround, photo logs. How to take the contention out of architectural review.',
-    category: { id: 'ops', label: 'Operations', tone: 'sage' },
-    date: 'January 22, 2026', dateIso: '2026-01-22',
-    readTime: 7,
-    author: 'Cody Whitman',
-    tone: 'sage',
-  },
-  {
-    slug: 'condo-master-policy',
-    href: '#',
-    title: 'Condo master policy: what your board should actually understand.',
-    dek: 'The split between master policy and unit-owner HO-6 coverage, deductibles, and the gaps boards routinely miss.',
-    category: { id: 'finance', label: 'HOA Finance', tone: 'gold' },
-    date: 'January 8, 2026', dateIso: '2026-01-08',
-    readTime: 9,
-    author: 'Rachel Halverson',
-    tone: 'gold',
-  },
-  {
-    slug: 'election-season-mechanics',
-    href: '#',
-    title: 'Election season: the mechanics most boards get wrong.',
-    dek: 'Quorum, proxies, ballots, candidate forms, the open-meeting requirement. A pre-flight checklist for your annual meeting.',
-    category: { id: 'governance', label: 'Board Governance', tone: '' },
-    date: 'December 12, 2025', dateIso: '2025-12-12',
-    readTime: 8,
-    author: 'Marcia Goldstein',
-    tone: '',
-  },
 ];
 
 const ALL_CATEGORIES = [
   { id: 'all',        label: 'All posts' },
   { id: 'hoa-mgmt',  label: 'HOA Management' },
   { id: 'rental',    label: 'Rental Management' },
-  { id: 'finance',   label: 'HOA Finance' },
   { id: 'governance',label: 'Board Governance' },
-  { id: 'ops',       label: 'Operations' },
-  { id: 'md-law',    label: 'Maryland HOA Law' },
   { id: 'solutions', label: 'Solutions' },
 ];
 
@@ -223,8 +110,8 @@ function BlogIndexHero({ showSearch, query, onQuery, onSubmit }) {
         )}
 
         <div className="tw-bi-hero-stats">
-          <span><strong>32</strong> posts &amp; growing</span>
-          <span><strong>6</strong> categories</span>
+          <span><strong>5</strong> posts &amp; growing</span>
+          <span><strong>4</strong> categories</span>
           <span><strong>4,200+</strong> board members subscribed</span>
         </div>
       </div>
