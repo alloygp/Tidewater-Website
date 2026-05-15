@@ -89,7 +89,7 @@ const FAQ_CATEGORIES = [
     iconTone: 'sage',
     eyebrow: 'Category 03',
     title: 'The owner portal, payments, and tech.',
-    sub: ‘Here\’s how Tidewater\’s owner portal and management technology works for residents and boards.’,
+    sub: "Here’s how Tidewater’s owner portal and management technology works for residents and boards.",
     audience: 'residents',
     qs: [
       {
