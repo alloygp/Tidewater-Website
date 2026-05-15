@@ -33,6 +33,8 @@ const ALL_POSTS = [
     readTime: 9,
     author: 'Rachel Halverson',
     tone: '',
+    coverImage: '/assets/how-to-switch-hoa-management-companies.png',
+    coverAlt: 'HOA board members reviewing management company transition documents',
   },
   {
     slug: 'reserve-studies-decoded',
