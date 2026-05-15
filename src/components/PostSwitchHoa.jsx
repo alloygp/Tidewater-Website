@@ -439,6 +439,8 @@ export default function PostSwitchHoa() {
       title: 'Switching HOA management, done right.',
       dek: 'The companion solutions page — week-by-week transition timeline, side-by-side comparison, top 10 board questions answered.',
       date: 'April 30, 2026', readTime: 7, href: '/solutions/switching-hoa-management-company',
+      coverImage: '/assets/how-to-switch-hoa-management-companies.png',
+      coverAlt: 'HOA board members reviewing management company transition documents',
     },
     {
       tone: '', category: 'HOA Management',
