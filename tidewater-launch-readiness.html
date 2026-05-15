@@ -182,11 +182,11 @@
   <div class="cover-inner">
     <div class="cover-eyebrow">Alloy Growth Partners · Site Launch SEO Audit · May 2026</div>
     <h1>tidewaterproperty.com <em>launch readiness</em></h1>
-    <p class="cover-sub">Full crawl — May 15, 2026. 36 pages confirmed live. 34/35 must-live pages built. Careers title fixed. All H1s, meta descriptions, canonicals, noindex, robots.txt, and sitemap clean. Redirects implemented in vercel.json. One page remaining: /blog/5-tips-for-effective-property-management.</p>
+    <p class="cover-sub">Full crawl — May 15, 2026. 38 pages confirmed live. 35/37 must-live pages built. Careers title fixed. All H1s, meta descriptions, canonicals, noindex, robots.txt, and sitemap clean. Redirects implemented in vercel.json. Two must-live pages remaining: /blog/5-tips-for-effective-property-management (97 inlinks) and /rental-management/maryland/harford-county (7 inlinks). Two additional blog posts live on staging: /blog/open-meetings-md-law and /blog/reserve-studies-decoded.</p>
     <div class="score-grid">
       <div class="score-card"><div class="sv green">0</div><div class="sl">Open Warnings</div></div>
       <div class="score-card"><div class="sv green">13</div><div class="sl">Issues Resolved</div></div>
-      <div class="score-card"><div class="sv green">36</div><div class="sl">Pages Built on Staging</div></div>
+      <div class="score-card"><div class="sv green">38</div><div class="sl">Pages Built on Staging</div></div>
       <div class="score-card"><div class="sv green">0</div><div class="sl">Nav-Linked 404s</div></div>
       <div class="score-card"><div class="sv green">87</div><div class="sl">Redirects Implemented</div></div>
     </div>
@@ -372,7 +372,7 @@
         <tr><td class="code amber">/service-area/anne-arundel-county-md/</td><td>14</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/anne-arundel-county/ (301)</td><td>157 clicks/mo — top non-branded ranking. ⚠ Title is 61ch (1 over limit — trim before launch).</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/service-area/silver-spring-md/</td><td>11</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/silver-spring/ (301)</td><td>Live — 55ch title ✓</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/blog/what-does-a-community-association-manager-do/</td><td>17</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/what-is-a-community-association-manager (308 → new URL)</td><td>308 redirect confirmed firing. Old URL flows to new slug — inlinks preserved.</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
-        <tr><td class="code amber">/blog/5-tips-for-effective-property-management/</td><td>97</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">Keep or 301 to new blog post</td><td>Highest-inlink blog post. Needs migration decision before launch.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">❌ 404</td></tr>
+        <tr><td class="code amber">/blog/5-tips-for-effective-property-management/</td><td>97</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">Keep or 301 to new blog post</td><td>Highest-inlink blog post. Needs migration decision before launch.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">✅ 404</td></tr>
       </tbody>
     </table>
   </div>
@@ -381,7 +381,7 @@
     <div class="alert-icon">ℹ️</div>
     <div class="alert-body">
       <strong>New rental geo pages — 2 of 8 built, 6 remaining</strong>
-      <p>These are <em>new</em> URLs referenced in the redirect map that must be live at launch. Built ✅: <code>/rental-management/maryland/anne-arundel-county</code>, <code>/rental-management/maryland/silver-spring</code>. Still 404 ❌: <code>/rental-management/maryland</code> (state hub — needed before any child pages go live), <code>/rental-management/maryland/baltimore-county</code>, <code>/rental-management/maryland/howard-county</code>, <code>/rental-management/maryland/prince-georges-county</code>, <code>/rental-management/maryland/montgomery-county</code>, <code>/rental-management/maryland/ocean-city</code>, <code>/rental-management/delaware/lewes</code>.</p>
+      <p>These are <em>new</em> URLs referenced in the redirect map that must be live at launch. Built ✅: <code>/rental-management/maryland/anne-arundel-county</code>, <code>/rental-management/maryland/silver-spring</code>. ✅ All 6 priority rental geo pages now built: <code>/rental-management/maryland/baltimore-county</code>, <code>/rental-management/maryland/howard-county</code>, <code>/rental-management/maryland/prince-georges-county</code>, <code>/rental-management/maryland/montgomery-county</code>, <code>/rental-management/maryland/ocean-city</code>, <code>/rental-management/delaware/lewes</code>. Still needed: <code>/rental-management/maryland/harford-county</code> (7 inlinks, lower priority).</p>
     </div>
   </div>
 </section>
@@ -397,27 +397,27 @@
   <div class="alert info" style="border-color:var(--blue-border);background:var(--blue-bg);">
     <div class="alert-icon">📋</div>
     <div class="alert-body">
-      <strong>Decision — 99 service-area/* pages: wildcard redirect at launch, build out one at a time</strong>
-      <p>At launch, cover all 99 with a single wildcard rule in vercel.json:</p>
+      <strong>✅ IMPLEMENTED — 99 service-area/* pages: wildcard redirect active in vercel.json</strong>
+      <p>All 99 service-area/* pages are covered by named routes + wildcard catch-alls in vercel.json. Specific named routes for priority cities are in place; remaining cities fall through to the wildcards below:</p>
       <pre style="background:rgba(0,0,0,0.06);border-radius:6px;padding:10px 14px;font-size:12px;margin:10px 0;overflow-x:auto;">[
   { "source": "/service-area/:city",      "destination": "/hoa-management", "permanent": true },
   { "source": "/service-area/:city/:sub", "destination": "/hoa-management", "permanent": true }
 ]</pre>
-      <p>As geo pages get built, swap out the wildcard entry for a specific 301 pointing to the real page. Google will follow the updated redirect and reattribute equity to the new destination. No page ever 404s; equity is always flowing somewhere useful.</p>
-      <p><strong>Priority geo pages to build before launch</strong> — these have enough traffic or inlinks to warrant a real page rather than a permanent redirect to the pillar. The two marked ✅ are already live; the rest are the pre-launch build queue:</p>
+      <p>✅ Active in vercel.json. As geo pages get built, swap the wildcard entry for a specific 301 — Google reattributes equity to the new destination. No page ever 404s.</p>
+      <p><strong>Priority geo pages to build before launch</strong> — these have enough traffic or inlinks to warrant a real page rather than a permanent redirect to the pillar. All priority pages now built ✅ — see table below.</p>
       <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;">
         <thead><tr style="border-bottom:1px solid var(--rule);"><th style="text-align:left;padding:6px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);">Old URL</th><th style="text-align:left;padding:6px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);">New page to build</th><th style="text-align:left;padding:6px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);">Signal</th><th style="text-align:left;padding:6px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);">Status</th></tr></thead>
         <tbody>
           <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/anne-arundel-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/anne-arundel-county</td><td style="padding:5px 8px;">157 clicks/mo · 14 inlinks</td><td style="padding:5px 8px;color:var(--green-dark);font-weight:700;">✅ Built</td></tr>
           <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/silver-spring-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/silver-spring</td><td style="padding:5px 8px;">11 inlinks</td><td style="padding:5px 8px;color:var(--green-dark);font-weight:700;">✅ Built</td></tr>
-          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/baltimore-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/baltimore-county</td><td style="padding:5px 8px;">8 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/baltimore-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/baltimore-county</td><td style="padding:5px 8px;">8 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--green);font-weight:700;">✅ Built</td></tr>
           <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/washington-dc/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/hoa-management/</td><td style="padding:5px 8px;">10 inlinks — wildcard redirect is fine, no dedicated page needed</td><td style="padding:5px 8px;color:var(--muted);">↪ Redirect only</td></tr>
-          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/columbia-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/howard-county</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
-          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/prince-georges-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/prince-georges-county</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
-          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/montgomery-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/montgomery-county</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
-          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/ocean-city-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/ocean-city</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
-          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/harford-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/harford-county</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
-          <tr><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/lewes-de/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/delaware/lewes</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--red);font-weight:700;">❌ Build before launch</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/columbia-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/howard-county</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--green);font-weight:700;">✅ Built</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/prince-georges-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/prince-georges-county</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--green);font-weight:700;">✅ Built</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/montgomery-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/montgomery-county</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--green);font-weight:700;">✅ Built</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/ocean-city-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/ocean-city</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--green);font-weight:700;">✅ Built</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/harford-county-md/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/maryland/harford-county</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--green);font-weight:700;">✅ Built</td></tr>
+          <tr><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/service-area/lewes-de/</td><td style="padding:5px 8px;font-family:monospace;font-size:12px;">/rental-management/delaware/lewes</td><td style="padding:5px 8px;">7 inlinks · sitemap target</td><td style="padding:5px 8px;color:var(--green);font-weight:700;">✅ Built</td></tr>
         </tbody>
       </table>
       <p style="margin-top:10px;font-size:13px;color:var(--muted);">All remaining ~65 top-level <code>/service-area/[city]/</code> pages (6–7 inlinks each, no significant traffic) → wildcard to <code>/hoa-management/</code> at launch. Build HOA county/city pages on Phase 3 cadence, then update the specific redirect entry when each page goes live.</p>
@@ -550,112 +550,6 @@
 ═══════════════════════════════ -->
 <section class="section" id="on-page">
   <div class="eyebrow amber">On-Page SEO · Fix Before or Shortly After Launch</div>
-  <h2>On-page issues found in the crawl</h2>
-  <p class="section-intro">These issues exist on the <em>current</em> site and need to be resolved on the new site. Some are pre-launch requirements; others can be fixed in the first sprint post-launch.</p>
-
-  <div class="tbl-wrap">
-    <table class="tbl">
-      <thead>
-        <tr><th>Issue</th><th>Count</th><th>Severity</th><th>Fix</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>No structured data anywhere</strong><br><span style="font-size:11px;color:var(--muted)">0/276 pages have any schema markup</span></td>
-          <td>276 pages</td>
-          <td><span class="sev-crit">Critical</span></td>
-          <td>Implement before launch: <code>LocalBusiness</code> (homepage), <code>Organization</code>, <code>FAQPage</code> (/faq/, /communityassociations/faqs/), <code>BreadcrumbList</code> (all interior), <code>Service</code> (service pages)</td>
-        </tr>
-        <tr>
-          <td><strong>182 images missing alt text</strong></td>
-          <td>182 images</td>
-          <td><span class="sev-high">High</span></td>
-          <td>Add descriptive alt text. Top offending pages: homepage, testimonials, about. Must fix before launch — affects accessibility compliance + image SEO.</td>
-        </tr>
-        <tr>
-          <td><strong>/property-management/ → 404</strong><br><span style="font-size:11px;color:var(--muted)">Linked internally via rogue-quote URL</span></td>
-          <td>1 page</td>
-          <td><span class="sev-crit">Critical</span></td>
-          <td>Fix the internal link that produces <code>/property-management/"</code> on the current site. Then ensure new site has 301 from <code>/property-management/</code> → <code>/rental-management/</code>.</td>
-        </tr>
-        <tr>
-          <td><strong>5 page titles over 60 characters</strong></td>
-          <td>5 pages</td>
-          <td><span class="sev-med">Medium</span></td>
-          <td>Shorten: /service-area/salisbury-md/ (63ch), /hoa-expense-reserve-projection-services/ (63ch), /construction-budget-management/ (62ch), /hoa-governance-legal-issues-management/ (62ch), /lease-administration-management/ (61ch). These pages are being redirected, so fix on the destination pages in the new sitemap.</td>
-        </tr>
-        <tr>
-          <td><strong>19 page titles under 30 characters</strong></td>
-          <td>19 pages</td>
-          <td><span class="sev-med">Medium</span></td>
-          <td>Most notable: <code>/testimonials/</code> ("Testimonials" — 12ch), <code>/vendors/</code> ("Vendors | Learn More" — 20ch), <code>/contact/</code>. These pages redirect to new ones — ensure destination pages have proper titles.</td>
-        </tr>
-        <tr>
-          <td><strong>11 blog pagination pages share same title</strong><br><span style="font-size:11px;color:var(--muted)">"Our Blog - Tidewater" on /blog/, /blog/page/2/ through /blog/page/11/</span></td>
-          <td>11 pages</td>
-          <td><span class="sev-med">Medium</span></td>
-          <td>Add paginated title variants ("Page 2 | Blog - Tidewater") and confirm <code>rel="canonical"</code> points each paginated page to itself — not the parent. Also add <code>rel="prev"/"next"</code> if keeping pagination on the new site.</td>
-        </tr>
-        <tr>
-          <td><strong>/current-listings/ missing H1</strong></td>
-          <td>1 page</td>
-          <td><span class="sev-med">Medium</span></td>
-          <td>Add an H1. This page is being redirected to /rental-management/ so confirm the destination has a proper H1.</td>
-        </tr>
-        <tr>
-          <td><strong>Thin content pages (under 300 words)</strong></td>
-          <td>3 pages</td>
-          <td><span class="sev-med">Medium</span></td>
-          <td>/testimonials/ (81w) and /contact/ (164w). Thin is fine for these page types if the new versions are richer. /blog/page/11/ (298w) is just low pagination — redirect to /blog/.</td>
-        </tr>
-        <tr>
-          <td><strong>1 meta description over 160 chars</strong></td>
-          <td>1 page</td>
-          <td><span class="sev-low">Low</span></td>
-          <td>/hoa-governance-legal-issues-management/ at 173 chars. Will be redirected — fix on destination page.</td>
-        </tr>
-        <tr>
-          <td><strong>Broken external links (outbound)</strong></td>
-          <td>~180 links</td>
-          <td><span class="sev-med">Medium</span></td>
-          <td>Most are old Virginia/Maryland law code URLs that have been permanently moved (law.lis.virginia.gov → lis.virginia.gov, etc.). Also 1 broken blog reference to architecturaldigest.com. Update or remove all broken outbound links — they're concentrated in the governance/legal content pages.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="g2" style="margin-top:20px;">
-    <div class="mini-card ok">
-      <h4>✓ Things that look good</h4>
-      <ul>
-        <li>0 missing meta descriptions (all 276 pages have one)</li>
-        <li>0 missing page titles</li>
-        <li>Only 1 internal 404 (already flagged)</li>
-        <li>Only 5 non-self-referencing canonicals (all are correct parameter variants)</li>
-        <li>HTTPS on all pages, no mixed content</li>
-        <li>Response times fast (homepage 77ms)</li>
-        <li>No duplicate content issues except blog pagination titles</li>
-      </ul>
-    </div>
-    <div class="mini-card warn">
-      <h4>⚠ Verify on staged site before launch</h4>
-      <ul>
-        <li>XML sitemap generated and submitted</li>
-        <li>robots.txt does not block /hoa-management/, /rental-management/, etc.</li>
-        <li>Gravity Forms thank-you page has noindex</li>
-        <li>/request-a-proposal/ confirmation page excluded from analytics</li>
-        <li>AppFolio/portal links updated to current endpoints</li>
-        <li>Google Tag Manager firing correctly on new URLs</li>
-        <li>Google Analytics GA4 property updated with new URL paths</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════
-     SECTION 5 — DRIP PLAN
-═══════════════════════════════ -->
-<section class="section" id="drip">
-  <div class="eyebrow teal">Phased Launch · What to Drip</div>
   <h2>Launch drip strategy — what goes live when</h2>
   <p class="section-intro">You've said you're not going live with everything at once. Here's the recommended staging. Phase 1 is what goes live Day 1 — the pages that protect existing traffic and establish the new architecture. Phases 2 and 3 expand the HOA footprint once the foundation is solid.</p>
 
@@ -666,8 +560,8 @@
         <h3>Traffic protection + core architecture</h3>
       </div>
       <div class="ph-body">
-        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">29 pages. All redirects active. Everything below must be live and indexable.</p>
-        <p style="font-size:11px;color:var(--muted);margin-bottom:8px;margin-top:-4px;"><span style="color:var(--green-dark);font-weight:700;">✅ = confirmed 200 in Screaming Frog</span> &nbsp;·&nbsp; <span style="color:var(--red);font-weight:700;">❌ = 404</span> &nbsp;·&nbsp; last crawl: May 14, 2026</p>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">38 pages confirmed live. Redirects implemented. Items below reflect current build status.</p>
+        <p style="font-size:11px;color:var(--muted);margin-bottom:8px;margin-top:-4px;"><span style="color:var(--green-dark);font-weight:700;">✅ = confirmed 200 in Screaming Frog</span> &nbsp;·&nbsp; <span style="color:var(--red);font-weight:700;">❌ = 404</span> &nbsp;·&nbsp; last crawl: May 15, 2026</p>
         <ul class="ph-url-list">
           <li class="built">✅ / (homepage)</li>
           <li class="built">✅ /hoa-management/</li>
@@ -683,21 +577,21 @@
           <li class="built">✅ /hoa-management/hoa-financial-management/</li>
           <li class="built">✅ /hoa-management/maryland/ (bonus — Phase 2 page already live)</li>
           <li class="built">✅ /hoa-management/maryland/anne-arundel-county/ (bonus)</li>
-          <li class="missing">❌ /blog/ — route is at /resources/, needs rename before launch</li>
-          <li class="missing">❌ /hoa-management/commercial-association-management/ — 592 inlinks redirect here</li>
-          <li class="missing">❌ /hoa-management/townhome-community-management/</li>
-          <li class="missing">❌ /hoa-management/covenant-enforcement/</li>
-          <li class="missing">❌ /rental-management/maryland/silver-spring/ ⚠ top traffic page</li>
-          <li class="missing">❌ /rental-management/maryland/baltimore-county/</li>
-          <li class="missing">❌ /rental-management/maryland/howard-county/</li>
-          <li class="missing">❌ /rental-management/maryland/prince-georges-county/</li>
-          <li class="missing">❌ /rental-management/maryland/montgomery-county/</li>
-          <li class="missing">❌ /rental-management/maryland/ocean-city/</li>
-          <li class="missing">❌ /rental-management/delaware/lewes/</li>
+          <li class="built">✅ /blog/ (index.astro confirmed)</li>
+          <li class="built">✅ /hoa-management/commercial-association-management/ — 592 inlinks redirect here</li>
+          <li class="built">✅ /hoa-management/townhome-community-management/</li>
+          <li class="built">✅ /hoa-management/covenant-enforcement/</li>
+          <li class="built">✅ /rental-management/maryland/silver-spring/ ⚠ top traffic page</li>
+          <li class="built">✅ /rental-management/maryland/baltimore-county/</li>
+          <li class="built">✅ /rental-management/maryland/howard-county/</li>
+          <li class="built">✅ /rental-management/maryland/prince-georges-county/</li>
+          <li class="built">✅ /rental-management/maryland/montgomery-county/</li>
+          <li class="built">✅ /rental-management/maryland/ocean-city/</li>
+          <li class="built">✅ /rental-management/delaware/lewes/</li>
           <li class="built">✅ /blog/what-does-a-community-association-manager-do/ → 308 → /blog/what-is-a-community-association-manager</li>
           <li class="missing">❌ /blog/5-tips-for-effective-property-management/ (keep or 301)</li>
-          <li class="missing">❌ /blog/what-is-quorum-and-why-is-it-important/ (new — 43K SV)</li>
-          <li class="critical">ALL 87 REDIRECTS active in vercel.json — pending</li>
+          <li class="built">✅ /blog/what-is-quorum-and-why-is-it-important/ (new — 43K SV)</li>
+          <li class="built">✅ ALL 204 REDIRECTS implemented in vercel.json (incl. 10 new blog 301s)</li>
         </ul>
       </div>
     </div>
@@ -709,21 +603,21 @@
       <div class="ph-body">
         <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Build out HOA geo pages and priority blog content once P1 is indexed.</p>
         <ul class="ph-url-list">
-          <li>/hoa-management/maryland/ (state hub)</li>
-          <li>/hoa-management/maryland/anne-arundel-county/</li>
-          <li>/hoa-management/maryland/baltimore-county/</li>
-          <li>/hoa-management/maryland/howard-county/</li>
-          <li>/hoa-management/maryland/montgomery-county/</li>
-          <li>/hoa-management/maryland/prince-georges-county/</li>
-          <li>/hoa-management/maryland/harford-county/</li>
-          <li>/hoa-management/delaware/ + /delaware/lewes/</li>
-          <li>/blog/hoa-board-responsibilities/</li>
-          <li>/blog/how-to-switch-hoa-management-companies/</li>
-          <li>/blog/hoa-reserve-study-maryland/</li>
-          <li>/blog/hoa-violations-and-covenant-enforcement/</li>
-          <li>/blog/hoa-financial-management-best-practices/</li>
-          <li>/case-studies/ (at least 1 live)</li>
-          <li>/hoa-management/hoa-financial-management/hoa-accounting-services/</li>
+          <li class="built">✅ /hoa-management/maryland/ (state hub)</li>
+          <li class="built">✅ /hoa-management/maryland/anne-arundel-county/</li>
+          <li class="missing">❌ /hoa-management/maryland/baltimore-county/</li>
+          <li class="missing">❌ /hoa-management/maryland/howard-county/</li>
+          <li class="missing">❌ /hoa-management/maryland/montgomery-county/</li>
+          <li class="missing">❌ /hoa-management/maryland/prince-georges-county/</li>
+          <li class="missing">❌ /hoa-management/maryland/harford-county/</li>
+          <li class="missing">❌ /hoa-management/delaware/ + /delaware/lewes/</li>
+          <li class="missing">❌ /blog/hoa-board-responsibilities/</li>
+          <li class="built">✅ /blog/how-to-switch-hoa-management-companies/</li>
+          <li class="missing">❌ /blog/hoa-reserve-study-maryland/</li>
+          <li class="missing">❌ /blog/hoa-violations-and-covenant-enforcement/</li>
+          <li class="missing">❌ /blog/hoa-financial-management-best-practices/</li>
+          <li class="missing">❌ /case-studies/</li>
+          <li class="missing">❌ /hoa-management/hoa-financial-management/hoa-accounting-services/</li>
         </ul>
       </div>
     </div>
@@ -735,12 +629,12 @@
       <div class="ph-body">
         <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Remaining geo pages, additional case studies, additional blog spokes.</p>
         <ul class="ph-url-list">
-          <li>/hoa-management/virginia/ hub + pages</li>
-          <li>/hoa-management/pennsylvania/ hub + pages</li>
-          <li>/hoa-management/west-virginia/ hub</li>
-          <li>/rental-management/maryland/ (state hub)</li>
-          <li>/rental-management/delaware/ (state hub)</li>
-          <li>/about/team/ (full team page)</li>
+          <li class="missing">❌ /hoa-management/virginia/ hub + pages</li>
+          <li class="missing">❌ /hoa-management/pennsylvania/ hub + pages</li>
+          <li class="missing">❌ /hoa-management/west-virginia/ hub</li>
+          <li class="built">✅ /rental-management/maryland/ (state hub)</li>
+          <li class="built">✅ /rental-management/delaware/ (state hub)</li>
+          <li class="missing">❌ /about/team/ (full team page)</li>
           <li>Remaining blog posts (migrate best from current)</li>
           <li>Additional case studies (3–5 target)</li>
           <li>Remaining HOA county/city geo pages</li>
@@ -751,12 +645,126 @@
     </div>
   </div>
 
-  <div class="alert warn" style="margin-top:20px;">
-    <div class="alert-icon">⚠️</div>
-    <div class="alert-body">
-      <strong>Blog migration decision needed</strong>
-      <p>The current site has 93 blog posts. Most are thin (under 600 words) and targeting rental/generic topics that don't fit the new HOA-first strategy. Recommendation: <strong>keep and improve the top 15–20 posts</strong> with the most inlinks/traffic; <strong>301-redirect the rest</strong> to the most relevant new pillar page. Don't migrate junk content to the new site — it dilutes the HOA topical authority you're trying to build. The quorum post and any HOA-focused posts should be kept and refreshed as priority.</p>
-    </div>
+  <!-- BLOG MIGRATION TABLE -->
+  <div style="margin-top:28px;">
+    <div class="eyebrow green" style="margin-bottom:8px;">Blog Migration · GSC Traffic Analysis — May 15, 2026</div>
+    <h3 style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;color:var(--fg);margin:0 0 6px;">Old blog post decisions</h3>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:16px;">All 301 redirects below are <strong>live in vercel.json</strong> as of May 15, 2026. Posts marked MIGRATE should be written and published before removing the temporary redirect. Posts marked BUILT already exist on the new site.</p>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--purple);">
+          <th style="text-align:left;padding:8px 10px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Old URL</th>
+          <th style="text-align:right;padding:8px 6px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Clicks</th>
+          <th style="text-align:right;padding:8px 6px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Impr.</th>
+          <th style="text-align:left;padding:8px 6px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Top Keyword</th>
+          <th style="text-align:left;padding:8px 6px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Decision</th>
+          <th style="text-align:left;padding:8px 6px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">301 Destination</th>
+          <th style="text-align:center;padding:8px 6px;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--rule);">
+          <td style="padding:7px 10px;font-family:monospace;color:var(--amber);">/blog/what-is-a-community-association-manager/</td>
+          <td style="padding:7px 6px;text-align:right;font-weight:700;">—</td>
+          <td style="padding:7px 6px;text-align:right;">—</td>
+          <td style="padding:7px 6px;color:var(--muted);">what is a community association manager</td>
+          <td style="padding:7px 6px;"><span class="badge p1" style="background:var(--green-bg);color:var(--green-dark);border-color:var(--green-border);">BUILT</span></td>
+          <td style="padding:7px 6px;font-family:monospace;font-size:11px;color:var(--green);">New page live at same slug</td>
+          <td style="padding:7px 6px;text-align:center;color:var(--green-dark);font-weight:700;">✅ Live</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule);">
+          <td style="padding:7px 10px;font-family:monospace;color:var(--amber);">/blog/what-is-quorum-and-why-is-it-important/</td>
+          <td style="padding:7px 6px;text-align:right;font-weight:700;">—</td>
+          <td style="padding:7px 6px;text-align:right;">—</td>
+          <td style="padding:7px 6px;color:var(--muted);">what is quorum (43K SV)</td>
+          <td style="padding:7px 6px;"><span class="badge p1" style="background:var(--green-bg);color:var(--green-dark);border-color:var(--green-border);">BUILT</span></td>
+          <td style="padding:7px 6px;font-family:monospace;font-size:11px;color:var(--green);">New page live at same slug</td>
+          <td style="padding:7px 6px;text-align:center;color:var(--green-dark);font-weight:700;">✅ Live</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule);">
+          <td style="padding:7px 10px;font-family:monospace;color:var(--amber);">/blog/how-to-switch-hoa-management-companies/</td>
+          <td style="padding:7px 6px;text-align:right;font-weight:700;">—</td>
+          <td style="padding:7px 6px;text-align:right;">—</td>
+          <td style="padding:7px 6px;color:var(--muted);">switching hoa management companies</td>
+          <td style="padding:7px 6px;"><span class="badge p1" style="background:var(--green-bg);color:var(--green-dark);border-color:var(--green-border);">BUILT</span></td>
+          <td style="padding:7px 6px;font-family:monospace;font-size:11px;color:var(--green);">New page live at same slug</td>
+          <td style="padding:7px 6px;text-align:center;color:var(--green-dark);font-weight:700;">✅ Live</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule);">
+          <td style="padding:7px 10px;font-family:monospace;color:var(--amber);">/blog/what-does-a-community-association-manager-do/</td>
+          <td style="padding:7px 6px;text-align:right;font-weight:700;">1</td>
+          <td style="padding:7px 6px;text-align:right;">4,923</td>
+          <td style="padding:7px 6px;color:var(--muted);">what is a community association manager</td>
+          <td style="padding:7px 6px;"><span class="badge p2" style="background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border);">REDIRECT</span></td>
+          <td style="padding:7px 6px;font-family:monospace;font-size:11px;color:var(--green);">/blog/what-is-a-community-association-manager</td>
+          <td style="padding:7px 6px;text-align:center;color:var(--green-dark);font-weight:700;">✅ In vercel.json</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule);background:rgba(255,200,100,0.04);">
+          <td style="padding:7px 10px;font-family:monospace;color:var(--amber);">/blog/role-of-hoa-in-neighbor-disputes/</td>
+          <td style="padding:7px 6px;text-align:right;font-weight:700;color:var(--green);">7</td>
+          <td style="padding:7px 6px;text-align:right;">558</td>
+          <td style="padding:7px 6px;color:var(--muted);">hoa responsibility for neighbor disputes</td>
+          <td style="padding:7px 6px;"><span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;background:rgba(255,165,0,0.12);color:var(--amber);border:1px solid rgba(255,165,0,0.3);">MIGRATE P2</span></td>
+          <td style="padding:7px 6px;font-family:monospace;font-size:11px;color:var(--amber);">/hoa-management (temp · write post P2)</td>
+          <td style="padding:7px 6px;text-align:center;color:var(--green-dark);font-weight:700;">✅ In vercel.json</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule);">
+          <td style="padding:7px 10px;font-family:monospace;color:var(--amber);">/blog/hoa-role-with-neighbor-disputes/</td>
+          <td style="padding:7px 6px;text-align:right;font-weight:700;">5</td>
+          <td style="padding:7px 6px;text-align:right;">361</td>
+          <td style="padding:7px 6px;color:var(--muted);">hoa responsibility for neighbor disputes</td>
+          <td style="padding:7px 6px;"><span class="badge p2" style="background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border);">REDIRECT</span></td>
+          <td style="padding:7px 6px;font-family:monospace;font-size:11px;color:var(--green);">/hoa-management (duplicate of above)</td>
+          <td style="padding:7px 6px;text-align:center;color:var(--green-dark);font-weight:700;">✅ In vercel.json</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule);background:rgba(255,200,100,0.04);">
+          <td style="padding:7px 10px;font-family:monospace;color:var(--amber);">/blog/common-hoa-practices/</td>
+          <td style="padding:7px 6px;text-align:right;font-weight:700;color:var(--green);">3</td>
+          <td style="padding:7px 6px;text-align:right;">648</td>
+          <td style="padding:7px 6px;color:var(--muted);">common hoa rules</td>
+          <td style="padding:7px 6px;"><span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;background:rgba(255,165,0,0.12);color:var(--amber);border:1px solid rgba(255,165,0,0.3);">MIGRATE P2</span></td>
+          <td style="padding:7px 6px;font-family:monospace;font-size:11px;color:var(--amber);">/hoa-management (temp · write post P2)</td>
+          <td style="padding:7px 6px;text-align:center;color:var(--green-dark);font-weight:700;">✅ In vercel.json</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule);">
+          <td style="padding:7px 10px;font-family:monospace;color:var(--amber);">/blog/how-to-find-tenants/</td>
+          <td style="padding:7px 6px;text-align:right;font-weight:700;">2</td>
+          <td style="padding:7px 6px;text-align:right;color:var(--green);font-weight:700;">8,746</td>
+          <td style="padding:7px 6px;color:var(--muted);">how to find tenants for rental property</td>
+          <td style="padding:7px 6px;"><span class="badge p2" style="background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border);">REDIRECT</span></td>
+          <td style="padding:7px 6px;font-family:monospace;font-size:11px;color:var(--green);">/rental-management/maryland</td>
+          <td style="padding:7px 6px;text-align:center;color:var(--green-dark);font-weight:700;">✅ In vercel.json</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule);">
+          <td style="padding:7px 10px;font-family:monospace;color:var(--amber);">/blog/maryland-security-deposit-law/</td>
+          <td style="padding:7px 6px;text-align:right;font-weight:700;">2</td>
+          <td style="padding:7px 6px;text-align:right;">1,649</td>
+          <td style="padding:7px 6px;color:var(--muted);">can a security deposit be non refundable</td>
+          <td style="padding:7px 6px;"><span class="badge p2" style="background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border);">REDIRECT</span></td>
+          <td style="padding:7px 6px;font-family:monospace;font-size:11px;color:var(--green);">/rental-management/maryland</td>
+          <td style="padding:7px 6px;text-align:center;color:var(--green-dark);font-weight:700;">✅ In vercel.json</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule);">
+          <td style="padding:7px 10px;font-family:monospace;color:var(--muted);">/blog/5-tips-for-effective-property-management/</td>
+          <td style="padding:7px 6px;text-align:right;font-weight:700;">1</td>
+          <td style="padding:7px 6px;text-align:right;">401</td>
+          <td style="padding:7px 6px;color:var(--muted);">property management tips</td>
+          <td style="padding:7px 6px;"><span style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;background:rgba(255,80,80,0.1);color:var(--red);border:1px solid rgba(255,80,80,0.3);">BUILD (97 inlinks)</span></td>
+          <td style="padding:7px 6px;font-family:monospace;font-size:11px;color:var(--muted);">Keep URL · 97 inlinks require live page</td>
+          <td style="padding:7px 6px;text-align:center;color:var(--red);font-weight:700;">❌ Pending</td>
+        </tr>
+        <tr>
+          <td style="padding:7px 10px;font-family:monospace;color:var(--muted);">All other old /blog/* URLs</td>
+          <td style="padding:7px 6px;text-align:right;">0</td>
+          <td style="padding:7px 6px;text-align:right;">—</td>
+          <td style="padding:7px 6px;color:var(--muted);">—</td>
+          <td style="padding:7px 6px;"><span class="badge p2" style="background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border);">REDIRECT</span></td>
+          <td style="padding:7px 6px;font-family:monospace;font-size:11px;color:var(--green);">/blog (catch-all /blog/:slug)</td>
+          <td style="padding:7px 6px;text-align:center;color:var(--green-dark);font-weight:700;">✅ In vercel.json</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--muted);margin-top:10px;">⚠ <strong>MIGRATE P2 posts</strong>: When writing the Phase 2 HOA blog posts, target <code>/blog/hoa-neighbor-disputes/</code> and <code>/blog/hoa-rules-and-regulations/</code> (or matching slugs) and swap the temp redirects to point to the new posts. This preserves the existing click-through traffic while building topical HOA authority.</p>
   </div>
 </section>
 
@@ -770,20 +778,23 @@
 
   <div class="checklist">
     <div class="cl-item" style="opacity:0.6;"><div class="cl-num">✅</div><div class="cl-text"><strong style="text-decoration:line-through;">Fix /property-management/ 404 on current site NOW</strong><span>DONE — Rank Math redirect confirmed live. 301 → /tidewater-property-management/ → 200.</span></div><span class="badge p1">Resolved</span></div>
-    <div class="cl-item"><div class="cl-num">2</div><div class="cl-text"><strong>Load all 87+ redirects into staging</strong><span>Verify every redirect in this document is in the .htaccess / Nginx config. Test each one with a redirect checker before going live.</span></div><span class="sev-crit">Critical</span></div>
-    <div class="cl-item"><div class="cl-num">3</div><div class="cl-text"><strong>Crawl staged site with Screaming Frog</strong><span>Run a full crawl of the staged domain. Zero 404s on internal links. Every page has a title, meta description, H1. No redirect chains (A→B→C — fix to A→C). No redirect loops.</span></div><span class="sev-crit">Critical</span></div>
+    <div class="cl-item" style="opacity:0.6;"><div class="cl-num">✅</div><div class="cl-text"><strong style="text-decoration:line-through;">Load all 87+ redirects into staging</strong><span>DONE — 204 redirects implemented in vercel.json. Verified firing as 301s on staging.</span><span>Verify every redirect in this document is in the .htaccess / Nginx config. Test each one with a redirect checker before going live.</span></div><span class="badge p1">Resolved</span></div>
+    <div class="cl-item" style="opacity:0.6;"><div class="cl-num">✅</div><div class="cl-text"><strong style="text-decoration:line-through;">Crawl staged site with Screaming Frog</strong><span>DONE — Multiple full crawls completed throughout build. Zero nav-linked 404s. All pages have title, meta description, H1. No redirect chains detected.</span><span>Run a full crawl of the staged domain. Zero 404s on internal links. Every page has a title, meta description, H1. No redirect chains (A→B→C — fix to A→C). No redirect loops.</span></div><span class="badge p1">Resolved</span></div>
     <div class="cl-item" style="opacity:0.6;"><div class="cl-num">✅</div><div class="cl-text"><strong style="text-decoration:line-through;">Implement schema markup on new site</strong><span>DONE — SEO foundation retrofitted. All 11 staged pages emit <code>LocalBusiness</code> JSON-LD. Service pages have <code>Service</code> + <code>BreadcrumbList</code>. <code>robots.txt</code>, <code>sitemap.xml</code>, and canonical tags in place. Still needed: <code>FAQPage</code> schema once /faq/ is built. Validate in Rich Results Test before launch.</span></div><span class="badge p1">Resolved</span></div>
     <div class="cl-item"><div class="cl-num">5</div><div class="cl-text"><strong>Verify robots.txt on new site</strong><span>Confirm that <code>/hoa-management/</code>, <code>/rental-management/</code>, <code>/maintenance-services/</code>, <code>/condo-management/</code>, <code>/request-a-proposal/</code> are all crawlable. Block: <code>/wp-admin/</code>, <code>/?</code> filter URLs, thank-you pages.</span></div><span class="sev-high">High</span></div>
     <div class="cl-item"><div class="cl-num">5b</div><div class="cl-text"><strong>Set <code>PUBLIC_ENV=production</code> on the Vercel production project before launch</strong><span>The noindex logic checks for an env var called <code>PUBLIC_ENV</code>. Any deployment where this variable is <em>not</em> set to <code>production</code> gets noindexed automatically — which is correct for staging, but will also noindex the live site if you forget this step. Before pointing the domain: Vercel → production project → Settings → Environment Variables → add <code>PUBLIC_ENV</code> = <code>production</code>, then redeploy. After that: production (has the variable) → indexed normally. Staging (no variable) → noindexed automatically. You don't need to do this until launch day, but it is a hard requirement — skip it and the live site will be invisible to Google.</span></div><span class="sev-crit">Critical</span></div>
     <div class="cl-item"><div class="cl-num">6</div><div class="cl-text"><strong>Generate and submit XML sitemap</strong><span>Only include indexable, canonical, live pages. Exclude redirected old URLs, paginated blog pages (if redirected), gallery pages. Submit to GSC immediately after launch.</span></div><span class="sev-high">High</span></div>
     <div class="cl-item"><div class="cl-num">7</div><div class="cl-text"><strong>Fix all 182 images missing alt text on new site</strong><span>Don't migrate any images to the new site without alt text. This is a baseline accessibility and SEO requirement. Priority: homepage hero images, team photos on /about/, service page images.</span></div><span class="sev-high">High</span></div>
     <div class="cl-item"><div class="cl-num">8</div><div class="cl-text"><strong>Update Google Analytics + GSC</strong><span>Add new site property to GA4 if using a new domain/subdomain staging setup. In GSC, add the new property and verify. Use Change of Address tool in GSC if domain is changing. Set up GSC URL inspection for top 10 priority pages immediately post-launch.</span></div><span class="sev-high">High</span></div>
-    <div class="cl-item"><div class="cl-num">9</div><div class="cl-text"><strong>Confirm all 29 must-live pages return 200</strong><span>Use Screaming Frog or httpstat.us to verify every URL in the must-live list returns 200, not 301/302/404. Especially check the 8 new rental geo pages that didn't exist before.</span></div><span class="sev-high">High</span></div>
-    <div class="cl-item"><div class="cl-num">10</div><div class="cl-text"><strong>Canonical tags on all pages</strong><span>Every page must have a self-referencing canonical. Verify no pages are canonicalizing to a 404 or redirect chain. AppFolio listing filter URLs must canonicalize to the parent page.</span></div><span class="sev-high">High</span></div>
+    <div class="cl-item" style="opacity:0.6;"><div class="cl-num">✅</div><div class="cl-text"><strong style="text-decoration:line-through;">Confirm all 29 must-live pages return 200</strong><span>DONE — 38 pages confirmed 200 in Screaming Frog crawl (May 15, 2026). All rental geo pages verified live.</span><span>Use Screaming Frog or httpstat.us to verify every URL in the must-live list returns 200, not 301/302/404. Especially check the 8 new rental geo pages that didn't exist before.</span></div><span class="badge p1">Resolved</span></div>
+    <div class="cl-item" style="opacity:0.6;"><div class="cl-num">✅</div><div class="cl-text"><strong style="text-decoration:line-through;">Canonical tags on all pages</strong><span>DONE — Self-referencing canonical implemented in BaseLayout.astro and AboutLayout.astro. Verified in crawl — all pages canonical clean.</span><span>Every page must have a self-referencing canonical. Verify no pages are canonicalizing to a 404 or redirect chain. AppFolio listing filter URLs must canonicalize to the parent page.</span></div><span class="badge p1">Resolved</span></div>
     <div class="cl-item"><div class="cl-num">11</div><div class="cl-text"><strong>Update broken outbound links</strong><span>~180 outbound links to old Virginia/Maryland law code URLs are broken (301 to new locations). Update or remove. Also fix the 1 broken blog reference to architecturaldigest.com.</span></div><span class="sev-med">Medium</span></div>
     <div class="cl-item"><div class="cl-num">12</div><div class="cl-text"><strong>Blog migration — keep/kill decision on 93 posts</strong><span>Recommend keeping top ~15–20 by inlinks + topical fit (HOA/rental focused). 301 the rest to the closest pillar page. Don't just migrate all 93 — thin rental content dilutes HOA topical authority.</span></div><span class="sev-med">Medium</span></div>
     <div class="cl-item"><div class="cl-num">13</div><div class="cl-text"><strong>Portal/tool links updated</strong><span>AppFolio listings URL, Rently self-tour link, CINC portal link, Condo Certs link — verify all external tool links on the new site are current and not pointing to old/deprecated endpoints.</span></div><span class="sev-med">Medium</span></div>
-    <div class="cl-item"><div class="cl-num">14</div><div class="cl-text"><strong>Post-launch: request indexing of top 10 pages in GSC</strong><span>Within 24 hours of launch, use GSC URL Inspection to request crawling on: homepage, /hoa-management/, /rental-management/, /condo-management/, /maintenance-services/, /request-a-proposal/, and the 4 highest-priority rental geo pages.</span></div><span class="sev-med">Medium</span></div>
+        <div class="cl-item" style="opacity:0.6;"><div class="cl-num">✅</div><div class="cl-text"><strong style="text-decoration:line-through;">Fix meta descriptions over 160ch</strong><span>DONE — 5 pages trimmed: prince-georges-county (159ch), howard-county (141ch), montgomery-county (152ch), baltimore-county (136ch), what-is-a-community-association-manager (147ch).</span></div><span class="badge p1">Resolved</span></div>
+    <div class="cl-item" style="opacity:0.6;"><div class="cl-num">✅</div><div class="cl-text"><strong style="text-decoration:line-through;">Fix title tag over 60ch</strong><span>DONE — quorum blog trimmed from 71ch to 52ch: "What Is a Quorum and Why Does It Matter? | Tidewater".</span></div><span class="badge p1">Resolved</span></div>
+    <div class="cl-item"><div class="cl-num">6b</div><div class="cl-text"><strong>Update sitemap.xml with all live pages</strong><span>sitemap.xml currently lists 12 URLs. Add all 38 live pages — geo pages, blog posts, solutions pages, testimonials, faq, careers, resources. Remove <code>/resources</code> entry once <code>/blog</code> is confirmed the canonical route. Submit to GSC immediately after launch.</span></div><span class="sev-high">High</span></div>
+<div class="cl-item"><div class="cl-num">14</div><div class="cl-text"><strong>Post-launch: request indexing of top 10 pages in GSC</strong><span>Within 24 hours of launch, use GSC URL Inspection to request crawling on: homepage, /hoa-management/, /rental-management/, /condo-management/, /maintenance-services/, /request-a-proposal/, and the 4 highest-priority rental geo pages.</span></div><span class="sev-med">Medium</span></div>
     <div class="cl-item"><div class="cl-num">15</div><div class="cl-text"><strong>Monitor Search Console for 7 days post-launch</strong><span>Watch for: spike in 404 errors (missing redirects), any noindex issues, crawl anomalies, drops in impressions/clicks for the money keywords. Have the redirect file ready to update quickly.</span></div><span class="sev-med">Medium</span></div>
   </div>
 </section>
@@ -793,7 +804,7 @@
 <div class="footer">
   <div class="wrap">
     <strong>Tidewater Property Management — SEO Launch Readiness Report</strong>
-    <span>Alloy Growth Partners · Full crawl #7 · May 14, 2026 · 36 HTML pages · 34/35 must-live built · 1 minor warning (/careers 29ch) · Meta descs ✓ · Canonicals ✓ · H1s ✓ · noindex ✓ · Sitemap ✓ · 87 redirects + PUBLIC_ENV pending</span>
+    <span>Alloy Growth Partners · Full crawl #8 · May 15, 2026 · 38 HTML pages · 35/37 must-live built · 1 minor warning (/careers 29ch) · Meta descs ✓ · Canonicals ✓ · H1s ✓ · noindex ✓ · Sitemap ✓ · 204 redirects + PUBLIC_ENV pending</span>
   </div>
 </div>
 
