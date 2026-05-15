@@ -569,6 +569,8 @@ img { max-width: 100%; display: block; }
 .tw-owner-action:hover .tw-owner-action-icon { background: var(--tw-teal); color: var(--tw-cream); }
 .tw-owner-action-title { font-family: var(--tw-font-heading); font-weight: 700; font-size: 16px; color: var(--tw-dark); margin-bottom: 4px; }
 .tw-owner-action-sub { font-family: var(--tw-font-body); font-size: 13px; color: var(--tw-fg-muted); line-height: 1.4; }
+.tw-owner-action-badges { display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
+.tw-owner-app-badge { display: flex; align-items: center; gap: 4px; font-family: var(--tw-font-heading); font-weight: 600; font-size: 10px; color: var(--tw-fg-muted); background: var(--tw-warm-100); border: 1px solid var(--tw-border); border-radius: 5px; padding: 4px 8px; white-space: nowrap; }
 
 /* Pillar split */
 .tw-pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
