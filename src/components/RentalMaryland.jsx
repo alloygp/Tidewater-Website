@@ -139,7 +139,7 @@ function RentalMarylandCounties() {
       name: ‘Howard County’,
       meta: ‘Columbia &amp; Ellicott City’,
       featured: true,
-      body: ‘Columbia’s village structure layered HOAs over rental properties &mdash; we navigate both. Strong demand in Ellicott City, Elkridge. Median rents above county average.’,
+      body: "Columbia’s village structure layered HOAs over rental properties &mdash; we navigate both. Strong demand in Ellicott City, Elkridge. Median rents above county average.",
       cities: [‘Columbia’, ‘Ellicott City’, ‘Elkridge’],
       href: ‘/rental-management/maryland/howard-county’,
     },
