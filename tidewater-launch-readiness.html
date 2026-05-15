@@ -182,11 +182,11 @@
   <div class="cover-inner">
     <div class="cover-eyebrow">Alloy Growth Partners · Site Launch SEO Audit · May 2026</div>
     <h1>tidewaterproperty.com <em>launch readiness</em></h1>
-    <p class="cover-sub">Full crawl — May 14, 2026. 24 pages confirmed live. 27/29 must-live pages built. All canonicals, H1s, noindex, and robots.txt clean. Open issues: 1 404 redirect destination, 1 missing meta description, 3 overlong titles, 10 overlong meta descriptions, orphaned rental geo parent. 87 redirects still pending.</p>
+    <p class="cover-sub">Full crawl — May 14, 2026. 26 pages confirmed live. 27/29 must-live pages built. All H1s, canonicals, noindex, robots.txt, and sitemap clean. Two open warnings remain: 4 title tags and 15 meta descriptions out of range. 87 redirects pending before domain flip.</p>
     <div class="score-grid">
-      <div class="score-card"><div class="sv amber">5</div><div class="sl">Open Issues</div></div>
-      <div class="score-card"><div class="sv green">8</div><div class="sl">Issues Resolved</div></div>
-      <div class="score-card"><div class="sv white">24</div><div class="sl">Pages Built on Staging</div></div>
+      <div class="score-card"><div class="sv amber">2</div><div class="sl">Open Warnings</div></div>
+      <div class="score-card"><div class="sv green">10</div><div class="sl">Issues Resolved</div></div>
+      <div class="score-card"><div class="sv white">26</div><div class="sl">Pages Built on Staging</div></div>
       <div class="score-card"><div class="sv green">0</div><div class="sl">Nav-Linked 404s</div></div>
       <div class="score-card"><div class="sv amber">87</div><div class="sl">Redirects Pending</div></div>
     </div>
@@ -201,7 +201,7 @@
 <section class="section" id="blockers">
   <div class="eyebrow red">Stop-Ship · Fix Before Going Live</div>
   <h2>Critical blockers</h2>
-  <p class="section-intro">Full crawl — May 14, 2026. 8 cumulative issues resolved. 5 open issues: 2 blockers (covenant-enforcement 404, switching meta description missing) and 3 warnings (rental/maryland parent 404, 3 overlong titles, 12 meta description length issues). All canonicals, H1s, noindex tags, and robots.txt confirmed clean.</p>
+  <p class="section-intro">Full crawl — May 14, 2026. 10 cumulative issues resolved. Two open warnings remain: title tag lengths on 4 pages, and meta description lengths on 15 pages. All 26 live pages have correct H1s, canonicals, noindex tags, sitemap entries, and robots.txt.</p>
 
   <!-- ALL RESOLVED -->
   <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
@@ -261,28 +261,27 @@
     </div>
   </div>
 
-  <!-- NEW OPEN ISSUES (surfaced May 14, 2026 re-check) -->
-  <div class="alert crit" style="border-color:var(--red-border);background:var(--red-bg);">
-    <div class="alert-icon">🚨</div>
+  <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
+    <div class="alert-icon">✅</div>
     <div class="alert-body">
-      <strong>MUST FIX — <code>/hoa-management/covenant-enforcement</code> is a 404 redirect destination</strong>
-      <p>The redirect map sends <code>/code-enforcement-services/</code> → <code>/hoa-management/covenant-enforcement/</code>. That destination page returns 404 on staging. At launch, 563 inlinks worth of equity will flow into a dead end. Either build the page before launch, or update the vercel.json redirect to point to <code>/hoa-management/</code> as a fallback.</p>
+      <strong>RESOLVED — <code>/hoa-management/covenant-enforcement</code> is live (May 14, 2026)</strong>
+      <p>Page now returns 200. The <code>/code-enforcement-services/</code> redirect destination is no longer a dead end — 563 inlinks will land on a live page at launch.</p>
     </div>
   </div>
 
-  <div class="alert warn">
-    <div class="alert-icon">⚠️</div>
+  <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
+    <div class="alert-icon">✅</div>
     <div class="alert-body">
-      <strong>OPEN — <code>/rental-management/maryland</code> parent page is 404</strong>
-      <p>Two child pages are now live — <code>/rental-management/maryland/anne-arundel-county</code> and <code>/rental-management/maryland/silver-spring</code> — but their parent state hub returns 404. This creates orphaned pages with no parent to link to or receive internal link equity. Build <code>/rental-management/maryland</code> before launching the geo pages, or internal linking from those pages will dead-end. Note: the Phase 3 sitemap had this planned for Month 2+ — it should move to pre-launch.</p>
+      <strong>RESOLVED — <code>/rental-management/maryland</code> parent page is live (May 14, 2026)</strong>
+      <p>State hub now returns 200. The anne-arundel-county and silver-spring child pages are no longer orphaned — internal links from those pages have a parent to flow through.</p>
     </div>
   </div>
 
-  <div class="alert crit" style="border-color:var(--red-border);background:var(--red-bg);">
-    <div class="alert-icon">🚨</div>
+  <div class="alert info" style="border-color:var(--green-border);background:var(--green-bg);">
+    <div class="alert-icon">✅</div>
     <div class="alert-body">
-      <strong>MUST FIX — <code>/solutions/switching-hoa-management-company</code> meta description is 7 characters</strong>
-      <p>The meta description field on this page is essentially empty — 7 characters is a data entry bug, not a truncation. Google will auto-generate a snippet from page body copy, which is almost always worse than a written description. Fix the <code>description</code> prop in the page file before launch. Target: 130–155 characters.</p>
+      <strong>RESOLVED — <code>/solutions/switching-hoa-management-company</code> meta description filled in (May 14, 2026)</strong>
+      <p>Description is no longer 7 characters. Now 175ch — still over the 160ch limit, so it's included in the meta description batch below, but it's no longer a missing-field bug.</p>
     </div>
   </div>
 
@@ -296,14 +295,14 @@
         <li><code>/testimonials</code> — 64ch: <em>"Testimonials &amp; Board Reviews — Tidewater Property Management"</em></li>
         <li><code>/rental-management/maryland/anne-arundel-county</code> — 61ch: <em>"Rental Property Management Anne Arundel County MD | Tidewater"</em></li>
       </ul>
-      <p style="margin-top:8px;">Also note: <code>/careers</code> is 29ch (short but acceptable). All other 20 titles are within range.</p>
+      <p style="margin-top:8px;">Also note: <code>/careers</code> is 29ch (short but acceptable). All other 22 titles are within range.</p>
     </div>
   </div>
 
   <div class="alert warn">
     <div class="alert-icon">⚠️</div>
     <div class="alert-body">
-      <strong>OPEN — 12 meta descriptions out of range (10 over 160ch, 2 under 100ch)</strong>
+      <strong>OPEN — 15 meta descriptions out of range (13 over 160ch, 2 under 100ch)</strong>
       <p>Google truncates descriptions above ~160 characters. Short descriptions get auto-replaced with page body copy. These need edits before launch:</p>
       <table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;">
         <thead><tr style="border-bottom:1px solid var(--rule);"><th style="text-align:left;padding:4px 8px;color:var(--muted);font-size:11px;text-transform:uppercase;">Page</th><th style="text-align:right;padding:4px 8px;color:var(--muted);font-size:11px;text-transform:uppercase;">Chars</th><th style="text-align:left;padding:4px 8px;color:var(--muted);font-size:11px;text-transform:uppercase;">Issue</th></tr></thead>
@@ -316,13 +315,16 @@
           <tr style="border-bottom:1px solid var(--rule);"><td style="padding:4px 8px;font-family:monospace;">/hoa-management/commercial-association-management</td><td style="padding:4px 8px;text-align:right;color:var(--red);">192ch</td><td style="padding:4px 8px;">Over limit</td></tr>
           <tr style="border-bottom:1px solid var(--rule);"><td style="padding:4px 8px;font-family:monospace;">/hoa-management/maryland/anne-arundel-county</td><td style="padding:4px 8px;text-align:right;color:var(--red);">188ch</td><td style="padding:4px 8px;">Over limit</td></tr>
           <tr style="border-bottom:1px solid var(--rule);"><td style="padding:4px 8px;font-family:monospace;">/rental-management/maryland/silver-spring</td><td style="padding:4px 8px;text-align:right;color:var(--red);">174ch</td><td style="padding:4px 8px;">Over limit</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:4px 8px;font-family:monospace;">/rental-management/maryland</td><td style="padding:4px 8px;text-align:right;color:var(--red);">207ch</td><td style="padding:4px 8px;">Over limit</td></tr>
           <tr style="border-bottom:1px solid var(--rule);"><td style="padding:4px 8px;font-family:monospace;">/about/leadership</td><td style="padding:4px 8px;text-align:right;color:var(--red);">170ch</td><td style="padding:4px 8px;">Over limit</td></tr>
           <tr style="border-bottom:1px solid var(--rule);"><td style="padding:4px 8px;font-family:monospace;">/rental-management</td><td style="padding:4px 8px;text-align:right;color:var(--red);">181ch</td><td style="padding:4px 8px;">Over limit</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:4px 8px;font-family:monospace;">/hoa-management/covenant-enforcement</td><td style="padding:4px 8px;text-align:right;color:var(--red);">199ch</td><td style="padding:4px 8px;">Over limit</td></tr>
+          <tr style="border-bottom:1px solid var(--rule);"><td style="padding:4px 8px;font-family:monospace;">/solutions/switching-hoa-management-company</td><td style="padding:4px 8px;text-align:right;color:var(--red);">175ch</td><td style="padding:4px 8px;">Over limit</td></tr>
           <tr style="border-bottom:1px solid var(--rule);"><td style="padding:4px 8px;font-family:monospace;">/solutions/self-managed-hoa-transition</td><td style="padding:4px 8px;text-align:right;color:var(--amber);">71ch</td><td style="padding:4px 8px;">Short — Google may replace</td></tr>
           <tr><td style="padding:4px 8px;font-family:monospace;">/testimonials</td><td style="padding:4px 8px;text-align:right;color:var(--amber);">60ch</td><td style="padding:4px 8px;">Short — Google may replace</td></tr>
         </tbody>
       </table>
-      <p style="margin-top:8px;font-size:12px;color:var(--muted);">Target range: 130–155 characters. The 12 pages above are the only ones with issues — the remaining 12 live pages all have descriptions in range.</p>
+      <p style="margin-top:8px;font-size:12px;color:var(--muted);">Target range: 130–155 characters. The 15 pages above are the only ones with issues — the remaining 11 live pages all have descriptions in range.</p>
     </div>
   </div>
 </section>
@@ -797,7 +799,7 @@
 <div class="footer">
   <div class="wrap">
     <strong>Tidewater Property Management — SEO Launch Readiness Report</strong>
-    <span>Alloy Growth Partners · Full crawl #5 · May 14, 2026 · 24 HTML pages · 27/29 must-live built · 5 open issues · All canonicals, H1s, noindex ✓ · robots.txt ✓ · sitemap clean · 87 redirects + PUBLIC_ENV pending before domain flip</span>
+    <span>Alloy Growth Partners · Full crawl #6 · May 14, 2026 · 26 HTML pages · 27/29 must-live built · 2 open warnings · All canonicals, H1s, noindex, sitemap ✓ · 87 redirects + PUBLIC_ENV pending before domain flip</span>
   </div>
 </div>
 
