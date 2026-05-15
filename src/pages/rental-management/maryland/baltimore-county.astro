@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Topbar from '../../../components/Topbar.astro';
+import Header from '../../../components/Header.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Footer from '../../../components/Footer.astro';
+import CTA from '../../../components/CTA.astro';
+import RentalGeo, { GEO_DATA_BALTIMORE_COUNTY as geo } from '../../../components/RentalGeo.jsx';
+import { breadcrumbSchema, serviceSchema } from '../../../lib/schema';
+import { SITE } from '../../../config/site';
+
+const pageUrl = `${SITE.url}/rental-management/maryland/baltimore-county`;
+
+const schemas = [
+  serviceSchema({
+    name: 'Rental Property Management — Baltimore County, MD',
+    description: geo.schemaDesc,
+    url: pageUrl,
+    areaServed: 'Baltimore County, Maryland',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Rental Management', url: SITE.url + '/rental-management' },
+    { name: 'Maryland', url: SITE.url + '/rental-management/maryland' },
+    { name: 'Baltimore County', url: pageUrl },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Baltimore County Rental Management | Tidewater"
+  description="Rental property management in Baltimore County, MD — Towson, Owings Mills, Cockeysville, Pikesville, Timonium. HQ county. Flat 8.5% fee. AppFolio-backed. Local manager."
+  ogType="website"
+  pageSchema={schemas}
+  pageStylesheet="styles-geo.css"
+>
+  <Topbar />
+  <Header activeNav="rental" />
+  <Breadcrumb crumbs={[
+    { label: 'Rental Management', href: '/rental-management' },
+    { label: 'Maryland', href: '/rental-management/maryland' },
+    { label: 'Baltimore County' },
+  ]} />
+  <RentalGeo geo={geo} client:load />
+  <CTA />
+  <Footer />
+</BaseLayout>
