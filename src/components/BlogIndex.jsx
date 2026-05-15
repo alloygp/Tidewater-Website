@@ -10,6 +10,18 @@ const BlogIndexIcons = {
 // All posts — sorted newest-first. The featured post is index 0 when no filter is active.
 const ALL_POSTS = [
   {
+    slug: 'what-is-quorum-and-why-is-it-important',
+    href: '/blog/what-is-quorum-and-why-is-it-important',
+    title: 'What is a quorum? <em>Definition,</em> requirements, and why it matters for your board.',
+    dek: "A quorum is the minimum number of members who must be present for a meeting's decisions to be legally valid. This guide covers how quorum works for HOA board meetings and annual meetings, what happens when quorum isn't met, and how proxy voting affects the count.",
+    category: { id: 'governance', label: 'Board Governance', tone: '' },
+    date: 'May 14, 2026', dateIso: '2026-05-14',
+    readTime: 8,
+    author: 'Marcia Goldstein',
+    tone: '',
+    featured: true,
+  },
+  {
     slug: 'how-to-switch-hoa-management-companies',
     href: '/blog/how-to-switch-hoa-management-companies',
     title: 'How to switch HOA management companies: a <em>step-by-step</em> guide.',
@@ -19,7 +31,6 @@ const ALL_POSTS = [
     readTime: 9,
     author: 'Rachel Halverson',
     tone: '',
-    featured: true,
   },
   {
     slug: 'reserve-studies-decoded',
