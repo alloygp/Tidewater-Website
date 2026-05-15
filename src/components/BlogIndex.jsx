@@ -20,6 +20,8 @@ const ALL_POSTS = [
     author: 'Marcia Goldstein',
     tone: '',
     featured: true,
+    coverImage: '/assets/quorum-community-manager.jpg',
+    coverAlt: 'Tidewater community association manager walking through a planned neighborhood in Maryland, holding an iPad during a site inspection',
   },
   {
     slug: 'how-to-switch-hoa-management-companies',
@@ -215,7 +217,9 @@ function BlogIndexFeatured({ post }) {
         </div>
 
         <a href={post.href} className="tw-bi-featured">
-          <div className={`tw-bi-featured-img ${post.tone}`}></div>
+          <div className={`tw-bi-featured-img ${post.tone}`}>
+            {post.coverImage && <img src={post.coverImage} alt={post.coverAlt || post.title.replace(/<[^>]+>/g, '')} />}
+          </div>
           <div className="tw-bi-featured-body">
             <span className={`tw-bi-featured-cat ${post.tone}`}>{post.category.label}</span>
             <h2 dangerouslySetInnerHTML={{ __html: post.title }} />
@@ -263,7 +267,9 @@ function BlogIndexCats({ active, onSelect, counts }) {
 function BlogIndexCard({ post }) {
   return (
     <a href={post.href} className="tw-bi-card">
-      <div className={`tw-bi-card-img ${post.tone}`}></div>
+      <div className={`tw-bi-card-img ${post.tone}`}>
+        {post.coverImage && <img src={post.coverImage} alt={post.coverAlt || post.title.replace(/<[^>]+>/g, '')} />}
+      </div>
       <div className="tw-bi-card-body">
         <span className={`tw-bi-card-cat ${post.tone}`}>{post.category.label}</span>
         <h3 dangerouslySetInnerHTML={{ __html: post.title }} />
