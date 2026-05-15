@@ -8,7 +8,7 @@ const FAQ_CATEGORIES = [
     icon: 'shield',
     iconTone: '',
     eyebrow: 'Category 01',
-    title: ‘What HOA management <em>is</em>, and isn\’t.’,
+    title: "What HOA management <em>is</em>, and isn’t.",
     sub: 'The foundational questions every new board member asks. Useful for residents who want to understand why their association exists.',
     audience: 'considering',
     qs: [
