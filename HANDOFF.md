@@ -306,3 +306,65 @@ If you want to move content to a CMS later (Astro content collections, Sanity, e
 ---
 
 **Questions for the dev:** ping me in the design project if anything is ambiguous. Don't reverse-engineer from screenshots — open the relevant `.jsx` file; the structure is explicit there.
+
+---
+
+## 12. Rental Geo Batch 2 — County Pages + Delaware Hub
+
+*Added 2026-05-15. Ported 7 new geo pages (4 MD counties + Ocean City + DE state hub + Lewes) and the RentalDelaware hub component.*
+
+### 12.1 New files
+
+| File | Route | Component pattern |
+|---|---|---|
+| `src/pages/rental-management/maryland/baltimore-county.astro` | `/rental-management/maryland/baltimore-county` | `RentalGeo` + `GEO_DATA_BALTIMORE_COUNTY` |
+| `src/pages/rental-management/maryland/howard-county.astro` | `/rental-management/maryland/howard-county` | `RentalGeo` + `GEO_DATA_HOWARD_COUNTY` |
+| `src/pages/rental-management/maryland/montgomery-county.astro` | `/rental-management/maryland/montgomery-county` | `RentalGeo` + `GEO_DATA_MONTGOMERY_COUNTY` |
+| `src/pages/rental-management/maryland/prince-georges-county.astro` | `/rental-management/maryland/prince-georges-county` | `RentalGeo` + `GEO_DATA_PRINCE_GEORGES_COUNTY` |
+| `src/pages/rental-management/maryland/ocean-city.astro` | `/rental-management/maryland/ocean-city` | `RentalGeo` + `GEO_DATA_OCEAN_CITY` |
+| `src/pages/rental-management/delaware/index.astro` | `/rental-management/delaware` | `RentalDelaware` (bespoke hub component) |
+| `src/pages/rental-management/delaware/lewes.astro` | `/rental-management/delaware/lewes` | `RentalGeo` + `GEO_DATA_LEWES` |
+| `src/components/RentalDelaware.jsx` | — | Delaware state hub (parallel to `RentalMaryland.jsx`) |
+
+### 12.2 Modified files
+
+- **`src/components/RentalGeo.jsx`** — 6 new named exports appended: `GEO_DATA_BALTIMORE_COUNTY`, `GEO_DATA_HOWARD_COUNTY`, `GEO_DATA_MONTGOMERY_COUNTY`, `GEO_DATA_PRINCE_GEORGES_COUNTY`, `GEO_DATA_OCEAN_CITY`, `GEO_DATA_LEWES`
+- **`src/components/RentalMaryland.jsx`** — Baltimore County, Howard County, Montgomery County, Prince George's County cards updated from `href: '#'` to live URLs; `featured: true` added to all 4
+
+### 12.3 Redirect map (already in vercel.json)
+
+| Legacy source | New destination |
+|---|---|
+| `/service-area/baltimore-county-md` | `/rental-management/maryland/baltimore-county` |
+| `/service-area/columbia-md` | `/rental-management/maryland/howard-county` |
+| `/service-area/rental-services/howard-county-md` | `/rental-management/maryland/howard-county` (wildcard catches) |
+| `/service-area/montgomery-county-md` | `/rental-management/maryland/montgomery-county` |
+| `/service-area/rockville-md` | `/rental-management/maryland/montgomery-county` |
+| `/service-area/prince-georges-county-md` | `/rental-management/maryland/prince-georges-county` |
+| `/service-area/bowie-md` | `/rental-management/maryland/prince-georges-county` |
+| `/service-area/ocean-city-md` | `/rental-management/maryland/ocean-city` |
+| `/service-area/lewes-de` | `/rental-management/delaware/lewes` |
+
+All redirects cover both trailing-slash and non-trailing-slash variants and are already committed to `vercel.json`.
+
+### 12.4 Architecture notes
+
+**RentalGeo config pattern** (`src/components/RentalGeo.jsx`):  
+The file uses named exports (`export const GEO_DATA_*`) consumed by `.astro` pages via `import RentalGeo, { GEO_DATA_X as geo } from '...'`. The `geo` object drives all sections — hero stats, market facts, submarket grid, manager card, FAQ accordion. To add a new geo page: (1) append a new `export const GEO_DATA_*` block at the end of `RentalGeo.jsx`, (2) create the `.astro` page using the template in `anne-arundel-county.astro`.
+
+**RentalDelaware hub** (`src/components/RentalDelaware.jsx`):  
+Delaware warrants a bespoke hub (parallel to `RentalMaryland.jsx`) rather than the `RentalGeo` config-driven pattern because: (a) it's a state hub not a county page, (b) needs a county-shaded Delaware SVG map, (c) has a distinct "coastal market" audience framing. City/area cards inside `RentalDelawareCities` link to individual Lewes page; remaining Sussex coastal cards remain `href: '#'` pending scope confirmation.
+
+**`GEO_DATA_LEWES` state object:**  
+Lewes is the one geo entry where the `state` field is set: `state: { name: 'Delaware', href: '/rental-management/delaware', urlPath: 'delaware' }`. This powers the breadcrumb back-link to the Delaware hub in `RentalGeo.jsx`. All Maryland county entries omit `state` and the component falls back to the Maryland hub link.
+
+### 12.5 Placeholder audit checklist
+
+The following `[PLACEHOLDER]` tags remain in the content and need client confirmation before go-live:
+
+- **Ocean City** (`GEO_DATA_OCEAN_CITY`): service scope (long-term vs seasonal/weekly mix), confirmed unit count, fee structure confirmation
+- **Lewes** (`GEO_DATA_LEWES`): unit count confirmation, confirmed manager assignment, fee structure, service scope
+- **All Batch 2 counties**: manager names marked `[Manager TBD]` — need real manager assignments from Kate Cornell
+- **Delaware hub** (`RentalDelaware.jsx`): hero stats `[confirm]` tags on unit count and fee; `RentalDelawareWhy` seasonal demand card has scope `[PLACEHOLDER]`; Rehoboth/Bethany/Fenwick/Inland area cards all have `[PLACEHOLDER]` bodies
+
+Run a `grep -r '\[PLACEHOLDER\]\|\[confirm\]' src/` before launch to catch any remaining tags.
