@@ -40,16 +40,6 @@ function RGuideHero({ post }) {
   return (
     <section className="tw-blog-hero">
       <div className="tw-blog-hero-inner">
-        <div className="tw-blog-crumb">
-          <a href="/">Home</a>
-          <span className="sep">›</span>
-          <a href="/resources">Resources</a>
-          <span className="sep">›</span>
-          <a href="/blog">Blog</a>
-          <span className="sep">›</span>
-          <span className="cur">{post.category.label}</span>
-        </div>
-
         <span className={`tw-blog-category ${post.category.tone}`}>{post.category.label}</span>
 
         <h1 className="tw-blog-title" dangerouslySetInnerHTML={{__html: post.title}}/>

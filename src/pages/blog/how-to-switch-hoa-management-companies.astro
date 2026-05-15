@@ -43,7 +43,7 @@ const pageSchema = [
   ]),
   breadcrumbSchema([
     { name: 'Home', url: SITE.url + '/' },
-    { name: 'Resources', url: SITE.url + '/resources' },
+    { name: 'Blog', url: SITE.url + '/blog' },
     { name: headline, url: pageUrl },
   ]),
   howToSchema,
@@ -58,9 +58,8 @@ const pageSchema = [
   pageStylesheet="styles-blog.css"
 >
   <Topbar />
-  <Header activeNav="resources" />
+  <Header activeNav="blog" />
   <Breadcrumb crumbs={[
-    { label: 'Resources', href: '/resources' },
     { label: 'Blog', href: '/blog' },
     { label: 'How to Switch HOA Management Companies' },
   ]} />

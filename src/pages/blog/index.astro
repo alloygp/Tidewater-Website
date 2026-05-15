@@ -13,7 +13,6 @@ const pageUrl = `${SITE.url}/blog`;
 const schemas = [
   breadcrumbSchema([
     { name: 'Home', url: SITE.url + '/' },
-    { name: 'Resources', url: SITE.url + '/resources' },
     { name: 'Blog', url: pageUrl },
   ]),
 ];
@@ -28,9 +27,8 @@ const schemas = [
 >
   <link rel="stylesheet" href="/styles-blog.css" slot="head" />
   <Topbar />
-  <Header activeNav="resources" />
+  <Header activeNav="blog" />
   <Breadcrumb crumbs={[
-    { label: 'Resources', href: '/resources' },
     { label: 'Blog' },
   ]} />
   <BlogIndex client:load perPage={6} showSearch={true} showFeatured={true} showNewsletter={true} />

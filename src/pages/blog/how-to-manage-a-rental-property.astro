@@ -32,7 +32,6 @@ const schemas = [
   faqSchema(faqItems),
   breadcrumbSchema([
     { name: 'Home', url: SITE.url + '/' },
-    { name: 'Resources', url: `${SITE.url}/resources` },
     { name: 'Blog', url: `${SITE.url}/blog` },
     { name: 'How to Manage a Rental Property', url: pageUrl },
   ]),
@@ -46,9 +45,8 @@ const schemas = [
   pageStylesheet="styles-blog.css"
 >
   <Topbar variant="default" />
-  <Header activeNav="resources" />
+  <Header activeNav="blog" />
   <Breadcrumb crumbs={[
-    { label: 'Resources', href: '/resources' },
     { label: 'Blog', href: '/blog' },
     { label: "How to Manage a Rental Property" },
   ]} />

@@ -40,7 +40,6 @@ const pageSchema = [
   ]),
   breadcrumbSchema([
     { name: 'Home', url: SITE.url + '/' },
-    { name: 'Resources', url: SITE.url + '/resources' },
     { name: 'Blog', url: SITE.url + '/blog' },
     { name: headline, url: pageUrl },
   ]),
@@ -55,9 +54,8 @@ const pageSchema = [
   pageStylesheet="styles-blog.css"
 >
   <Topbar />
-  <Header activeNav="resources" />
+  <Header activeNav="blog" />
   <Breadcrumb crumbs={[
-    { label: 'Resources', href: '/resources' },
     { label: 'Blog', href: '/blog' },
     { label: 'What Is a Quorum?' },
   ]} />
