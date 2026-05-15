@@ -128,36 +128,36 @@ function RentalMarylandCounties() {
       href: '/rental-management/maryland/silver-spring',
     },
     {
-      name: ‘Baltimore County’,
-      meta: ‘HQ county · ~150 rentals’,
+      name: 'Baltimore County',
+      meta: 'HQ county · ~150 rentals',
       featured: true,
-      body: "Tidewater’s home county. Strong single-family and condo rental demand around Towson, Owings Mills, and the Hunt Valley corridor. County rental licensing handled.",
-      cities: [‘Towson’, ‘Cockeysville’, ‘Pikesville’, ‘Owings Mills’],
-      href: ‘/rental-management/maryland/baltimore-county’,
+      body: "Tidewater's home county. Strong single-family and condo rental demand around Towson, Owings Mills, and the Hunt Valley corridor. County rental licensing handled.",
+      cities: ['Towson', 'Cockeysville', 'Pikesville', 'Owings Mills'],
+      href: '/rental-management/maryland/baltimore-county',
     },
     {
-      name: ‘Howard County’,
-      meta: ‘Columbia &amp; Ellicott City’,
+      name: 'Howard County',
+      meta: 'Columbia &amp; Ellicott City',
       featured: true,
-      body: "Columbia’s village structure layered HOAs over rental properties &mdash; we navigate both. Strong demand in Ellicott City, Elkridge. Median rents above county average.",
-      cities: [‘Columbia’, ‘Ellicott City’, ‘Elkridge’],
-      href: ‘/rental-management/maryland/howard-county’,
+      body: "Columbia's village structure layered HOAs over rental properties &mdash; we navigate both. Strong demand in Ellicott City, Elkridge. Median rents above county average.",
+      cities: ['Columbia', 'Ellicott City', 'Elkridge'],
+      href: '/rental-management/maryland/howard-county',
     },
     {
-      name: ‘Montgomery County’,
-      meta: ‘DC Metro · Rockville to Gaithersburg’,
+      name: 'Montgomery County',
+      meta: 'DC Metro · Rockville to Gaithersburg',
       featured: true,
-      body: ‘Beyond Silver Spring &mdash; Rockville, Gaithersburg, Bethesda condos and townhomes. Heavy federal-workforce rental demand. Montgomery County rental licensing handled.’,
-      cities: [‘Rockville’, ‘Bethesda’, ‘Gaithersburg’],
-      href: ‘/rental-management/maryland/montgomery-county’,
+      body: 'Beyond Silver Spring &mdash; Rockville, Gaithersburg, Bethesda condos and townhomes. Heavy federal-workforce rental demand. Montgomery County rental licensing handled.',
+      cities: ['Rockville', 'Bethesda', 'Gaithersburg'],
+      href: '/rental-management/maryland/montgomery-county',
     },
     {
-      name: "Prince George’s County",
-      meta: ‘DC Metro · Bowie &amp; Largo’,
+      name: "Prince George's County",
+      meta: 'DC Metro · Bowie &amp; Largo',
       featured: true,
-      body: ‘Townhome and garden-style rentals. Strong demand near Bowie State, NASA Goddard, and the Metro corridor. PG County rental license &amp; lead-paint compliance handled.’,
-      cities: [‘Bowie’, ‘Largo’, ‘Greenbelt’, ‘Hyattsville’],
-      href: ‘/rental-management/maryland/prince-georges-county’,
+      body: 'Townhome and garden-style rentals. Strong demand near Bowie State, NASA Goddard, and the Metro corridor. PG County rental license &amp; lead-paint compliance handled.',
+      cities: ['Bowie', 'Largo', 'Greenbelt', 'Hyattsville'],
+      href: '/rental-management/maryland/prince-georges-county',
     },
   ];
   return (
@@ -207,21 +207,24 @@ function RentalMarylandAudiences() {
       tone: 'gold',
       eyebrow: 'Audience 02',
       title: 'Out-of-state &amp; relocated owners',
-      body: 'You took the DC job. The federal posting. The career move. The house didn’t sell, or you decided to keep it. We run it on your behalf with the same operational discipline we’d use on our own.',
+      body: "You took the DC job. The federal posting. The career move. The house didn't sell, or you decided to keep it. We run it on your behalf with the same operational discipline we'd use on our own.",
+
       pills: ['Monthly statements + photos', 'Direct deposit within 7 days', 'Annual rent-vs-sell analysis', 'Tax-ready year-end reporting'],
     },
     {
       tone: 'sage',
       eyebrow: 'Audience 03',
       title: 'Accidental landlords',
-      body: 'You inherited the property. The market didn’t cooperate. The kids moved out and the house is paid off. The first-time-landlord learning curve isn’t worth the trouble &mdash; we handle the whole thing.',
+      body: "You inherited the property. The market didn't cooperate. The kids moved out and the house is paid off. The first-time-landlord learning curve isn't worth the trouble &mdash; we handle the whole thing.",
+
       pills: ['Free rental market analysis', 'Lease drafting + execution', 'Compliance handled', 'Maintenance dispatch'],
     },
     {
       tone: 'clay',
       eyebrow: 'Audience 04',
       title: 'Investors &amp; buy-and-hold owners',
-      body: 'Single-family, townhome, condo, 2&ndash;4 unit. We won’t touch apartment complexes or short-term rentals &mdash; if you have those, we’ll point you somewhere reputable. For the rest, the math works.',
+      body: "Single-family, townhome, condo, 2&ndash;4 unit. We won't touch apartment complexes or short-term rentals &mdash; if you have those, we'll point you somewhere reputable. For the rest, the math works.",
+
       pills: ['Multi-property owner portal', 'Annual portfolio review', 'Cap-rate &amp; rent-comp data', 'Local market expertise'],
     },
   ];
@@ -234,7 +237,7 @@ function RentalMarylandAudiences() {
         <div className="tw-section-head" style={{ textAlign: 'center', maxWidth: 760, margin: '0 auto' }}>
           <div className="tw-eyebrow">Who We Manage For</div>
           <h2 className="tw-section-title">Four owner profiles, <em>one operating standard.</em></h2>
-          <p className="tw-section-lede">Maryland’s rental owner base looks different from most states &mdash; heavy military, heavy federal, heavy out-of-state. We’re built for that.</p>
+          <p className="tw-section-lede">Maryland's rental owner base looks different from most states &mdash; heavy military, heavy federal, heavy out-of-state. We're built for that.</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, marginTop: 48 }}>
           {groups.map((g, i) => (
@@ -326,13 +329,15 @@ function RentalMarylandLaw() {
     {
       tone: '', meta: 'Md. Code · Real Property § 8',
       title: 'Maryland Landlord-Tenant Law',
-      body: 'Maryland’s landlord-tenant framework: security deposits (max 2 months’ rent + interest accrual), required disclosures, repair-and-deduct, eviction notice periods. We operate inside it by default.',
+      body: "Maryland's landlord-tenant framework: security deposits (max 2 months' rent + interest accrual), required disclosures, repair-and-deduct, eviction notice periods. We operate inside it by default.",
+
       foot: 'Compliance handled, not delegated',
     },
     {
       tone: 'gold', meta: 'County-level',
       title: 'County Rental Licensing',
-      body: 'Anne Arundel, Baltimore, Montgomery, Prince George’s, and Howard each require separate rental licenses with their own inspection cadence, fees, and renewal schedules. We file, track, and renew on your behalf.',
+      body: "Anne Arundel, Baltimore, Montgomery, Prince George's, and Howard each require separate rental licenses with their own inspection cadence, fees, and renewal schedules. We file, track, and renew on your behalf.",
+
       foot: 'No license lapses, ever',
     },
     {
