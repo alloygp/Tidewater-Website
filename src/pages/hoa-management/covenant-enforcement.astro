@@ -6,6 +6,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import Footer from '../../components/Footer.astro';
 import CTA from '../../components/CTA.astro';
 import CovenantEnforcement from '../../components/CovenantEnforcement.jsx';
+import FromTheBlog from '../../components/FromTheBlog.jsx';
 import { breadcrumbSchema, serviceSchema } from '../../lib/schema';
 import { SITE } from '../../config/site';
 
@@ -39,6 +40,7 @@ const schemas = [
     { label: 'Covenant Enforcement' },
   ]} />
   <CovenantEnforcement client:load />
+  <FromTheBlog client:load categories={['governance', 'hoa-mgmt']} />
   <CTA />
   <Footer />
 </BaseLayout>
