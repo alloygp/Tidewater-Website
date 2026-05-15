@@ -131,7 +131,7 @@ function RentalMarylandCounties() {
       name: ‘Baltimore County’,
       meta: ‘HQ county · ~150 rentals’,
       featured: true,
-      body: ‘Tidewater’s home county. Strong single-family and condo rental demand around Towson, Owings Mills, and the Hunt Valley corridor. County rental licensing handled.’,
+      body: "Tidewater’s home county. Strong single-family and condo rental demand around Towson, Owings Mills, and the Hunt Valley corridor. County rental licensing handled.",
       cities: [‘Towson’, ‘Cockeysville’, ‘Pikesville’, ‘Owings Mills’],
       href: ‘/rental-management/maryland/baltimore-county’,
     },
