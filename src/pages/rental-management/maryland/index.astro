@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Topbar from '../../../components/Topbar.astro';
+import Header from '../../../components/Header.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Footer from '../../../components/Footer.astro';
+import CTA from '../../../components/CTA.astro';
+import RentalMaryland from '../../../components/RentalMaryland.jsx';
+import { breadcrumbSchema, serviceSchema } from '../../../lib/schema';
+import { SITE } from '../../../config/site';
+
+const pageUrl = `${SITE.url}/rental-management/maryland`;
+
+const schemas = [
+  serviceSchema({
+    name: 'Rental Property Management Maryland',
+    description: 'Maryland rental property management for single-family and small-multifamily owners. Flat 8.5% management fee, AppFolio-backed operations, local managers across Anne Arundel County, Silver Spring, and Greater Baltimore.',
+    url: pageUrl,
+    areaServed: 'Maryland',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Rental Management', url: SITE.url + '/rental-management' },
+    { name: 'Maryland', url: pageUrl },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Rental Property Management Maryland | Tidewater"
+  description="Maryland rental property management for single-family and small-multifamily owners. Flat 8.5% fee, AppFolio-backed operations, local managers across Anne Arundel County, Silver Spring, and Greater Baltimore."
+  ogType="website"
+  pageSchema={schemas}
+  pageStylesheet="styles-geo.css"
+>
+  <Topbar />
+  <Header activeNav="rental" />
+  <Breadcrumb crumbs={[
+    { label: 'Rental Management', href: '/rental-management' },
+    { label: 'Maryland' },
+  ]} />
+  <RentalMaryland client:load />
+  <CTA />
+  <Footer />
+</BaseLayout>
