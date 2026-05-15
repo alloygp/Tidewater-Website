@@ -63,7 +63,7 @@ const ALL_POSTS = [
     coverAlt: 'HOA board members reviewing management company transition documents',
   },
   {
-    slug: ‘self-managed-to-professional’,
+    slug: 'self-managed-to-professional',
     href: '/solutions/self-managed-hoa-transition',
     title: 'From self-managed to professional: what actually changes.',
     dek: 'The board still decides; the admin moves to us. A clear-eyed framework for self-managed boards considering professional management.',
