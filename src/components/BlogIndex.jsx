@@ -10,6 +10,20 @@ const BlogIndexIcons = {
 // All posts — sorted newest-first. The featured post is index 0 when no filter is active.
 const ALL_POSTS = [
   {
+    slug: 'how-to-manage-a-rental-property',
+    href: '/blog/how-to-manage-a-rental-property',
+    title: 'How to manage a <em>rental property:</em> a practical guide for landlords.',
+    dek: 'Managing a rental property goes well beyond collecting rent. This practical guide covers tenant screening, maintenance, Maryland landlord-tenant law, financial tracking, and how to know when professional management is a better return on your time.',
+    category: { id: 'rental', label: 'Rental Management', tone: '' },
+    date: 'May 16, 2026', dateIso: '2026-05-16',
+    readTime: 9,
+    author: 'Cody Bishop',
+    tone: '',
+    featured: true,
+    coverImage: '/assets/how-to-manage-a-rental-property.png',
+    coverAlt: 'Landlord conducting a rental property inspection and documenting condition with a phone camera',
+  },
+  {
     slug: 'what-is-a-community-association-manager',
     href: '/blog/what-is-a-community-association-manager',
     title: 'What is a <em>community association manager?</em> Roles, responsibilities, and what your board should expect.',
@@ -19,7 +33,6 @@ const ALL_POSTS = [
     readTime: 9,
     author: 'Marcia Goldstein',
     tone: '',
-    featured: true,
     coverImage: '/assets/what-is-a-community-association-manager.png',
     coverAlt: 'Community association manager shaking hands with HOA board members outside a community clubhouse',
   },
@@ -175,6 +188,7 @@ const ALL_POSTS = [
 const ALL_CATEGORIES = [
   { id: 'all',        label: 'All posts' },
   { id: 'hoa-mgmt',  label: 'HOA Management' },
+  { id: 'rental',    label: 'Rental Management' },
   { id: 'finance',   label: 'HOA Finance' },
   { id: 'governance',label: 'Board Governance' },
   { id: 'ops',       label: 'Operations' },
