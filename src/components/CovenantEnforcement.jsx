@@ -305,11 +305,11 @@ const FAQS = [
   },
   {
     q: 'What about appeals?',
-    a: '<em>[PLACEHOLDER: appeal procedures vary by association governing documents and Maryland statute. Confirm with client — specifically the hearing notice period, who hears the appeal, and the final-decision authority.]</em>',
+    a: 'Every homeowner has the right to be heard. Tidewater helps your board organize hearings and manage the appeals process in accordance with your association\'s governing documents and applicable state law. Your community manager and administrative team handle the coordination — scheduling, notices, documentation — so the process is consistent, fair, and defensible.',
   },
   {
-    q: 'Does this comply with Maryland HOA law?',
-    a: 'Tidewater is an <strong>AAMC&reg;</strong>-accredited management company with multiple PCAM-credentialed managers. <em>[PLACEHOLDER: specific Maryland statutory citations — Md. Code, Real Property §11B-111.5 and related — should be confirmed with the client\'s preferred association attorney before this paragraph cites any specific section.]</em>',
+    q: 'Does this comply with state HOA law?',
+    a: 'Tidewater is an <strong>AAMC&reg;</strong>-accredited management company with multiple PCAM-credentialed managers and a dedicated Quality Assurance team that monitors compliance across every community we manage. Our enforcement processes are built around your association\'s governing documents and the statutory requirements of your state — whether that\'s Maryland, Delaware, Virginia, Pennsylvania, West Virginia, or Washington D.C. For questions involving specific legal interpretation, we coordinate directly with your association\'s legal counsel to make sure your board is protected.',
   },
 ];
 

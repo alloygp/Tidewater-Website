@@ -1079,7 +1079,7 @@ img { max-width: 100%; display: block; }
   z-index: 1;
 }
 .tw-sol-week-marker {
-  width: 96px; height: 96px;
+  width: 112px; height: 112px;
   border-radius: 50%;
   background: var(--tw-cream);
   border: 3px solid var(--tw-teal);
@@ -1090,7 +1090,7 @@ img { max-width: 100%; display: block; }
   z-index: 2;
   box-shadow: 0 6px 18px rgba(58,146,166,.18);
   transition: transform .2s ease;
-  padding: 0 8px;
+  padding: 0 14px;
 }
 .tw-sol-week:hover .tw-sol-week-marker { transform: translateY(-3px) scale(1.04); }
 .tw-sol-week-marker-num {
