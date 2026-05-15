@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Topbar from '../../components/Topbar.astro';
+import Header from '../../components/Header.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Footer from '../../components/Footer.astro';
+import CTA from '../../components/CTA.astro';
+import CovenantEnforcement from '../../components/CovenantEnforcement.jsx';
+import { breadcrumbSchema, serviceSchema } from '../../lib/schema';
+import { SITE } from '../../config/site';
+
+const pageUrl = `${SITE.url}/hoa-management/covenant-enforcement`;
+
+const schemas = [
+  serviceSchema({
+    name: 'HOA Covenant Enforcement',
+    description: 'Third-party HOA covenant enforcement across Maryland — consistent, documented violation process, real-time tracking in CINC, in-house administrative letter handling.',
+    url: pageUrl,
+    areaServed: 'Maryland',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'HOA Management', url: SITE.url + '/hoa-management' },
+    { name: 'Covenant Enforcement', url: pageUrl },
+  ]),
+];
+---
+
+<BaseLayout
+  title="HOA Covenant Enforcement Maryland | Tidewater"
+  description="Third-party HOA covenant enforcement for Maryland communities. Consistent, documented violation process — real-time tracking in CINC, in-house administrative team, full audit trail. AAMC® accredited."
+  ogType="website"
+  pageSchema={schemas}
+>
+  <Topbar />
+  <Header activeNav="mgmt" />
+  <Breadcrumb crumbs={[
+    { label: 'HOA Management', href: '/hoa-management' },
+    { label: 'Covenant Enforcement' },
+  ]} />
+  <CovenantEnforcement client:load />
+  <CTA />
+  <Footer />
+</BaseLayout>
