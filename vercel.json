@@ -11,7 +11,9 @@
     { "source": "/service-area/anne-arundel-county-md", "destination": "/rental-management/maryland/anne-arundel-county", "permanent": true },
     { "source": "/service-area/anne-arundel-county-md/", "destination": "/rental-management/maryland/anne-arundel-county", "permanent": true },
     { "source": "/service-area/silver-spring-md", "destination": "/rental-management/maryland/silver-spring", "permanent": true },
-    { "source": "/service-area/silver-spring-md/", "destination": "/rental-management/maryland/silver-spring", "permanent": true }
+    { "source": "/service-area/silver-spring-md/", "destination": "/rental-management/maryland/silver-spring", "permanent": true },
+    { "source": "/blog/what-does-a-community-association-manager-do", "destination": "/blog/what-is-a-community-association-manager", "permanent": true },
+    { "source": "/blog/what-does-a-community-association-manager-do/", "destination": "/blog/what-is-a-community-association-manager", "permanent": true }
   ],
   "headers": [
     {
