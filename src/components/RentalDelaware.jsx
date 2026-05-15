@@ -151,7 +151,7 @@ function RentalDelawareCities() {
     {
       slug: 'fenwick', name: 'Fenwick Island',
       meta: 'Coastal community',
-      body: "Delaware's southernmost beach community, adjoining Ocean City, MD. Mixed inventory. [PLACEHOLDER &mdash; confirm Tidewater scope in Fenwick.]",
+      body: "Delaware\'s southernmost beach community, adjoining Ocean City, MD. Mixed inventory. [PLACEHOLDER &mdash; confirm Tidewater scope in Fenwick.]",
       cities: ['Fenwick Island', 'Selbyville'],
       href: '#',
     },
@@ -203,17 +203,17 @@ function RentalDelawareAudiences() {
     },
     {
       tone: 'gold', eyebrow: 'Audience 02', title: 'DC / Philly remote owners',
-      body: "You live in NoVA, the District, or the Philly suburbs. You took the coastal property as an investment, an inheritance, or a future-retirement play. You don't want the call when the HVAC dies on July 4th weekend. That call comes to us.",
+      body: "You live in NoVA, the District, or the Philly suburbs. You took the coastal property as an investment, an inheritance, or a future-retirement play. You don\'t want the call when the HVAC dies on July 4th weekend. That call comes to us.",
       pills: ['Vetted DE vendor network', 'Storm-season inspections', 'Owner portal access', 'Property walks documented'],
     },
     {
       tone: 'sage', eyebrow: 'Audience 03', title: 'Coastal investors',
-      body: "You own one property today or several. Single-family, condo, small-multi. We won't take on apartment buildings or operate as a vacation-rental booking shop — if that's the goal, we'll point you somewhere reputable. For long-term and seasonal lease management, the math works.",
+      body: "You own one property today or several. Single-family, condo, small-multi. We won\'t take on apartment buildings or operate as a vacation-rental booking shop — if that\'s the goal, we\'ll point you somewhere reputable. For long-term and seasonal lease management, the math works.",
       pills: ['Multi-property portal', 'Cap-rate & rent-comp data', 'Annual portfolio review', 'No tenant-placement fee'],
     },
     {
       tone: 'clay', eyebrow: 'Audience 04', title: 'Accidental coastal landlords',
-      body: "You inherited Mom's Lewes condo. You bought during the 2020s and the math changed. We do a free rent-vs-sell analysis and lay out the math both ways. [PLACEHOLDER — confirm cross-referral to Tidewater Realty for sell-side.]",
+      body: "You inherited Mom\'s Lewes condo. You bought during the 2020s and the math changed. We do a free rent-vs-sell analysis and lay out the math both ways. [PLACEHOLDER — confirm cross-referral to Tidewater Realty for sell-side.]",
       pills: ['Rent-vs-sell analysis', 'Compliance handled', 'Lease drafting', 'Realty referral available'],
     },
   ];

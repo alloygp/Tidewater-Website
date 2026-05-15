@@ -13,23 +13,23 @@ const pageUrl = `${SITE.url}/rental-management/maryland/prince-georges-county`;
 
 const schemas = [
   serviceSchema({
-    name: "Rental Property Management — Prince George's County, MD",
+    name: "Rental Property Management — Prince George\'s County, MD",
     description: geo.schemaDesc,
     url: pageUrl,
-    areaServed: "Prince George's County, Maryland",
+    areaServed: "Prince George\'s County, Maryland",
   }),
   breadcrumbSchema([
     { name: 'Home', url: SITE.url + '/' },
     { name: 'Rental Management', url: SITE.url + '/rental-management' },
     { name: 'Maryland', url: SITE.url + '/rental-management/maryland' },
-    { name: "Prince George's County", url: pageUrl },
+    { name: "Prince George\'s County", url: pageUrl },
   ]),
 ];
 ---
 
 <BaseLayout
-  title="Prince George's County Rental Management | Tidewater"
-  description="Rental property management in Prince George's County, MD — Bowie, Largo, Greenbelt, Hyattsville. County license + lead-paint compliance handled. Flat 8.5% fee."
+  title="Prince George\'s County Rental Management | Tidewater"
+  description="Rental property management in Prince George\'s County, MD — Bowie, Largo, Greenbelt, Hyattsville. County license + lead-paint compliance handled. Flat 8.5% fee."
   ogType="website"
   pageSchema={schemas}
   pageStylesheet="styles-geo.css"
@@ -39,7 +39,7 @@ const schemas = [
   <Breadcrumb crumbs={[
     { label: 'Rental Management', href: '/rental-management' },
     { label: 'Maryland', href: '/rental-management/maryland' },
-    { label: "Prince George's County" },
+    { label: "Prince George\'s County" },
   ]} />
   <RentalGeo geo={geo} client:load />
   <CTA />

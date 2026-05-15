@@ -487,7 +487,7 @@ export default function PostRentalGuide() {
     {
       tone: '', category: 'Board Governance',
       title: 'What is a quorum? Definition, requirements, and why it matters for your board.',
-      dek: "A quorum is the minimum number of members who must be present for a meeting's decisions to be legally valid.",
+      dek: "A quorum is the minimum number of members who must be present for a meeting\'s decisions to be legally valid.",
       date: 'May 14, 2026', readTime: 8, href: '/blog/what-is-quorum-and-why-is-it-important',
       coverImage: '/assets/quorum-community-manager.jpg', coverAlt: 'Community association manager at an HOA meeting',
     },

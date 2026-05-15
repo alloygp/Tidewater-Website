@@ -402,7 +402,7 @@ function QNewsletter() {
 export default function PostQuorum() {
   const post = {
     title: 'What is a quorum? <em>Definition,</em> requirements, and why it matters for your board.',
-    dek: "A quorum is the minimum number of members who must be present for a meeting's decisions to be legally valid. This guide covers how quorum works for HOA board meetings and annual meetings, what happens when quorum isn't met, and how proxy voting affects the count.",
+    dek: "A quorum is the minimum number of members who must be present for a meeting\'s decisions to be legally valid. This guide covers how quorum works for HOA board meetings and annual meetings, what happens when quorum isn\'t met, and how proxy voting affects the count.",
     category: { label: 'Board Governance', tone: '' },
     author: {
       name: 'Marcia Goldstein',
@@ -420,7 +420,7 @@ export default function PostQuorum() {
   const toc = [
     { id: 'definition',     label: 'Quorum, defined' },
     { id: 'board-meetings', label: 'Board & annual meetings' },
-    { id: 'without-quorum', label: "When quorum isn't met" },
+    { id: 'without-quorum', label: "When quorum isn\'t met" },
     { id: 'proxies',        label: 'Proxies & quorum' },
     { id: 'why-it-matters', label: 'Why it matters' },
     { id: 'faq',            label: 'FAQ' },

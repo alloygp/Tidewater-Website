@@ -13,7 +13,7 @@ const intent = {
   board:     { title: 'Tell us about your community',    verb: 'Request a proposal' },
   developer: { title: 'Tell us about your development',  verb: 'Request a proposal' },
   owner:     { title: 'Tell us about your property',     verb: 'Get a rental quote' },
-  realty:    { title: "Tell us what you're looking for", verb: 'Talk to a Realty advisor' },
+  realty:    { title: "Tell us what you\'re looking for", verb: 'Talk to a Realty advisor' },
   vendor:    { title: 'Tell us about your services',     verb: 'Submit vendor inquiry' },
   other:     { title: 'How can we help?',                verb: 'Send message' },
 };
@@ -22,7 +22,7 @@ const placeholders = {
   community: { board: 'Wynbrook HOA', developer: 'The Residences at Crondall', vendor: 'Sullivan Plumbing LLC', owner: '3600 Crondall Ln, Owings Mills', realty: 'Ellicott City, MD', other: 'Community or company name' },
   communityLabel: { board: 'Community name', developer: 'Development name', vendor: 'Company name', owner: 'Property address', realty: 'City / area', other: 'Community or company name' },
   message: {
-    board:     "Current company we're leaving, frustrations, board priorities, meeting cadence — whatever helps.",
+    board:     "Current company we\'re leaving, frustrations, board priorities, meeting cadence — whatever helps.",
     developer: 'Project name, units, expected first close, common-element scope.',
     owner:     'How many units, current rental situation, target rent.',
     realty:    'Buying, selling, timeline, budget range.',
@@ -48,7 +48,7 @@ export default function ProposalForm() {
       <div className="tw-c-form-card">
         <div className="tw-c-form-head">
           <div className="tw-c-form-head-left">
-            <h2>Thanks — we'll be in touch.</h2>
+            <h2>Thanks — we\'ll be in touch.</h2>
             <p>A regional manager will reach back within one business day. Check your email for a quick confirmation.</p>
           </div>
           <div className="tw-c-form-badge">Received</div>

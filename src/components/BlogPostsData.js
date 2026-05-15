@@ -34,7 +34,7 @@ export const ALL_POSTS = [
     slug: 'what-is-quorum-and-why-is-it-important',
     href: '/blog/what-is-quorum-and-why-is-it-important',
     title: 'What is a quorum? <em>Definition,</em> requirements, and why it matters for your board.',
-    dek: "A quorum is the minimum number of members who must be present for a meeting's decisions to be legally valid. This guide covers how quorum works for HOA board meetings and annual meetings, what happens when quorum isn't met, and how proxy voting affects the count.",
+    dek: "A quorum is the minimum number of members who must be present for a meeting\'s decisions to be legally valid. This guide covers how quorum works for HOA board meetings and annual meetings, what happens when quorum isn\'t met, and how proxy voting affects the count.",
     category: { id: 'governance', label: 'Board Governance', tone: '' },
     date: 'May 14, 2026', dateIso: '2026-05-14',
     readTime: 8,

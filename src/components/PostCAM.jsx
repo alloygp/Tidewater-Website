@@ -468,7 +468,7 @@ export default function PostCAM() {
     {
       tone: '', category: 'Board Governance',
       title: 'What is a quorum? Definition, requirements, and why it matters for your board.',
-      dek: "How quorum works for HOA board meetings and annual meetings, what happens when quorum isn't met, and how proxy voting affects the count.",
+      dek: "How quorum works for HOA board meetings and annual meetings, what happens when quorum isn\'t met, and how proxy voting affects the count.",
       date: 'May 14, 2026', readTime: 8,
       href: '/blog/what-is-quorum-and-why-is-it-important',
       coverImage: '/assets/quorum-community-manager.jpg', coverAlt: 'Community association manager at an HOA meeting',

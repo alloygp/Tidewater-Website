@@ -6,7 +6,7 @@ const counties = [
   { id: 'baltco',     name: 'Baltimore County',  evict: '60–90 days',     license: 'Per-property license required',       deposit: '2 mo max', notes: 'Local rent-court calendar varies. Notice timing matters.' },
   { id: 'aa',         name: 'Anne Arundel',      evict: '60–90 days',     license: 'Per-property registration',           deposit: '2 mo max', notes: 'Fort Meade / NSA corridor — high military-tenant volume.' },
   { id: 'howard',     name: 'Howard County',     evict: '75–120 days',    license: 'Single-family license required',      deposit: '2 mo max', notes: 'Tenant Bill of Rights; pre-eviction notice extended.' },
-  { id: 'pg',         name: "Prince George's",   evict: '75–120 days',    license: 'Annual rental license',               deposit: '2 mo max', notes: 'Right to counsel; document everything in writing.' },
+  { id: 'pg',         name: "Prince George\'s",   evict: '75–120 days',    license: 'Annual rental license',               deposit: '2 mo max', notes: 'Right to counsel; document everything in writing.' },
   { id: 'frederick',  name: 'Frederick County',  evict: '60–90 days',     license: 'Varies by municipality',              deposit: '2 mo max', notes: 'City of Frederick has its own rental ordinance.' },
   { id: 'harford',    name: 'Harford County',    evict: '60–90 days',     license: 'No countywide license; check city',   deposit: '2 mo max', notes: 'Aberdeen Proving Ground military-owner population.' },
 ];
