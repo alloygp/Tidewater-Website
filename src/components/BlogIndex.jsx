@@ -10,6 +10,20 @@ const BlogIndexIcons = {
 // All posts — sorted newest-first. The featured post is index 0 when no filter is active.
 const ALL_POSTS = [
   {
+    slug: 'what-is-a-community-association-manager',
+    href: '/blog/what-is-a-community-association-manager',
+    title: 'What is a <em>community association manager?</em> Roles, responsibilities, and what your board should expect.',
+    dek: 'A community association manager (CAM) is the professional hired by an HOA or condo board to handle day-to-day community operations. This guide covers what a CAM does, how the role works with the board, what credentials matter, and how to tell if your management company is meeting the standard.',
+    category: { id: 'hoa-mgmt', label: 'HOA Management', tone: '' },
+    date: 'May 15, 2026', dateIso: '2026-05-15',
+    readTime: 9,
+    author: 'Marcia Goldstein',
+    tone: '',
+    featured: true,
+    coverImage: '/assets/what-is-a-community-association-manager.png',
+    coverAlt: 'Community association manager shaking hands with HOA board members outside a community clubhouse',
+  },
+  {
     slug: 'what-is-quorum-and-why-is-it-important',
     href: '/blog/what-is-quorum-and-why-is-it-important',
     title: 'What is a quorum? <em>Definition,</em> requirements, and why it matters for your board.',
@@ -19,7 +33,6 @@ const ALL_POSTS = [
     readTime: 8,
     author: 'Marcia Goldstein',
     tone: '',
-    featured: true,
     coverImage: '/assets/quorum-community-manager.jpg',
     coverAlt: 'Tidewater community association manager walking through a planned neighborhood in Maryland, holding an iPad during a site inspection',
   },

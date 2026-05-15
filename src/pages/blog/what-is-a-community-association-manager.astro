@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Topbar from '../../components/Topbar.astro';
+import Header from '../../components/Header.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PostCAM from '../../components/PostCAM.jsx';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+import { articleSchema, faqSchema, breadcrumbSchema } from '../../lib/schema';
+import { SITE } from '../../config/site';
+
+const pageUrl = `${SITE.url}/blog/what-is-a-community-association-manager`;
+
+const faqItems = [
+  { q: 'What does a community association manager do on a daily basis?', a: 'On a typical day, a community association manager handles a mix of community inspections, homeowner inquiries, vendor coordination, maintenance oversight, and board communication. The exact daily mix depends on the size and complexity of the community. Large communities may require full-time on-site presence, while smaller associations may share a portfolio manager across several communities.' },
+  { q: 'What is the difference between a community association manager and a property manager?', a: 'A community association manager serves an HOA or condo association\'s board of directors and manages shared community operations under a framework of governing documents. A property manager serves individual landlords and manages rental units under lease agreements. The client, the governance framework, the scope of work, and the typical credentials are all different.' },
+  { q: 'Does a community association manager make decisions for the board?', a: 'No. The board of directors retains full decision-making authority. The manager advises, recommends, and executes, but policy decisions, budget approvals, and governance actions are the board\'s responsibility. For routine operational items, the board may authorize the manager to act within defined thresholds. Strategic decisions always remain with the board.' },
+  { q: 'What credentials should a community association manager have?', a: 'Look for credentials at the leadership level and ask whether the company supports its managers in earning designations. The CAI credential ladder starts with CMCA (Certified Manager of Community Associations), moves through AMS (Association Management Specialist), and tops out at PCAM (Professional Community Association Manager). At the company level, AAMC accreditation indicates audited operational standards across the organization.' },
+  { q: 'How do I know if my community association manager is doing a good job?', a: 'Evaluate against clear standards: consistent communication on a set schedule, proactive maintenance rather than reactive scrambling, transparent and timely financial reporting, responsiveness to board and homeowner inquiries, and documented follow-through on action items. If your board is spending meetings chasing status updates or struggling to get clean financial reports, those are signs the management relationship needs to be re-evaluated.' },
+];
+
+const schemas = [
+  articleSchema({
+    headline: 'What Is a Community Association Manager? Roles, Responsibilities, and What Your Board Should Expect',
+    description: 'A community association manager (CAM) is the professional hired by an HOA or condo board to handle day-to-day community operations. This guide covers what a CAM does, how the role works with the board, what credentials matter, and how to tell if your management company is meeting the standard.',
+    datePublished: '2026-05-15',
+    dateModified: '2026-05-15',
+    authorName: 'Marcia Goldstein',
+    image: `${SITE.url}/assets/what-is-a-community-association-manager.png`,
+    url: pageUrl,
+  }),
+  faqSchema(faqItems),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Resources', url: `${SITE.url}/resources` },
+    { name: 'Blog', url: `${SITE.url}/blog` },
+    { name: 'What Is a Community Association Manager?', url: pageUrl },
+  ]),
+];
+---
+<BaseLayout
+  title="What Is a Community Association Manager? | Tidewater"
+  description="A community association manager (CAM) handles day-to-day HOA operations for the board. Learn what the role covers, what credentials to look for, and how to evaluate your management company."
+  ogType="article"
+  pageSchema={schemas}
+  pageStylesheet="styles-blog.css"
+>
+  <Topbar variant="default" />
+  <Header activeNav="resources" />
+  <Breadcrumb crumbs={[
+    { label: 'Resources', href: '/resources' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'What Is a Community Association Manager?' },
+  ]} />
+  <PostCAM client:load />
+  <CTA />
+  <Footer />
+</BaseLayout>
