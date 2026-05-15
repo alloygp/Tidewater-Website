@@ -8,7 +8,7 @@ const FAQ_CATEGORIES = [
     icon: 'shield',
     iconTone: '',
     eyebrow: 'Category 01',
-    title: 'What HOA management <em>is</em> &mdash; and isn’t.',
+    title: ‘What HOA management <em>is</em>, and isn\’t.’,
     sub: 'The foundational questions every new board member asks. Useful for residents who want to understand why their association exists.',
     audience: 'considering',
     qs: [
@@ -84,12 +84,12 @@ const FAQ_CATEGORIES = [
   },
   {
     id: 'portal',
-    label: 'CINC Portal & Tech',
+    label: 'Owner Portal & Tech',
     icon: 'desktop',
     iconTone: 'sage',
     eyebrow: 'Category 03',
     title: 'The owner portal, payments, and tech.',
-    sub: 'Tidewater uses CINC (Community Insight Networking Communications), an industry-leading HOA platform. Here’s how it works for residents and boards.',
+    sub: ‘Here\’s how Tidewater\’s owner portal and management technology works for residents and boards.’,
     audience: 'residents',
     qs: [
       {

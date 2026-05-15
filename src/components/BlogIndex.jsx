@@ -191,8 +191,8 @@ function BlogIndexHero({ showSearch, query, onQuery, onSubmit }) {
       <div className="tw-bi-hero-bg"></div>
       <div className="tw-bi-hero-paper"></div>
       <div className="tw-bi-hero-inner">
-        <h1>The Tidewater <em>board playbook.</em></h1>
-        <p>Practical playbooks for HOA and condo boards across Maryland and the Mid-Atlantic. Reserve studies, switching management, governance mechanics, Maryland HOA law, and the operational systems that work in practice.</p>
+        <h1>The Tidewater <em>practical guides.</em></h1>
+        <p>Practical guides for HOA and condo boards across Maryland and the Mid-Atlantic. Reserve studies, switching management, governance mechanics, Maryland HOA law, and the operational systems that work in practice.</p>
 
         {showSearch && (
           <form className="tw-bi-search" onSubmit={(e) => { e.preventDefault(); onSubmit(); }}>
