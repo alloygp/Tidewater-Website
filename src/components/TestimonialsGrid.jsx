@@ -3,7 +3,7 @@ import { useState } from 'react';
 const ALL_REVIEWS = [
   {
     tag: 'HOA', tone: '',
-    quote: 'Best decision our board has made in the 14 years I’ve served. Our manager Sarah knows every vendor, every contract, and every problem unit by name. We literally talk less in board meetings because the agenda is so well-prepared.',
+    quote: 'Best decision our board has made in the 14 years I've served. Our manager Sarah knows every vendor, every contract, and every problem unit by name. We literally talk less in board meetings because the agenda is so well-prepared.',
     initials: 'KW', avatarTone: '',
     name: 'Karen Whitlock',
     role: 'President', service: 'HOA Management',
@@ -14,7 +14,7 @@ const ALL_REVIEWS = [
   },
   {
     tag: 'CONDO', tone: 'condo',
-    quote: 'Three years in. Our financials are clean, our reserves are funded properly for the first time in a decade, and our manager remembers every resident’s name. I cannot recommend Tidewater highly enough.',
+    quote: 'Three years in. Our financials are clean, our reserves are funded properly for the first time in a decade, and our manager remembers every resident's name. I cannot recommend Tidewater highly enough.',
     initials: 'MV', avatarTone: '',
     name: 'Margaret Vance',
     role: 'President', service: 'Condo Association Mgmt',
@@ -25,7 +25,7 @@ const ALL_REVIEWS = [
   },
   {
     tag: 'HOA', tone: '',
-    quote: 'The transition was so quiet our residents barely noticed we’d changed companies. Six months in, our reserves are funded correctly for the first time in a decade.',
+    quote: 'The transition was so quiet our residents barely noticed we'd changed companies. Six months in, our reserves are funded correctly for the first time in a decade.',
     initials: 'DR', avatarTone: 'gold',
     name: 'David Reinhardt',
     role: 'Past President', service: 'HOA Management',
@@ -47,7 +47,7 @@ const ALL_REVIEWS = [
   },
   {
     tag: 'RENTAL', tone: 'rental',
-    quote: 'I bought the house thinking I’d manage it myself from Texas. Six months in, I called Tidewater. They’ve been running it for two years now without a single missed lease cycle. Easiest landlord experience I’ve had.',
+    quote: 'I bought the house thinking I'd manage it myself from Texas. Six months in, I called Tidewater. They've been running it for two years now without a single missed lease cycle. Easiest landlord experience I've had.',
     initials: 'BC', avatarTone: 'sage',
     name: 'Benjamin Cole',
     role: 'Rental Owner', service: 'Rental Property Mgmt',
@@ -58,7 +58,7 @@ const ALL_REVIEWS = [
   },
   {
     tag: 'HOA', tone: '',
-    quote: 'I’m on my second board now and I asked specifically for Tidewater. The reserve study refresh they did in 2024 caught a $180K deferred-maintenance gap that nobody had flagged. That alone paid for ten years of management fees.',
+    quote: 'I'm on my second board now and I asked specifically for Tidewater. The reserve study refresh they did in 2024 caught a $180K deferred-maintenance gap that nobody had flagged. That alone paid for ten years of management fees.',
     initials: 'SL', avatarTone: '',
     name: 'Sarah Lin',
     role: 'Treasurer', service: 'HOA Management',
@@ -69,7 +69,7 @@ const ALL_REVIEWS = [
   },
   {
     tag: 'DEVELOPER', tone: 'developer',
-    quote: 'We’ve worked with Tidewater on three developments now. Their HOA setup playbook is the cleanest in the region — bylaws drafted with us, declarations recorded properly, first-year budget realistic. They handle the developer-control period without drama.',
+    quote: 'We've worked with Tidewater on three developments now. Their HOA setup playbook is the cleanest in the region — bylaws drafted with us, declarations recorded properly, first-year budget realistic. They handle the developer-control period without drama.',
     initials: 'MP', avatarTone: 'clay',
     name: 'Michael Prendergast',
     role: 'Development Partner', service: 'Developer Program',
@@ -80,7 +80,7 @@ const ALL_REVIEWS = [
   },
   {
     tag: 'CONDO', tone: 'condo',
-    quote: 'High-rise mid-Atlantic condos have specific needs — fire systems, garage maintenance, elevator inspections, FHA recertification. Tidewater is the first management company I’ve worked with that has all four down to a schedule, not a fire drill.',
+    quote: 'High-rise mid-Atlantic condos have specific needs — fire systems, garage maintenance, elevator inspections, FHA recertification. Tidewater is the first management company I've worked with that has all four down to a schedule, not a fire drill.',
     initials: 'RP', avatarTone: '',
     name: 'Robert Petrucci',
     role: 'President', service: 'Condo Association Mgmt',
@@ -113,7 +113,7 @@ const ALL_REVIEWS = [
   },
   {
     tag: 'CONDO', tone: 'condo',
-    quote: 'I appreciate that they tell us when we’re wrong. Twice in our first year, our manager recommended deferring a board-favored project because the cash-flow timing didn’t support it. They were right both times. That’s rare.',
+    quote: 'I appreciate that they tell us when we're wrong. Twice in our first year, our manager recommended deferring a board-favored project because the cash-flow timing didn't support it. They were right both times. That's rare.',
     initials: 'TC', avatarTone: '',
     name: 'Theresa Cabrera',
     role: 'Treasurer', service: 'Condo Association Mgmt',

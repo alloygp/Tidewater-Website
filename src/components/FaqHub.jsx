@@ -8,7 +8,7 @@ const FAQ_CATEGORIES = [
     icon: 'shield',
     iconTone: '',
     eyebrow: 'Category 01',
-    title: "What HOA management <em>is</em>, and isn’t.",
+    title: "What HOA management <em>is</em>, and isn't.",
     sub: 'The foundational questions every new board member asks. Useful for residents who want to understand why their association exists.',
     audience: 'considering',
     qs: [
@@ -21,19 +21,19 @@ const FAQ_CATEGORIES = [
         ],
       },
       {
-        q: 'What’s the difference between an HOA and a condo association?',
+        q: 'What's the difference between an HOA and a condo association?',
         a: 'Legally and structurally similar, with one key difference: an HOA typically manages <strong>common areas around individual homes</strong> (clubhouse, pool, streets, landscaping), while a condo association manages <strong>shared building structure</strong> (roof, exterior walls, hallways, elevators, mechanical systems). Condos require more specialized expertise around life-safety, reserve studies, and master insurance &mdash; which is why Tidewater has separate practice areas for each.',
       },
       {
-        q: 'What’s an AAMC, and why does it matter?',
+        q: 'What's an AAMC, and why does it matter?',
         a: [
           'The <strong>Accredited Association Management Company</strong> (AAMC) designation is awarded by the Community Associations Institute (CAI). Fewer than 1% of management companies hold it. To qualify, a company must employ multiple PCAM-credentialed managers, maintain specific financial controls, carry adequate fidelity insurance, and pass a thorough operational audit.',
-          'For boards, it’s a baseline credential: it doesn’t guarantee good service, but it means a company has cleared the industry’s highest professional bar. <strong>Tidewater is AAMC-accredited.</strong>',
+          'For boards, it's a baseline credential: it doesn't guarantee good service, but it means a company has cleared the industry's highest professional bar. <strong>Tidewater is AAMC-accredited.</strong>',
         ],
       },
       {
         q: 'Do small communities (under 50 homes) need a management company?',
-        a: 'Most don’t &mdash; until they do. The threshold most boards hit is around <strong>30&ndash;50 doors</strong>, when assessment volume, vendor count, and resident requests exceed what one volunteer treasurer can responsibly manage on weekends. We work with small associations through our <a href="/hoa-management/hoa-financial-management">financial-only service tier</a> &mdash; books, A/R, audit support &mdash; without the cost of full management.',
+        a: 'Most don't &mdash; until they do. The threshold most boards hit is around <strong>30&ndash;50 doors</strong>, when assessment volume, vendor count, and resident requests exceed what one volunteer treasurer can responsibly manage on weekends. We work with small associations through our <a href="/hoa-management/hoa-financial-management">financial-only service tier</a> &mdash; books, A/R, audit support &mdash; without the cost of full management.',
       },
     ],
   },
@@ -59,12 +59,12 @@ const FAQ_CATEGORIES = [
         ],
       },
       {
-        q: 'What’s your typical response time?',
+        q: 'What's your typical response time?',
         a: 'Same business day, 95% of the time, on board email. Documented monthly and reported quarterly. After-hours emergencies (water, fire, lockout, mechanical failure) get a manager callback within 30 minutes via our 24/7 line at <strong>(443) 548-0191</strong>.',
       },
       {
         q: 'Are your contracts long-term lock-ins?',
-        a: '<strong>No.</strong> Our standard agreement is a 12-month initial term with <strong>30-day termination, no penalty</strong>, after that. Some companies bury 36-month auto-renewals with five-figure exit fees. We don’t. Our 12-month retention rate is 97%, which we’d rather have speak for itself than trap anyone.',
+        a: '<strong>No.</strong> Our standard agreement is a 12-month initial term with <strong>30-day termination, no penalty</strong>, after that. Some companies bury 36-month auto-renewals with five-figure exit fees. We don't. Our 12-month retention rate is 97%, which we'd rather have speak for itself than trap anyone.',
       },
       {
         q: 'What does Tidewater management cost?',
@@ -74,7 +74,7 @@ const FAQ_CATEGORIES = [
         ],
       },
       {
-        q: 'What’s the proposal process like?',
+        q: 'What's the proposal process like?',
         a: [
           '<strong>Step 1:</strong> Submit the form on our <a href="/request-a-proposal">contact page</a>. A regional manager &mdash; not a sales rep &mdash; reads every submission. <strong>Step 2:</strong> A 30-minute discovery call, usually within one business day. <strong>Step 3:</strong> We tour your community (free, no obligation). <strong>Step 4:</strong> Apples-to-apples proposal vs. your current company, line-by-line, with our standard agreement attached.',
           'No deck. No pressure. We never follow up more than twice after a no.',
@@ -89,16 +89,16 @@ const FAQ_CATEGORIES = [
     iconTone: 'sage',
     eyebrow: 'Category 03',
     title: 'The owner portal, payments, and tech.',
-    sub: "Here’s how Tidewater’s owner portal and management technology works for residents and boards.",
+    sub: "Here's how Tidewater's owner portal and management technology works for residents and boards.",
     audience: 'residents',
     qs: [
       {
         q: 'How do I log into the Owner Portal?',
-        a: 'Go to <strong>portal.tidewaterproperty.com</strong> and use the email address your community has on file. If you’re a new owner or never set up access, click &ldquo;First-time login&rdquo; and enter your property address &mdash; we’ll email you an invitation link. Most accounts activate within 5 minutes.',
+        a: 'Go to <strong>portal.tidewaterproperty.com</strong> and use the email address your community has on file. If you're a new owner or never set up access, click &ldquo;First-time login&rdquo; and enter your property address &mdash; we'll email you an invitation link. Most accounts activate within 5 minutes.',
       },
       {
         q: 'I forgot my password — how do I reset it?',
-        a: 'On the portal login page, click <strong>&ldquo;Forgot password?&rdquo;</strong> and enter the email associated with your account. You&rsquo;ll get a reset link within 60 seconds. Still not working after 5 minutes? Email <a href="mailto:portal@tidewaterproperty.com">portal@tidewaterproperty.com</a> with your address and we’ll fix it manually within one business day.',
+        a: 'On the portal login page, click <strong>&ldquo;Forgot password?&rdquo;</strong> and enter the email associated with your account. You&rsquo;ll get a reset link within 60 seconds. Still not working after 5 minutes? Email <a href="mailto:portal@tidewaterproperty.com">portal@tidewaterproperty.com</a> with your address and we'll fix it manually within one business day.',
       },
       {
         q: 'How do I pay my assessment online?',
@@ -109,11 +109,11 @@ const FAQ_CATEGORIES = [
       },
       {
         q: 'How do I submit a maintenance request?',
-        a: 'Use the <strong>Maintenance Request</strong> tab in the portal. Add photos if relevant &mdash; they help us dispatch the right vendor faster. You’ll get an email confirmation, and your community manager can see the ticket the moment you submit it. Average response time on non-emergency tickets is 4 business hours.',
+        a: 'Use the <strong>Maintenance Request</strong> tab in the portal. Add photos if relevant &mdash; they help us dispatch the right vendor faster. You'll get an email confirmation, and your community manager can see the ticket the moment you submit it. Average response time on non-emergency tickets is 4 business hours.',
       },
       {
         q: 'How do I submit an architectural change (ARC) request?',
-        a: 'Click <strong>&ldquo;Architectural Request&rdquo;</strong> in the portal. Upload your plans, photos, or contractor details. The ARC committee receives it immediately; standard review takes 14&ndash;30 days depending on your community’s declarations. You can track the status in the portal at any time &mdash; no need to email asking where things stand.',
+        a: 'Click <strong>&ldquo;Architectural Request&rdquo;</strong> in the portal. Upload your plans, photos, or contractor details. The ARC committee receives it immediately; standard review takes 14&ndash;30 days depending on your community's declarations. You can track the status in the portal at any time &mdash; no need to email asking where things stand.',
       },
       {
         q: 'Where do I find my governing documents?',
@@ -137,7 +137,7 @@ const FAQ_CATEGORIES = [
       },
       {
         q: 'Can the board fine me for a violation?',
-        a: '<strong>Yes</strong>, if your governing documents authorize it. Most do. Standard process: (1) a written notice of violation with a cure period, (2) escalation notice if not remedied, (3) fine schedule per your community’s policy. Tidewater documents every step with photos and timestamps &mdash; the goal is consistency, not surprise. You always have the right to a hearing before fines escalate.',
+        a: '<strong>Yes</strong>, if your governing documents authorize it. Most do. Standard process: (1) a written notice of violation with a cure period, (2) escalation notice if not remedied, (3) fine schedule per your community's policy. Tidewater documents every step with photos and timestamps &mdash; the goal is consistency, not surprise. You always have the right to a hearing before fines escalate.',
       },
       {
         q: 'Who is responsible for the exterior of my unit?',
@@ -151,7 +151,7 @@ const FAQ_CATEGORIES = [
         a: 'In Maryland, <strong>yes</strong> &mdash; open meetings are required by statute for most HOAs and condo associations. There&rsquo;s typically an open-forum portion where residents can speak, followed by board discussion. Executive sessions (legal matters, personnel, delinquencies by name) are closed; that&rsquo;s also required. Meeting dates are posted in the portal at least 7 days in advance.',
       },
       {
-        q: 'What happens if I’m behind on assessments?',
+        q: 'What happens if I'm behind on assessments?',
         a: [
           'Most communities follow a staged collection policy: a courtesy reminder at 30 days, a formal late notice at 60 days, a demand letter at 90 days, and attorney referral at 120&ndash;150 days. Your board sets the policy &mdash; Tidewater executes it consistently.',
           'If you&rsquo;re struggling, <strong>call us before the demand letter</strong>. Most boards approve payment plans without question; the worst outcome is silence on both sides.',
@@ -171,7 +171,7 @@ const FAQ_CATEGORIES = [
     qs: [
       {
         q: 'How long does the transition from another company take?',
-        a: 'Typically <strong>7 weeks</strong> from signed proposal to first managed board meeting. Self-managed communities transition in <strong>4&ndash;5 weeks</strong>. We run the transition on your behalf; the board reviews, doesn’t lift. See the <a href="/solutions/switching-hoa-management-company/#timeline">week-by-week timeline</a>.',
+        a: 'Typically <strong>7 weeks</strong> from signed proposal to first managed board meeting. Self-managed communities transition in <strong>4&ndash;5 weeks</strong>. We run the transition on your behalf; the board reviews, doesn't lift. See the <a href="/solutions/switching-hoa-management-company/#timeline">week-by-week timeline</a>.',
       },
       {
         q: 'What does the transition cost?',
