@@ -406,9 +406,15 @@ img { max-width: 100%; display: block; }
 /* ============= Portal preview ============= */
 .tw-portal-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 72px; align-items: center; }
 .tw-portal-copy h2 { color: var(--tw-cream); }
-.tw-portal-features { list-style: none; padding: 0; margin: 32px 0 36px; display: flex; flex-direction: column; gap: 14px; }
+.tw-portal-features { list-style: none; padding: 0; margin: 32px 0 24px; display: flex; flex-direction: column; gap: 14px; }
 .tw-portal-features li { font-family: var(--tw-font-body); font-size: 16px; line-height: 1.5; color: #e0ddd5; display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; }
 .tw-portal-features li svg { width: 20px; height: 20px; color: var(--tw-gold); margin-top: 2px; }
+.tw-portal-app-tile { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 14px 18px; text-decoration: none; transition: background 0.18s; margin-bottom: 8px; }
+.tw-portal-app-tile:hover { background: rgba(255,255,255,0.12); }
+.tw-portal-app-tile-title { font-family: var(--tw-font-heading); font-weight: 700; font-size: 14px; color: var(--tw-cream); letter-spacing: -0.01em; }
+.tw-portal-app-tile-sub { font-family: var(--tw-font-body); font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+.tw-portal-app-tile-badges { display: flex; gap: 8px; flex-shrink: 0; }
+.tw-portal-app-badge { display: flex; align-items: center; gap: 5px; font-family: var(--tw-font-heading); font-weight: 600; font-size: 11px; color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.16); border-radius: 6px; padding: 5px 10px; white-space: nowrap; }
 
 .tw-portal-mock { position: relative; background: var(--tw-cream); border-radius: 14px; box-shadow: 0 30px 80px rgba(0,0,0,0.4); overflow: hidden; transform: perspective(1400px) rotateY(-6deg) rotateX(2deg); }
 .tw-portal-mock-bar { background: var(--tw-warm-100); padding: 12px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--tw-border); }

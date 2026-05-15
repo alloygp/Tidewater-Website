@@ -97,7 +97,7 @@ const FAQ_CATEGORIES = [
         a: 'Go to <strong>portal.tidewaterproperty.com</strong> and use the email address your community has on file. If you’re a new owner or never set up access, click &ldquo;First-time login&rdquo; and enter your property address &mdash; we’ll email you an invitation link. Most accounts activate within 5 minutes.',
       },
       {
-        q: 'I forgot my password &mdash; how do I reset it?',
+        q: 'I forgot my password — how do I reset it?',
         a: 'On the portal login page, click <strong>&ldquo;Forgot password?&rdquo;</strong> and enter the email associated with your account. You&rsquo;ll get a reset link within 60 seconds. Still not working after 5 minutes? Email <a href="mailto:portal@tidewaterproperty.com">portal@tidewaterproperty.com</a> with your address and we’ll fix it manually within one business day.',
       },
       {

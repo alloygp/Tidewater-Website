@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Topbar from '../components/Topbar.astro';
 import Header from '../components/Header.astro';
 import RentalHero from '../components/RentalHero.astro';
-import TrustBar from '../components/TrustBar.astro';
 import RentalPains from '../components/RentalPains.astro';
 import RentalFee from '../components/RentalFee.astro';
 import RentalCounty from '../components/RentalCounty.jsx';
@@ -34,12 +33,17 @@ const schemas = [
   <Header activeNav="rental" />
   <Breadcrumb crumbs={[{ label: "Management", href: "/hoa-management/" }, { label: "Rental Management" }]} />
   <RentalHero />
-  <TrustBar />
-
-  <!-- TODO #27: ADD PROPERTY TRUST SIGNALS HERE
-       Suggested content: # of rental units managed, years managing rental properties,
-       licensed broker credentials, avg days to lease, occupancy rate, tenant screening stats,
-       or owner-specific testimonials. Replace with a dedicated RentalTrustSignals component. -->
+  <!-- ⚠️ PLACEHOLDER: Replace with rental-specific trust signals.
+       Current TrustBar shows HOA credentials only (AAMC, PCAM, CAI, BBB) — not relevant to rental buyers.
+       Needed: rental unit count, licensed broker badge, avg days to lease, occupancy rate, tenant screening stats, etc.
+       Build a RentalTrustBar component and swap this section out. -->
+  <section style="border:2px dashed #e8a838;background:#fffbf0;padding:28px 32px;text-align:center">
+    <p style="font-family:monospace;font-size:13px;color:#7a5e1d;margin:0">
+      ⚠️ <strong>PLACEHOLDER — Rental Property Trust Signals</strong><br/>
+      Replace with: # rental units managed · licensed broker credentials · avg days to lease · occupancy rate · tenant screening stats<br/>
+      <em>Current TrustBar (HOA credentials) removed — not relevant to rental property buyers.</em>
+    </p>
+  </section>
 
   <RentalPains />
   <RentalFee />
