@@ -17,6 +17,16 @@
       "permanent": true
     },
     {
+      "source": "/blog/5-tips-for-effective-property-management",
+      "destination": "/blog/how-to-manage-a-rental-property",
+      "permanent": true
+    },
+    {
+      "source": "/blog/5-tips-for-effective-property-management/",
+      "destination": "/blog/how-to-manage-a-rental-property",
+      "permanent": true
+    },
+    {
       "source": "/blog/what-does-a-community-association-manager-do",
       "destination": "/blog/what-is-a-community-association-manager",
       "permanent": true
@@ -1009,16 +1019,6 @@
     {
       "source": "/service-area/:city",
       "destination": "/hoa-management",
-      "permanent": true
-    },
-    {
-      "source": "/blog/:slug",
-      "destination": "/blog",
-      "permanent": true
-    },
-    {
-      "source": "/blog/page/:page",
-      "destination": "/blog",
       "permanent": true
     },
     {
