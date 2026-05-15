@@ -1079,7 +1079,7 @@ img { max-width: 100%; display: block; }
   z-index: 1;
 }
 .tw-sol-week-marker {
-  width: 76px; height: 76px;
+  width: 96px; height: 96px;
   border-radius: 50%;
   background: var(--tw-cream);
   border: 3px solid var(--tw-teal);
@@ -1090,19 +1090,21 @@ img { max-width: 100%; display: block; }
   z-index: 2;
   box-shadow: 0 6px 18px rgba(58,146,166,.18);
   transition: transform .2s ease;
+  padding: 0 8px;
 }
 .tw-sol-week:hover .tw-sol-week-marker { transform: translateY(-3px) scale(1.04); }
 .tw-sol-week-marker-num {
   font-family: var(--tw-font-heading);
-  font-weight: 800; font-size: 22px;
+  font-weight: 800; font-size: 24px;
   color: var(--tw-teal);
   letter-spacing: -0.02em; line-height: 1;
 }
 .tw-sol-week-marker-label {
   font-family: var(--tw-font-heading);
-  font-weight: 700; font-size: 9px;
-  text-transform: uppercase; letter-spacing: 0.14em;
-  color: var(--tw-fg-muted); margin-top: 2px;
+  font-weight: 700; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--tw-fg-muted); margin-top: 3px;
+  text-align: center; line-height: 1.2;
 }
 .tw-sol-week.is-final .tw-sol-week-marker {
   background: var(--tw-sage);

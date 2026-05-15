@@ -149,8 +149,7 @@ function CovenantProcess() {
       tasks: [
         'Drafted by administrative team',
         'Template-driven for consistency',
-        'Cite the specific governing-document clause',
-        '[PLACEHOLDER: cure period per community policy]',
+        'Cites the specific governing-document clause',
       ],
     },
     {
@@ -166,7 +165,7 @@ function CovenantProcess() {
       num: '04', range: 'Escalation',
       title: 'Escalation per board policy',
       tasks: [
-        '[PLACEHOLDER: escalation ladder per community]',
+        'Second notice and fine per the community\'s recorded schedule',
         'Hearing rights communicated per bylaws',
         'Board notified before any fine',
       ],
@@ -207,9 +206,8 @@ function CovenantProcess() {
             ))}
           </div>
           <div className="tw-sol-timeline-foot" style={{ textAlign: 'left' }}>
-            <div style={{ width: 36, height: 36, borderRadius: 8, background: 'var(--tw-warm-100)', border: '1px dashed var(--tw-border-strong)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontFamily: 'var(--tw-font-heading)', fontWeight: 800, fontSize: 14, color: 'var(--tw-fg-muted)' }}>!</div>
-            <div className="tw-sol-timeline-foot-text" style={{ fontStyle: 'italic' }}>
-              <strong>[PLACEHOLDER]</strong> Specific cure-period lengths, fine schedules, and hearing-process timing vary by community per Maryland statute and the association&rsquo;s governing documents. Confirm with client before publishing.
+            <div className="tw-sol-timeline-foot-text" style={{ fontStyle: 'italic', color: 'var(--tw-fg-muted)' }}>
+              The sequence above is a representative example of a typical enforcement flow. Cure periods, fine schedules, and hearing procedures are determined by the board per the community&rsquo;s governing documents.
             </div>
           </div>
         </div>
@@ -243,7 +241,6 @@ function CovenantCinc() {
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'flex', flexDirection: 'column', gap: 10 }}>
               {[
                 '<strong>Real-time violation &amp; compliance monitoring</strong> on the board portal — no waiting for the monthly report.',
-                '<strong>ARC request tracking</strong> alongside violations — processed by the administrative team and visible to the board in CINC.',
                 '<strong>Automated resident communications</strong> — email or postal, per resident preference.',
                 '<strong>Compliance recordkeeping</strong> — a complete audit trail per property, preserved for the life of the association.',
               ].map((text, i) => (
@@ -288,7 +285,7 @@ const FAQS = [
   },
   {
     q: 'Who actually writes the violation letters?',
-    a: 'Tidewater\'s in-house <strong>administrative support team</strong> — not the community manager, not a third-party platform. Letters are template-driven for consistency, cite the specific governing-document clause, and go through CINC so every owner\'s record reflects the full history.',
+    a: 'Your community manager identifies violations during routine inspections and documents them on-site. From there, Tidewater\'s in-house administrative team processes the notices through CINC so every owner\'s record reflects the full history and your board has real-time visibility into compliance status.',
   },
   {
     q: 'Does the board see what\'s happening, or just get a summary?',
@@ -300,7 +297,7 @@ const FAQS = [
   },
   {
     q: 'What happens when a violation isn\'t cured?',
-    a: 'Escalation follows the community\'s policy — typically through second notice, hearing, and fines per the recorded schedule, with referral to the association\'s attorney as a final step. <em>[PLACEHOLDER: confirm specific escalation ladder &amp; timing with client before publishing.]</em>',
+    a: 'Escalation follows the community\'s policy — typically through second notice, hearing, and fines per the recorded schedule, with referral to the association\'s attorney as a final step.',
   },
   {
     q: 'How is ARC (architectural review) related?',
