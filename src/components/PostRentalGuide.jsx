@@ -400,7 +400,9 @@ function RGuideRelatedPosts({ posts }) {
         <div className="tw-blog-related-grid">
           {posts.map((p, i) => (
             <a key={i} href={p.href} className="tw-blog-related-card">
-              <div className={`tw-blog-related-card-img ${p.tone}`}></div>
+              <div className={`tw-blog-related-card-img ${p.tone}`}>
+                {p.coverImage && <img src={p.coverImage} alt={p.coverAlt || p.title} />}
+              </div>
               <div className="tw-blog-related-card-body">
                 <div className={`tw-blog-related-card-cat ${p.tone}`}>{p.category}</div>
                 <h3>{p.title}</h3>
@@ -473,18 +475,21 @@ export default function PostRentalGuide() {
       title: 'What is a community association manager? Roles, responsibilities, and what your board should expect.',
       dek: 'How the CAM role works alongside the board, what credentials matter, and how to evaluate whether your management company is meeting the standard.',
       date: 'May 15, 2026', readTime: 9, href: '/blog/what-is-a-community-association-manager',
+      coverImage: '/assets/what-is-a-community-association-manager.png', coverAlt: 'Community association manager meeting with HOA board members',
     },
     {
       tone: '', category: 'HOA Management',
       title: 'How to switch HOA management companies: a step-by-step guide.',
       dek: 'Contract review, board votes, notice requirements, financial and records transfer, and how to evaluate your next management partner.',
       date: 'May 14, 2026', readTime: 9, href: '/blog/how-to-switch-hoa-management-companies',
+      coverImage: '/assets/how-to-switch-hoa-management-companies.png', coverAlt: 'HOA board members reviewing management company transition documents',
     },
     {
       tone: '', category: 'Board Governance',
       title: 'What is a quorum? Definition, requirements, and why it matters for your board.',
       dek: "A quorum is the minimum number of members who must be present for a meeting's decisions to be legally valid.",
       date: 'May 14, 2026', readTime: 8, href: '/blog/what-is-quorum-and-why-is-it-important',
+      coverImage: '/assets/quorum-community-manager.jpg', coverAlt: 'Community association manager at an HOA meeting',
     },
   ];
 

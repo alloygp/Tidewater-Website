@@ -358,7 +358,9 @@ function SwitchRelatedPosts({ posts }) {
         <div className="tw-blog-related-grid">
           {posts.map((p, i) => (
             <a key={i} href={p.href} className="tw-blog-related-card">
-              <div className={`tw-blog-related-card-img ${p.tone}`}></div>
+              <div className={`tw-blog-related-card-img ${p.tone}`}>
+                {p.coverImage && <img src={p.coverImage} alt={p.coverAlt || p.title} />}
+              </div>
               <div className="tw-blog-related-card-body">
                 <div className={`tw-blog-related-card-cat ${p.tone}`}>{p.category}</div>
                 <h3>{p.title}</h3>
