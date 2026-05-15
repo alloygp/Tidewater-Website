@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Topbar from '../../../components/Topbar.astro';
+import Header from '../../../components/Header.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Footer from '../../../components/Footer.astro';
+import CTA from '../../../components/CTA.astro';
+import RentalDelaware from '../../../components/RentalDelaware.jsx';
+import { breadcrumbSchema, serviceSchema } from '../../../lib/schema';
+import { SITE } from '../../../config/site';
+
+const pageUrl = `${SITE.url}/rental-management/delaware`;
+
+const schemas = [
+  serviceSchema({
+    name: 'Rental Property Management — Delaware',
+    description: 'Single-family, condo, and townhome rental property management across coastal Delaware — Lewes, Rehoboth Beach, Bethany Beach, Fenwick Island, and the Sussex County corridor.',
+    url: pageUrl,
+    areaServed: 'Sussex County, Delaware',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Rental Management', url: SITE.url + '/rental-management' },
+    { name: 'Delaware', url: pageUrl },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Delaware Rental Property Management | Tidewater"
+  description="Rental property management across coastal Delaware — Lewes, Rehoboth, Bethany Beach, Sussex County. DE office on John J Williams Hwy. Flat fee. AppFolio-backed."
+  ogType="website"
+  pageSchema={schemas}
+  pageStylesheet="styles-geo.css"
+>
+  <Topbar />
+  <Header activeNav="rental" />
+  <Breadcrumb crumbs={[
+    { label: 'Rental Management', href: '/rental-management' },
+    { label: 'Delaware' },
+  ]} />
+  <RentalDelaware client:load />
+  <CTA />
+  <Footer />
+</BaseLayout>
