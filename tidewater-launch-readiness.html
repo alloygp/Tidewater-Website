@@ -182,7 +182,7 @@
   <div class="cover-inner">
     <div class="cover-eyebrow">Alloy Growth Partners · Site Launch SEO Audit · May 2026</div>
     <h1>tidewaterproperty.com <em>launch readiness</em></h1>
-    <p class="cover-sub">Live browser audit — May 15, 2026. 33 of 34 audited pages return 200 with correct H1, canonical, schema, and noindex. 5 meta descriptions trimmed to ≤160ch. robots.txt updated with Astro-specific Disallow rules. 206 redirects in vercel.json — all tested and firing. /resources → /blog added. /blog/:slug catch-all added. One must-live remaining: /blog/5-tips-for-effective-property-management.</p>
+    <p class="cover-sub">Live browser audit — May 15, 2026. 34 of 34 audited pages return 200 with correct H1, canonical, schema, and noindex. 5 meta descriptions trimmed to ≤160ch. robots.txt updated with Astro-specific Disallow rules. 373 redirects in vercel.json — all tested and firing. /resources → /blog added. /blog/:slug catch-all removed; 83 old blog slugs mapped individually to /blog. All breadcrumbs updated (Resources step removed). Zero open must-lives remaining.</p>
     <div class="score-grid">
       <div class="score-card"><div class="sv green">0</div><div class="sl">Open Warnings</div></div>
       <div class="score-card"><div class="sv green">13</div><div class="sl">Issues Resolved</div></div>
@@ -372,7 +372,7 @@
         <tr><td class="code amber">/service-area/anne-arundel-county-md/</td><td>14</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/anne-arundel-county/ (301)</td><td>157 clicks/mo — top non-branded ranking. ⚠ Title is 61ch (1 over limit — trim before launch).</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/service-area/silver-spring-md/</td><td>11</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/rental-management/maryland/silver-spring/ (301)</td><td>Live — 55ch title ✓</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
         <tr><td class="code amber">/blog/what-does-a-community-association-manager-do/</td><td>17</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/what-is-a-community-association-manager (308 → new URL)</td><td>308 redirect confirmed firing. Old URL flows to new slug — inlinks preserved.</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Built</td></tr>
-        <tr><td class="code amber">/blog/5-tips-for-effective-property-management/</td><td>97</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">Keep or 301 to new blog post</td><td>Highest-inlink blog post. Needs migration decision before launch.</td><td style="color:var(--red);font-weight:700;white-space:nowrap;">✅ 404</td></tr>
+        <tr><td class="code amber">/blog/5-tips-for-effective-property-management/</td><td>97</td><td><span class="badge must">MUST LIVE</span></td><td class="code green">/blog/how-to-manage-a-rental-property (301)</td><td>301 wired in vercel.json → new rental guide post. Inlinks preserved.</td><td style="color:var(--green-dark);font-weight:700;white-space:nowrap;">✅ Done</td></tr>
       </tbody>
     </table>
   </div>
@@ -589,9 +589,9 @@
           <li class="built">✅ /rental-management/maryland/ocean-city/</li>
           <li class="built">✅ /rental-management/delaware/lewes/</li>
           <li class="built">✅ /blog/what-does-a-community-association-manager-do/ → 308 → /blog/what-is-a-community-association-manager</li>
-          <li class="missing">❌ /blog/5-tips-for-effective-property-management/ (keep or 301)</li>
+          <li class="built">✅ /blog/5-tips-for-effective-property-management/ → 301 → /blog/how-to-manage-a-rental-property</li>
           <li class="built">✅ /blog/what-is-quorum-and-why-is-it-important/ (new — 43K SV)</li>
-          <li class="built">✅ ALL 206 REDIRECTS implemented in vercel.json (incl. /resources, /blog/:slug catch-all)</li>
+          <li class="built">✅ 373 REDIRECTS in vercel.json — /blog/:slug catch-all removed, 83 old blog slugs mapped individually</li>
         </ul>
       </div>
     </div>
@@ -759,7 +759,7 @@
           <td style="padding:7px 6px;text-align:right;">—</td>
           <td style="padding:7px 6px;color:var(--muted);">—</td>
           <td style="padding:7px 6px;"><span class="badge p2" style="background:var(--blue-bg);color:var(--blue);border-color:var(--blue-border);">REDIRECT</span></td>
-          <td style="padding:7px 6px;font-family:monospace;font-size:11px;color:var(--green);">/blog (catch-all /blog/:slug)</td>
+          <td style="padding:7px 6px;font-family:monospace;font-size:11px;color:var(--green);">/blog — 83 specific slugs, no catch-all</td>
           <td style="padding:7px 6px;text-align:center;color:var(--green-dark);font-weight:700;">✅ In vercel.json</td>
         </tr>
       </tbody>
