@@ -1032,6 +1032,836 @@
       "permanent": true
     },
     {
+      "source": "/blog/3-benefits-of-hoa-living",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/3-benefits-of-hoa-living/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/3-benefits-of-professional-property-management-for-landlords",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/3-benefits-of-professional-property-management-for-landlords/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/5-benefits-of-hoa-management",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/5-benefits-of-hoa-management/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/5-staging-tips-to-make-your-rental-property-stand-out",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/5-staging-tips-to-make-your-rental-property-stand-out/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/5-ways-build-wholesale-buyers-list",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/5-ways-build-wholesale-buyers-list/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/are-hoa-residents-happy",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/are-hoa-residents-happy/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/are-you-cut-out-for-living-in",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/are-you-cut-out-for-living-in/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/are-you-ready-for-cold-weather",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/are-you-ready-for-cold-weather/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/avoiding-conflict-with-neighbors",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/avoiding-conflict-with-neighbors/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/benefits-property-management-hoa",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/benefits-property-management-hoa/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/big-tips-for-small-fixes",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/big-tips-for-small-fixes/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bike-and-scooter-safety-tips",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bike-and-scooter-safety-tips/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/call-electrician",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/call-electrician/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/can-i-make-a-profit-if-i-hire-a-property-management-company",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/can-i-make-a-profit-if-i-hire-a-property-management-company/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chimney-safety",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chimney-safety/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/choose-condominium-association-management-company",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/choose-condominium-association-management-company/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/choose-hoa-management-company",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/choose-hoa-management-company/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/club-cai-five-stars-and-two-thumbs-up",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/club-cai-five-stars-and-two-thumbs-up/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/community-managers-vs-property-managers",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/community-managers-vs-property-managers/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/create-a-welcoming-environment-for-tenants",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/create-a-welcoming-environment-for-tenants/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/diy-vs-professional-property-management",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/diy-vs-professional-property-management/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/eco-friendly-lawn-care-tips",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/eco-friendly-lawn-care-tips/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fiduciary-duty-what-is-it",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fiduciary-duty-what-is-it/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/finding-reputable-contractor",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/finding-reputable-contractor/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/food-safety-during-power-outage",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/food-safety-during-power-outage/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/get-your-home-ready-to-sell",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/get-your-home-ready-to-sell/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hiring-property-manager-worth-it",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hiring-property-manager-worth-it/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hoa-management-software",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hoa-management-software/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/home-improvement-apps-tools-you-needin",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/home-improvement-apps-tools-you-needin/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-do-i-market-rental-property-to-tenants",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-do-i-market-rental-property-to-tenants/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-do-lockbox-services-work",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-do-lockbox-services-work/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-conduct-rental-market-analysis",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-conduct-rental-market-analysis/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-evict-tenant",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-evict-tenant/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-find-good-tenant",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-find-good-tenant/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-get-a-home-ready-to-be-rented",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-get-a-home-ready-to-be-rented/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-hire-a-property-manager",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-hire-a-property-manager/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-prevent-costly-repairs",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-prevent-costly-repairs/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-screen-tenants",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-screen-tenants/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/impending-weather-by-steve-wolf-cmca",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/impending-weather-by-steve-wolf-cmca/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/important-information-for-landlords",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/important-information-for-landlords/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/increase-your-homes-value",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/increase-your-homes-value/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/keep-warm-but-safe",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/keep-warm-but-safe/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/keep-your-backyard-bug-free-naturally",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/keep-your-backyard-bug-free-naturally/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/love-your-dog-leash-your-dog",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/love-your-dog-leash-your-dog/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/maintain-your-yard-safely",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/maintain-your-yard-safely/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/make-real-estate-investing-passive",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/make-real-estate-investing-passive/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/national-dog-day",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/national-dog-day/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/our-management-fees-are-too-highor-are",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/our-management-fees-are-too-highor-are/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/picture-perfect-smartphone-photography",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/picture-perfect-smartphone-photography/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prepare-your-home-for-winter",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prepare-your-home-for-winter/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/property-maintenance-companies-do",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/property-maintenance-companies-do/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/protecting-people-with-dementia",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/protecting-people-with-dementia/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/reasons-to-hire-community-management-company",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/reasons-to-hire-community-management-company/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rent-vs-buy-which-should-you-choose",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rent-vs-buy-which-should-you-choose/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rental-management-cost",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rental-management-cost/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/seasonal-maintenance-checklist",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/seasonal-maintenance-checklist/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/september-2020-company-news",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/september-2020-company-news/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/should-i-manage-my-property",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/should-i-manage-my-property/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/signing-lease",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/signing-lease/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/simple-home-care-garbage-disposal",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/simple-home-care-garbage-disposal/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/smooth-move-tips-for-less-stressful",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/smooth-move-tips-for-less-stressful/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/so-who-am-i-and-what-do-i-have-to-say",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/so-who-am-i-and-what-do-i-have-to-say/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/so-who-is-g-pt-3",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/so-who-is-g-pt-3/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sounds-like-good-idea",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sounds-like-good-idea/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/thank-volunteer",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/thank-volunteer/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-meaning-purpose-of-contingent-in-real-estate",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-meaning-purpose-of-contingent-in-real-estate/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-sweet-smells-of-selling-your-home",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-sweet-smells-of-selling-your-home/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/thieves-in-waste-basket",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/thieves-in-waste-basket/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/thunderstorm-safety-avoiding-lightning_18",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/thunderstorm-safety-avoiding-lightning_18/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tidewater-property-is-built-to-last",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tidewater-property-is-built-to-last/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tips-for-keeping-water-clean",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tips-for-keeping-water-clean/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tips-for-protecting-your-identity",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tips-for-protecting-your-identity/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tracking-down-air-leaks",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tracking-down-air-leaks/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/urban-gardening-basics",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/urban-gardening-basics/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vacation-rental-management",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vacation-rental-management/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/waste-free-yards-keeps-pets-healthy",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/waste-free-yards-keeps-pets-healthy/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-is-special-meeting",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-is-special-meeting/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/whats-motion",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/whats-motion/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-choose-a-local-property-management-company",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-choose-a-local-property-management-company/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-do-you-need-a-property-manager",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-do-you-need-a-property-manager/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/withholding-assessments-wont-work",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/withholding-assessments-wont-work/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/words-concepts-to-know-when-living-in",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/words-concepts-to-know-when-living-in/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/young-manager",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/young-manager/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
       "source": "/blog/page/:page",
       "destination": "/blog",
       "permanent": true

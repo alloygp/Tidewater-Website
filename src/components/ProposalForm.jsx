@@ -35,12 +35,28 @@ export default function ProposalForm() {
   const [role, setRole] = useState(null);
   const [homes, setHomes] = useState('50–150');
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const cfg = role ? intent[role] : null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError('');
+    const fd = new FormData(e.target);
+    fd.append('role', role || '');
+    fd.append('communitySize', homes);
+    try {
+      const res = await fetch('/api/lead', { method: 'POST', body: fd });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || 'Something went wrong.');
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -108,22 +124,22 @@ export default function ProposalForm() {
             <div className="tw-c-form-row row-2">
               <div className="tw-c-field">
                 <label>Name</label>
-                <input type="text" placeholder="Marcia Sullivan" required />
+                <input type="text" name="name" placeholder="Marcia Sullivan" required />
               </div>
               <div className="tw-c-field">
                 <label>Email</label>
-                <input type="email" placeholder="treasurer@yourcommunity.org" required />
+                <input type="email" name="email" placeholder="treasurer@yourcommunity.org" required />
               </div>
             </div>
 
             <div className="tw-c-form-row row-2">
               <div className="tw-c-field">
                 <label>Phone <span className="tw-c-opt">(optional)</span></label>
-                <input type="tel" placeholder="(410) 555-0148" />
+                <input type="tel" name="phone" placeholder="(410) 555-0148" />
               </div>
               <div className="tw-c-field">
                 <label>{placeholders.communityLabel[role]}</label>
-                <input type="text" placeholder={placeholders.community[role]} />
+                <input type="text" name="community" placeholder={placeholders.community[role]} />
               </div>
             </div>
 
@@ -148,7 +164,7 @@ export default function ProposalForm() {
             {(role === 'board' || role === 'developer') && (
               <div className="tw-c-field">
                 <label>Timing <span className="tw-c-opt">(no commitment)</span></label>
-                <select defaultValue="explore">
+                <select name="timing" defaultValue="explore">
                   <option value="explore">Just exploring options</option>
                   <option value="6mo">Looking in the next 6 months</option>
                   <option value="60d">Looking in the next 60 days</option>
@@ -160,7 +176,7 @@ export default function ProposalForm() {
             {role === 'owner' && (
               <div className="tw-c-field">
                 <label>Property type</label>
-                <select defaultValue="sfh">
+                <select name="propertyType" defaultValue="sfh">
                   <option value="sfh">Single-family home</option>
                   <option value="th">Townhome</option>
                   <option value="condo">Condo unit</option>
@@ -174,7 +190,7 @@ export default function ProposalForm() {
                 {role === 'vendor' ? 'Trade & service area' : 'Anything we should know?'}
                 <span className="tw-c-opt">(optional)</span>
               </label>
-              <textarea placeholder={placeholders.message[role]}></textarea>
+              <textarea name="notes" placeholder={placeholders.message[role]}></textarea>
             </div>
           </div>
 
@@ -182,10 +198,11 @@ export default function ProposalForm() {
             <div className="tw-c-form-foot-note">
               <strong>One business day.</strong> A regional manager — not a sales rep — reads every submission. You&rsquo;ll never get a high-pressure follow-up.
             </div>
-            <button type="submit" className="tw-btn tw-btn-primary tw-btn-lg">
-              {cfg.verb} →
+            <button type="submit" className="tw-btn tw-btn-primary tw-btn-lg" disabled={loading}>
+              {loading ? 'Sending…' : cfg.verb + ' →'}
             </button>
           </div>
+          {error && <p style={{color:'red',fontSize:13,marginTop:8}}>{error}</p>}
         </>
       )}
     </form>

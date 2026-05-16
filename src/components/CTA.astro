@@ -23,15 +23,15 @@ const {
         <p class="tw-cta-form-sub">All fields are required. We&rsquo;ll never share your information.</p>
       </div>
       <div class="tw-row-2">
-        <div class="tw-field"><label>First name</label><input placeholder="Marcia" /></div>
-        <div class="tw-field"><label>Last name</label><input placeholder="Sullivan" /></div>
+        <div class="tw-field"><label>First name</label><input name="firstName" placeholder="Marcia" /></div>
+        <div class="tw-field"><label>Last name</label><input name="lastName" placeholder="Sullivan" /></div>
       </div>
-      <div class="tw-field"><label>Board email</label><input type="email" placeholder="treasurer@yourcommunity.org" /></div>
+      <div class="tw-field"><label>Board email</label><input type="email" name="email" placeholder="treasurer@yourcommunity.org" /></div>
       <div class="tw-row-2">
-        <div class="tw-field"><label>Community name</label><input placeholder="Wynbrook HOA" /></div>
+        <div class="tw-field"><label>Community name</label><input name="community" placeholder="Wynbrook HOA" /></div>
         <div class="tw-field">
           <label>Number of homes</label>
-          <select>
+          <select name="communitySize">
             <option value="" disabled selected>Select…</option>
             <option>Under 50</option>
             <option>50–150</option>
@@ -42,7 +42,7 @@ const {
       </div>
       <div class="tw-field">
         <label>Service interest</label>
-        <select>
+        <select name="serviceInterest">
           <option value="full">Full Service Management</option>
           <option>Flex Service</option>
           <option>Financial Only</option>
@@ -57,8 +57,25 @@ const {
 </section>
 
 <script>
-  document.getElementById('proposal-form')?.addEventListener('submit', (e) => {
+  const form = document.getElementById('proposal-form');
+  const btn = form?.querySelector('button[type="submit"]');
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    alert("Thanks — we\'ll be in touch within one business day.");
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+    const fd = new FormData(form);
+    // Combine first + last into name
+    const first = fd.get('firstName') || '';
+    const last  = fd.get('lastName')  || '';
+    fd.set('name', `${first} ${last}`.trim());
+    fd.set('company', fd.get('community') || '');
+    try {
+      const res = await fetch('/api/lead', { method: 'POST', body: fd });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error);
+      form.innerHTML = '<div style="padding:32px;text-align:center;font-family:var(--tw-font-heading);font-weight:700;font-size:18px">Thanks — we\'ll be in touch within one business day.</div>';
+    } catch (err) {
+      if (btn) { btn.disabled = false; btn.textContent = 'Request my proposal'; }
+      alert(err.message || 'Something went wrong. Please try again.');
+    }
   });
 </script>

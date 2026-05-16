@@ -190,6 +190,17 @@ function BlogIndexGrid({ posts, total, onLoadMore, hasMore, activeCat, query }) 
 // ─────────────────────────────────────────────────────────────
 function BlogIndexNewsletter() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const fd = new FormData(e.target);
+    try {
+      await fetch('/api/subscribe', { method: 'POST', body: fd });
+    } catch {}
+    setSubmitted(true);
+    setLoading(false);
+  };
   return (
     <section className="tw-blog-newsletter">
       <div className="tw-blog-newsletter-inner">
@@ -201,9 +212,9 @@ function BlogIndexNewsletter() {
             Thanks &mdash; first issue lands the first Tuesday of next month.
           </div>
         ) : (
-          <form className="tw-blog-newsletter-form" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
-            <input type="email" placeholder="board@yourcommunity.org" aria-label="Email address" required />
-            <button type="submit">Subscribe</button>
+          <form className="tw-blog-newsletter-form" onSubmit={onSubmit}>
+            <input type="email" name="email" placeholder="board@yourcommunity.org" aria-label="Email address" required />
+            <button type="submit" disabled={loading}>Subscribe</button>
           </form>
         )}
         <div className="tw-blog-newsletter-fine">Unsubscribe any time &middot; We never share your email &middot; 4,200+ board members subscribed</div>
