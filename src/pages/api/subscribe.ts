@@ -50,16 +50,13 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Welcome email to subscriber
-    try {
-      await resend.emails.send({
-        from:    EMAIL_CONFIG.from.hello,
-        to:      email,
-        subject: EMAIL_CONFIG.copy.subscribe.confirmSubject,
-        html:    EMAIL_CONFIG.copy.subscribe.confirmBody(firstName),
-      });
-    } catch (err) {
-      console.error("Resend welcome error:", err);
-    }
+    const { error: welcomeError } = await resend.emails.send({
+      from:    EMAIL_CONFIG.from.hello,
+      to:      email,
+      subject: EMAIL_CONFIG.copy.subscribe.confirmSubject,
+      html:    EMAIL_CONFIG.copy.subscribe.confirmBody(firstName),
+    });
+    if (welcomeError) console.error("Resend welcome error:", welcomeError);
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (err) {

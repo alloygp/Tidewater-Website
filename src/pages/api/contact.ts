@@ -33,36 +33,30 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Internal notification
-    try {
-      await resend.emails.send({
-        from:    EMAIL_CONFIG.from.notifications,
-        to:      EMAIL_CONFIG.notify,
-        subject: `New contact form submission from ${name}`,
-        html: `
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Message:</strong></p>
-          <p>${message.replace(/\n/g, "<br>")}</p>
-          <p><strong>Subscribe:</strong> ${subscribe ? "Yes" : "No"}</p>
-          ${source ? `<hr><p style="color:#888;font-size:13px"><strong>Source</strong><br>${source.replace(/\n/g, "<br>")}</p>` : ""}
-        `,
-      });
-    } catch (err) {
-      console.error("Resend notify error:", err);
-    }
+    const { error: notifyError } = await resend.emails.send({
+      from:    EMAIL_CONFIG.from.notifications,
+      to:      EMAIL_CONFIG.notify,
+      subject: `New contact form submission from ${name}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message.replace(/\n/g, "<br>")}</p>
+        <p><strong>Subscribe:</strong> ${subscribe ? "Yes" : "No"}</p>
+        ${source ? `<hr><p style="color:#888;font-size:13px"><strong>Source</strong><br>${source.replace(/\n/g, "<br>")}</p>` : ""}
+      `,
+    });
+    if (notifyError) console.error("Resend notify error:", notifyError);
 
     // Confirmation to submitter
-    try {
-      await resend.emails.send({
-        from:    EMAIL_CONFIG.from.hello,
-        to:      email,
-        subject: EMAIL_CONFIG.copy.contact.confirmSubject,
-        html:    EMAIL_CONFIG.copy.contact.confirmBody(name, EMAIL_CONFIG.brand.url),
-      });
-    } catch (err) {
-      console.error("Resend confirm error:", err);
-    }
+    const { error: confirmError } = await resend.emails.send({
+      from:    EMAIL_CONFIG.from.hello,
+      to:      email,
+      subject: EMAIL_CONFIG.copy.contact.confirmSubject,
+      html:    EMAIL_CONFIG.copy.contact.confirmBody(name, EMAIL_CONFIG.brand.url),
+    });
+    if (confirmError) console.error("Resend confirm error:", confirmError);
 
     // Optional Mailchimp list sync
     if (subscribe && EMAIL_CONFIG.mailchimp.enabled) {

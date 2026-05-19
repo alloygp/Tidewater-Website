@@ -41,41 +41,35 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Internal notification
-    try {
-      await resend.emails.send({
-        from:    EMAIL_CONFIG.from.notifications,
-        to:      EMAIL_CONFIG.notify,
-        subject: `New lead: ${company || community || name}`,
-        html: `
-          <h2>New Lead Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          ${phone         ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
-          ${company       ? `<p><strong>Company:</strong> ${company}</p>` : ""}
-          ${community     ? `<p><strong>Community:</strong> ${community}</p>` : ""}
-          ${role          ? `<p><strong>Role:</strong> ${role}</p>` : ""}
-          ${communitySize ? `<p><strong>Community Size:</strong> ${communitySize}</p>` : ""}
-          ${timing        ? `<p><strong>Timing:</strong> ${timing}</p>` : ""}
-          ${propertyType  ? `<p><strong>Property Type:</strong> ${propertyType}</p>` : ""}
-          ${notes         ? `<p><strong>Notes:</strong><br>${notes.replace(/\n/g, "<br>")}</p>` : ""}
-          ${source ? `<hr><p style="color:#888;font-size:13px"><strong>Source</strong><br>${source.replace(/\n/g, "<br>")}</p>` : ""}
-        `,
-      });
-    } catch (err) {
-      console.error("Resend notify error:", err);
-    }
+    const { error: notifyError } = await resend.emails.send({
+      from:    EMAIL_CONFIG.from.notifications,
+      to:      EMAIL_CONFIG.notify,
+      subject: `New lead: ${company || community || name}`,
+      html: `
+        <h2>New Lead Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        ${phone         ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
+        ${company       ? `<p><strong>Company:</strong> ${company}</p>` : ""}
+        ${community     ? `<p><strong>Community:</strong> ${community}</p>` : ""}
+        ${role          ? `<p><strong>Role:</strong> ${role}</p>` : ""}
+        ${communitySize ? `<p><strong>Community Size:</strong> ${communitySize}</p>` : ""}
+        ${timing        ? `<p><strong>Timing:</strong> ${timing}</p>` : ""}
+        ${propertyType  ? `<p><strong>Property Type:</strong> ${propertyType}</p>` : ""}
+        ${notes         ? `<p><strong>Notes:</strong><br>${notes.replace(/\n/g, "<br>")}</p>` : ""}
+        ${source ? `<hr><p style="color:#888;font-size:13px"><strong>Source</strong><br>${source.replace(/\n/g, "<br>")}</p>` : ""}
+      `,
+    });
+    if (notifyError) console.error("Resend notify error:", notifyError);
 
     // Confirmation to submitter
-    try {
-      await resend.emails.send({
-        from:    EMAIL_CONFIG.from.hello,
-        to:      email,
-        subject: EMAIL_CONFIG.copy.lead.confirmSubject,
-        html:    EMAIL_CONFIG.copy.lead.confirmBody(name, company || community, EMAIL_CONFIG.brand.url),
-      });
-    } catch (err) {
-      console.error("Resend confirm error:", err);
-    }
+    const { error: confirmError } = await resend.emails.send({
+      from:    EMAIL_CONFIG.from.hello,
+      to:      email,
+      subject: EMAIL_CONFIG.copy.lead.confirmSubject,
+      html:    EMAIL_CONFIG.copy.lead.confirmBody(name, company || community, EMAIL_CONFIG.brand.url),
+    });
+    if (confirmError) console.error("Resend confirm error:", confirmError);
 
     // Mailchimp — always adds leads to the list
     if (EMAIL_CONFIG.mailchimp.enabled) {
