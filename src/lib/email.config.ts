@@ -27,7 +27,7 @@ export const EMAIL_CONFIG = {
       confirmSubject: "We received your proposal request — Tidewater Companies",
       confirmBody: (name: string, _company: string, siteUrl: string) =>
         `<p>Hi ${name},</p>
-        <p>Thanks for reaching out. A regional manager from your area will be in touch within one business day — not a sales rep.</p>
+        <p>Thanks for reaching out. A regional manager from your area will be in touch within one business day.</p>
         <p>In the meantime, you can browse our resources at <a href="${siteUrl}/resources">${siteUrl}/resources</a>.</p>
         <p>— The Tidewater Team</p>`,
     },

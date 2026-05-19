@@ -64,7 +64,7 @@ export default function ProposalForm() {
       <div className="tw-c-form-card">
         <div className="tw-c-form-head">
           <div className="tw-c-form-head-left">
-            <h2>Thanks — we\'ll be in touch.</h2>
+            <h2>Thanks — we'll be in touch.</h2>
             <p>A regional manager will reach back within one business day. Check your email for a quick confirmation.</p>
           </div>
           <div className="tw-c-form-badge">Received</div>
@@ -86,7 +86,7 @@ export default function ProposalForm() {
       <div className="tw-c-form-head">
         <div className="tw-c-form-head-left">
           <h2>{cfg ? `${cfg.title}.` : 'How can we help?'}</h2>
-          <p>{cfg ? 'No-pressure. A regional manager from your area reviews every submission personally.' : 'Select who you are and we\'ll show you exactly what we need.'}</p>
+          <p>{cfg ? 'No-pressure. A regional manager from your area reviews every submission personally.' : "Select who you are and we'll show you exactly what we need."}</p>
         </div>
         <span className="tw-c-form-badge">{cfg ? 'Ready' : 'Step 1 of 2'}</span>
       </div>
