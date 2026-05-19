@@ -19,6 +19,11 @@ mailchimp.setConfig({
 export const POST: APIRoute = async ({ request }) => {
   try {
     const data      = await request.formData();
+    const honeypot = data.get("website")?.toString() ?? "";
+    if (honeypot) {
+      // Bot filled the honeypot field — silently discard
+      return new Response(JSON.stringify({ success: true }), { status: 200 });
+    }
     const email     = data.get("email")?.toString().trim()     ?? "";
     const firstName = data.get("firstName")?.toString().trim() ?? "";
 

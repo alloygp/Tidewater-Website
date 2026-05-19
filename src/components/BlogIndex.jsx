@@ -213,6 +213,8 @@ function BlogIndexNewsletter() {
           </div>
         ) : (
           <form className="tw-blog-newsletter-form" onSubmit={onSubmit}>
+            {/* Honeypot — hidden from real users, bots fill it in */}
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{position:'absolute',left:'-9999px',width:'1px',height:'1px',opacity:0}} />
             <input type="email" name="email" placeholder="board@yourcommunity.org" aria-label="Email address" required />
             <button type="submit" disabled={loading}>Subscribe</button>
           </form>

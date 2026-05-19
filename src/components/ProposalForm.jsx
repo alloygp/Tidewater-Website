@@ -121,6 +121,8 @@ export default function ProposalForm() {
       {role && (
         <>
           <div className="tw-c-form-body">
+            {/* Honeypot — hidden from real users, bots fill it in */}
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{position:'absolute',left:'-9999px',width:'1px',height:'1px',opacity:0}} />
             <div className="tw-c-form-row row-2">
               <div className="tw-c-field">
                 <label>Name</label>
