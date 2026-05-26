@@ -478,7 +478,7 @@ export const GEO_DATA_BALTIMORE_COUNTY = {
     name: '[Manager TBD]',
     creds: '',
     initials: 'TB',
-    bio: '<strong>[PLACEHOLDER — confirm assigned manager]</strong> Baltimore County rentals are overseen by Kate Cornell, Baltimore & DC Metro Regional Director, with a named portfolio manager assigned to each owner. Our HQ is in Owings Mills and our team drives the county daily.',
+    bio: '<strong>[PLACEHOLDER — confirm assigned manager]</strong> Baltimore County rentals are overseen by Kate Cornell, Baltimore Metro Regional Director, with a named portfolio manager assigned to each owner. Our HQ is in Owings Mills and our team drives the county daily.',
   },
   schemaDesc: 'Single-family, townhome, and condo rental property management across Baltimore County, Maryland — Towson, Owings Mills, Pikesville, Cockeysville, Catonsville, White Marsh, Dundalk, and surrounding markets.',
   faqs: [
@@ -657,7 +657,7 @@ export const GEO_DATA_MONTGOMERY_COUNTY = {
     name: '[Manager TBD]',
     creds: '',
     initials: 'TB',
-    bio: '<strong>[PLACEHOLDER — confirm assigned manager]</strong> Montgomery County rentals are overseen by Kate Cornell, Baltimore & DC Metro Regional Director, with named portfolio managers covering the Silver Spring, Rockville, and I-270 corridors.',
+    bio: '<strong>[PLACEHOLDER — confirm assigned manager]</strong> Montgomery County rentals are overseen by Kate Cornell, Baltimore Metro Regional Director, with named portfolio managers covering the Silver Spring, Rockville, and I-270 corridors.',
   },
   schemaDesc: 'Single-family, townhome, and condo rental property management across Montgomery County, Maryland — Rockville, Bethesda, Gaithersburg, Germantown, Silver Spring, Wheaton, Potomac, and the I-270 biotech corridor.',
   faqs: [
@@ -748,7 +748,7 @@ export const GEO_DATA_PRINCE_GEORGES_COUNTY = {
     name: '[Manager TBD]',
     creds: '',
     initials: 'TB',
-    bio: "<strong>[PLACEHOLDER — confirm assigned manager]</strong> Prince George\'s County rentals are overseen by Kate Cornell, Baltimore & DC Metro Regional Director. Our manager knows the county rental license cycle, the lead-paint compliance flow, and the heavy federal-workforce tenant pool.",
+    bio: "<strong>[PLACEHOLDER — confirm assigned manager]</strong> Prince George\'s County rentals are overseen by Kate Cornell, Baltimore Metro Regional Director. Our manager knows the county rental license cycle, the lead-paint compliance flow, and the heavy federal-workforce tenant pool.",
   },
   schemaDesc: "Single-family, townhome, and condo rental property management across Prince George\'s County, Maryland — Bowie, Largo, Greenbelt, Hyattsville, Laurel, College Park, Upper Marlboro, Fort Washington, and the DC commuter corridor.",
   faqs: [
