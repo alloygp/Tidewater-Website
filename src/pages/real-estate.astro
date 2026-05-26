@@ -17,10 +17,10 @@ import { serviceSchema, breadcrumbSchema } from '../lib/schema';
 import { SITE } from '../config/site';
 
 const pageUrl = `${SITE.url}/real-estate`;
-const pageDesc = "Family-owned brokerage covering Maryland & DC. Buying, selling, and investing in residential and investment properties.";
+const pageDesc = "Family-owned brokerage covering Maryland & Delaware. Buying, selling, and investing in residential and investment properties.";
 
 const schemas = [
-  serviceSchema({ name: 'Tidewater Realty Group — Real Estate Services', description: pageDesc, url: pageUrl, areaServed: ['Maryland', 'Washington DC'] }),
+  serviceSchema({ name: 'Tidewater Realty Group — Real Estate Services', description: pageDesc, url: pageUrl, areaServed: ['Maryland', 'Delaware'] }),
   breadcrumbSchema([{ name: 'Home', url: SITE.url + '/' }, { name: 'Real Estate', url: pageUrl }]),
 ];
 ---
@@ -45,7 +45,7 @@ const schemas = [
   <CTA
     eyebrow="Talk to an Agent"
     title="Let\'s talk about your property goals."
-    body="Whether you\'re buying, selling, or investing in Maryland or DC — a licensed Tidewater agent will be in touch within one business day."
+    body="Whether you\'re buying, selling, or investing in Maryland or Delaware — a licensed Tidewater agent will be in touch within one business day."
   />
   <Footer />
 </BaseLayout>

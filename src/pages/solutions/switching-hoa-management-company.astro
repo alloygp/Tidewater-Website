@@ -25,7 +25,7 @@ const weeks = [
   { num: '01', title: 'Discovery & document audit', tasks: ['Document audit: declarations, bylaws, contracts', 'Insurance certificates & bond review'] },
   { num: '02', title: 'Financial readout', tasks: ['Operating & reserve account snapshot', 'A/R & delinquency report from outgoing co.', 'Open work-order audit'] },
   { num: '03', title: 'Vendor & contract handover', tasks: ['Re-bid optional vendor contracts', 'Confirm insurance, landscaping, snow', 'Reserve study refresh kicks off'] },
-  { num: '04', title: 'Resident communication', tasks: ['Welcome letter from your regional manager', 'Portal invitations mailed to all owners', 'New payment instructions issued'] },
+  { num: '04', title: 'Resident communication', tasks: ['Welcome letter from your Community Association Manager', 'Portal invitations mailed to all owners', 'New payment instructions issued'] },
   { num: '05', title: 'Financial migration', tasks: ['Operating & reserve account transfers', 'Lockbox set up with bank', 'Open invoices reconciled and paid'] },
   { num: '06', title: 'Portal & systems go-live', tasks: ['CINC owner portal live', 'Board portal & document library ready', 'Maintenance request workflow active'] },
   { num: '07', title: 'First board meeting', tasks: ['Full board pack mailed 7 days early', 'Your manager presents in person', 'Quarterly action plan agreed on'], isFinal: true },
@@ -43,21 +43,21 @@ const compareRows = [
 ];
 
 const faqItems = [
-  { q: 'When can our board actually switch — are we locked in?', a: ['Most management contracts have a <strong>60- or 90-day termination window</strong> with notice. We\'ll review your current agreement for free and tell you exactly when you can give notice and what penalties (if any) apply.', 'In Maryland, a management company cannot impose "evergreen" auto-renewal clauses without conspicuous disclosure. We frequently find boards have more flexibility than they were told.'] },
+  { q: 'When can our board actually switch — are we locked in?', a: ['Most management contracts have a <strong>60- or 90-day termination window</strong> with written notice. We recommend having your association attorney review your current agreement to confirm your notice date and any applicable penalties.', 'In Maryland, auto-renewal clauses must be conspicuously disclosed. Your attorney can advise whether your contract meets that standard.'] },
   { q: 'How disruptive is the transition for residents?', a: 'Done well, nearly invisible. The two changes residents will notice: a new welcome letter from your Community Association Manager (with their direct line and email), and new payment instructions in the next assessment cycle. We coordinate both. Maintenance requests don\'t skip a beat — we run a 30-day overlap on the old vendor list.' },
   { q: 'What does the transition actually cost?', a: '<strong>$1,000 one-time transition fee.</strong> Some companies charge $2,500–$8,000 to onboard a new community — we charge $1,000, disclosed upfront. Your ongoing cost is your normal monthly management fee, which begins the month after your old contract ends.' },
   { q: 'Will our reserve fund accountants need to start over?', a: 'No. We accept your current chart of accounts and reserve schedule as-is and reconcile from there. Your CPA / auditor receives a clean continuity file from us so the year-end audit is uninterrupted.' },
-  { q: 'Who handles communicating the change to homeowners?', a: 'We do, on your letterhead. You approve every piece. The standard sequence: (1) a single email from the board announcing the change with reasoning, (2) a welcome letter from your new regional manager, (3) new payment instructions before the next assessment cycle, (4) portal invitations.' },
+  { q: 'Who handles communicating the change to homeowners?', a: 'We do, on your letterhead. You approve every piece. The standard sequence: (1) a single email from the board announcing the change with reasoning, (2) a welcome letter from your new Community Association Manager, (3) new payment instructions before the next assessment cycle, (4) portal invitations.' },
   { q: 'How do you handle delinquencies in transit?', a: 'We accept the existing A/R balance and continue collection from where your last company stopped. <strong>Nothing falls off the radar.</strong> If your current company\'s collection practices were lax, we tighten with board approval — not unilaterally.' },
   { q: 'What if we have an active legal matter or insurance claim?', a: 'Both transfer cleanly. We coordinate directly with your association attorney and insurance broker during weeks 2–3 of the transition. Open matters are inventoried, status reports collected, and timelines preserved.' },
-  { q: 'Do we get the same manager forever, or get bounced?', a: '<strong>You get a named regional manager.</strong> Their turnover is rare (our average tenure is 6.4 years) and when it does happen, we hand off in person at a board meeting — never by email. Boards approve the replacement.' },
+  { q: 'Do we get the same manager forever, or get bounced?', a: '<strong>You get a named Community Association Manager.</strong> Their turnover is rare (our average tenure is 6.4 years) and when it does happen, we hand off in person at a board meeting — never by email. Boards approve the replacement.' },
   { q: 'What if our community is in Northern Virginia, DC, Delaware, or PA?', a: 'We\'re licensed across Maryland, DC, Virginia, Pennsylvania, Delaware, and West Virginia. Our DC Metro office covers Montgomery / PG / NoVA. We do not take communities outside the Mid-Atlantic — if you\'re elsewhere, we\'ll help you find a reputable peer.' },
   { q: 'How do we know we won\'t be making the same mistake twice?', a: 'Talk to our boards. We\'ll connect you with 3–5 board presidents whose communities are similar in size and stage to yours — you call them, no script. We\'ll also share our 12-month retention rate (97%) and our state-specific covenant enforcement playbook.' },
 ];
 ---
 <BaseLayout
   pageStylesheet="styles-blog.css"
-  title="Switching HOA Management Companies in Maryland | Tidewater" description="Switching HOA management companies in Maryland? Tidewater walks boards through the full transition — contract review, candidate evaluation, and onboarding.">
+  title="Switching HOA Management Companies in Maryland | Tidewater" description="Switching HOA management companies in Maryland? Tidewater walks boards through the full transition — 7-week onboarding, transparent pricing, and a dedicated Community Association Manager.">
   <style is:global>
     /* page-level overrides if needed */
   </style>
@@ -221,9 +221,9 @@ const faqItems = [
         ))}
         <div class="tw-sol-compare-foot">
           <div class="tw-sol-compare-foot-text">
-            <strong>Want this filled in against your actual contract?</strong> Send us your current management agreement &mdash; we&rsquo;ll annotate it line-by-line and return it within 5 business days. No obligation.
+            <strong>Ready to see how we compare to your current company?</strong> Request a proposal and we&rsquo;ll put together a line-by-line comparison against your existing management fee.
           </div>
-          <a href="/request-a-proposal" class="tw-btn tw-btn-primary">Send your contract &rarr;</a>
+          <a href="/request-a-proposal" class="tw-btn tw-btn-primary">Request a proposal &rarr;</a>
         </div>
       </div>
     </div>
