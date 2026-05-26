@@ -54,7 +54,7 @@ const FAQ_CATEGORIES = [
       {
         q: 'Do we get a dedicated manager?',
         a: [
-          'Yes &mdash; a <strong>named regional manager</strong> who attends every meeting, knows your vendors, and remembers your residents. They sit inside a regional pod of 4&ndash;6 communities, never a rotating pool.',
+          'Yes &mdash; a <strong>named Community Association Manager</strong> who attends meetings as contracted, knows your vendors, and remembers your residents. They sit inside a regional pod of 4&ndash;6 communities, never a rotating pool.',
           'Manager turnover at Tidewater averages 6.4 years tenure &mdash; rare in the industry. When transitions do happen, we hand off in person at a board meeting, and the board approves the replacement.',
         ],
       },
@@ -76,7 +76,7 @@ const FAQ_CATEGORIES = [
       {
         q: "What\'s the proposal process like?",
         a: [
-          '<strong>Step 1:</strong> Submit the form on our <a href="/request-a-proposal">contact page</a>. A regional manager &mdash; not a sales rep &mdash; reads every submission. <strong>Step 2:</strong> A 30-minute discovery call, usually within one business day. <strong>Step 3:</strong> We tour your community (free, no obligation). <strong>Step 4:</strong> Apples-to-apples proposal vs. your current company, line-by-line, with our standard agreement attached.',
+          '<strong>Step 1:</strong> Submit the form on our <a href="/request-a-proposal">contact page</a>. A manager &mdash; not a sales rep &mdash; reads every submission. <strong>Step 2:</strong> A 30-minute discovery call, usually within one business day. <strong>Step 3:</strong> We tour your community (free, no obligation). <strong>Step 4:</strong> Apples-to-apples proposal vs. your current company, line-by-line, with our standard agreement attached.',
           'No deck. No pressure. We never follow up more than twice after a no.',
         ],
       },
