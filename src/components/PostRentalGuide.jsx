@@ -440,7 +440,6 @@ export default function PostRentalGuide() {
       initials: 'CB',
       role: 'Director of Rental Management, Tidewater',
       bio: 'Cody is Tidewater\'s Director of Rental Management and a licensed real estate broker. He oversees rental and Realty operations across Maryland, Delaware, and Virginia.',
-      email: 'cody@tidewaterproperty.com',
     },
     date: 'May 16, 2026',
     dateIso: '2026-05-16',
