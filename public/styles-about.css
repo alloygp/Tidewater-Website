@@ -264,22 +264,37 @@
 .tw-benefits-list li { display: flex; align-items: center; gap: 12px; font-family: var(--tw-font-body); font-size: 14px; color: rgba(254,252,248,0.88); }
 .tw-benefits-list svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--tw-gold); }
 
-/* JobsList — portal redirect layout */
-.tw-jobs-portal-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 48px; }
-.tw-jobs-portal-head .tw-btn { margin-top: 28px; }
+/* JobsList — applicant portal design */
+.tw-jobs-portal {
+  display: grid; grid-template-columns: 1.4fr 1fr;
+  background: var(--tw-cream); border: 1px solid var(--tw-border);
+  border-radius: 12px; overflow: hidden;
+  box-shadow: 0 6px 24px rgba(23,35,37,0.06);
+}
+.tw-jobs-portal-main { padding: 44px 48px; }
+.tw-jobs-portal-eyebrow { font-family: var(--tw-font-heading); font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tw-teal); margin-bottom: 14px; }
+.tw-jobs-portal-title { font-family: var(--tw-font-heading); font-weight: 800; font-size: 30px; line-height: 1.2; letter-spacing: -0.015em; color: var(--tw-dark); margin: 0 0 14px; }
+.tw-jobs-portal-body { font-family: var(--tw-font-body); font-size: 16px; line-height: 1.6; color: var(--tw-fg); margin: 0 0 28px; max-width: 52ch; }
+.tw-jobs-portal-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 20px; }
+.tw-jobs-portal-cta { display: inline-flex; align-items: center; gap: 10px; }
+.tw-jobs-portal-host { font-family: var(--tw-font-body); font-size: 13px; color: var(--tw-fg-muted); }
 
-.tw-jobs-cats { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-.tw-jobs-cat { display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px; background: var(--tw-cream); border: 1px solid var(--tw-border); border-radius: 10px; }
-.tw-jobs-cat-icon { font-size: 20px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
-.tw-jobs-cat-label { font-family: var(--tw-font-heading); font-weight: 700; font-size: 15px; color: var(--tw-dark); margin-bottom: 3px; }
-.tw-jobs-cat-hint { font-family: var(--tw-font-body); font-size: 13px; color: var(--tw-fg-muted); }
+.tw-jobs-portal-side { background: var(--tw-dark); color: var(--tw-cream); padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; }
+.tw-jobs-portal-side-eyebrow { font-family: var(--tw-font-heading); font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tw-gold); margin-bottom: 18px; }
+.tw-jobs-portal-teams { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.tw-jobs-portal-teams li { font-family: var(--tw-font-body); font-size: 15px; line-height: 1.4; color: rgba(254,252,248,0.92); display: flex; align-items: center; gap: 12px; }
+.tw-jobs-portal-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--tw-teal); flex-shrink: 0; }
 
-.tw-jobs-foot { margin-top: 0; padding: 28px 32px; background: var(--tw-cream); border: 1px dashed var(--tw-border-strong); border-radius: 10px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+.tw-jobs-foot { margin-top: 36px; padding: 28px 32px; background: var(--tw-cream); border: 1px dashed var(--tw-border-strong); border-radius: 10px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
 .tw-jobs-foot p { margin: 0; font-family: var(--tw-font-body); font-size: 15px; color: var(--tw-fg); }
 
 /* responsive */
 @media (max-width: 1080px) {
-  .tw-about-hero-grid, .tw-origin-grid, .tw-leadintro-grid, .tw-careers-hero-grid, .tw-benefits, .tw-jobs-foot, .tw-jobs-portal-layout { grid-template-columns: 1fr; gap: 40px; }
+  .tw-about-hero-grid, .tw-origin-grid, .tw-leadintro-grid, .tw-careers-hero-grid, .tw-benefits, .tw-jobs-foot { grid-template-columns: 1fr; gap: 40px; }
+  .tw-jobs-portal { grid-template-columns: 1fr; }
+  .tw-jobs-portal-main { padding: 36px 28px; }
+  .tw-jobs-portal-side { padding: 32px 28px; }
+  .tw-jobs-portal-title { font-size: 26px; }
   .tw-origin-aside { position: static; }
   .tw-creds-grid, .tw-leadfull-grid, .tw-why-grid, .tw-benefits-list { grid-template-columns: 1fr; }
   .tw-numstrip-grid { grid-template-columns: repeat(3, 1fr); }
