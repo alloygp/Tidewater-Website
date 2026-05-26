@@ -270,4 +270,16 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
     nav?.classList.toggle('is-mobile-open');
     toggle.classList.toggle('is-active');
   });
+
+  // Mobile nav: tap-to-expand megamenu sections
+  nav?.querySelectorAll('.tw-nav-item').forEach((item) => {
+    const link = item.querySelector('.tw-header-nav-link');
+    const megamenu = item.querySelector('.tw-megamenu');
+    if (!link || !megamenu) return;
+    link.addEventListener('click', (e) => {
+      if (!nav.classList.contains('is-mobile-open')) return; // desktop: do nothing
+      e.preventDefault();
+      item.classList.toggle('is-mobile-expanded');
+    });
+  });
 </script>

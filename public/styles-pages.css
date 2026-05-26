@@ -1747,3 +1747,102 @@
   .tw-ftb-head { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 28px; }
   .tw-ftb-viewall { align-self: flex-start; }
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE — 768px breakpoint
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Maintenance hero */
+  .tw-mh { padding: 56px 0 60px; }
+  .tw-mh-grid { padding: 0 20px; grid-template-columns: 1fr; gap: 32px; }
+  .tw-mh-card { display: none; }
+
+  /* Realty hero */
+  .tw-rh2 { padding: 48px 0 56px; }
+  .tw-rh2-grid { padding: 0 20px; grid-template-columns: 1fr; gap: 32px; }
+
+  /* Emergency section */
+  .tw-memer { padding: 56px 0; }
+  .tw-memer-grid { padding: 0 20px; grid-template-columns: 1fr; gap: 32px; }
+  .tw-memer-story-stack { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* Realty lifecycle rail */
+  .tw-rlc { padding: 64px 0; }
+  .tw-rlc-rail { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+
+  /* Realty services grid */
+  .tw-rsv-grid { grid-template-columns: 1fr; gap: 32px; }
+
+  /* Realty insider data table */
+  .tw-rinsider-head { grid-template-columns: 1fr; gap: 20px; }
+  .tw-rinsider-row { grid-template-columns: 1.2fr 1fr; }
+  .tw-rinsider-row > :nth-child(3),
+  .tw-rinsider-row > :nth-child(4),
+  .tw-rinsider-row > :nth-child(5) { display: none; }
+
+  /* Resources hero */
+  .tw-rsh { padding: 48px 0 56px; }
+  .tw-rsh-grid { padding: 0 20px; grid-template-columns: 1fr; gap: 32px; }
+
+  /* Resources featured download */
+  .tw-rfeat-card { grid-template-columns: 1fr; }
+  .tw-rfeat-img { min-height: 200px; }
+  .tw-rfeat-body { padding: 32px 24px; }
+
+  /* Resources library grid */
+  .tw-rlib-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Resources newsletter */
+  .tw-rnews { padding: 56px 0; }
+  .tw-rnews-inner { grid-template-columns: 1fr; gap: 32px; padding: 0 20px; }
+
+  /* Blog related grid */
+  .tw-blog-related-grid { grid-template-columns: 1fr; }
+  .tw-blog-related-inner { padding: 0 20px; }
+
+  /* Blog newsletter */
+  .tw-blog-newsletter { padding: 56px 0; }
+  .tw-blog-newsletter-inner { padding: 0 20px; }
+
+  /* Button touch targets */
+  .tw-mh-actions .tw-btn,
+  .tw-rh2-actions .tw-btn { min-height: 44px; }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE — 480px breakpoint
+   ============================================================ */
+@media (max-width: 480px) {
+  /* Maintenance hero grid padding */
+  .tw-mh-grid { padding: 0 16px; }
+  .tw-rh2-grid { padding: 0 16px; }
+  .tw-memer-grid { padding: 0 16px; }
+  .tw-rsh-grid { padding: 0 16px; }
+  .tw-rnews-inner { padding: 0 16px; }
+  .tw-blog-related-inner { padding: 0 16px; }
+  .tw-blog-newsletter-inner { padding: 0 16px; }
+
+  /* Lifecycle rail → single col */
+  .tw-rlc-rail { grid-template-columns: 1fr; }
+
+  /* Emergency story stack → single col */
+  .tw-memer-story-stack { grid-template-columns: 1fr; }
+
+  /* Resources library → single col */
+  .tw-rlib-grid { grid-template-columns: 1fr; }
+
+  /* Newsletter form stack */
+  .tw-blog-newsletter-form {
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 12px;
+    gap: 8px;
+  }
+  .tw-blog-newsletter-form input { padding: 11px 8px; }
+  .tw-blog-newsletter-form button { width: 100%; padding: 13px; }
+
+  /* Mserv ledger card view already handled at 820px,
+     ensure padding tightens at 480px */
+  .tw-mserv-row { padding: 14px 16px; }
+  .tw-mserv-foot { padding: 14px 16px; }
+}

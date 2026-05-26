@@ -415,7 +415,7 @@ export default function PostSwitchHoa() {
       creds: 'MBA, CPA',
       initials: 'RH',
       role: 'Director of Association Finance, Tidewater',
-      bio: 'Rachel leads the finance team at Tidewater, overseeing financial management for 300+ associations across the Mid-Atlantic. 14 years at Tidewater; previously a senior audit manager at a regional CPA firm with a CAI practice.',
+      bio: 'Rachel leads the finance team at Tidewater, overseeing financial management for 400+ associations across the Mid-Atlantic. 14 years at Tidewater; previously a senior audit manager at a regional CPA firm with a CAI practice.',
       email: 'rachel@tidewaterproperty.com',
     },
     date: 'May 14, 2026',

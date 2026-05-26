@@ -526,3 +526,34 @@
   .tw-geo-communities-head, .tw-geo-communities-row { grid-template-columns: 1.5fr 1fr; }
   .tw-geo-communities-head > div:nth-child(3), .tw-geo-communities-row > div:nth-child(3) { display: none; }
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE — 768px breakpoint
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Hero — reduce padding (1080px already collapses to 1-col with padding 56px 24px 64px) */
+  .tw-geo-hero-grid { padding: 48px 20px 52px; gap: 32px; }
+
+  /* Facts strip — tighter padding */
+  .tw-geo-facts { padding: 16px; gap: 16px; }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE — 480px breakpoint
+   ============================================================ */
+@media (max-width: 480px) {
+  /* Hero */
+  .tw-geo-hero-grid { padding: 36px 16px 44px; }
+
+  /* Facts — already 1-col from 640px; tighten padding */
+  .tw-geo-facts { padding: 12px; gap: 12px; }
+
+  /* Communities table — show only city name + first data col */
+  .tw-geo-communities-head, .tw-geo-communities-row { grid-template-columns: 1fr 1fr; }
+
+  /* Prevent table overflow on very small screens */
+  .tw-geo-communities {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

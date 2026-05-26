@@ -439,3 +439,51 @@
   .tw-bi-grid { grid-template-columns: 1fr; }
   .tw-bi-hero-stats { gap: 16px; }
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE — 768px breakpoint
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Hero padding */
+  .tw-bi-hero-inner { padding: 40px 20px 36px; }
+
+  /* Featured card */
+  .tw-bi-featured { grid-template-columns: 1fr; }
+  .tw-bi-featured-body { padding: 24px 20px 28px; }
+
+  /* Filter chips — horizontal scroll instead of wrapping */
+  .tw-bi-cats-inner {
+    padding: 0 20px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+  .tw-bi-cats-inner::-webkit-scrollbar { display: none; }
+  .tw-bi-cat-chip { flex-shrink: 0; }
+
+  /* Grid inner padding */
+  .tw-bi-grid { padding: 0 20px; }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE — 480px breakpoint
+   ============================================================ */
+@media (max-width: 480px) {
+  /* Hero tighten */
+  .tw-bi-hero-inner { padding: 32px 16px 28px; }
+  .tw-bi-hero p { font-size: 16px; }
+
+  /* Search bar — hide button text on very small screens */
+  .tw-bi-search button span { display: none; }
+  .tw-bi-search button { padding: 10px 14px; }
+
+  /* Featured body */
+  .tw-bi-featured-body { padding: 20px 16px 24px; }
+
+  /* Filter chips padding tighten */
+  .tw-bi-cats-inner { padding: 0 16px; }
+
+  /* Grid */
+  .tw-bi-grid { padding: 0 16px; }
+}

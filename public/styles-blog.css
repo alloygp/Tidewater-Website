@@ -856,3 +856,48 @@
   .tw-ftb-head { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 28px; }
   .tw-ftb-viewall { align-self: flex-start; }
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE — 768px breakpoint
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Blog cover image top margin */
+  .tw-blog-cover { margin-top: 24px; }
+
+  /* Blog layout padding */
+  .tw-blog-body-wrap { padding: 0 20px; }
+
+  /* Pullquote */
+  .tw-blog-pullquote { padding: 20px 20px 20px 24px; }
+  .tw-blog-pullquote p { font-size: 18px; }
+
+  /* Newsletter section */
+  .tw-blog-newsletter { padding: 48px 0; }
+  .tw-blog-newsletter-inner { padding: 0 20px; }
+
+  /* FromTheBlog */
+  .tw-ftb-section { padding: 48px 0; }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE — 480px breakpoint
+   ============================================================ */
+@media (max-width: 480px) {
+  /* Body padding tighten */
+  .tw-blog-body-wrap { padding: 0 16px; }
+  .tw-blog-newsletter-inner { padding: 0 16px; }
+
+  /* Newsletter form stack */
+  .tw-blog-newsletter-form {
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 12px;
+    gap: 8px;
+  }
+  .tw-blog-newsletter-form input { padding: 11px 8px; }
+  .tw-blog-newsletter-form button { width: 100%; padding: 13px; }
+
+  /* Pullquote tighten */
+  .tw-blog-pullquote { padding: 16px 16px 16px 20px; margin: 24px 0; }
+  .tw-blog-pullquote p { font-size: 17px; }
+}

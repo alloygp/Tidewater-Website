@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const jobs = [
   { title: 'Community Association Manager', dept: 'HOA Management', location: 'Owings Mills, MD', type: 'Full-time', exp: '3+ yrs', cls: 'mgmt' },
-  { title: 'Senior Community Association Manager', dept: 'HOA Management', location: 'Silver Spring, MD', type: 'Full-time', exp: '7+ yrs · CMCA req.', cls: 'mgmt' },
+  { title: 'Senior Community Association Manager', dept: 'HOA Management', location: 'Owings Mills, MD', type: 'Full-time', exp: '7+ yrs · CMCA req.', cls: 'mgmt' },
   { title: 'Community Association Manager — High-Rise', dept: 'Condo Mgmt', location: 'Bethesda, MD', type: 'Full-time', exp: '5+ yrs · CMCA preferred', cls: 'mgmt' },
   { title: 'Portfolio Manager — Eastern Shore', dept: 'HOA Management', location: 'Salisbury, MD', type: 'Full-time', exp: '5+ yrs', cls: 'mgmt' },
   { title: 'Staff Accountant — Association Financials', dept: 'Finance', location: 'Owings Mills, MD', type: 'Full-time', exp: '2+ yrs', cls: 'fin' },
@@ -32,7 +32,7 @@ export default function JobsList() {
         <div className="tw-section-head-left">
           <div className="tw-eyebrow">Open Roles</div>
           <h2 className="tw-section-title">{visible.length} positions <em>open right now.</em></h2>
-          <p className="tw-section-lede">Most roles based at our Owings Mills headquarters or our Silver Spring office; regional roles serve the Mid-Atlantic.</p>
+          <p className="tw-section-lede">Most roles based at our Owings Mills headquarters; regional roles serve the Mid-Atlantic.</p>
         </div>
 
         <div className="tw-jobs-filters" role="tablist">

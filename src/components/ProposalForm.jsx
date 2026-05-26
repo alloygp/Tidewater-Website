@@ -65,7 +65,7 @@ export default function ProposalForm() {
         <div className="tw-c-form-head">
           <div className="tw-c-form-head-left">
             <h2>Thanks — we'll be in touch.</h2>
-            <p>A regional manager will reach back within one business day. Check your email for a quick confirmation.</p>
+            <p>A regional manager will follow up within one business day. Check your email for a quick confirmation.</p>
           </div>
           <div className="tw-c-form-badge">Received</div>
         </div>

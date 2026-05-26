@@ -49,7 +49,7 @@ const FAQ_CATEGORIES = [
     qs: [
       {
         q: 'How long has Tidewater been around?',
-        a: 'Family-owned since <strong>1989</strong>. We manage 300+ communities across the Mid-Atlantic (Maryland, DC, Virginia, Pennsylvania, Delaware, West Virginia). Three offices: Owings Mills (HQ), Silver Spring, and the Eastern Shore.',
+        a: 'Family-owned since <strong>1989</strong>. We manage 400+ communities across the Mid-Atlantic (Maryland, DC, Virginia, Pennsylvania, Delaware, West Virginia). Offices in Owings Mills (HQ) and the Eastern Shore.',
       },
       {
         q: 'Do we get a dedicated manager?',
@@ -60,7 +60,7 @@ const FAQ_CATEGORIES = [
       },
       {
         q: "What\'s your typical response time?",
-        a: 'Same business day, 95% of the time, on board email. Documented monthly and reported quarterly. After-hours emergencies (water, fire, lockout, mechanical failure) get a manager callback within 30 minutes via our 24/7 line at <strong>(443) 548-0191</strong>.',
+        a: 'Same business day, 95% of the time, on board email. Documented monthly and reported quarterly. After-hours emergencies (water, fire, storm damage, mechanical failure) get a manager callback within 30 minutes via our 24/7 line at <strong>(443) 548-0191</strong>.',
       },
       {
         q: 'Are your contracts long-term lock-ins?',
@@ -175,7 +175,7 @@ const FAQ_CATEGORIES = [
       },
       {
         q: 'What does the transition cost?',
-        a: '<strong>$0.</strong> We never charge transition fees. Some companies charge $2,500&ndash;$8,000 to onboard a new community &mdash; the original sting. Your only cost is your normal monthly management fee, beginning the month after your old contract ends.',
+        a: '<strong>$1,000</strong> one-time transition fee. Some companies charge $2,500&ndash;$8,000 to onboard a new community. Your ongoing cost is your normal monthly management fee, beginning the month after your old contract ends.',
       },
       {
         q: 'Can you walk us through your proposal before we commit?',

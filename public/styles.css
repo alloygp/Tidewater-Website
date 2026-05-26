@@ -844,6 +844,55 @@ img { max-width: 100%; display: block; }
   .tw-mobile-toggle { display: flex; }
 }
 
+/* Mobile nav overlay */
+@media (max-width: 1080px) {
+  .tw-header-nav.is-mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--tw-cream);
+    padding: 80px 24px 32px;
+    overflow-y: auto;
+    gap: 0;
+    align-items: stretch;
+    justify-content: flex-start;
+    align-self: auto;
+  }
+  .tw-header-nav.is-mobile-open .tw-nav-item { border-bottom: 1px solid var(--tw-divider); }
+  .tw-header-nav.is-mobile-open .tw-header-nav-link { padding: 16px 0; font-size: 18px; display: flex; width: 100%; }
+  .tw-header-nav.is-mobile-open .tw-chev { margin-left: auto; }
+  .tw-header-nav.is-mobile-open .tw-megamenu {
+    position: static; opacity: 1; pointer-events: auto; transform: none;
+    box-shadow: none; border: none; border-radius: 0; padding: 0 0 12px 16px;
+    display: flex; flex-direction: column; gap: 4px;
+    background: transparent;
+  }
+  /* Megamenus hidden by default in mobile; tapping the nav-link toggles is-mobile-expanded */
+  .tw-header-nav.is-mobile-open .tw-megamenu { display: none; }
+  .tw-header-nav.is-mobile-open .tw-nav-item.is-mobile-expanded .tw-megamenu { display: flex; }
+  /* Rotate chevron when expanded */
+  .tw-header-nav.is-mobile-open .tw-nav-item.is-mobile-expanded .tw-chev { transform: rotate(180deg); }
+  .tw-header-nav.is-mobile-open .tw-mega-feature { display: none; }
+  .tw-header-nav.is-mobile-open .tw-mega-col-label { display: none; }
+  .tw-header-nav.is-mobile-open .tw-megamenu-2col,
+  .tw-header-nav.is-mobile-open .tw-megamenu-3col { grid-template-columns: 1fr; }
+  .tw-header-nav.is-mobile-open .tw-mega-item { padding: 10px 12px; border-radius: 8px; }
+  .tw-header-nav.is-mobile-open .tw-mega-body { display: none; }
+  /* Topbar hidden on mobile */
+  .tw-topbar { display: none; }
+  /* Header logo smaller */
+  .tw-header-logo img { height: 42px; }
+  /* Header actions — hide login text, keep button */
+  .tw-header-login span { display: none; }
+}
+
+/* Mobile toggle active state — X shape */
+.tw-mobile-toggle.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.tw-mobile-toggle.is-active span:nth-child(2) { opacity: 0; }
+.tw-mobile-toggle.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* ============= Megamenu 3-col + col labels ============= */
 .tw-megamenu-3col { grid-template-columns: 280px 1fr 1fr; gap: 24px; padding: 24px 32px; }
 .tw-mega-col { display: flex; flex-direction: column; gap: 4px; }
@@ -1361,6 +1410,7 @@ img { max-width: 100%; display: block; }
 .tw-sol-faq-item.is-open .tw-sol-faq-a { grid-template-rows: 1fr; }
 .tw-sol-faq-a-inner {
   overflow: hidden;
+  min-height: 0;
   padding-left: 64px; padding-right: 44px;
 }
 .tw-sol-faq-item.is-open .tw-sol-faq-a-inner { padding-bottom: 22px; }
@@ -3064,4 +3114,117 @@ img { max-width: 100%; display: block; }
 }
 @media (max-width: 640px) {
   .tw-sa-states { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE — 768px breakpoint
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Container padding */
+  .tw-container { padding-left: 20px; padding-right: 20px; }
+
+  /* Section vertical padding */
+  .tw-section { padding-top: 56px; padding-bottom: 56px; }
+  .tw-section-sm { padding-top: 36px; padding-bottom: 36px; }
+
+  /* Hero — main homepage hero */
+  .tw-hero { padding: 56px 0 48px; }
+  .tw-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .tw-hero-body { text-align: center; }
+  .tw-hero-actions { justify-content: center; }
+  .tw-hero-visual { display: none; }
+
+  /* Trust bar */
+  .tw-trust-bar { padding: 20px 0; }
+  .tw-trust-inner {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .tw-trust-divider { display: none; }
+
+  /* Pain grid — 3 or 4-col */
+  .tw-pain-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* Tiers grid */
+  .tw-tiers-grid { grid-template-columns: 1fr; gap: 16px; }
+
+  /* Pillar split */
+  .tw-pillar-split { grid-template-columns: 1fr; gap: 32px; }
+
+  /* Reasons grid */
+  .tw-reasons-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* Solutions hero */
+  .tw-sol-hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .tw-sol-hero-body { text-align: center; }
+
+  /* Rental hero */
+  .tw-rental-hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .tw-rental-hero-body { text-align: center; }
+
+  /* Owner actions — 5-col → 3-col */
+  .tw-owner-actions { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+  /* Portal mock — disable perspective transforms on mobile */
+  .tw-portal-mock {
+    perspective: none;
+    transform: none !important;
+  }
+  .tw-portal-inner { transform: none !important; }
+
+  /* Mission / leadership grid */
+  .tw-leadership-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* CTA form row-2 stacking */
+  .tw-cta-form-row { grid-template-columns: 1fr; gap: 12px; }
+
+  /* Footer */
+  .tw-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .tw-footer-brand { grid-column: 1 / -1; }
+
+  /* Testimonials grid */
+  .tw-testi-grid { grid-template-columns: 1fr; }
+
+  /* FAQ grid */
+  .tw-faq-grid { grid-template-columns: 1fr; gap: 0; }
+  .tw-faq-sidebar { display: none; }
+
+  /* Service areas states */
+  .tw-sa-states { grid-template-columns: 1fr 1fr; }
+
+  /* Buttons — enforce touch target height */
+  .tw-btn, .tw-btn-primary, .tw-btn-secondary, .tw-btn-ghost,
+  .tw-btn-sm, .tw-btn-lg, button[class*="tw-btn"] {
+    min-height: 44px;
+  }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE — 480px breakpoint
+   ============================================================ */
+@media (max-width: 480px) {
+  /* Container padding tighten */
+  .tw-container { padding-left: 16px; padding-right: 16px; }
+
+  /* Pain grid → single col */
+  .tw-pain-grid { grid-template-columns: 1fr; }
+
+  /* Reasons grid → single col */
+  .tw-reasons-grid { grid-template-columns: 1fr; }
+
+  /* Owner actions → 2-col */
+  .tw-owner-actions { grid-template-columns: 1fr 1fr; }
+
+  /* Leadership → single col */
+  .tw-leadership-grid { grid-template-columns: 1fr; }
+
+  /* Footer → single col */
+  .tw-footer-grid { grid-template-columns: 1fr; }
+
+  /* Prevent horizontal overflow on wide fixed elements */
+  .tw-hero, .tw-section, .tw-trust-bar, .tw-footer { overflow-x: hidden; }
 }

@@ -305,3 +305,54 @@
   .tw-values-item { grid-template-columns: 60px 1fr; gap: 20px; }
   .tw-values-num { font-size: 42px; }
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE — 768px breakpoint
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Numbers strip: 3-col already set at 1080px — keep at 768px */
+  .tw-numstrip-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+  /* Timeline — even tighter column */
+  .tw-timeline::before { left: 44px; }
+  .tw-timeline-item { grid-template-columns: 44px 1fr; gap: 16px; }
+
+  /* Values item */
+  .tw-values-item { gap: 16px; }
+  .tw-values-num { font-size: 36px; }
+
+  /* Creds grid — 2-col on tablet */
+  .tw-creds-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+
+  /* Jobs row — stack title/meta from auto layout */
+  .tw-jobs-row { grid-template-columns: 1fr; gap: 12px; }
+  .tw-jobs-row-cta { justify-self: flex-start; }
+
+  /* Manifesto/about section padding */
+  .tw-manifesto-inner { padding: 0 20px; }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE — 480px breakpoint
+   ============================================================ */
+@media (max-width: 480px) {
+  /* Numbers strip → single col */
+  .tw-numstrip-grid { grid-template-columns: 1fr; }
+
+  /* Benefits list → single col */
+  .tw-benefits-list { grid-template-columns: 1fr; gap: 10px; }
+
+  /* Credentials → single col */
+  .tw-creds-grid { grid-template-columns: 1fr; }
+
+  /* Leadership full card */
+  .tw-leadfull-card { padding: 20px 16px; }
+
+  /* Values item smaller icon area */
+  .tw-values-item { grid-template-columns: 40px 1fr; gap: 12px; }
+  .tw-values-num { font-size: 28px; }
+
+  /* Timeline minimal */
+  .tw-timeline::before { left: 28px; }
+  .tw-timeline-item { grid-template-columns: 28px 1fr; gap: 12px; }
+}
