@@ -2077,6 +2077,17 @@ img { max-width: 100%; display: block; }
 .tw-tst-disclosure p strong { color: var(--tw-dark); font-weight: 600; }
 .tw-tst-disclosure p a { color: var(--tw-teal-500); text-decoration: underline; text-underline-offset: 3px; }
 
+/* Google Reviews section */
+.tw-grev-head { padding: 72px 0 32px; background: var(--tw-cream); border-top: 1px solid var(--tw-border); }
+.tw-grev-head-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; }
+.tw-grev-title { font-family: var(--tw-font-heading); font-weight: 800; font-size: clamp(28px, 3.5vw, 40px); color: var(--tw-dark); letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 12px; }
+.tw-grev-sub { font-family: var(--tw-font-body); font-size: 16px; color: var(--tw-fg-muted); line-height: 1.6; max-width: 560px; margin: 0; }
+.tw-grev-badges { display: flex; gap: 32px; flex-shrink: 0; }
+.tw-grev-badge { text-align: center; }
+.tw-grev-badge-num { font-family: var(--tw-font-heading); font-weight: 800; font-size: 36px; color: var(--tw-teal); letter-spacing: -0.03em; line-height: 1; }
+.tw-grev-badge-label { font-family: var(--tw-font-body); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--tw-fg-muted); margin-top: 4px; line-height: 1.4; }
+@media (max-width: 768px) { .tw-grev-head-inner { flex-direction: column; gap: 24px; } .tw-grev-badges { justify-content: flex-start; } }
+
 /* ===== Responsive ===== */
 @media (max-width: 1080px) {
   .tw-tst-context-inner { grid-template-columns: 1fr; gap: 20px; }

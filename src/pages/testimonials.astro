@@ -5,6 +5,7 @@ import Topbar from '../components/Topbar.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import TestimonialsGrid from '../components/TestimonialsGrid.jsx';
+import GoogleReviewsGrid from '../components/GoogleReviewsGrid.jsx';
 import Breadcrumb from '../components/Breadcrumb.astro';
 ---
 <BaseLayout title="HOA Board Reviews & Testimonials | Tidewater" description="What HOA and condo association boards across Maryland and the Mid-Atlantic say about working with Tidewater — reviews from boards we manage today.">
@@ -30,7 +31,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
         </p>
         <div class="tw-sol-hero-actions">
           <a href="/request-a-proposal" class="tw-btn tw-btn-primary tw-btn-lg">Request a proposal &rarr;</a>
-          <a href="#all-reviews" class="tw-btn tw-btn-ghost">Read all 28 board reviews &rarr;</a>
+          <a href="#all-reviews" class="tw-btn tw-btn-ghost">See board reviews &rarr;</a>
         </div>
         <div class="tw-sol-hero-stats">
           <div>
@@ -76,8 +77,8 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     </div>
   </section>
 
-  <!-- Context Strip -->
-  <section class="tw-tst-context">
+  <!-- Context Strip (hidden) -->
+  <section class="tw-tst-context" style="display:none">
     <div class="tw-tst-context-inner">
       <div class="tw-tst-context-note">
         <strong>About our Google reviews.</strong> Most of our 552 Google reviews come from individual residents in the 300+ communities we manage. Resident reviews tend to skew toward complaint (every late fee, every covenant letter), which is normal for the industry. We don&rsquo;t hide them &mdash; <a href="https://www.google.com/search?q=tidewater+property+management+maryland" target="_blank" rel="noopener">read every one here</a>. What you see on this page is curated for the board buyer.
@@ -139,8 +140,11 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     </div>
   </section>
 
-  <!-- Filter + Cards grid (React island) -->
+  <!-- Board reviews grid -->
   <TestimonialsGrid client:load />
+
+  <!-- Google reviews section -->
+  <GoogleReviewsGrid client:load />
 
   <CTA />
   <Footer />
