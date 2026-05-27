@@ -28,13 +28,13 @@ const weeks = [
   { num: '04', title: 'Resident communication', tasks: ['Welcome letter from your Community Association Manager', 'Portal invitations mailed to all owners', 'New payment instructions issued'] },
   { num: '05', title: 'Financial migration', tasks: ['Operating & reserve account transfers', 'Lockbox set up with bank', 'Open invoices reconciled and paid'] },
   { num: '06', title: 'Portal & systems go-live', tasks: ['CINC owner portal live', 'Board portal & document library ready', 'Maintenance request workflow active'] },
-  { num: '07', title: 'First board meeting', tasks: ['Full board pack mailed 7 days early', 'Your manager presents in person', 'Quarterly action plan agreed on'], isFinal: true },
+  { num: '07', title: 'First board meeting', tasks: ['Full board pack posted to portal 7 days early', 'Your manager presents in person', 'Quarterly action plan agreed on'], isFinal: true },
 ];
 
 const compareRows = [
   { topic: 'Manager assignment', sub: 'Who actually owns your account day-to-day', them: 'Rotating manager pool. Your community is one of 40+ in a junior portfolio.', us: '<strong>Named Community Association Manager</strong> who attends meetings as contracted &amp; knows every vendor.' },
   { topic: 'Response time on board email', them: '3&ndash;5 business days. Sometimes a week.', us: '<strong>Same business day, 95% of the time.</strong> Tracked monthly &amp; reported quarterly.' },
-  { topic: 'Board meeting prep', sub: 'What lands in your inbox before the meeting', them: 'Generic agenda template. Financials emailed the morning of.', us: '<strong>Full board pack</strong> mailed 7 days early: agenda, financials, manager memo.' },
+  { topic: 'Board meeting prep', sub: 'What lands in your inbox before the meeting', them: 'Generic agenda template. Financials emailed the morning of.', us: '<strong>Full board pack</strong> posted in portal 7 days early: agenda, financials, manager memo.' },
   { topic: 'Vendor pricing', sub: 'How you know what you\'re paying for', them: 'Markups often baked in. Hard to audit.', us: '<strong>Pass-through pricing.</strong> You see every invoice; we show our work.' },
   { topic: 'Reserve study', them: 'Done once and rarely revisited.', us: '<strong>Refreshed every 5 years</strong> with an independent engineer &mdash; included.' },
   { topic: 'Owner portal', them: 'Branded portal, but no real workflow. Maintenance requests go to a black hole.', us: '<strong>CINC portal</strong> with real ticket assignment, ARC submission, doc library.' },
@@ -114,7 +114,7 @@ const faqItems = [
               { wk:'Wk 2', t:'Vendor & insurance handover', s:'Re-bid contracts if you want', state:'done' },
               { wk:'Wk 3', t:'Financial migration', s:'Operating + reserve transfers', state:'now' },
               { wk:'Wk 4', t:'Resident communication', s:'Welcome letters from your manager', state:'next' },
-              { wk:'Wk 5–7', t:'Portal launch & first meeting', s:'CINC live; board pack mailed', state:'next' },
+              { wk:'Wk 5–7', t:'Portal launch & first meeting', s:'CINC live; board pack in portal', state:'next' },
             ].map(r => (
               <div style={`display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:10px 12px;background:${r.state==='now'?'rgba(58,146,166,0.07)':'var(--tw-warm-100)'};border:${r.state==='now'?'1px solid var(--tw-teal-100)':'1px solid var(--tw-border)'};border-radius:8px`}>
                 <div style={`font-family:var(--tw-font-heading);font-weight:800;font-size:11px;color:${r.state==='now'?'var(--tw-teal)':'var(--tw-fg-muted)'};letter-spacing:0.08em;text-transform:uppercase`}>{r.wk}</div>

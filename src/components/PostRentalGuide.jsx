@@ -370,9 +370,6 @@ function RGuideAuthorBio({ author }) {
         <div className="tw-blog-author-bio-role">{author.role}</div>
         <p className="tw-blog-author-bio-blurb">{author.bio}</p>
         <div className="tw-blog-author-bio-links">
-          <a href="#">{RGuideIcons.linkedin} LinkedIn</a>
-          <a href={`mailto:${author.email}`}>{RGuideIcons.email} {author.email}</a>
-          <a href="/about/leadership">View bio →</a>
         </div>
       </div>
     </div>
