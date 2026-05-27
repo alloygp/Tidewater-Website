@@ -267,7 +267,7 @@ img { max-width: 100%; display: block; }
 
 /* AAMC seal in hero corner */
 .tw-hero-widget-wrap { position: relative; }
-.tw-hero-seal { position: absolute; top: -18px; right: -18px; z-index: 10; animation: tw-fade-up .8s var(--tw-ease-standard) .2s both; }
+.tw-hero-seal { position: absolute; top: -38px; right: -38px; z-index: 10; animation: tw-fade-up .8s var(--tw-ease-standard) .2s both; }
 .tw-hero-seal-inner { width: 116px; height: 116px; border-radius: 50%; background: var(--tw-dark); border: 2px solid var(--tw-gold); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 14px 36px rgba(0,0,0,0.4); position: relative; }
 .tw-hero-seal-inner::before { content: ''; position: absolute; inset: 6px; border-radius: 50%; border: 1px dashed rgba(191,172,95,0.4); }
 .tw-hero-seal-label { font-family: var(--tw-font-heading); font-weight: 800; font-size: 18px; color: var(--tw-gold); letter-spacing: -0.01em; line-height: 1; }
