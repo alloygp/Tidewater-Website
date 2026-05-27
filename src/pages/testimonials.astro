@@ -31,7 +31,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
         </p>
         <div class="tw-sol-hero-actions">
           <a href="/request-a-proposal" class="tw-btn tw-btn-primary tw-btn-lg">Request a proposal &rarr;</a>
-          <a href="#all-reviews" class="tw-btn tw-btn-ghost">See board reviews &rarr;</a>
+          <a href="#google-reviews" class="tw-btn tw-btn-ghost">What our communities say &rarr;</a>
         </div>
         <div class="tw-sol-hero-stats">
           <!-- PLACEHOLDER: replace with real board rating once data is collected -->
@@ -48,7 +48,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--tw-border)">
             <div>
               <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.16em;color:var(--tw-teal);margin-bottom:4px">From a board member</div>
-              <div style="font-family:var(--tw-font-mono);font-size:10.5px;color:var(--tw-fg-subtle);letter-spacing:0.04em">MAR 2024 · GOOGLE REVIEW</div>
+              <div style="font-family:var(--tw-font-mono);font-size:10.5px;color:var(--tw-fg-subtle);letter-spacing:0.04em">GOOGLE REVIEW</div>
             </div>
             <div style="display:inline-flex;gap:2px;color:var(--tw-gold)">
               {[0,1,2,3,4].map(i => (
@@ -83,8 +83,8 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     </div>
   </section>
 
-  <!-- Featured Quote -->
-  <section class="tw-tst-featured">
+  <!-- Featured Quote — hidden until more board reviews are collected -->
+  <section class="tw-tst-featured" style="display:none">
     <div class="tw-container-wide">
       <div class="tw-tst-featured-grid">
         <div>
@@ -115,11 +115,15 @@ import Breadcrumb from '../components/Breadcrumb.astro';
     </div>
   </section>
 
-  <!-- Board reviews grid -->
-  <TestimonialsGrid client:load />
+  <!-- Board reviews grid — hidden until more board reviews are collected -->
+  <div style="display:none" aria-hidden="true">
+    <TestimonialsGrid client:load />
+  </div>
 
   <!-- Google reviews section -->
-  <GoogleReviewsGrid client:load />
+  <div id="google-reviews">
+    <GoogleReviewsGrid client:load />
+  </div>
 
   <CTA />
   <Footer />

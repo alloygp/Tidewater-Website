@@ -371,10 +371,11 @@ export default function GoogleReviewsGrid() {
               <p className="tw-grev-sub">Unedited reviews from residents, homeowners, and property owners across our managed communities — sourced directly from Google.</p>
             </div>
             <div className="tw-grev-badges">
-              <div className="tw-grev-badge">
+              {/* Overall rating badge hidden until confirmed — restore when ready */}
+              {/* <div className="tw-grev-badge">
                 <div className="tw-grev-badge-num">3.6–3.9</div>
                 <div className="tw-grev-badge-label">Overall Google<br/>rating</div>
-              </div>
+              </div> */}
               <div className="tw-grev-badge">
                 <div className="tw-grev-badge-num">{GOOGLE_REVIEWS.length}</div>
                 <div className="tw-grev-badge-label">Reviews shown<br/>on this page</div>
