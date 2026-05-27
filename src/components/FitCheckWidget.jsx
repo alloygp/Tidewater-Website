@@ -31,12 +31,7 @@ export default function FitCheckWidget() {
       answers.pain === 'finance' ? 'Financial Only or Flex' :
       answers.pain === 'all'     ? 'Full Service' :
       answers.size === 'small'   ? 'Flex Service' : 'Full Service';
-    const rd =
-      answers.state === 'MD' || answers.state === 'DC' ? 'Kate Cornell — Baltimore/DC Region' :
-      answers.state === 'VA'                           ? 'Marcus Hill — Northern VA Region' :
-      answers.state === 'DE'                           ? 'Renee Park — Eastern Shore Region' :
-                                                         'Stanley Reeves — Pennsylvania & WV Region';
-    return { tier, rd };
+    return { tier };
   };
 
   return (
