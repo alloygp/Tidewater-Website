@@ -1,136 +1,62 @@
 import { useState } from 'react';
 
+// All board reviews are sourced from real named board members / officers.
+// Do NOT add fabricated reviews — use <!-- PLACEHOLDER --> tags for any unconfirmed content.
+
 const ALL_REVIEWS = [
   {
     tag: 'HOA', tone: '',
-    quote: 'Best decision our board has made in the 14 years I\'ve served. Our manager Sarah knows every vendor, every contract, and every problem unit by name. We literally talk less in board meetings because the agenda is so well-prepared.',
-    initials: 'KW', avatarTone: '',
-    name: 'Karen Whitlock',
+    quote: 'I must say as a small Community, we have experienced great and timely service from Tidewater. We\'ve worked with Mr. Christopher Ziesat who has always quickly responded to our concerns even if it was for guidance. As President of our HOA, I\'m very pleased with being able to call upon Christopher Ziesat who will always respond in a professional and timely manner.',
+    initials: 'WT', avatarTone: '',
+    name: 'Walt Taylor',
     role: 'President', service: 'HOA Management',
-    community: 'Stonebridge Crossing HOA',
-    location: 'Frederick, MD',
-    units: '184 units', tenure: '3 yrs',
+    community: 'HOA — Maryland',
+    location: 'Maryland',
+    units: '', tenure: '',
     featured: false,
   },
   {
-    tag: 'CONDO', tone: 'condo',
-    quote: 'Three years in. Our financials are clean, our reserves are funded properly for the first time in a decade, and our manager remembers every resident\'s name. I cannot recommend Tidewater highly enough.',
-    initials: 'MV', avatarTone: '',
-    name: 'Margaret Vance',
-    role: 'President', service: 'Condo Association Mgmt',
-    community: 'Brightwood Hills Condominiums',
-    location: 'Bethesda, MD',
-    units: '96 units', tenure: '3 yrs',
+    tag: 'HOA', tone: '',
+    quote: 'As a new treasurer to our HOA, Christopher Ziesat and the resources available at Tidewater have been an invaluable asset. Requests for help are quickly answered, information provided in a timely manner, and suggestions to make my job easier are offered without prompting. The reports provided to our Board and community keep us well informed and on a solid basis to understand our financial status.',
+    initials: 'ST', avatarTone: '',
+    name: 'Steve Turner',
+    role: 'Treasurer', service: 'HOA Management',
+    community: 'HOA — Maryland',
+    location: 'Maryland',
+    units: '', tenure: '',
     featured: true,
   },
   {
     tag: 'HOA', tone: '',
-    quote: 'The transition was so quiet our residents barely noticed we\'d changed companies. Six months in, our reserves are funded correctly for the first time in a decade.',
-    initials: 'DR', avatarTone: 'gold',
-    name: 'David Reinhardt',
-    role: 'Past President', service: 'HOA Management',
-    community: 'Wynbrook Townhomes',
-    location: 'Howard County, MD',
-    units: '132 units', tenure: '3 yrs',
-    featured: false,
-  },
-  {
-    tag: 'CONDO', tone: 'condo',
-    quote: 'We had a complicated mid-rise with three failed management companies before Tidewater. They got our garage repair on schedule, our master insurance under control, and our finance reports actually arrive 15 days after month-end. Imagine that.',
-    initials: 'AG', avatarTone: '',
-    name: 'Alice Goldberg',
-    role: 'Treasurer', service: 'Condo Association Mgmt',
-    community: 'The Marlowe Residences',
-    location: 'Silver Spring, MD',
-    units: '212 units', tenure: '2 yrs',
-    featured: false,
-  },
-  {
-    tag: 'RENTAL', tone: 'rental',
-    quote: 'I bought the house thinking I\'d manage it myself from Texas. Six months in, I called Tidewater. They\'ve been running it for two years now without a single missed lease cycle. Easiest landlord experience I\'ve had.',
-    initials: 'BC', avatarTone: 'sage',
-    name: 'Benjamin Cole',
-    role: 'Rental Owner', service: 'Rental Property Mgmt',
-    community: 'Single-family · Annapolis',
-    location: 'Annapolis, MD',
-    units: '1 unit', tenure: '2 yrs',
-    featured: false,
-  },
-  {
-    tag: 'HOA', tone: '',
-    quote: 'I\'m on my second board now and I asked specifically for Tidewater. The reserve study refresh they did in 2024 caught a $180K deferred-maintenance gap that nobody had flagged. That alone paid for ten years of management fees.',
-    initials: 'SL', avatarTone: '',
-    name: 'Sarah Lin',
+    quote: 'Crystal at Tidewater cleaned up our community after a bad situation with another management company. She handles problems and is always there for us. She is amazing.',
+    initials: 'MV', avatarTone: '',
+    name: 'Mary Vosik',
     role: 'Treasurer', service: 'HOA Management',
-    community: 'Ridgeway Estates',
-    location: 'Columbia, MD',
-    units: '256 units', tenure: '5 yrs',
-    featured: false,
-  },
-  {
-    tag: 'DEVELOPER', tone: 'developer',
-    quote: 'We\'ve worked with Tidewater on three developments now. Their HOA setup playbook is the cleanest in the region — bylaws drafted with us, declarations recorded properly, first-year budget realistic. They handle the developer-control period without drama.',
-    initials: 'MP', avatarTone: 'clay',
-    name: 'Michael Prendergast',
-    role: 'Development Partner', service: 'Developer Program',
-    community: 'Harbor Pointe Phase III',
-    location: 'Pasadena, MD',
-    units: '74 units (new)', tenure: '3 projects',
-    featured: false,
-  },
-  {
-    tag: 'CONDO', tone: 'condo',
-    quote: 'High-rise mid-Atlantic condos have specific needs — fire systems, garage maintenance, elevator inspections, FHA recertification. Tidewater is the first management company I\'ve worked with that has all four down to a schedule, not a fire drill.',
-    initials: 'RP', avatarTone: '',
-    name: 'Robert Petrucci',
-    role: 'President', service: 'Condo Association Mgmt',
-    community: 'The Promenade at Inner Harbor',
-    location: 'Baltimore, MD',
-    units: '184 units (high-rise)', tenure: '4 yrs',
+    community: 'Shoreview Woods',
+    location: 'Maryland',
+    units: '', tenure: '',
     featured: false,
   },
   {
     tag: 'HOA', tone: '',
-    quote: 'Our community went from self-managed to professional management in 2023. The Tidewater team made it feel like a non-event for our residents — same monthly assessment, same community, just no more 11pm voicemails to our president.',
-    initials: 'EH', avatarTone: 'gold',
-    name: 'Eleanor Hassan',
-    role: 'Past President', service: 'HOA Management',
-    community: 'Tuckahoe Knolls',
-    location: 'Easton, MD',
-    units: '88 units', tenure: '3 yrs',
+    quote: 'Crystal Marine is by far the very best property Management Representative any organization could ever have. Crystal has demonstrated outstanding managerial ability in maintaining the Homestead HOA\'s diversified operations. She has displayed exceptional professional ability, initiative, and meticulous attention to detail in managing our HOA. She has demonstrated on all occasions a thorough knowledge of her work, exceptional ability and resoluteness of purpose. Her complete understanding of HOA rules, long hours of work are an inspiration to those with whom she serves. Her superb planning ability, contributed significantly to the success of our HOA. We thank her for her selfless attitude and willingness to expend every effort to achieve superior results. Crystal Marine is the best!',
+    initials: 'DS', avatarTone: '',
+    name: 'David Seamen',
+    role: 'Board Member', service: 'HOA Management',
+    community: 'Homestead HOA',
+    location: 'Maryland',
+    units: '', tenure: '',
     featured: false,
   },
   {
     tag: 'HOA', tone: '',
-    quote: 'We interviewed 4 management companies. Tidewater was the only one who showed up to the interview having read our governing documents. They knew our amendments, our recent litigation, and our reserve gap before we said a word.',
-    initials: 'JF', avatarTone: '',
-    name: 'James Fielding',
-    role: 'President', service: 'HOA Management',
-    community: 'Highland Glen Homeowners Assoc.',
-    location: 'Hagerstown, MD',
-    units: '156 units', tenure: '2 yrs',
-    featured: false,
-  },
-  {
-    tag: 'CONDO', tone: 'condo',
-    quote: 'I appreciate that they tell us when we\'re wrong. Twice in our first year, our manager recommended deferring a board-favored project because the cash-flow timing didn\'t support it. They were right both times. That\'s rare.',
-    initials: 'TC', avatarTone: '',
-    name: 'Theresa Cabrera',
-    role: 'Treasurer', service: 'Condo Association Mgmt',
-    community: 'Annapolis Harbor Condos',
-    location: 'Annapolis, MD',
-    units: '124 units', tenure: '2 yrs',
-    featured: false,
-  },
-  {
-    tag: 'HOA', tone: '',
-    quote: 'Our previous company sent us a 200-page binder for the annual meeting. Tidewater sends us a 12-page board pack 7 days before, with everything we actually need. The difference in how prepared the board feels is night and day.',
-    initials: 'WT', avatarTone: '',
-    name: 'William Tasker',
-    role: 'Secretary', service: 'HOA Management',
-    community: 'Crofton Meadows HOA',
-    location: 'Crofton, MD',
-    units: '212 units', tenure: '4 yrs',
+    quote: 'Tammy Alarie is very organized and a responsive and hardworking property manager for our small community.',
+    initials: 'MN', avatarTone: '',
+    name: 'Mary Neimeyer',
+    role: 'Board Member', service: 'HOA Management',
+    community: 'Shoreview',
+    location: 'Delaware / Eastern Shore',
+    units: '', tenure: 'Mar 2024',
     featured: false,
   },
 ];
@@ -161,10 +87,8 @@ function TestimonialCard({ r }) {
             <span className="role">{r.role}</span> &middot; {r.community}
             <div className="tw-tst-card-meta-row">
               <span>{r.location}</span>
-              <span className="sep">&middot;</span>
-              <span>{r.units}</span>
-              <span className="sep">&middot;</span>
-              <span>{r.tenure}</span>
+              {r.units && <><span className="sep">&middot;</span><span>{r.units}</span></>}
+              {r.tenure && <><span className="sep">&middot;</span><span>{r.tenure}</span></>}
             </div>
           </div>
         </div>
@@ -176,12 +100,18 @@ function TestimonialCard({ r }) {
 export default function TestimonialsGrid() {
   const [filter, setFilter] = useState('all');
 
+  // Filters are derived from tags present in real review data.
+  // Add more tags here as additional real board reviews are collected.
+  const presentTags = [...new Set(ALL_REVIEWS.map(r => r.tag))];
+  const TAG_LABELS = { HOA: 'HOA', CONDO: 'Condo Association', RENTAL: 'Rental Owners', DEVELOPER: 'Developers' };
+
   const filters = [
-    { id: 'all',       label: 'All board reviews', count: ALL_REVIEWS.length },
-    { id: 'HOA',       label: 'HOA',               count: ALL_REVIEWS.filter(r => r.tag === 'HOA').length },
-    { id: 'CONDO',     label: 'Condo Association', count: ALL_REVIEWS.filter(r => r.tag === 'CONDO').length },
-    { id: 'RENTAL',    label: 'Rental Owners',     count: ALL_REVIEWS.filter(r => r.tag === 'RENTAL').length },
-    { id: 'DEVELOPER', label: 'Developers',        count: ALL_REVIEWS.filter(r => r.tag === 'DEVELOPER').length },
+    { id: 'all', label: 'All board reviews', count: ALL_REVIEWS.length },
+    ...presentTags.map(tag => ({
+      id: tag,
+      label: TAG_LABELS[tag] || tag,
+      count: ALL_REVIEWS.filter(r => r.tag === tag).length,
+    })),
   ];
 
   const reviews = filter === 'all' ? ALL_REVIEWS : ALL_REVIEWS.filter(r => r.tag === filter);
