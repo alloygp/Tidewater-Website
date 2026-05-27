@@ -2495,6 +2495,7 @@ img { max-width: 100%; display: block; }
 }
 .tw-geo-map-dot-pulse {
   fill: var(--tw-gold); opacity: 0.4;
+  transform-box: fill-box;
   transform-origin: center;
   animation: tw-geo-pulse 2.2s ease-out infinite;
 }
