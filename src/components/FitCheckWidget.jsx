@@ -37,13 +37,10 @@ export default function FitCheckWidget() {
   return (
     <div className="tw-spotlight tw-fit">
       <div className="tw-spot-head">
-        <div className="tw-spot-head-left">
-          <div className="tw-spot-live">
-            <span className="tw-spot-live-dot"></span>
-            2-minute fit check
-          </div>
+        <div className="tw-spot-live">
+          <span className="tw-spot-live-dot"></span>
+          2-minute fit check — Step {Math.min(step + 1, 4)} of 4
         </div>
-        <div className="tw-spot-meta">Step {Math.min(step + 1, 4)} of 4</div>
       </div>
 
       <div className="tw-fit-progress">

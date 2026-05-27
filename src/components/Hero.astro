@@ -65,27 +65,29 @@ const actCfg     = config.activity   || {};
         <div class="tw-hero-trust-item"><div class="tw-hero-trust-num"><span class="accent">35+</span></div><div class="tw-hero-trust-label">Years Independent</div></div>
         <div class="tw-hero-trust-item"><div class="tw-hero-trust-num"><span class="accent">6</span></div><div class="tw-hero-trust-label">States Served</div></div>
       </div>
-      <div class="tw-hero-seal">
-        <div class="tw-hero-seal-inner">
-          <div class="tw-hero-seal-label">AAMC®</div>
-          <div class="tw-hero-seal-sub">Accredited Mgmt Co.</div>
-        </div>
-      </div>
     </div>
 
     <div class="tw-hero-side">
 
-      {heroWidget === 'activity'
-        ? <ActivityFeedWidget
-            client:load
-            events={actCfg.events}
-            title={actCfg.title}
-            sub={actCfg.sub}
-            footNum={actCfg.footNum}
-            footText={actCfg.footText}
-          />
-        : <FitCheckWidget client:load />
-      }
+      <div class="tw-hero-widget-wrap">
+        {heroWidget === 'activity'
+          ? <ActivityFeedWidget
+              client:load
+              events={actCfg.events}
+              title={actCfg.title}
+              sub={actCfg.sub}
+              footNum={actCfg.footNum}
+              footText={actCfg.footText}
+            />
+          : <FitCheckWidget client:load />
+        }
+        <div class="tw-hero-seal">
+          <div class="tw-hero-seal-inner">
+            <div class="tw-hero-seal-label">AAMC®</div>
+            <div class="tw-hero-seal-sub">Accredited Mgmt Co.</div>
+          </div>
+        </div>
+      </div>
 
       <div class="tw-hero-ticker">
         <div class="tw-hero-ticker-icon">
