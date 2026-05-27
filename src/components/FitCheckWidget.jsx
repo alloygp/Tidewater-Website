@@ -106,10 +106,6 @@ export default function FitCheckWidget() {
             <h3 className="tw-fit-result-h">You&rsquo;re a strong fit for <span>{r.tier}</span></h3>
             <div className="tw-fit-result-meta">
               <div className="tw-fit-result-row">
-                <span className="tw-fit-result-label">Regional Director</span>
-                <span className="tw-fit-result-val">{r.rd}</span>
-              </div>
-              <div className="tw-fit-result-row">
                 <span className="tw-fit-result-label">Likely first call</span>
                 <span className="tw-fit-result-val">Within 1 business day</span>
               </div>
