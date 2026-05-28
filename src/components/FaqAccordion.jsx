@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const PlusIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -7,18 +7,34 @@ const PlusIcon = () => (
 );
 
 export default function FaqAccordion({ items, defaultOpen = 0 }) {
-  const [open, setOpen] = useState(defaultOpen);
+  const [openSet, setOpenSet] = useState(new Set([defaultOpen]));
+
+  // When ?review is in the URL, expand everything so Pastel reviewers can read all answers.
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).has('review')) {
+      setOpenSet(new Set(items.map((_, i) => i)));
+    }
+  }, []);
+
+  const toggle = (i) => {
+    setOpenSet(prev => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
+  };
 
   return (
     <div className="tw-sol-faq-list">
       {items.map((item, i) => {
-        const isOpen = open === i;
+        const isOpen = openSet.has(i);
         const answerParagraphs = Array.isArray(item.a) ? item.a : [item.a];
         return (
           <div key={i} className={`tw-sol-faq-item${isOpen ? ' is-open' : ''}`}>
             <button
               className="tw-sol-faq-q"
-              onClick={() => setOpen(isOpen ? -1 : i)}
+              onClick={() => toggle(i)}
               aria-expanded={isOpen}
             >
               <span className="tw-sol-faq-num">{String(i + 1).padStart(2, '0')}</span>
