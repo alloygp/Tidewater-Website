@@ -12,10 +12,14 @@ const rentalItems = [
   { quote: 'Tidewater managed my rental property for just over 12 years. I found them to be a great team that worked diligently, professionally, and faithfully communicated great over the years. Their remote and online services were great for me as someone living abroad and they were perfectly capable of handling everything I needed. From handling basic matters to problematic tenants, they were more than capable.', name: 'Chad Brigance', initials: 'CB', meta: 'Long-term Rental Owner · Maryland · Google Review' },
 ];
 
-const items = variant === 'rental' ? rentalItems : hoaItems;
-const eyebrow = variant === 'rental' ? 'Voices From Our Owners' : 'Voices From Our Communities';
-const heading = variant === 'rental' ? 'What landlords say — ' : 'The way we work — ';
-const headingEm = variant === 'rental' ? 'after years of management.' : 'everyday.';
+const realtyItems = [
+  { quote: 'Tidewater Property and more specifically Cody Bishop helped us sell our home in Maryland even though we now live on the West Coast. The home was in no way a gem made more challenging by the neighborhood that has since turned. To add insult to injury, we were selling the home during the winter months, which many of you might know were brutal this time around. But Cody never complained or turned us away when we had requests on the home, even in the inclement weather, and also helped us make sense of the offers we received. I could not have been happier about our choice of agent and company and hope many of you will experience the same level of service.', name: 'Ashley Sawdaye', initials: 'AS', meta: 'Home Seller · Maryland · Google Review' },
+];
+
+const items = variant === 'rental' ? rentalItems : variant === 'realty' ? realtyItems : hoaItems;
+const eyebrow = variant === 'rental' ? 'Voices From Our Owners' : variant === 'realty' ? 'Voices From Our Clients' : 'Voices From Our Communities';
+const heading = variant === 'rental' ? 'What landlords say — ' : variant === 'realty' ? 'What clients say — ' : 'The way we work — ';
+const headingEm = variant === 'rental' ? 'after years of management.' : variant === 'realty' ? 'about working with our agents.' : 'everyday.';
 ---
 <section class="tw-section tw-section-dark">
   <div class="tw-container">
@@ -23,7 +27,7 @@ const headingEm = variant === 'rental' ? 'after years of management.' : 'everyda
       <div class="tw-eyebrow tw-eyebrow-gold">{eyebrow}</div>
       <h2 class="tw-section-title tw-section-title-light">{heading}<em class="gold">{headingEm}</em></h2>
     </div>
-    <div class={`tw-quote-grid ${items.length === 2 ? 'tw-quote-grid-2' : ''}`}>
+    <div class={`tw-quote-grid ${items.length === 2 ? 'tw-quote-grid-2' : ''}`} style={items.length === 1 ? 'grid-template-columns:1fr;max-width:780px' : ''}>
       {items.map(t => (
         <figure class="tw-quote-card">
           <div class="tw-quote-stars">★★★★★</div>
