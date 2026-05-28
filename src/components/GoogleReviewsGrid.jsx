@@ -17,7 +17,7 @@ const GOOGLE_REVIEWS = [
     type: 'board', location: 'md', community: 'Homestead HOA Board' },
 
   { id: 'g003', name: 'Wayne Vosik',     initials: 'WV', rating: 5, date: '14 days ago',
-    quote: 'Crystal at Tidewater cleaned up our community after a bad situation with another management company. She handles problems and is always there for us. She is amazing. Mary Vosik (treasurer at Shoreview Woods)',
+    quote: 'Crystal at Tidewater-cleaned up our community after a bad situation with another management company. She handles problems and is always there for us. She is amazing. Mary Vosik (treasurer at shoreview woods)',
     type: 'board', location: 'md', community: 'Shoreview Woods' },
 
   { id: 'g004', name: 'Walt Taylor',     initials: 'WT', rating: 5, date: '1 year ago',
@@ -34,7 +34,11 @@ const GOOGLE_REVIEWS = [
     quote: 'I own a property in a complex that Tidewater manages. They are always very helpful and answer questions quickly. Needed to pick up some guest parking passes and Patricia had them all ready for me so I could get back to my vacation.',
     type: 'owner', location: 'md', community: '' },
 
-  { id: 'g007', name: 'Robert Green',    initials: 'RG', rating: 5, date: '7 months ago',
+  { id: 'g006b', name: 'Chad Brigance',  initials: 'CB', rating: 5, date: '27 weeks ago',
+    quote: 'Tidewater managed my rental property for just over 12 years. I found them to be a great team that worked diligently, professionally, and faithfully communicated great over the years. Their remote and online services were great for me as someone living abroad and they were perfectly capable of handling everything I needed. From handling basic matters to problematic tenants, they were more than capable. Finally, as the time came to sell my property, Cody Bishop provided an excellent service that gave me exactly the kind of service and experience I needed to get across the finish line. He led me through the whole process, patiently answered questions, and was there to support all the way through to closing and wrapping it all up. Thank you Cody and the whole team!',
+    type: 'owner', location: 'md', community: '' },
+
+  { id: 'g007', name: 'Robert Green',    initials: 'RG', rating: 5, date: '33 weeks ago',
     quote: 'I own a portfolio of rental properties in MD and Tidewater has been the manager for a few years. They do a great job. If I have an issue with something, they address it. We have never had a disagreement, and I am not always the easiest person to please. I would recommend them for property management services.',
     type: 'owner', location: 'md', community: '' },
 
