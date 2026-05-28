@@ -35,17 +35,22 @@ const schemas = [
   <Header activeNav="realty" />
   <Breadcrumb crumbs={[{ label: "Real Estate" }]} />
   <RealtyHero />
-  <TrustBar />
+  <TrustBar variant="realty" />
   <RealtyLifecycle />
   <RealtyServices />
   <RealtyInsider />
-  <Mission />
-  <Testimonials />
+  <Mission variant="realty" />
+  <!-- PLACEHOLDER: Real estate buyer/seller testimonials needed here.
+       Replace with quotes from actual Tidewater Realty Group clients — buyers, sellers, or investors.
+       Do not use HOA board member testimonials on this page. -->
+  <section style="border:2px dashed #e8a838;background:#fffbf0;padding:28px 32px;text-align:center">
+    <p style="font-family:monospace;font-size:13px;color:#7a5e1d;margin:0">
+      ⚠️ <strong>PLACEHOLDER — Real Estate Testimonials</strong><br/>
+      Replace with: buyer, seller, or investor testimonials from Tidewater Realty Group clients.<br/>
+      <em>HOA board testimonials removed — not relevant to real estate buyers and sellers.</em>
+    </p>
+  </section>
   <FromTheBlog client:load categories={['rental', 'solutions']} />
-  <CTA
-    eyebrow="Talk to an Agent"
-    title="Let\'s talk about your property goals."
-    body="Whether you\'re buying, selling, or investing in Maryland or Delaware — a licensed Tidewater agent will be in touch within one business day."
-  />
+  <CTA variant="realty" />
   <Footer />
 </BaseLayout>

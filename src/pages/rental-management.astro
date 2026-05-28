@@ -8,6 +8,7 @@ import RentalFee from '../components/RentalFee.astro';
 import RentalCounty from '../components/RentalCounty.jsx';
 import RentalDeployed from '../components/RentalDeployed.astro';
 import RentalPortal from '../components/RentalPortal.astro';
+import TrustBar from '../components/TrustBar.astro';
 import Mission from '../components/Mission.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CTA from '../components/CTA.astro';
@@ -35,17 +36,7 @@ const schemas = [
   <Header activeNav="rental" />
   <Breadcrumb crumbs={[{ label: "Management", href: "/hoa-management/" }, { label: "Rental Management" }]} />
   <RentalHero />
-  <!-- ⚠️ PLACEHOLDER: Replace with rental-specific trust signals.
-       Current TrustBar shows HOA credentials only (AAMC, PCAM, CAI, BBB) — not relevant to rental buyers.
-       Needed: rental unit count, licensed broker badge, avg days to lease, occupancy rate, tenant screening stats, etc.
-       Build a RentalTrustBar component and swap this section out. -->
-  <section style="border:2px dashed #e8a838;background:#fffbf0;padding:28px 32px;text-align:center">
-    <p style="font-family:monospace;font-size:13px;color:#7a5e1d;margin:0">
-      ⚠️ <strong>PLACEHOLDER — Rental Property Trust Signals</strong><br/>
-      Replace with: # rental units managed · licensed broker credentials · avg days to lease · occupancy rate · tenant screening stats<br/>
-      <em>Current TrustBar (HOA credentials) removed — not relevant to rental property buyers.</em>
-    </p>
-  </section>
+  <TrustBar variant="rental" />
 
   <RentalPains />
   <RentalFee />
@@ -81,7 +72,7 @@ const schemas = [
               <div class="tw-geo-county-name">Delaware</div>
               <div class="tw-geo-county-meta">Coastal &amp; Sussex County rentals</div>
             </div>
-            <div class="tw-geo-county-body">Rental management for coastal Delaware owners — Lewes, Rehoboth, and Sussex County vacation and investment properties.</div>
+            <div class="tw-geo-county-body">Rental management for coastal Delaware owners &mdash; Lewes, Rehoboth, and Sussex County. Long-term rental management only.</div>
             <div class="tw-geo-county-cta" style="color:var(--tw-fg-muted)">Coverage page coming soon</div>
           </div>
         </div>
@@ -94,6 +85,6 @@ const schemas = [
   <Mission />
   <Testimonials />
   <FromTheBlog client:load categories={['rental']} />
-  <CTA />
+  <CTA variant="rental" />
   <Footer />
 </BaseLayout>

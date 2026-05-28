@@ -1,59 +1,144 @@
 ---
 const {
-  eyebrow = 'Request a Proposal',
-  title = "Let\'s talk about your community.",
-  body = 'Tell us a little about your association and a manager from your region will be in touch within one business day.',
+  variant   = 'hoa',
+  eyebrow   = variant === 'rental' ? 'Talk to Our Rental Team'
+            : variant === 'realty' ? 'Talk to an Agent'
+            : 'Request a Proposal',
+  title     = variant === 'rental' ? "Let's talk about your rental property."
+            : variant === 'realty' ? "Let's talk about your property goals."
+            : "Let's talk about your community.",
+  body      = variant === 'rental'
+            ? 'Whether you&rsquo;re managing from out of state or looking for your first property manager &mdash; our rental team will be in touch within one business day.'
+            : variant === 'realty'
+            ? 'Whether you&rsquo;re buying, selling, or investing in Maryland or Delaware &mdash; a licensed Tidewater agent will be in touch within one business day.'
+            : 'Tell us a little about your association and a manager from your region will be in touch within one business day.',
 } = Astro.props;
+
+const isRental = variant === 'rental';
+const isRealty = variant === 'realty';
 ---
 <section class="tw-cta" id="contact">
   <div class="tw-cta-inner">
     <div>
       <div class="tw-eyebrow">{eyebrow}</div>
       <h2 class="tw-cta-title">{title}</h2>
-      <p class="tw-cta-body">{body}</p>
+      <p class="tw-cta-body" set:html={body} />
       <ul class="tw-cta-points">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Same or next business day response from our team</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free, no-obligation proposal &amp; transition timeline</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Transparent pricing &mdash; all fees disclosed upfront</li>
+        {isRental ? (
+          <>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Same or next business day response from our rental team</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free rental market analysis &mdash; no obligation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Own a home in a Tidewater-managed community? A management discount may apply.</li>
+          </>
+        ) : isRealty ? (
+          <>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Same or next business day response from a licensed agent</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free market analysis &mdash; buyer, seller, or investor</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Selling in a Tidewater-managed community? Ask about our listing discount.</li>
+          </>
+        ) : (
+          <>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Same or next business day response from our team</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free, no-obligation proposal &amp; transition timeline</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Transparent pricing &mdash; all fees disclosed upfront</li>
+          </>
+        )}
       </ul>
     </div>
     <form class="tw-cta-form" id="proposal-form">
       <!-- Honeypot — hidden from real users, bots fill it in -->
       <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
       <div>
-        <h3 class="tw-cta-form-title">Get a proposal</h3>
+        <h3 class="tw-cta-form-title">{isRental ? 'Get a rental market analysis' : isRealty ? 'Get a proposal' : 'Get a proposal'}</h3>
         <p class="tw-cta-form-sub">All fields are required. We&rsquo;ll never share your information.</p>
       </div>
       <div class="tw-row-2">
-        <div class="tw-field"><label>First name</label><input name="firstName" placeholder="Marcia" /></div>
-        <div class="tw-field"><label>Last name</label><input name="lastName" placeholder="Sullivan" /></div>
+        <div class="tw-field"><label>First name</label><input name="firstName" placeholder={isRealty ? 'James' : isRental ? 'Marcus' : 'Marcia'} /></div>
+        <div class="tw-field"><label>Last name</label><input name="lastName" placeholder={isRealty ? 'Park' : isRental ? 'Holloway' : 'Sullivan'} /></div>
       </div>
-      <div class="tw-field"><label>Board email</label><input type="email" name="email" placeholder="treasurer@yourcommunity.org" /></div>
-      <div class="tw-row-2">
-        <div class="tw-field"><label>Community name</label><input name="community" placeholder="Wynbrook HOA" /></div>
-        <div class="tw-field">
-          <label>Number of homes</label>
-          <select name="communitySize">
-            <option value="" disabled selected>Select…</option>
-            <option>Under 50</option>
-            <option>50–150</option>
-            <option>150–500</option>
-            <option>500+</option>
-          </select>
-        </div>
-      </div>
-      <div class="tw-field">
-        <label>Service interest</label>
-        <select name="serviceInterest">
-          <option value="full">Full Service Management</option>
-          <option>Flex Service</option>
-          <option>Financial Only</option>
-          <option>Developer Program</option>
-          <option>Not sure yet — I&rsquo;d like to talk it through</option>
-        </select>
-      </div>
-      <button class="tw-btn tw-btn-primary tw-btn-block tw-btn-lg" type="submit">Request my proposal</button>
-      <p class="tw-field-fine">Or call <strong>(443) 548-0191</strong> · 24/7 emergency line for current communities</p>
+      {isRental ? (
+        <>
+          <div class="tw-field"><label>Owner email</label><input type="email" name="email" placeholder="owner@email.com" /></div>
+          <div class="tw-row-2">
+            <div class="tw-field"><label>Property address or area</label><input name="community" placeholder="Odenton, MD or 123 Main St" /></div>
+            <div class="tw-field">
+              <label>Property type</label>
+              <select name="communitySize">
+                <option value="" disabled selected>Select…</option>
+                <option>Single-family home</option>
+                <option>Townhome</option>
+                <option>Condo</option>
+                <option>2–4 unit</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="tw-field">
+            <label>Service interest</label>
+            <select name="serviceInterest">
+              <option value="full">Full Management</option>
+              <option>Leasing Only</option>
+              <option>Vacancy Management</option>
+              <option>Not sure yet &mdash; I&rsquo;d like to talk it through</option>
+            </select>
+          </div>
+          <button class="tw-btn tw-btn-primary tw-btn-block tw-btn-lg" type="submit">Talk to our rental team</button>
+          <p class="tw-field-fine">Or call <strong>(443) 548-0191</strong> &middot; 24/7 emergency line for current owners</p>
+        </>
+      ) : isRealty ? (
+        <>
+          <div class="tw-field"><label>Email</label><input type="email" name="email" placeholder="you@email.com" /></div>
+          <div class="tw-row-2">
+            <div class="tw-field"><label>Phone</label><input type="tel" name="community" placeholder="(443) 555-0100" /></div>
+            <div class="tw-field">
+              <label>What I&rsquo;m looking to do</label>
+              <select name="communitySize">
+                <option value="" disabled selected>Select…</option>
+                <option>Buy a property</option>
+                <option>Sell a property</option>
+                <option>Buy &amp; sell</option>
+                <option>Invest</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="tw-field">
+            <label>Area or property details</label>
+            <input name="serviceInterest" placeholder="e.g. Anne Arundel County, ~$450K budget" />
+          </div>
+          <button class="tw-btn tw-btn-primary tw-btn-block tw-btn-lg" type="submit">Talk to an agent</button>
+          <p class="tw-field-fine">Or call <strong>(443) 548-0191</strong> &middot; One business day response guaranteed</p>
+        </>
+      ) : (
+        <>
+          <div class="tw-field"><label>Board email</label><input type="email" name="email" placeholder="treasurer@yourcommunity.org" /></div>
+          <div class="tw-row-2">
+            <div class="tw-field"><label>Community name</label><input name="community" placeholder="Wynbrook HOA" /></div>
+            <div class="tw-field">
+              <label>Number of homes</label>
+              <select name="communitySize">
+                <option value="" disabled selected>Select…</option>
+                <option>Under 50</option>
+                <option>50–150</option>
+                <option>150–500</option>
+                <option>500+</option>
+              </select>
+            </div>
+          </div>
+          <div class="tw-field">
+            <label>Service interest</label>
+            <select name="serviceInterest">
+              <option value="full">Full Service Management</option>
+              <option>Flex Service</option>
+              <option>Financial Only</option>
+              <option>Developer Program</option>
+              <option>Not sure yet &mdash; I&rsquo;d like to talk it through</option>
+            </select>
+          </div>
+          <button class="tw-btn tw-btn-primary tw-btn-block tw-btn-lg" type="submit">Request my proposal</button>
+          <p class="tw-field-fine">Or call <strong>(443) 548-0191</strong> &middot; 24/7 emergency line for current communities</p>
+        </>
+      )}
     </form>
   </div>
 </section>
@@ -64,20 +149,20 @@ const {
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
-    const fd = new FormData(form);
+    const fd = new FormData(form as HTMLFormElement);
     // Combine first + last into name
     const first = fd.get('firstName') || '';
     const last  = fd.get('lastName')  || '';
     fd.set('name', `${first} ${last}`.trim());
-    fd.set('company', fd.get('community') || '');
+    fd.set('company', fd.get('community') || fd.get('serviceInterest') || '');
     try {
       const res = await fetch('/api/lead', { method: 'POST', body: fd });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error);
       form.innerHTML = '<div style="padding:32px;text-align:center;font-family:var(--tw-font-heading);font-weight:700;font-size:18px">Thanks — we\'ll be in touch within one business day.</div>';
     } catch (err) {
-      if (btn) { btn.disabled = false; btn.textContent = 'Request my proposal'; }
-      alert(err.message || 'Something went wrong. Please try again.');
+      if (btn) { btn.disabled = false; btn.textContent = btn.textContent || 'Submit'; }
+      alert((err as Error).message || 'Something went wrong. Please try again.');
     }
   });
 </script>

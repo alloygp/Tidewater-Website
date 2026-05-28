@@ -1,29 +1,52 @@
 ---
+const { variant = 'hoa' } = Astro.props;
+const isRealty = variant === 'realty';
 ---
 <section class="tw-section tw-section-cream" id="about">
   <div class="tw-container tw-mission-grid">
     <div class="tw-mission-image">
-      <img src="/assets/hero-mission.jpg" alt="Family-owned community in front of their home" />
+      <img src="/assets/hero-mission.jpg" alt={isRealty ? 'Tidewater Realty agents with a client' : 'Family-owned community in front of their home'} />
       <div class="tw-mission-image-overlay">
         <p class="tw-mission-image-overlay-quote">&ldquo;Still family-owned. Still independent. Still here.&rdquo;</p>
         <div class="tw-mission-image-overlay-meta">Stanley &amp; Marc Greenberg</div>
       </div>
     </div>
     <div class="tw-mission-copy">
-      <div class="tw-eyebrow">Who We Are</div>
-      <h2 class="tw-section-title">More than management.<br /><em>Your trusted community resource.</em></h2>
-      <p class="tw-section-lede" style="margin-bottom:16px">
-        Stanley Greenberg founded Tidewater in 1989. His son Marc &mdash; CMCA, AMS, PCAM &mdash; helped grow the company into a regional, full-service operation while keeping it family-owned. As regional competitors are acquired by national firms and private equity, we&rsquo;ve stayed independent on purpose.
-      </p>
-      <p class="tw-section-lede">
-        The way that translates: open-door ownership, accessible managers, and the kind of decisions only people who answer to their own neighborhood make.
-      </p>
-      <div class="tw-stats">
-        <div class="tw-stat"><div class="tw-stat-num">35+</div><div class="tw-stat-label">Years Independent</div></div>
-        <div class="tw-stat"><div class="tw-stat-num">400+</div><div class="tw-stat-label">Communities</div></div>
-        <div class="tw-stat"><div class="tw-stat-num">~75</div><div class="tw-stat-label">In-house Team</div></div>
-        <div class="tw-stat"><div class="tw-stat-num">2</div><div class="tw-stat-label">Generations Family-Owned</div></div>
-      </div>
+      {isRealty ? (
+        <>
+          <div class="tw-eyebrow">Tidewater Realty Group</div>
+          <h2 class="tw-section-title">Family-owned brokerage.<br /><em>Investment-minded agents.</em></h2>
+          <p class="tw-section-lede" style="margin-bottom:16px">
+            When Stanley Greenberg founded Tidewater in 1989, property management and real estate were inseparable disciplines. Today, Tidewater Realty Group extends that same family-owned approach to buying, selling, and investing &mdash; with the full-service advantage of in-house management and maintenance behind every transaction.
+          </p>
+          <p class="tw-section-lede">
+            Our agents know these properties from the inside out. They&rsquo;ve managed them, inspected them, and tracked their rental income. That&rsquo;s an advantage you won&rsquo;t find at a national brokerage.
+          </p>
+          <div class="tw-stats">
+            <div class="tw-stat"><div class="tw-stat-num">35+</div><div class="tw-stat-label">Years in MD Market</div></div>
+            <div class="tw-stat"><div class="tw-stat-num">MD + DE</div><div class="tw-stat-label">Licensed Footprint</div></div>
+            <div class="tw-stat"><div class="tw-stat-num">In-house</div><div class="tw-stat-label">Mgmt &amp; Maintenance</div></div>
+            <div class="tw-stat"><div class="tw-stat-num">2</div><div class="tw-stat-label">Generations Family-Owned</div></div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div class="tw-eyebrow">Who We Are</div>
+          <h2 class="tw-section-title">More than management.<br /><em>Your trusted community resource.</em></h2>
+          <p class="tw-section-lede" style="margin-bottom:16px">
+            Stanley Greenberg founded Tidewater in 1989. His son Marc &mdash; CMCA, AMS, PCAM &mdash; helped grow the company into a regional, full-service operation while keeping it family-owned. As regional competitors are acquired by national firms and private equity, we&rsquo;ve stayed independent on purpose.
+          </p>
+          <p class="tw-section-lede">
+            The way that translates: open-door ownership, accessible managers, and the kind of decisions only people who answer to their own neighborhood make.
+          </p>
+          <div class="tw-stats">
+            <div class="tw-stat"><div class="tw-stat-num">35+</div><div class="tw-stat-label">Years Independent</div></div>
+            <div class="tw-stat"><div class="tw-stat-num">400+</div><div class="tw-stat-label">Communities</div></div>
+            <div class="tw-stat"><div class="tw-stat-num">~75</div><div class="tw-stat-label">In-house Team</div></div>
+            <div class="tw-stat"><div class="tw-stat-num">2</div><div class="tw-stat-label">Generations Family-Owned</div></div>
+          </div>
+        </>
+      )}
     </div>
   </div>
 </section>
