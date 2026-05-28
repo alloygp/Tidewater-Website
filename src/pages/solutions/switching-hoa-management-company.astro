@@ -4,7 +4,7 @@ import Header from '../../components/Header.astro';
 import Topbar from '../../components/Topbar.astro';
 import CTA from '../../components/CTA.astro';
 import Footer from '../../components/Footer.astro';
-import FaqAccordion from '../../components/FaqAccordion.jsx';
+import FaqAccordion from '../../components/FaqAccordion.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import FromTheBlog from '../../components/FromTheBlog.jsx';
 
@@ -281,7 +281,7 @@ const faqItems = [
           <p>Compiled from the past 47 transitions. If you&rsquo;ve thought it, you&rsquo;re not the first.</p>
           <a href="/request-a-proposal" class="tw-btn tw-btn-primary">Ask your own question &rarr;</a>
         </div>
-        <FaqAccordion client:load items={faqItems} defaultOpen={0} />
+        <FaqAccordion items={faqItems} defaultOpen={0} />
       </div>
     </div>
   </section>

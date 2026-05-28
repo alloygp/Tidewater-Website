@@ -4,7 +4,7 @@ import Header from '../../../components/Header.astro';
 import Topbar from '../../../components/Topbar.astro';
 import Footer from '../../../components/Footer.astro';
 import CTA from '../../../components/CTA.astro';
-import FaqAccordion from '../../../components/FaqAccordion.jsx';
+import FaqAccordion from '../../../components/FaqAccordion.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import { serviceSchema, breadcrumbSchema, faqSchema } from '../../../lib/schema';
 import { SITE } from '../../../config/site';
@@ -358,7 +358,7 @@ const schemas = [
           <p>For all-purpose HOA questions see our <a href="/faq" style="color:var(--tw-teal-500);text-decoration:underline;text-underline-offset:3px">main FAQ hub</a>.</p>
           <a href="/request-a-proposal" class="tw-btn tw-btn-primary">Ask your own question &rarr;</a>
         </div>
-        <FaqAccordion client:load items={countyFaqs} defaultOpen={0} />
+        <FaqAccordion items={countyFaqs} defaultOpen={0} />
       </div>
     </div>
   </section>
