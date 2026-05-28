@@ -22,13 +22,12 @@ const warningSigns = [
 ];
 
 const weeks = [
-  { num: '01', title: 'Discovery & document audit', tasks: ['Document audit: declarations, bylaws, contracts', 'Insurance certificates & bond review'] },
-  { num: '02', title: 'Financial readout', tasks: ['Operating & reserve account snapshot', 'A/R & delinquency report from outgoing co. (follows prior mgmt close)', 'Open work-order audit'] },
-  { num: '03', title: 'Vendor & contract handover', tasks: ['Re-bid optional vendor contracts', 'Confirm insurance, landscaping, snow', 'Reserve study refresh kicks off'] },
-  { num: '04', title: 'Resident communication', tasks: ['Welcome letter from your Community Association Manager', 'Portal invitations mailed to all owners', 'New payment instructions issued'] },
-  { num: '05', title: 'Financial migration', tasks: ['Operating & reserve account transfers', 'Lockbox set up with bank', 'Open invoices reconciled and paid'] },
-  { num: '06', title: 'Portal & systems go-live', tasks: ['CINC owner portal live', 'Board portal & document library ready', 'Maintenance request workflow active'] },
-  { num: '07', title: 'First board meeting', tasks: ['Full board pack posted to portal 7 days early', 'Your manager presents in person', 'Quarterly action plan agreed on'], isFinal: true },
+  { num: 'Signing', label: '', title: 'Introduction & welcome', tasks: ['Welcome to Tidewater email sent to the Board', 'Assigned Community Association Manager introduced to Board contacts'] },
+  { num: '30', label: 'Days before start', title: 'Document collection & reserve setup', tasks: ['Request owner roster, EIN, assessments, late fees, and governing documents from prior management or Board', 'Begin reserve account transfers where possible (CDs transfer directly; MMAs may need to close and reopen; Columbia Bank accounts are not transferable between companies)'] },
+  { num: '15', label: 'Days before start', title: 'Systems, accounts & manager intro', tasks: ['Community set up in CINC by accounting and assigned manager', 'New operating account opened with Columbia Bank (requires EIN, Articles/Bylaws, and Bank Authorization Form signed by two Board members)', 'Management letter drafted and sent to Board for review and approval', 'Coupon books ordered if applicable'] },
+  { num: '10', label: 'Days before start', title: 'Final pre-start prep', tasks: ['Transition meeting with manager, accounting, and supervisory staff to review community details and finalize system setup', 'Vendors notified of management change', 'SDAT records updated with new resident agent and principal office'] },
+  { num: 'Start', label: 'Date', title: 'Active management begins', tasks: ['Internal announcement sent confirming start of management', 'Manager receives CINC setup checklist and property audit documentation', 'CINC owner portal live for board and residents'] },
+  { num: 'Post', label: 'Start (30–60 days)', title: 'Financial handover from prior management', tasks: ['Financial records requested from prior management (general ledger balances, trial balances, owner balances)', 'Account statements sent to owners showing balances at turnover', 'Remaining community files and physical records collected', 'Final funds received from operating, MMA, and reserve accounts — timing depends on prior management and bank processing'], isFinal: true },
 ];
 
 const compareRows = [
@@ -57,7 +56,7 @@ const faqItems = [
 ---
 <BaseLayout
   pageStylesheet="styles-blog.css"
-  title="Switching HOA Management Companies in Maryland | Tidewater" description="Switching HOA management companies in Maryland? Tidewater walks boards through the full transition — 7-week onboarding, transparent pricing, and a dedicated Community Association Manager.">
+  title="Switching HOA Management Companies in Maryland | Tidewater" description="Switching HOA management companies in Maryland? Tidewater walks boards through the full transition — structured onboarding, transparent $1,000 fee, and a dedicated Community Association Manager.">
   <style is:global>
     /* page-level overrides if needed */
   </style>
@@ -81,7 +80,7 @@ const faqItems = [
         </p>
         <div class="tw-sol-hero-actions">
           <a href="/request-a-proposal" class="tw-btn tw-btn-primary tw-btn-lg">Request a proposal &rarr;</a>
-          <a href="#timeline" class="tw-btn tw-btn-ghost">See the 7-week transition &rarr;</a>
+          <a href="#timeline" class="tw-btn tw-btn-ghost">See the transition timeline &rarr;</a>
         </div>
         <div class="tw-sol-hero-stats">
           <div>
@@ -89,8 +88,8 @@ const faqItems = [
             <div class="tw-sol-hero-stat-label">Communities switched to Tidewater in the last 24 months</div>
           </div>
           <div>
-            <div class="tw-sol-hero-stat-num gold">7 wks</div>
-            <div class="tw-sol-hero-stat-label">Typical transition, from signed proposal to first board meeting</div>
+            <div class="tw-sol-hero-stat-num gold">~30 days</div>
+            <div class="tw-sol-hero-stat-label">Prep time before your official start date — systems, accounts, vendor notices</div>
           </div>
           <div>
             <div class="tw-sol-hero-stat-num">$1K</div>
@@ -110,11 +109,11 @@ const faqItems = [
           </div>
           <div style="display:flex;flex-direction:column;gap:10px">
             {[
-              { wk:'Wk 1', t:'Discovery & document audit', s:'We collect everything in one share', state:'done' },
-              { wk:'Wk 2', t:'Vendor & insurance handover', s:'Re-bid contracts if you want', state:'done' },
-              { wk:'Wk 3', t:'Financial migration', s:'Operating + reserve transfers', state:'now' },
-              { wk:'Wk 4', t:'Resident communication', s:'Welcome letters from your manager', state:'next' },
-              { wk:'Wk 5–7', t:'Portal launch & first meeting', s:'CINC live; board pack in portal', state:'next' },
+              { wk:'Signing', t:'Introduction & welcome', s:'Welcome email + manager assigned', state:'done' },
+              { wk:'30 days out', t:'Document collection', s:'Roster, EIN, governing docs requested', state:'done' },
+              { wk:'15 days out', t:'CINC setup & bank account', s:'Columbia Bank account + mgmt letter', state:'now' },
+              { wk:'10 days out', t:'Vendor notices + SDAT', s:'All vendors notified; records updated', state:'next' },
+              { wk:'Start date', t:'Active management begins', s:'Portal live; owner statements sent', state:'next' },
             ].map(r => (
               <div style={`display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:10px 12px;background:${r.state==='now'?'rgba(58,146,166,0.07)':'var(--tw-warm-100)'};border:${r.state==='now'?'1px solid var(--tw-teal-100)':'1px solid var(--tw-border)'};border-radius:8px`}>
                 <div style={`font-family:var(--tw-font-heading);font-weight:800;font-size:11px;color:${r.state==='now'?'var(--tw-teal)':'var(--tw-fg-muted)'};letter-spacing:0.08em;text-transform:uppercase`}>{r.wk}</div>
@@ -163,16 +162,16 @@ const faqItems = [
     <div class="tw-container-wide">
       <div class="tw-section-head" style="text-align:center;max-width:760px;margin:0 auto">
         <div class="tw-eyebrow">The Transition</div>
-        <h2 class="tw-section-title">From signed proposal to your first board meeting, in <em>7 weeks.</em></h2>
-        <p class="tw-section-lede">Our transitions team has done this 47 times in the last two years. Here&rsquo;s the playbook we run on your behalf &mdash; with the board reviewing, not lifting.</p>
+        <h2 class="tw-section-title">A structured transition <em>built around your start date.</em></h2>
+        <p class="tw-section-lede">Our transitions team has done this 47 times in the last two years. Here&rsquo;s the exact playbook we run on your behalf &mdash; timed to your official start date, with the board reviewing, not lifting.</p>
       </div>
       <div class="tw-sol-timeline-wrap">
-        <div class="tw-sol-timeline">
+        <div class="tw-sol-timeline" style="grid-template-columns:repeat(6,1fr)">
           {weeks.map(w => (
             <div class={`tw-sol-week${w.isFinal ? ' is-final' : ''}`}>
               <div class="tw-sol-week-marker">
-                <div class="tw-sol-week-marker-num">{w.num}</div>
-                <div class="tw-sol-week-marker-label">Week</div>
+                <div class="tw-sol-week-marker-num" style={w.num.length > 5 ? 'font-size:15px' : ''}>{w.num}</div>
+                <div class="tw-sol-week-marker-label">{w.label}</div>
               </div>
               <div class="tw-sol-week-card">
                 <div class="tw-sol-week-title">{w.title}</div>
@@ -188,7 +187,7 @@ const faqItems = [
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div class="tw-sol-timeline-foot-text">
-            <strong>47 transitions completed.</strong> Every community we&rsquo;ve brought on has made it to their first board meeting within this 7-week window. Active management &mdash; board meetings, day-to-day operations, vendor dispatch &mdash; begins at your official contract start date.
+            <strong>47 transitions completed.</strong> Active management &mdash; board meetings, day-to-day operations, vendor dispatch &mdash; begins at your official contract start date. Financial records and final funds from prior management may take an additional 30&ndash;60 days depending on the outgoing company and bank processing.
           </div>
         </div>
       </div>
