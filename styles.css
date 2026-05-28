@@ -761,7 +761,7 @@ img { max-width: 100%; display: block; }
 .tw-rwhy-feature-copy strong { color: var(--tw-dark); font-weight: 600; }
 
 /* 01 pull (the receipt panel) */
-.tw-rwhy-feature-pull { background: var(--tw-dark); color: var(--tw-cream); border-radius: 12px; padding: 22px 22px 18px; align-self: stretch; transform: rotate(0.5deg); }
+.tw-rwhy-feature-pull { background: var(--tw-dark); color: var(--tw-cream); border-radius: 12px; padding: 22px 22px 18px; align-self: stretch; width: 100%; transform: rotate(0.5deg); }
 .tw-rwhy-pull-label { font-family: var(--tw-font-heading); font-weight: 700; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--tw-gold); margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px dashed rgba(232,180,90,0.3); }
 .tw-rwhy-pull-stack { display: flex; flex-direction: column; gap: 9px; }
 .tw-rwhy-pull-line { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-family: var(--tw-font-body); font-size: 13.5px; color: rgba(254,252,248,0.78); }
