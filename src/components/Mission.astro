@@ -1,6 +1,7 @@
 ---
 const { variant = 'hoa' } = Astro.props;
 const isRealty = variant === 'realty';
+const isRental = variant === 'rental';
 ---
 <section class="tw-section tw-section-cream" id="about">
   <div class="tw-container tw-mission-grid">
@@ -12,7 +13,24 @@ const isRealty = variant === 'realty';
       </div>
     </div>
     <div class="tw-mission-copy">
-      {isRealty ? (
+      {isRental ? (
+        <>
+          <div class="tw-eyebrow">Tidewater Rental Management</div>
+          <h2 class="tw-section-title">Family-owned.<br /><em>Built for landlords who can&rsquo;t be everywhere at once.</em></h2>
+          <p class="tw-section-lede" style="margin-bottom:16px">
+            For over 35 years, Tidewater has managed rental properties across Maryland and coastal Delaware. We started with the same landlords who trusted us with their communities &mdash; and built a rental operation to the same standard. No national franchise. No rotating portfolio managers.
+          </p>
+          <p class="tw-section-lede">
+            Whether you&rsquo;re deployed, out of state, or just done dealing with tenant calls yourself &mdash; our rental team runs the property. You get the portal, the statements, and the peace of mind.
+          </p>
+          <div class="tw-stats">
+            <div class="tw-stat"><div class="tw-stat-num">35+</div><div class="tw-stat-label">Years in Rental Mgmt</div></div>
+            <div class="tw-stat"><div class="tw-stat-num">700+</div><div class="tw-stat-label">Units Managed</div></div>
+            <div class="tw-stat"><div class="tw-stat-num">MD + DE</div><div class="tw-stat-label">Licensed Footprint</div></div>
+            <div class="tw-stat"><div class="tw-stat-num">2</div><div class="tw-stat-label">Generations Family-Owned</div></div>
+          </div>
+        </>
+      ) : isRealty ? (
         <>
           <div class="tw-eyebrow">Tidewater Realty Group</div>
           <h2 class="tw-section-title">Family-owned brokerage.<br /><em>Investment-minded agents.</em></h2>

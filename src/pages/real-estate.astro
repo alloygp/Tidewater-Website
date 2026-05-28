@@ -50,6 +50,21 @@ const schemas = [
       <em>HOA board testimonials removed — not relevant to real estate buyers and sellers.</em>
     </p>
   </section>
+  <!-- Community owner callout (#167) -->
+  <section style="background:var(--tw-cream);border-top:1px solid var(--tw-border);border-bottom:1px solid var(--tw-border);padding:48px 0">
+    <div class="tw-container" style="max-width:760px">
+      <div style="display:flex;align-items:flex-start;gap:20px">
+        <div style="flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--tw-gold);display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" style="width:18px;height:18px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <div style="font-family:var(--tw-font-heading);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:6px">For Community Residents</div>
+          <p style="font-family:var(--tw-font-body);font-size:1.05rem;font-weight:600;color:var(--tw-dark);margin:0 0 6px">Selling a home in a Tidewater-managed community?</p>
+          <p style="font-family:var(--tw-font-body);font-size:.95rem;color:var(--tw-fg-muted);margin:0">Ask us about our listing discount for homeowners in communities we manage. It's one of the quiet advantages of working with a firm that already knows your neighborhood.</p>
+        </div>
+      </div>
+    </div>
+  </section>
   <FromTheBlog client:load categories={['rental', 'solutions']} />
   <CTA variant="realty" />
   <Footer />

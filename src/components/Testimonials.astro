@@ -1,17 +1,29 @@
 ---
-const items = [
+const { variant = 'hoa' } = Astro.props;
+
+const hoaItems = [
   { quote: 'Tidewater knows our community. We never feel like an account number — they answer when we call, and they show up.',                                               name: 'Board President', initials: 'MS', meta: 'Towson HOA · 220 homes' },
   { quote: 'The transition from our previous manager was smoother than we expected. Their proactive approach has saved us money and headaches.',                              name: 'Treasurer',       initials: 'DR', meta: 'Anne Arundel Condo · 88 units' },
   { quote: 'Our manager has been with us six years now. After three companies in five years, that stability has been the biggest gift.',                                       name: 'Board Director',  initials: 'AB', meta: 'Howard County HOA · 410 homes' },
 ];
+
+const rentalItems = [
+  { quote: 'I own a portfolio of rental properties in MD and Tidewater has been the manager for a few years. They do a great job. If I have an issue with something, they address it. We have never had a disagreement, and I am not always the easiest person to please. I would recommend them for property management services.', name: 'Robert Green', initials: 'RG', meta: 'Rental Portfolio Owner · Maryland · Google Review' },
+  { quote: 'Tidewater managed my rental property for just over 12 years. I found them to be a great team that worked diligently, professionally, and faithfully communicated great over the years. Their remote and online services were great for me as someone living abroad and they were perfectly capable of handling everything I needed. From handling basic matters to problematic tenants, they were more than capable.', name: 'Chad Brigance', initials: 'CB', meta: 'Long-term Rental Owner · Maryland · Google Review' },
+];
+
+const items = variant === 'rental' ? rentalItems : hoaItems;
+const eyebrow = variant === 'rental' ? 'Voices From Our Owners' : 'Voices From Our Communities';
+const heading = variant === 'rental' ? 'What landlords say — ' : 'The way we work — ';
+const headingEm = variant === 'rental' ? 'after years of management.' : 'everyday.';
 ---
 <section class="tw-section tw-section-dark">
   <div class="tw-container">
     <div class="tw-section-head-left">
-      <div class="tw-eyebrow tw-eyebrow-gold">Voices From Our Communities</div>
-      <h2 class="tw-section-title tw-section-title-light">The way we work — <em class="gold">everyday.</em></h2>
+      <div class="tw-eyebrow tw-eyebrow-gold">{eyebrow}</div>
+      <h2 class="tw-section-title tw-section-title-light">{heading}<em class="gold">{headingEm}</em></h2>
     </div>
-    <div class="tw-quote-grid">
+    <div class={`tw-quote-grid ${items.length === 2 ? 'tw-quote-grid-2' : ''}`}>
       {items.map(t => (
         <figure class="tw-quote-card">
           <div class="tw-quote-stars">★★★★★</div>
