@@ -9,9 +9,11 @@ const PlusIcon = () => (
 export default function FaqAccordion({ items, defaultOpen = 0 }) {
   const [openSet, setOpenSet] = useState(new Set([defaultOpen]));
 
-  // When ?review is in the URL, expand everything so Pastel reviewers can read all answers.
+  // Expand everything when loaded inside an iframe (Pastel review tool) or with ?review in the URL.
   useEffect(() => {
-    if (new URLSearchParams(window.location.search).has('review')) {
+    const inIframe = window.self !== window.top;
+    const hasReviewParam = new URLSearchParams(window.location.search).has('review');
+    if (inIframe || hasReviewParam) {
       setOpenSet(new Set(items.map((_, i) => i)));
     }
   }, []);
