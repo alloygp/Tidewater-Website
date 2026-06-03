@@ -1,8 +1,10 @@
 ---
 interface Props {
   activeNav?: string | null;
+  logoSrc?: string;
+  logoAlt?: string;
 }
-const { activeNav = null } = Astro.props;
+const { activeNav = null, logoSrc = '/assets/logo-main-black.svg', logoAlt = 'Tidewater Companies' } = Astro.props;
 
 const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
 ---
@@ -10,7 +12,7 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
 <header class="tw-header">
   <div class="tw-header-inner">
     <a class="tw-header-logo" href="/">
-      <img src="/assets/logo-main-black.svg" alt="Tidewater Companies" />
+      <img src={logoSrc} alt={logoAlt} />
     </a>
 
     <nav class="tw-header-nav" id="tw-nav">
