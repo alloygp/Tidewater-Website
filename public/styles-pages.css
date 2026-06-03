@@ -573,7 +573,7 @@
 .tw-rh2-actions .tw-btn-primary { background: var(--tw-gold); border-color: var(--tw-gold); color:#2b260f; }
 .tw-rh2-actions .tw-btn-primary:hover { background:#a99a52; border-color:#a99a52; color:#2b260f;}
 .tw-rh2-meta {
-  display: flex; gap: 20px; flex-wrap: nowrap;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px;
   padding-top: 22px;
   border-top: 1px solid var(--tw-divider);
 }
