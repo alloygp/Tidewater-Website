@@ -5,7 +5,7 @@ interface Crumb {
 }
 interface Props {
   crumbs: Crumb[];
-  variant?: 'default' | 'realty';
+  variant?: 'default' | 'realty' | 'management' | 'maintenance';
 }
 const { crumbs, variant = 'default' } = Astro.props;
 
@@ -26,7 +26,7 @@ const schema = JSON.stringify({
 });
 ---
 
-<nav class={`tw-breadcrumb${variant === 'realty' ? ' tw-breadcrumb-realty' : ''}`} aria-label="Breadcrumb">
+<nav class={`tw-breadcrumb${variant === 'realty' ? ' tw-breadcrumb-realty' : variant === 'management' ? ' tw-breadcrumb-management' : variant === 'maintenance' ? ' tw-breadcrumb-maintenance' : ''}`} aria-label="Breadcrumb">
   <div class="tw-breadcrumb-inner">
     <ol class="tw-breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
       {allCrumbs.map((crumb, i) => {
@@ -107,12 +107,22 @@ const schema = JSON.stringify({
     background: #f9f5e8;
     border-bottom-color: rgba(191,172,95,0.25);
   }
-  .tw-breadcrumb-realty .tw-breadcrumb-current {
-    color: #8a7a3d;
+  .tw-breadcrumb-realty .tw-breadcrumb-current { color: #8a7a3d; }
+  .tw-breadcrumb-realty .tw-breadcrumb-link:hover { color: #BFAC5F; }
+
+  .tw-breadcrumb-management {
+    background: #edf5f7;
+    border-bottom-color: rgba(58,146,166,0.2);
   }
-  .tw-breadcrumb-realty .tw-breadcrumb-link:hover {
-    color: #BFAC5F;
+  .tw-breadcrumb-management .tw-breadcrumb-current { color: #2F7C8E; }
+  .tw-breadcrumb-management .tw-breadcrumb-link:hover { color: #3A92A6; }
+
+  .tw-breadcrumb-maintenance {
+    background: #f0f4ee;
+    border-bottom-color: rgba(100,125,87,0.2);
   }
+  .tw-breadcrumb-maintenance .tw-breadcrumb-current { color: #4a5e3d; }
+  .tw-breadcrumb-maintenance .tw-breadcrumb-link:hover { color: #647D57; }
   @media (max-width: 820px) {
     .tw-breadcrumb-inner { padding: 0 20px; }
   }
