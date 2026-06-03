@@ -1,8 +1,10 @@
 ---
 interface Props {
   activeNav?: string | null;
+  logoSrc?: string;
+  logoAlt?: string;
 }
-const { activeNav = null } = Astro.props;
+const { activeNav = null, logoSrc = '/assets/logo-main-black.svg', logoAlt = 'Tidewater Companies' } = Astro.props;
 
 const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
 ---
@@ -10,7 +12,7 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
 <header class="tw-header">
   <div class="tw-header-inner">
     <a class="tw-header-logo" href="/">
-      <img src="/assets/logo-main-black.svg" alt="Tidewater Companies" />
+      <img src={logoSrc} alt={logoAlt} />
     </a>
 
     <nav class="tw-header-nav" id="tw-nav">
@@ -37,7 +39,7 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
           <!-- Col 2: company links -->
           <div class="tw-mega-col">
             <div class="tw-mega-col-label">Company</div>
-            <div class="tw-mega-list">
+            <div class="tw-mega-list" style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
               <a href="/about" class="tw-mega-item">
                 <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
                 <div><div class="tw-mega-title">Our Story</div><div class="tw-mega-body">Family-owned in the Mid-Atlantic since 1989.</div></div>
@@ -61,7 +63,7 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
 
       <!-- Management mega menu -->
       <div class="tw-nav-item" data-menu="mgmt">
-        <a href="/hoa-management" class={`tw-header-nav-link ${isActive(['mgmt','hoa','condo','rental','maintenance']) ? 'is-active' : ''}`}>
+        <a href="/hoa-management" class={`tw-header-nav-link ${isActive(['mgmt','hoa','condo','rental']) ? 'is-active' : ''}`}>
           Management<svg class="tw-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
         </a>
         <div class="tw-megamenu tw-megamenu-3col">

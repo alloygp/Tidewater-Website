@@ -573,20 +573,21 @@
 .tw-rh2-actions .tw-btn-primary { background: var(--tw-gold); border-color: var(--tw-gold); color:#2b260f; }
 .tw-rh2-actions .tw-btn-primary:hover { background:#a99a52; border-color:#a99a52; color:#2b260f;}
 .tw-rh2-meta {
-  display: flex; gap: 36px; flex-wrap: wrap;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px;
   padding-top: 22px;
   border-top: 1px solid var(--tw-divider);
 }
 .tw-rh2-meta-cell .num {
   display:block;
   font-family: var(--tw-font-heading);
-  font-weight: 800; font-size: 28px;
+  font-weight: 800; font-size: 20px;
   color: var(--tw-dark);
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 .tw-rh2-meta-cell .lab {
-  font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--tw-fg-subtle); margin-top: 4px;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--tw-fg-subtle); margin-top: 3px; white-space: nowrap;
 }
 
 /* Listing card */
