@@ -22,9 +22,9 @@ const warningSigns = [
 ];
 
 const weeks = [
-  { num: 'Signing', label: '', title: 'Introduction & welcome', tasks: ['Welcome to Tidewater email sent to the Board', 'Assigned Community Association Manager introduced to Board contacts'] },
+  { num: 'Signing', label: '', title: 'Introduction & welcome', tasks: ['Welcome to Tidewater email sent to the Board'] },
   { num: '30', label: 'Days before start', title: 'Document collection & reserve setup', tasks: ['Request owner roster, EIN, assessments, late fees, and governing documents from prior management or Board', 'Begin reserve account transfers where possible (CDs transfer directly; MMAs may need to close and reopen; Columbia Bank accounts are not transferable between companies)'] },
-  { num: '15', label: 'Days before start', title: 'Systems, accounts & manager intro', tasks: ['Community set up in CINC by accounting and assigned manager', 'New operating account opened with Columbia Bank (requires EIN, Articles/Bylaws, and Bank Authorization Form signed by two Board members)', 'Management letter drafted and sent to Board for review and approval', 'Coupon books ordered if applicable'] },
+  { num: '15', label: 'Days before start', title: 'Systems, accounts & manager intro', tasks: ['Community set up in CINC by accounting, QA, and assigned manager', 'Manager assigned and introduced to Board contacts', 'New operating account opened with Columbia Bank (requires EIN, Articles/Bylaws, and Bank Authorization Form signed by two Board members)', 'Management letter drafted and sent to Board for review and approval', 'Coupon books ordered if applicable'] },
   { num: '10', label: 'Days before start', title: 'Final pre-start prep', tasks: ['Transition meeting with manager, accounting, and supervisory staff to review community details and finalize system setup', 'Vendors notified of management change', 'SDAT records updated with new resident agent and principal office'] },
   { num: 'Start', label: 'Date', title: 'Active management begins', tasks: ['Internal announcement sent confirming start of management', 'Manager receives CINC setup checklist and property audit documentation', 'CINC owner portal live for board and residents'] },
   { num: 'Post', label: 'Start (30–60 days)', title: 'Financial handover from prior management', tasks: ['Financial records requested from prior management (general ledger balances, trial balances, owner balances)', 'Account statements sent to owners showing balances at turnover', 'Remaining community files and physical records collected', 'Final funds received from operating, MMA, and reserve accounts — timing depends on prior management and bank processing'], isFinal: true },
@@ -109,7 +109,7 @@ const faqItems = [
           </div>
           <div style="display:flex;flex-direction:column;gap:10px">
             {[
-              { wk:'Signing', t:'Introduction & welcome', s:'Welcome email + manager assigned', state:'done' },
+              { wk:'Signing', t:'Introduction & welcome', s:'Welcome email sent to the Board', state:'done' },
               { wk:'30 days out', t:'Document collection', s:'Roster, EIN, governing docs requested', state:'done' },
               { wk:'15 days out', t:'CINC setup & bank account', s:'Columbia Bank account + mgmt letter', state:'now' },
               { wk:'10 days out', t:'Vendor notices + SDAT', s:'All vendors notified; records updated', state:'next' },
