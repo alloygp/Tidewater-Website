@@ -5,8 +5,9 @@ interface Crumb {
 }
 interface Props {
   crumbs: Crumb[];
+  variant?: 'default' | 'realty';
 }
-const { crumbs } = Astro.props;
+const { crumbs, variant = 'default' } = Astro.props;
 
 // Always prepend Home
 const allCrumbs: Crumb[] = [{ label: 'Home', href: '/' }, ...crumbs];
@@ -25,7 +26,7 @@ const schema = JSON.stringify({
 });
 ---
 
-<nav class="tw-breadcrumb" aria-label="Breadcrumb">
+<nav class={`tw-breadcrumb${variant === 'realty' ? ' tw-breadcrumb-realty' : ''}`} aria-label="Breadcrumb">
   <div class="tw-breadcrumb-inner">
     <ol class="tw-breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
       {allCrumbs.map((crumb, i) => {
@@ -101,6 +102,16 @@ const schema = JSON.stringify({
     color: var(--tw-fg-subtle, #9eaaaa);
     line-height: 1;
     margin: 0 1px;
+  }
+  .tw-breadcrumb-realty {
+    background: #f9f5e8;
+    border-bottom-color: rgba(191,172,95,0.25);
+  }
+  .tw-breadcrumb-realty .tw-breadcrumb-current {
+    color: #8a7a3d;
+  }
+  .tw-breadcrumb-realty .tw-breadcrumb-link:hover {
+    color: #BFAC5F;
   }
   @media (max-width: 820px) {
     .tw-breadcrumb-inner { padding: 0 20px; }
