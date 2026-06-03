@@ -1,0 +1,457 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Topbar from '../../components/Topbar.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import FromTheBlog from '../../components/FromTheBlog.jsx';
+
+const faqItems = [
+  {
+    q: 'Can we keep our existing bank & reserve accounts?',
+    a: 'For operating accounts, we use Columbia Bank — our lockbox is set up through Columbia, which is how assessment payments are collected and routed automatically. Your reserve fund can remain at any bank your association prefers; we\'re added as authorized users and the account stays in the association\'s name.',
+  },
+  {
+    q: 'How is this different from a bookkeeper?',
+    a: [
+      'A bookkeeper records what already happened. <strong>A finance department forecasts what\'s coming.</strong> Our team includes a CPA and an MBA Controller &mdash; their job is the variance memo, the cash-flow forecast, and the reserve-level recommendation, not just the reconciliation.',
+      'You also get separation of duties, the two-signer rule, audit support, and StrongRoom workflow &mdash; controls a single bookkeeper structurally can\'t provide.',
+    ],
+  },
+  {
+    q: 'What does financial-only cost vs. full-service?',
+    a: 'Financial-only is priced at a meaningful discount to full-service &mdash; the exact difference depends on your community\'s transaction volume, vendor count, and audit complexity. We don\'t publish a rate card because the range is wide enough that a generic number would mislead more than it helps. The fastest path to an accurate number is the quote form.',
+  },
+  {
+    q: 'Will the board still approve all expenses?',
+    a: 'By default, any invoice over $3,000 routes to an executive approver in StrongRoom before payment. Boards who want more direct involvement can opt into reviewing invoices above a lower threshold &mdash; that preference is set during onboarding.',
+  },
+  {
+    q: 'How quickly can we get our first statement?',
+    a: 'For a typical mid-month start, your first complete monthly statement lands within <strong>30&ndash;45 days</strong>. The reconciliation of your existing books takes a few weeks; after that, statements arrive by the 15th of each month.',
+  },
+  {
+    q: 'Do you handle delinquency collection?',
+    a: 'Yes &mdash; late notices, payment plans, and attorney referral. Your governing documents set the collection policy &mdash; when demand letters go out, when a lien is filed, when we refer to an attorney. We apply that policy uniformly across all accounts. Boards don\'t authorize individual collection actions; consistent, policy-driven enforcement protects the association from favoritism claims and Maryland fair debt collection requirements.',
+  },
+  {
+    q: 'Can we move up to full-service later?',
+    a: 'Easily. Roughly a quarter of our financial-only clients move to full-service within 24 months. The same Controller team continues handling your books; we just add the operational layer on top. No re-onboarding fees, no break in continuity.',
+  },
+  {
+    q: 'What if our state requires a CPA audit?',
+    a: 'Maryland doesn\'t require it; many bylaws and lender requirements do. We prepare clean workpapers and coordinate with whichever independent CPA your board selects &mdash; we don\'t audit ourselves. Most audits we support close cleanly.',
+  },
+];
+---
+<BaseLayout
+  pageStylesheet="styles-blog.css"
+  title="HOA Financial Management Maryland | Tidewater" description="HOA financial management as a standalone service. Monthly statements, A/R, vendor payments, audit support — MBA/CPA-led.">
+  <style is:global>
+    /* page-level overrides if needed */
+  </style>
+  <Topbar variant="default" />
+  <Header activeNav="mgmt" />
+  <Breadcrumb crumbs={[
+    { label: 'HOA Management', href: '/hoa-management' },
+    { label: 'Financial Management' },
+  ]} />
+
+  <!-- Hero -->
+  <section class="tw-sol-hero">
+    <div class="tw-sol-hero-paper"></div>
+    <div class="tw-sol-hero-grid">
+      <div class="tw-sol-hero-copy">
+        <h1 class="tw-sol-hero-title">
+          A <em>CPA-led</em> finance team for the community you already manage.
+        </h1>
+        <p class="tw-sol-hero-lede">
+          For boards who run their own operations but want professional eyes on the money. Monthly statements, A/R, vendor payments, and year-end audit support &mdash; without giving up day-to-day control.
+        </p>
+        <div class="tw-sol-hero-actions">
+          <a href="/request-a-proposal" class="tw-btn tw-btn-primary tw-btn-lg">Get a financial-only quote &rarr;</a>
+          <a href="#reserve" class="tw-btn tw-btn-ghost">See what&rsquo;s included &rarr;</a>
+        </div>
+        <div class="tw-sol-hero-stats">
+          <div>
+            <div class="tw-sol-hero-stat-num">$340M</div>
+            <div class="tw-sol-hero-stat-label">In association funds under our financial oversight</div>
+          </div>
+          <div>
+            <div class="tw-sol-hero-stat-num gold">15th</div>
+            <div class="tw-sol-hero-stat-label">Of each month — statements delivered to your board</div>
+          </div>
+          <div>
+            <div class="tw-sol-hero-stat-num">2 / 2</div>
+            <div class="tw-sol-hero-stat-label">Approver rule: all invoices over $3,000 require executive sign-off before payment</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tw-sol-hero-side">
+        <div style="padding:30px 30px 24px">
+          <div style="display:flex;gap:18px;align-items:center;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--tw-border)">
+            <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--tw-teal) 0%,var(--tw-teal-700) 100%);color:var(--tw-cream);display:flex;align-items:center;justify-content:center;font-family:var(--tw-font-heading);font-weight:800;font-size:28px;letter-spacing:-0.02em;flex-shrink:0">RH</div>
+            <div>
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.16em;color:var(--tw-teal);margin-bottom:4px">Your Controller</div>
+              <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:22px;color:var(--tw-dark);letter-spacing:-0.01em;line-height:1.15">Rachel Halverson, <span style="color:var(--tw-fg-muted);font-weight:600;font-size:15px">MBA, CPA</span></div>
+              <div style="font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-muted);margin-top:4px">Director of Association Finance &middot; 14 years at Tidewater</div>
+            </div>
+          </div>
+          <p style="font-family:var(--tw-font-heading);font-weight:300;font-style:italic;font-size:17px;line-height:1.45;color:var(--tw-dark);margin:0 0 18px;letter-spacing:-0.005em">
+            &ldquo;Boards switch to us when they realize the spreadsheet their treasurer built in 2014 is the only thing keeping the lights on.&rdquo;
+          </p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <div style="padding:12px 14px;background:var(--tw-warm-100);border-radius:8px;border:1px solid var(--tw-border)">
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:9.5px;text-transform:uppercase;letter-spacing:0.14em;color:var(--tw-fg-muted);margin-bottom:4px">Team</div>
+              <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:18px;color:var(--tw-dark);letter-spacing:-0.01em">7+ staff</div>
+              <div style="font-family:var(--tw-font-body);font-size:11.5px;color:var(--tw-fg-muted);margin-top:2px">1 CPA, accounting staff &amp; A/R lead</div>
+            </div>
+            <div style="padding:12px 14px;background:var(--tw-warm-100);border-radius:8px;border:1px solid var(--tw-border)">
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:9.5px;text-transform:uppercase;letter-spacing:0.14em;color:var(--tw-fg-muted);margin-bottom:4px">Credentials</div>
+              <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:18px;color:var(--tw-dark);letter-spacing:-0.01em">AICPA</div>
+              <div style="font-family:var(--tw-font-body);font-size:11.5px;color:var(--tw-fg-muted);margin-top:2px">Maryland Society of CPAs &middot; CAI member</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Deliverables -->
+  <section class="tw-section tw-section-cream">
+    <div class="tw-container-wide">
+      <div class="tw-section-head" style="text-align:center;max-width:760px;margin:0 auto">
+        <div class="tw-eyebrow">What&rsquo;s Included</div>
+        <h2 class="tw-section-title">A full finance department, <em>without the headcount.</em></h2>
+        <p class="tw-section-lede">Every deliverable a professional HOA finance function should produce &mdash; on a cadence your board can rely on.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px">
+
+        <!-- Monthly -->
+        <div style="background:var(--tw-cream);border:1px solid var(--tw-border);border-radius:12px;padding:30px 28px 26px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <div style="width:34px;height:34px;border-radius:8px;background:var(--tw-teal-50);color:var(--tw-teal);display:flex;align-items:center;justify-content:center;font-family:var(--tw-font-heading);font-weight:800;font-size:13px">M</div>
+            <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--tw-teal)">Monthly</div>
+          </div>
+          <h3 style="font-family:var(--tw-font-heading);font-weight:800;font-size:20px;line-height:1.2;color:var(--tw-dark);margin:0 0 22px;letter-spacing:-0.01em">Books that arrive on schedule, every month.</h3>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column">
+            <li style="padding:14px 0;border-top:1px solid var(--tw-divider)">
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:14.5px;color:var(--tw-dark);margin-bottom:4px">Bank reconciliation</div>
+              <div style="font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-muted);line-height:1.5">Operating + reserve, reconciled monthly once bank statements are received — published by the 15th.</div>
+            </li>
+            <li style="padding:14px 0;border-top:1px solid var(--tw-divider)">
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:14.5px;color:var(--tw-dark);margin-bottom:4px">Monthly financial statement</div>
+              <div style="font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-muted);line-height:1.5">Balance sheet, income statement, budget-vs-actual, reserve schedule.</div>
+            </li>
+            <li style="padding:14px 0;border-top:1px solid var(--tw-divider)">
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:14.5px;color:var(--tw-dark);margin-bottom:4px">A/R aging report</div>
+              <div style="font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-muted);line-height:1.5">Delinquencies by bucket, with collection status and recommended next step.</div>
+            </li>
+            <li style="padding:14px 0;border-top:1px solid var(--tw-divider)">
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:14.5px;color:var(--tw-dark);margin-bottom:4px">Vendor payment ledger</div>
+              <div style="font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-muted);line-height:1.5">Every invoice tracked in StrongRoom; invoices over $3,000 require dual approval before payment.</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Quarterly -->
+        <div style="background:var(--tw-cream);border:1px solid var(--tw-border);border-radius:12px;padding:30px 28px 26px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <div style="width:34px;height:34px;border-radius:8px;background:rgba(191,172,95,0.18);color:#8a7a3d;display:flex;align-items:center;justify-content:center;font-family:var(--tw-font-heading);font-weight:800;font-size:13px">Q</div>
+            <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:#8a7a3d">Quarterly</div>
+          </div>
+          <h3 style="font-family:var(--tw-font-heading);font-weight:800;font-size:20px;line-height:1.2;color:var(--tw-dark);margin:0 0 22px;letter-spacing:-0.01em">Strategic financial readouts, not just numbers.</h3>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column">
+            <li style="padding:14px 0;border-top:1px solid var(--tw-divider)">
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:14.5px;color:var(--tw-dark);margin-bottom:4px">Cash-flow forecast</div>
+              <div style="font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-muted);line-height:1.5">90-day rolling forecast for operating, with assessment cycle &amp; vendor cadence.</div>
+            </li>
+            <li style="padding:14px 0;border-top:1px solid var(--tw-divider)">
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:14.5px;color:var(--tw-dark);margin-bottom:4px">Variance memo</div>
+              <div style="font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-muted);line-height:1.5">Where the budget is off, why, and what the board should consider doing about it.</div>
+            </li>
+            <li style="padding:14px 0;border-top:1px solid var(--tw-divider)">
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:14.5px;color:var(--tw-dark);margin-bottom:4px">Reserve funding ratio</div>
+              <div style="font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-muted);line-height:1.5">Tracked against your reserve study target, with funding-level guidance.</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Annual -->
+        <div style="background:var(--tw-cream);border:1px solid var(--tw-border);border-radius:12px;padding:30px 28px 26px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <div style="width:34px;height:34px;border-radius:8px;background:rgba(100,125,87,0.18);color:var(--tw-sage);display:flex;align-items:center;justify-content:center;font-family:var(--tw-font-heading);font-weight:800;font-size:13px">A</div>
+            <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--tw-sage)">Annual</div>
+          </div>
+          <h3 style="font-family:var(--tw-font-heading);font-weight:800;font-size:20px;line-height:1.2;color:var(--tw-dark);margin:0 0 22px;letter-spacing:-0.01em">The work most self-managed boards put off.</h3>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column">
+            <li style="padding:14px 0;border-top:1px solid var(--tw-divider)">
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:14.5px;color:var(--tw-dark);margin-bottom:4px">Annual budget package</div>
+              <div style="font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-muted);line-height:1.5">Bottom-up budget with line-item justification &amp; assessment recommendation.</div>
+            </li>
+            <li style="padding:14px 0;border-top:1px solid var(--tw-divider)">
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:14.5px;color:var(--tw-dark);margin-bottom:4px">Audit support</div>
+              <div style="font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-muted);line-height:1.5">Workpapers, schedules, and reconciliations prepared for your independent CPA.</div>
+            </li>
+            <li style="padding:14px 0;border-top:1px solid var(--tw-divider)">
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:14.5px;color:var(--tw-dark);margin-bottom:4px">Tax filings</div>
+              <div style="font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-muted);line-height:1.5">1120-H or 1120 prep coordination with your tax preparer.</div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Controls -->
+  <section class="tw-section tw-sol-warnings">
+    <div class="tw-container-wide">
+      <div class="tw-section-head" style="text-align:left;max-width:760px;margin:0 0 12px">
+        <div class="tw-eyebrow">The Controls</div>
+        <h2 class="tw-section-title" style="margin:10px 0 14px">Embezzlement-resistant by design.</h2>
+        <p class="tw-section-lede">Boards consistently cite financial mismanagement as the #1 reason they switch companies. Here&rsquo;s how we make sure that conversation never starts about us.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:32px">
+        <div style="background:var(--tw-cream);border:1px solid var(--tw-border);border-radius:12px;padding:24px 26px;border-left:3px solid var(--tw-teal)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <div style="font-family:var(--tw-font-mono);font-size:11.5px;font-weight:700;letter-spacing:0.06em;color:var(--tw-teal);padding:3px 8px;background:var(--tw-teal-50);border-radius:4px">Control 01</div>
+          </div>
+          <h3 style="font-family:var(--tw-font-heading);font-weight:800;font-size:18px;color:var(--tw-dark);margin:0 0 8px;letter-spacing:-0.01em;line-height:1.25">Two-signer rule on invoices over $3,000</h3>
+          <p style="font-family:var(--tw-font-body);font-size:14.5px;color:var(--tw-fg-muted);margin:0;line-height:1.55">Every vendor payment over $3,000 requires two approvers &mdash; one from our finance team, one from your board. No exceptions, no override.</p>
+        </div>
+        <div style="background:var(--tw-cream);border:1px solid var(--tw-border);border-radius:12px;padding:24px 26px;border-left:3px solid var(--tw-teal)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <div style="font-family:var(--tw-font-mono);font-size:11.5px;font-weight:700;letter-spacing:0.06em;color:var(--tw-teal);padding:3px 8px;background:var(--tw-teal-50);border-radius:4px">Control 02</div>
+          </div>
+          <h3 style="font-family:var(--tw-font-heading);font-weight:800;font-size:18px;color:var(--tw-dark);margin:0 0 8px;letter-spacing:-0.01em;line-height:1.25">Separation of duties</h3>
+          <p style="font-family:var(--tw-font-body);font-size:14.5px;color:var(--tw-fg-muted);margin:0;line-height:1.55">The team member who reconciles your bank accounts is not the team member who issues payments. AICPA-recommended baseline.</p>
+        </div>
+        <div style="background:var(--tw-cream);border:1px solid var(--tw-border);border-radius:12px;padding:24px 26px;border-left:3px solid var(--tw-teal)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <div style="font-family:var(--tw-font-mono);font-size:11.5px;font-weight:700;letter-spacing:0.06em;color:var(--tw-teal);padding:3px 8px;background:var(--tw-teal-50);border-radius:4px">Control 03</div>
+          </div>
+          <h3 style="font-family:var(--tw-font-heading);font-weight:800;font-size:18px;color:var(--tw-dark);margin:0 0 8px;letter-spacing:-0.01em;line-height:1.25">StrongRoom invoice portal</h3>
+          <p style="font-family:var(--tw-font-body);font-size:14.5px;color:var(--tw-fg-muted);margin:0;line-height:1.55">Every invoice, every approval, every audit trail in one searchable system. The board sees it in real-time, not after the fact.</p>
+        </div>
+        <div style="background:var(--tw-cream);border:1px solid var(--tw-border);border-radius:12px;padding:24px 26px;border-left:3px solid var(--tw-teal)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <div style="font-family:var(--tw-font-mono);font-size:11.5px;font-weight:700;letter-spacing:0.06em;color:var(--tw-teal);padding:3px 8px;background:var(--tw-teal-50);border-radius:4px">Control 04</div>
+          </div>
+          <h3 style="font-family:var(--tw-font-heading);font-weight:800;font-size:18px;color:var(--tw-dark);margin:0 0 8px;letter-spacing:-0.01em;line-height:1.25">Annual independent audit</h3>
+          <p style="font-family:var(--tw-font-body);font-size:14.5px;color:var(--tw-fg-muted);margin:0;line-height:1.55">For associations that elect an annual audit, a CPA firm with no ties to Tidewater does the work. We prepare workpapers; they verify. Associations choose whether to conduct an audit based on their bylaws and lender requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reserve Explainer -->
+  <section id="reserve" class="tw-section tw-sol-compare-section">
+    <div class="tw-container-wide">
+      <div style="display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:center">
+        <div>
+          <div class="tw-eyebrow">Reserves, Explained</div>
+          <h2 class="tw-section-title" style="margin:10px 0 18px">
+            The single number every board should know: <em>your funding ratio.</em>
+          </h2>
+          <p class="tw-section-lede" style="margin:0 0 22px">
+            The reserve funding ratio tells you whether your association is on track to cover its next wave of major repairs &mdash; roofs, siding, paving, mechanical, exterior paint. Without a current reserve study and a plan to fund it, boards are guessing.
+          </p>
+          <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:10px">
+            <li style="font-family:var(--tw-font-body);font-size:14.5px;color:var(--tw-dark);display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>We track your reserve funding ratio monthly and flag underfunding early &mdash; so your board knows where you stand before voting on assessments.</span>
+            </li>
+            <li style="font-family:var(--tw-font-body);font-size:14.5px;color:var(--tw-dark);display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Funding-level recommendations come with <strong style="font-weight:600">clear budget impact</strong> so boards can weigh the tradeoffs before setting assessments.</span>
+            </li>
+            <li style="font-family:var(--tw-font-body);font-size:14.5px;color:var(--tw-dark);display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--tw-teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>We insisted on full reserve funding for our communities before Maryland law required it. Your long-term financial health isn&rsquo;t optional to us.</span>
+            </li>
+          </ul>
+          <a href="/request-a-proposal" class="tw-btn tw-btn-primary">Get a financial-only quote &rarr;</a>
+        </div>
+
+        <!-- Funding level diagram -->
+        <div style="background:var(--tw-cream);border:1px solid var(--tw-border);border-radius:14px;padding:28px 28px 24px;box-shadow:0 14px 36px rgba(23,35,37,.08)">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">
+            <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--tw-fg-muted)">Reserve Funding Ratio</div>
+            <div style="font-family:var(--tw-font-mono);font-size:10.5px;color:var(--tw-fg-subtle);letter-spacing:0.04em">WHERE BOARDS SIT</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="background:#F8E5DE;border:1px solid rgba(0,0,0,0.05);border-radius:10px;padding:14px 16px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px">
+                <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:14.5px;color:#7a3318">Critically underfunded</div>
+                <div style="font-family:var(--tw-font-mono);font-size:11.5px;font-weight:700;color:#7a3318;letter-spacing:0.04em">0&ndash;30%</div>
+              </div>
+              <div style="height:6px;background:rgba(255,255,255,0.5);border-radius:999px;overflow:hidden;margin-bottom:8px">
+                <div style="height:100%;width:15%;background:#C75B36;border-radius:999px"></div>
+              </div>
+              <div style="font-family:var(--tw-font-body);font-size:12.5px;color:#7a3318;line-height:1.45;opacity:0.85">Special assessments highly likely within 5 years. Most lenders flag this in resale packages.</div>
+            </div>
+            <div style="background:#FBF1D8;border:1px solid rgba(0,0,0,0.05);border-radius:10px;padding:14px 16px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px">
+                <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:14.5px;color:#7a5e1d">Underfunded</div>
+                <div style="font-family:var(--tw-font-mono);font-size:11.5px;font-weight:700;color:#7a5e1d;letter-spacing:0.04em">30&ndash;70%</div>
+              </div>
+              <div style="height:6px;background:rgba(255,255,255,0.5);border-radius:999px;overflow:hidden;margin-bottom:8px">
+                <div style="height:100%;width:50%;background:#C9A248;border-radius:999px"></div>
+              </div>
+              <div style="font-family:var(--tw-font-body);font-size:12.5px;color:#7a5e1d;line-height:1.45;opacity:0.85">Where most self-managed communities sit. Boards live one major repair away from a difficult decision.</div>
+            </div>
+            <div style="background:#E0EBE3;border:1px solid rgba(0,0,0,0.05);border-radius:10px;padding:14px 16px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px">
+                <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:14.5px;color:#3d4c33">Fully funded</div>
+                <div style="font-family:var(--tw-font-mono);font-size:11.5px;font-weight:700;color:#3d4c33;letter-spacing:0.04em">70&ndash;100%</div>
+              </div>
+              <div style="height:6px;background:rgba(255,255,255,0.5);border-radius:999px;overflow:hidden;margin-bottom:8px">
+                <div style="height:100%;width:85%;background:var(--tw-sage);border-radius:999px"></div>
+              </div>
+              <div style="font-family:var(--tw-font-body);font-size:12.5px;color:#3d4c33;line-height:1.45;opacity:0.85">Industry-standard target. Reserves match projected component replacement cost for the next 30 years.</div>
+            </div>
+            <div style="background:rgba(58,146,166,0.12);border:1px solid rgba(0,0,0,0.05);border-radius:10px;padding:14px 16px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px">
+                <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:14.5px;color:var(--tw-teal-700)">Strongly funded</div>
+                <div style="font-family:var(--tw-font-mono);font-size:11.5px;font-weight:700;color:var(--tw-teal-700);letter-spacing:0.04em">100%+</div>
+              </div>
+              <div style="height:6px;background:rgba(255,255,255,0.5);border-radius:999px;overflow:hidden;margin-bottom:8px">
+                <div style="height:100%;width:100%;background:var(--tw-teal);border-radius:999px"></div>
+              </div>
+              <div style="font-family:var(--tw-font-body);font-size:12.5px;color:var(--tw-teal-700);line-height:1.45;opacity:0.85">Cushion for inflation and surprise repairs. Resale values reflect it; lenders quote it back.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tier Compare -->
+  <section class="tw-section tw-section-cream">
+    <div class="tw-container-wide">
+      <div class="tw-section-head" style="text-align:center;max-width:760px;margin:0 auto">
+        <div class="tw-eyebrow">Pick Your Lane</div>
+        <h2 class="tw-section-title">Financial-only or <em>full-service.</em> Both are first-class.</h2>
+        <p class="tw-section-lede">Many boards start with financial-only and graduate to full-service after a year or two. We&rsquo;ll never push you up the tier &mdash; the same Controller team works both.</p>
+      </div>
+
+      <div class="tw-sol-tier-compare">
+        <!-- Financial-only -->
+        <div class="tw-sol-tier-card is-featured">
+          <div class="tw-sol-tier-flag">This page</div>
+          <div class="tw-sol-tier-eyebrow">Service Tier &middot; Financial Only</div>
+          <h3 class="tw-sol-tier-name">Tidewater Financial</h3>
+          <p class="tw-sol-tier-tagline">A standalone finance department for boards who run their own operations.</p>
+          <div class="tw-sol-tier-best-for">
+            <div class="tw-sol-tier-best-for-label">Best for</div>
+            <div class="tw-sol-tier-best-for-text">Self-managed boards with strong volunteer ops but stretched-thin treasurers.</div>
+          </div>
+          <ul class="tw-sol-tier-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Monthly financial statements (by the 15th)</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>A/R, collections, &amp; lockbox setup</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Vendor invoice processing (2-signer rule)</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Annual budget package &amp; audit support</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>StrongRoom invoice &amp; document portal</span>
+            </li>
+          </ul>
+          <a href="/request-a-proposal" class="tw-btn tw-btn-primary tw-btn-block tw-btn-lg tw-sol-tier-cta">Get a financial-only quote &rarr;</a>
+        </div>
+
+        <!-- Full-Service -->
+        <div class="tw-sol-tier-card">
+          <div class="tw-sol-tier-eyebrow">Service Tier &middot; Full Service</div>
+          <h3 class="tw-sol-tier-name">Tidewater Full-Service Management</h3>
+          <p class="tw-sol-tier-tagline">Everything in Financial, plus the operational team &amp; named Community Association Manager.</p>
+          <div class="tw-sol-tier-best-for">
+            <div class="tw-sol-tier-best-for-label">Best for</div>
+            <div class="tw-sol-tier-best-for-text">Boards ready to step out of day-to-day operations entirely. 80+ units.</div>
+          </div>
+          <ul class="tw-sol-tier-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Everything in Financial-only, plus&hellip;</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Named Community Association Manager</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Board meetings &amp; minutes (as contracted)</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Vendor dispatch, sourcing &amp; oversight</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Covenant enforcement &amp; ARC workflow</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Resident portal &amp; ticket triage</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Maintenance trade integration (Tidewater Maintenance)</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>24/7 emergency dispatch</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Newsletter, communications, election support</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Annual strategic review</span>
+            </li>
+          </ul>
+          <a href="/hoa-management" class="tw-btn tw-btn-outline tw-btn-block tw-btn-lg tw-sol-tier-cta">Compare full-service &rarr;</a>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:36px;font-family:var(--tw-font-body);font-size:14.5px;color:var(--tw-fg-muted);line-height:1.6">
+        Not sure which tier fits? Try the <a href="/request-a-proposal" style="color:var(--tw-teal-500);text-decoration:underline;text-underline-offset:3px;font-weight:600">2-question fit check</a> on the contact page &mdash; it takes 30 seconds.
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="tw-section tw-sol-faq-section">
+    <div class="tw-container-wide">
+      <div class="tw-sol-faq-grid">
+        <div class="tw-sol-faq-head">
+          <div class="tw-eyebrow">Board Questions</div>
+          <h2>The financial-only <em>questions</em> we get most.</h2>
+          <p>Pulled from board interviews during the first proposal call.</p>
+          <a href="/request-a-proposal" class="tw-btn tw-btn-primary">Ask your own question &rarr;</a>
+        </div>
+        <FaqAccordion items={faqItems} defaultOpen={0} />
+      </div>
+    </div>
+  </section>
+
+  <FromTheBlog client:load categories={['hoa-mgmt', 'governance']} />
+  <CTA />
+  <Footer />
+</BaseLayout>

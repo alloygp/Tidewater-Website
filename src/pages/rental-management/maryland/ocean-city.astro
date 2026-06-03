@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Topbar from '../../../components/Topbar.astro';
+import Header from '../../../components/Header.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Footer from '../../../components/Footer.astro';
+import CTA from '../../../components/CTA.astro';
+import RentalGeo, { GEO_DATA_OCEAN_CITY as geo } from '../../../components/RentalGeo.jsx';
+import { breadcrumbSchema, serviceSchema } from '../../../lib/schema';
+import { SITE } from '../../../config/site';
+
+const pageUrl = `${SITE.url}/rental-management/maryland/ocean-city`;
+
+const schemas = [
+  serviceSchema({
+    name: 'Rental Property Management — Ocean City, MD',
+    description: geo.schemaDesc,
+    url: pageUrl,
+    areaServed: 'Ocean City, Maryland',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Rental Management', url: SITE.url + '/rental-management' },
+    { name: 'Maryland', url: SITE.url + '/rental-management/maryland' },
+    { name: 'Ocean City', url: pageUrl },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Ocean City MD Rental Management | Tidewater"
+  description="Rental property management in Ocean City, MD — condo and single-family rentals on the barrier island and West OC. Tidewater\'s local office. Flat fee."
+  ogType="website"
+  pageSchema={schemas}
+  pageStylesheet="styles-geo.css"
+>
+  <Topbar />
+  <Header activeNav="rental" />
+  <Breadcrumb crumbs={[
+    { label: 'Rental Management', href: '/rental-management' },
+    { label: 'Maryland', href: '/rental-management/maryland' },
+    { label: 'Ocean City' },
+  ]} />
+  <RentalGeo geo={geo} client:load />
+  <CTA />
+  <Footer />
+</BaseLayout>

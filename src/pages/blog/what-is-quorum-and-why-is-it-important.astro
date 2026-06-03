@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Topbar from '../../components/Topbar.astro';
+import Header from '../../components/Header.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Footer from '../../components/Footer.astro';
+import PostQuorum from '../../components/PostQuorum.jsx';
+import { articleSchema, faqSchema, breadcrumbSchema } from '../../lib/schema';
+import { SITE } from '../../config/site';
+
+const pageUrl = `${SITE.url}/blog/what-is-quorum-and-why-is-it-important`;
+const headline = 'What Is a Quorum? Definition, Requirements, and Why It Matters for Your Board';
+const description = "What is a quorum for HOA meetings, what happens when quorum isn\'t met, and how proxy votes affect the count. Quorum rules and proxy voting explained.";
+
+const pageSchema = [
+  articleSchema({
+    headline,
+    description,
+    url: pageUrl,
+    datePublished: '2026-05-14',
+    about: ['quorum', 'HOA board meetings', 'board governance', 'annual meetings', 'proxy voting'],
+  }),
+  faqSchema([
+    {
+      q: 'What is the quorum for a board meeting?',
+      a: "A quorum for a board meeting is typically a majority of the seated directors. For a five-member board, that means three directors must be present; for a seven-member board, four. The exact number is defined in the organization\'s bylaws. If your association has formally adopted Robert\'s Rules of Order as a parliamentary guide, it suggests a majority of the full board as the default, but the bylaws are always the governing authority.",
+    },
+    {
+      q: 'Can you hold a board meeting without a quorum?',
+      a: 'You can hold the meeting, but you cannot conduct official business or take binding votes. The only actions typically permitted without quorum are adjournment, recess, or measures to obtain a quorum. Any substantive votes taken without a quorum present are generally considered invalid and can be challenged.',
+    },
+    {
+      q: "What happens if an HOA annual meeting doesn\'t reach quorum?",
+      a: 'If quorum is not met at the annual meeting, the association cannot elect directors or vote on business items that require membership approval. The board typically adjourns and reschedules the meeting. Many bylaws allow a reduced quorum threshold at an adjourned meeting. In states that permit proxy voting, actively soliciting proxies before the rescheduled date is the most common and effective remedy.',
+    },
+    {
+      q: 'Do proxies count toward quorum at an HOA meeting?',
+      a: 'That depends on your state. Many states, including Maryland and Virginia, allow proxies to count toward quorum at membership meetings such as annual meetings and special meetings, unless the governing documents prohibit them. However, not every state allows proxy voting, and those that do may impose specific requirements around execution and validity. Boards should review their state statute and governing documents to confirm. Proxies typically do not apply to board of directors meetings.',
+    },
+  ]),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Blog', url: SITE.url + '/blog' },
+    { name: headline, url: pageUrl },
+  ]),
+];
+---
+
+<BaseLayout
+  title="What Is a Quorum and Why Does It Matter? | Tidewater"
+  description={description}
+  ogType="article"
+  pageSchema={pageSchema}
+  pageStylesheet="styles-blog.css"
+>
+  <Topbar variant="homeowner" />
+  <Header activeNav="blog" />
+  <Breadcrumb crumbs={[
+    { label: 'Blog', href: '/blog' },
+    { label: 'What Is a Quorum?' },
+  ]} />
+  <PostQuorum client:load />
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,56 @@
+---
+const values = [
+  {
+    n: '01',
+    name: 'Integrity & Accountability',
+    claim: '"We practice integrity and accountability in all that we do."',
+    proof: 'When we make a mistake, we own it — including covering association costs out of pocket when we\'re not contractually obligated to. Ask any board that\'s been with us a decade.',
+  },
+  {
+    n: '02',
+    name: 'Innovation & Adaptability',
+    claim: '"We innovate and adapt to client needs, delivering reliable and industry-leading service."',
+    proof: 'CINC Systems for HOA, AppFolio for rental, Microsoft Copilot at every desk, a proprietary in-house vendor compliance app. We invest in tooling so the work shows up faster.',
+  },
+  {
+    n: '03',
+    name: 'Support, Education & Clarity',
+    claim: '"We are a resource that provides support, education, and clear expectations."',
+    proof: "Board education materials, governance guidance, and communication that skips the jargon. Volunteer board members didn\'t sign up to read law journals — we translate so you can decide with confidence.",
+  },
+  {
+    n: '04',
+    name: 'Communication Excellence',
+    claim: '"We emphasize honest, respectful, and timely communication."',
+    proof: 'Next-business-day response. 20-minute callback after hours. Monthly management reports on the 1st. Every public review answered same or next day. Standards, not slogans.',
+  },
+  {
+    n: '05',
+    name: 'Trust, Teamwork & Growth',
+    claim: '"We create a culture of trust, teamwork, and growth."',
+    proof: 'Tidewater pays for every CAI designation upfront — for managers, administrators, and accountants. Monthly BBQs. Open-door ownership. Long tenures. The culture inside is the culture clients meet.',
+  },
+];
+---
+<section class="tw-section tw-section-cream tw-values" id="values">
+  <div class="tw-container">
+    <div class="tw-section-head-left">
+      <div class="tw-eyebrow">Our Core Values</div>
+      <h2 class="tw-section-title">The way we work &mdash; <em>everyday.</em></h2>
+      <p class="tw-section-lede">Five values, stated plainly, with the proof behind each one. We use them on Mondays, in budget meetings, and at 11pm on a Sunday when a pipe lets go.</p>
+    </div>
+
+    <ol class="tw-values-list">
+      {values.map((v) => (
+        <li class="tw-values-item">
+          <div class="tw-values-num">{v.n}</div>
+          <div class="tw-values-body">
+            <h3 class="tw-values-name">{v.name}</h3>
+            <p class="tw-values-claim">{v.claim}</p>
+            <p class="tw-values-proof">{v.proof}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

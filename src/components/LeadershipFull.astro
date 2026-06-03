@@ -1,0 +1,69 @@
+---
+const groups = [
+  {
+    group: 'Ownership',
+    blurb: 'Two generations. Same building. Open door.',
+    people: [
+      { initials: 'SG', name: 'Stanley Greenberg', creds: 'CEO & Founder', tenure: 'Founded 1989', body: 'Founded Tidewater in 1989 through connections built during his career with the City of Baltimore. Started with commercial condos and developer clients; has overseen the firm\'s growth into a regional, full-service operation across six states.' },
+      { initials: 'MG', name: 'Marc Greenberg', creds: 'CMCA · AMS · PCAM', tenure: 'President', body: 'Stanley\'s son. Holds all three primary CAI management designations — including the PCAM, the industry\'s highest individual credential. Brought the company\'s focus to existing-community HOA management, accelerating growth.' },
+    ],
+  },
+  {
+    group: 'Operations & Quality',
+    blurb: 'The team that keeps standards visible across the portfolio.',
+    people: [
+      { initials: 'GW', name: 'Gail Windisch', creds: 'CMCA · AMS · PCAM', tenure: 'Senior Director of Operations · 20+ yrs', body: 'Oversees marketing, business development, and general office operations across all locations. Served on the CAI Chesapeake Chapter board from 2019 through two consecutive terms: Secretary (2019), President-Elect (2020), President (2021); re-elected — Secretary (2022), Vice President (2023), Member at Large (2024). Currently sits on the CAI National Managers Council.' },
+      { initials: 'JJ', name: 'Joe Jordan', creds: 'CMCA · AMS · PCAM', tenure: 'Director of Quality Assurance', body: 'Leads the QA and Compliance team. Former CAI Chesapeake Chapter President (2012). Background includes Senior Project Manager experience at a leading engineering firm — a structural mind for a structural function.' },
+      { initials: 'SS', name: 'Stacey Schaffer', creds: 'SHRM-CP', tenure: 'Director of Human Resources', body: 'SHRM-certified HR professional. Leads company-wide HR standards, expectations, and staff development. Formal HR leadership at a 75-person firm is uncommon and intentional.' },
+    ],
+  },
+  {
+    group: 'Regional Direction',
+    blurb: 'The people boards actually meet.',
+    people: [
+      { initials: 'KC', name: 'Kate Cornell', creds: 'CMCA · 15+ years industry experience', tenure: 'Baltimore Metro Regional Director', body: 'Oversees direction and professional development of the Community Association Management team in the Owings Mills office. Co-leads the developer management program.' },
+      { initials: 'DG', name: 'Don Gentry', creds: 'CMCA · AMS · PCAM', tenure: 'Delmarva Regional Director', body: '20+ years in customer service and real estate. Prior background as a hotel General Manager, building engineer, and government contract specialist. Oversees the Eastern Shore, Ocean City, and Delaware portfolio.' },
+      { initials: 'CB', name: 'Cody Bishop', creds: 'Licensed Broker', tenure: 'Director of Rental Mgmt · Realty', body: 'Oversees operations and growth of both the rental management and Realty divisions. Primary point of contact for new rental management inquiries; handles investment property sales for rental clients exiting the market.' },
+    ],
+  },
+  {
+    group: 'Finance, Collections & Growth',
+    blurb: '',
+    people: [
+      { initials: 'RB', name: 'Rick Bowling', creds: 'MBA · CPA', tenure: 'Controller', body: 'Focuses on company finance administration, streamlining accounting processes and procedures. MBA and CPA credentials bring a level of financial rigor uncommon for a firm of this size.' },
+      { initials: 'JO', name: 'Jessica Ogle', creds: 'CMCA', tenure: 'Director of Association Financial Mgmt · 20+ yrs', body: 'Oversees the full association financial management team. Her tenure means the financial function is led by someone who has processed virtually every scenario a community association can face financially.' },
+      { initials: 'RS', name: 'Reesa Szikman', creds: 'Director of Collections', tenure: 'Collections', body: 'Oversees Tidewater\'s collections department — past-due account management, coordination with collections attorneys, and management of front-foot benefit company relationships.' },
+    ],
+  },
+];
+---
+<section class="tw-section tw-section-cream tw-leadfull">
+  <div class="tw-container">
+    {groups.map((g, gi) => (
+      <div class="tw-leadfull-group">
+        <div class="tw-leadfull-grouphead">
+          <div class="tw-leadfull-grouplabel">{`No. 0${gi + 1}`}</div>
+          <div>
+            <h2 class="tw-leadfull-grouptitle">{g.group}</h2>
+            <p class="tw-leadfull-groupblurb">{g.blurb}</p>
+          </div>
+        </div>
+        <div class="tw-leadfull-grid">
+          {g.people.map((p) => (
+            <article class="tw-leadfull-card">
+              <div class="tw-leadfull-portrait">
+                <span class="tw-leadfull-initials">{p.initials}</span>
+              </div>
+              <div class="tw-leadfull-meta">
+                <h3 class="tw-leadfull-name">{p.name}</h3>
+                <div class="tw-leadfull-creds">{p.creds}</div>
+                <div class="tw-leadfull-title">{p.tenure}</div>
+                <p class="tw-leadfull-body">{p.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

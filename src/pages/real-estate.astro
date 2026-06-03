@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Topbar from '../components/Topbar.astro';
+import Header from '../components/Header.astro';
+import RealtyHero from '../components/RealtyHero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import RealtyLifecycle from '../components/RealtyLifecycle.astro';
+import RealtyServices from '../components/RealtyServices.astro';
+import RealtyInsider from '../components/RealtyInsider.astro';
+import Mission from '../components/Mission.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import FromTheBlog from '../components/FromTheBlog.jsx';
+import { serviceSchema, breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../config/site';
+
+const pageUrl = `${SITE.url}/real-estate`;
+const pageDesc = "Family-owned brokerage covering Maryland & Delaware. Buying, selling, and investing in residential and investment properties.";
+
+const schemas = [
+  serviceSchema({ name: 'Tidewater Realty Group — Real Estate Services', description: pageDesc, url: pageUrl, areaServed: ['Maryland', 'Delaware'] }),
+  breadcrumbSchema([{ name: 'Home', url: SITE.url + '/' }, { name: 'Real Estate', url: pageUrl }]),
+];
+---
+<BaseLayout
+  title="Buy & Sell Investment Property | Tidewater Realty"
+  description={pageDesc}
+  bodyClass="tw-acc-gold"
+  pageStylesheet="styles-pages.css"
+  pageSchema={schemas}
+>
+  <Topbar variant="homeowner" />
+  <Header activeNav="realty" />
+  <Breadcrumb crumbs={[{ label: "Real Estate" }]} />
+  <RealtyHero />
+  <TrustBar variant="realty" />
+  <RealtyLifecycle />
+  <RealtyServices />
+  <RealtyInsider />
+  <Mission variant="realty" />
+  <Testimonials variant="realty" />
+  <!-- Community owner callout (#167) -->
+  <section style="background:var(--tw-cream);border-top:1px solid var(--tw-border);border-bottom:1px solid var(--tw-border);padding:48px 0">
+    <div class="tw-container" style="max-width:760px">
+      <div style="display:flex;align-items:flex-start;gap:20px">
+        <div style="flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--tw-gold);display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" style="width:18px;height:18px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <div style="font-family:var(--tw-font-heading);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:6px">For Community Residents</div>
+          <p style="font-family:var(--tw-font-body);font-size:1.05rem;font-weight:600;color:var(--tw-dark);margin:0 0 6px">Selling a home in a Tidewater-managed community?</p>
+          <p style="font-family:var(--tw-font-body);font-size:.95rem;color:var(--tw-fg-muted);margin:0">Ask us about our listing discount for homeowners in communities we manage. It's one of the quiet advantages of working with a firm that already knows your neighborhood.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <FromTheBlog client:load categories={['rental', 'solutions']} />
+  <CTA variant="realty" />
+  <Footer />
+</BaseLayout>

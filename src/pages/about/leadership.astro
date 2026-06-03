@@ -1,0 +1,47 @@
+---
+import AboutLayout from '../../layouts/AboutLayout.astro';
+import Topbar from '../../components/Topbar.astro';
+import Header from '../../components/Header.astro';
+import AboutHero from '../../components/AboutHero.astro';
+import LeadershipIntro from '../../components/LeadershipIntro.astro';
+import LeadershipFull from '../../components/LeadershipFull.astro';
+import CredentialsWall from '../../components/CredentialsWall.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { breadcrumbSchema } from '../../lib/schema';
+import { SITE } from '../../config/site';
+
+const schemas = [
+  breadcrumbSchema([{ name: 'Home', url: SITE.url + '/' }, { name: 'About', url: `${SITE.url}/about` }, { name: 'Leadership', url: `${SITE.url}/about/leadership` }]),
+];
+---
+<AboutLayout
+  title="Leadership — Tidewater Companies"
+  description="The Tidewater leadership team — two generations of ownership, 9 credentialed managers including 4 PCAM holders, 2 former CAI Chesapeake Chapter Presidents, directors across every region."
+  pageSchema={schemas}
+>
+  <Topbar variant="default" />
+  <Header activeNav="about" />
+  <Breadcrumb crumbs={[{ label: "About", href: "/about/" }, { label: "Leadership" }]} />
+  <AboutHero
+    eyebrow="Leadership at Tidewater"
+    titleHtml="The team boards <em>actually meet.</em>"
+    lede="Two generations of ownership. Nine credentialed managers — four PCAM holders among our directors, plus credentialed CAMs across the portfolio. Two former CAI Chesapeake Chapter Presidents. A Controller with an MBA and CPA. The people who run Tidewater are in the building, accessible, and on the phone."
+    image="/assets/hero-mission.jpg"
+    imageAlt="Tidewater leadership team — Owings Mills, Maryland"
+    datelineLeft="Owings Mills, MD"
+    datelineRight="Leadership Directory"
+    ledger={[
+      { num: '9', label: 'Credentialed managers — PCAM holders &amp; CAMs across the portfolio' },
+      { num: '2', label: 'Former CAI Chesapeake Chapter Presidents' },
+      { num: '20+', label: 'Years tenure for Senior Director of Operations' },
+      { num: '100%', label: 'CAI designations paid by the company' },
+    ]}
+  />
+  <LeadershipIntro />
+  <LeadershipFull />
+  <CredentialsWall />
+  <CTA />
+  <Footer />
+</AboutLayout>

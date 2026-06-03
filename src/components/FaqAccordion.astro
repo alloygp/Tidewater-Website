@@ -1,0 +1,43 @@
+---
+const { items, defaultOpen = 0 } = Astro.props;
+---
+<div class="tw-sol-faq-list">
+  {items.map((item, i) => {
+    const answerParagraphs = Array.isArray(item.a) ? item.a : [item.a];
+    return (
+      <details class="tw-sol-faq-item" open={i === defaultOpen}>
+        <summary class="tw-sol-faq-q">
+          <span class="tw-sol-faq-num">{String(i + 1).padStart(2, '0')}</span>
+          <span>{item.q}</span>
+          <span class="tw-sol-faq-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+          </span>
+        </summary>
+        <div class="tw-sol-faq-a">
+          <div class="tw-sol-faq-a-inner">
+            {answerParagraphs.map((para) => <p set:html={para} />)}
+          </div>
+        </div>
+      </details>
+    );
+  })}
+</div>
+
+<style is:global>
+  /* Remove the native <summary> disclosure triangle */
+  summary.tw-sol-faq-q { list-style: none; }
+  summary.tw-sol-faq-q::-webkit-details-marker { display: none; }
+
+  /* Open-state styles driven by the native [open] attribute instead of .is-open */
+  details.tw-sol-faq-item[open] { background: var(--tw-warm-100); }
+  details.tw-sol-faq-item[open] .tw-sol-faq-a { grid-template-rows: 1fr; }
+  details.tw-sol-faq-item[open] .tw-sol-faq-a-inner { padding-bottom: 22px; }
+  details.tw-sol-faq-item[open] .tw-sol-faq-toggle {
+    background: var(--tw-teal);
+    border-color: var(--tw-teal);
+    color: var(--tw-cream);
+    transform: rotate(45deg);
+  }
+</style>

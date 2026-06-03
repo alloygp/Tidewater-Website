@@ -1,0 +1,368 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Topbar from '../../../components/Topbar.astro';
+import Footer from '../../../components/Footer.astro';
+import CTA from '../../../components/CTA.astro';
+import FaqAccordion from '../../../components/FaqAccordion.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import { serviceSchema, breadcrumbSchema, faqSchema } from '../../../lib/schema';
+import { SITE } from '../../../config/site';
+
+const countyFaqs = [
+  { q: 'How is HOA management different in Anne Arundel County vs. other Maryland counties?', a: "Three things stand out: (1) Waterfront density — Annapolis, Edgewater, and Mayo have a high concentration of waterfront condo associations with master-policy and dock-management complications most Maryland counties don\'t face. (2) Master-planned scale — Crofton and Odenton have layered HOAs with sub-associations. (3) State capital regulatory access — Annapolis is the seat of state government. Tidewater\'s Anne Arundel team is sized for all three." },
+  { q: 'Do you serve all of Anne Arundel County?', a: 'Yes — from Linthicum and Glen Burnie in the north, to Annapolis and Severna Park in the center, down to Edgewater, Shady Side, and Deale in the south. Our regional manager covers the entire county on a Tuesday/Thursday on-site cadence.' },
+  { q: 'How quickly can you start managing our Anne Arundel community?', a: '4-5 weeks from signed proposal for self-managed transitions; 7 weeks when switching from another company. We run the transition on your behalf.' },
+  { q: "What\'s your fee structure for Anne Arundel HOAs?", a: 'Full-service runs $28-$42 per unit per month depending on community size, vendor count, meeting cadence, and complexity. Financial-only tier runs roughly 35-55% of that. We quote line-item with no hidden setup or transition fees.' },
+  { q: 'Can we talk to other Anne Arundel boards before signing?', a: "Always. We\'ll connect you with 3-5 board presidents from comparable Anne Arundel communities — same size, similar stage, similar issues. You call them, no script." },
+  { q: "What\'s your Anne Arundel office address?", a: 'Our headquarters is in Owings Mills (Baltimore County). Our Anne Arundel regional manager works on-site twice a week and from a satellite address in Severna Park. Main line: (443) 548-0191.' },
+];
+
+const schemas = [
+  serviceSchema({
+    name: 'HOA Management Anne Arundel County Maryland',
+    description: 'AAMC-accredited HOA and condo association management across Anne Arundel County, Maryland — Annapolis, Severna Park, Crofton, Pasadena, Glen Burnie, and Odenton.',
+    url: SITE.url + '/hoa-management/maryland/anne-arundel-county/',
+    areaServed: 'Anne Arundel County, Maryland',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'HOA Management', url: SITE.url + '/hoa-management/' },
+    { name: 'Maryland', url: SITE.url + '/hoa-management/maryland/' },
+    { name: 'Anne Arundel County', url: SITE.url + '/hoa-management/maryland/anne-arundel-county/' },
+  ]),
+  faqSchema(countyFaqs),
+];
+---
+<BaseLayout
+  title="HOA Management Anne Arundel County Maryland — Tidewater"
+  description="HOA and condo management in Anne Arundel County — Annapolis, Severna Park, Crofton, Pasadena, Glen Burnie, Odenton. AAMC-accredited regional manager."
+  pageSchema={schemas}
+>
+  <style is:global>
+    /* ensure React island styles reach DOM */
+  </style>
+  <Topbar variant="default" />
+  <Header activeNav="mgmt" />
+  <Breadcrumb crumbs={[
+    { label: 'HOA Management', href: '/hoa-management' },
+    { label: 'Maryland', href: '/hoa-management/maryland' },
+    { label: 'Anne Arundel County' },
+  ]} />
+
+  <!-- Hero -->
+  <section class="tw-geo-hero">
+    <div class="tw-geo-hero-bg"></div>
+    <div class="tw-geo-hero-paper"></div>
+    <div class="tw-geo-hero-grid">
+      <div class="tw-geo-hero-copy">
+        <h1 class="tw-geo-hero-title">
+          HOA management in <em>Anne Arundel County.</em>
+        </h1>
+        <p class="tw-geo-hero-lede">
+          From the Annapolis waterfront to the Severna Park corridor to Glen Burnie townhomes &mdash; we&rsquo;ve been managing Anne Arundel HOAs and condo associations for 30 years. Local manager, named &amp; PCAM-credentialed, who can be on-site within an hour.
+        </p>
+        <div class="tw-geo-hero-actions">
+          <a href="/request-a-proposal" class="tw-btn tw-btn-primary tw-btn-lg">Request a proposal &rarr;</a>
+          <a href="#communities" class="tw-btn tw-btn-ghost">See communities we manage &rarr;</a>
+        </div>
+        <div class="tw-geo-hero-stats">
+          <div>
+            <div class="tw-geo-hero-stat-num">157+</div>
+            <div class="tw-geo-hero-stat-label">Anne Arundel communities currently under management</div>
+          </div>
+          <div>
+            <div class="tw-geo-hero-stat-num gold">30 yrs</div>
+            <div class="tw-geo-hero-stat-label">Active in the county since 1995</div>
+          </div>
+          <div>
+            <div class="tw-geo-hero-stat-num">&lt; 1 hr</div>
+            <div class="tw-geo-hero-stat-label">On-site response time, county-wide</div>
+          </div>
+        </div>
+      </div>
+      <aside class="tw-geo-hero-side">
+        <div class="tw-geo-hero-side-eyebrow">In Anne Arundel</div>
+        <h3>Where we manage</h3>
+        <!-- Anne Arundel county SVG map -->
+        <svg viewBox="0 0 360 290" class="tw-geo-map" xmlns="http://www.w3.org/2000/svg" aria-label="Map of Anne Arundel County">
+          <!-- Chesapeake / waterfront on the right edge -->
+          <path d="M295 85 Q320 130 320 180 Q315 220 305 240 L360 240 L360 50 L320 50 Z" fill="rgba(58,146,166,0.15)"/>
+          <!-- County shape -->
+          <path d="M40 50 L160 40 L240 55 L295 85 L320 145 L305 215 L260 250 L195 245 L130 220 L75 195 L45 135 Z" class="tw-geo-map-county served" style="cursor:default">
+            <title>Anne Arundel County</title>
+          </path>
+          <!-- Glen Burnie -->
+          <circle cx="130" cy="70" r="4.5" fill="var(--tw-teal)" stroke="var(--tw-cream)" stroke-width="1.5"><title>Glen Burnie</title></circle>
+          <text x="140" y="74" fill="rgba(254,252,248,0.85)" font-family="var(--tw-font-heading)" font-weight="600" font-size="10" letter-spacing="0.02em">Glen Burnie</text>
+          <!-- Pasadena -->
+          <circle cx="210" cy="80" r="4.5" fill="var(--tw-teal)" stroke="var(--tw-cream)" stroke-width="1.5"><title>Pasadena</title></circle>
+          <text x="220" y="84" fill="rgba(254,252,248,0.85)" font-family="var(--tw-font-heading)" font-weight="600" font-size="10" letter-spacing="0.02em">Pasadena</text>
+          <!-- Severna Park -->
+          <circle cx="240" cy="130" r="4.5" fill="var(--tw-teal)" stroke="var(--tw-cream)" stroke-width="1.5"><title>Severna Park</title></circle>
+          <text x="250" y="134" fill="rgba(254,252,248,0.85)" font-family="var(--tw-font-heading)" font-weight="600" font-size="10" letter-spacing="0.02em">Severna Park</text>
+          <!-- Annapolis (HQ dot) -->
+          <circle class="tw-geo-map-dot-pulse" cx="270" cy="200" r="8"/>
+          <circle cx="270" cy="200" r="6" fill="var(--tw-gold)" stroke="var(--tw-cream)" stroke-width="2"><title>Annapolis</title></circle>
+          <text x="280" y="204" fill="rgba(254,252,248,0.85)" font-family="var(--tw-font-heading)" font-weight="800" font-size="11" letter-spacing="0.02em">Annapolis</text>
+          <!-- Crofton -->
+          <circle cx="100" cy="170" r="4.5" fill="var(--tw-teal)" stroke="var(--tw-cream)" stroke-width="1.5"><title>Crofton</title></circle>
+          <text x="110" y="174" fill="rgba(254,252,248,0.85)" font-family="var(--tw-font-heading)" font-weight="600" font-size="10" letter-spacing="0.02em">Crofton</text>
+          <!-- Odenton -->
+          <circle cx="80" cy="110" r="4.5" fill="var(--tw-teal)" stroke="var(--tw-cream)" stroke-width="1.5"><title>Odenton</title></circle>
+          <text x="90" y="114" fill="rgba(254,252,248,0.85)" font-family="var(--tw-font-heading)" font-weight="600" font-size="10" letter-spacing="0.02em">Odenton</text>
+        </svg>
+        <div class="tw-geo-map-legend">
+          <div class="tw-geo-map-legend-row">
+            <span class="tw-geo-map-legend-swatch served"></span>
+            Cities &amp; towns we serve
+          </div>
+          <div class="tw-geo-map-legend-row">
+            <span class="tw-geo-map-legend-swatch hq"></span>
+            County seat &middot; Annapolis
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Neighborhoods / cities served -->
+  <section class="tw-geo-section cream">
+    <div class="tw-container-wide">
+      <div class="tw-section-head" style="text-align:center;max-width:760px;margin:0 auto">
+        <div class="tw-eyebrow">Where We Manage</div>
+        <h2 class="tw-section-title">Anne Arundel cities &amp; towns, <em>by community count.</em></h2>
+        <p class="tw-section-lede">Most counties have one or two HOA-dense pockets. Anne Arundel has twelve. Here&rsquo;s where we&rsquo;re active.</p>
+      </div>
+      <div class="tw-geo-neighbors">
+        <a href="#" class="tw-geo-neighbor">
+          <div class="tw-geo-neighbor-name">Annapolis</div>
+          <div class="tw-geo-neighbor-meta">38 communities &middot; waterfront focus</div>
+          <span class="tw-geo-neighbor-tag">County seat</span>
+        </a>
+        <a href="#" class="tw-geo-neighbor">
+          <div class="tw-geo-neighbor-name">Severna Park</div>
+          <div class="tw-geo-neighbor-meta">24 communities &middot; single-family</div>
+        </a>
+        <a href="#" class="tw-geo-neighbor">
+          <div class="tw-geo-neighbor-name">Crofton</div>
+          <div class="tw-geo-neighbor-meta">19 communities &middot; planned</div>
+        </a>
+        <a href="#" class="tw-geo-neighbor">
+          <div class="tw-geo-neighbor-name">Pasadena</div>
+          <div class="tw-geo-neighbor-meta">22 communities &middot; mixed</div>
+        </a>
+        <a href="#" class="tw-geo-neighbor">
+          <div class="tw-geo-neighbor-name">Glen Burnie</div>
+          <div class="tw-geo-neighbor-meta">18 communities &middot; townhome dense</div>
+        </a>
+        <a href="#" class="tw-geo-neighbor">
+          <div class="tw-geo-neighbor-name">Odenton</div>
+          <div class="tw-geo-neighbor-meta">14 communities &middot; new construction</div>
+          <span class="tw-geo-neighbor-tag">Growing</span>
+        </a>
+        <a href="#" class="tw-geo-neighbor">
+          <div class="tw-geo-neighbor-name">Arnold</div>
+          <div class="tw-geo-neighbor-meta">8 communities &middot; single-family</div>
+        </a>
+        <a href="#" class="tw-geo-neighbor">
+          <div class="tw-geo-neighbor-name">Edgewater</div>
+          <div class="tw-geo-neighbor-meta">6 communities &middot; waterfront</div>
+        </a>
+        <a href="#" class="tw-geo-neighbor">
+          <div class="tw-geo-neighbor-name">Linthicum</div>
+          <div class="tw-geo-neighbor-meta">4 communities &middot; transit hub</div>
+        </a>
+        <a href="#" class="tw-geo-neighbor">
+          <div class="tw-geo-neighbor-name">Davidsonville</div>
+          <div class="tw-geo-neighbor-meta">3 communities &middot; rural HOA</div>
+        </a>
+        <a href="#" class="tw-geo-neighbor">
+          <div class="tw-geo-neighbor-name">Mayo</div>
+          <div class="tw-geo-neighbor-meta">3 communities &middot; waterfront</div>
+        </a>
+        <a href="#" class="tw-geo-neighbor">
+          <div class="tw-geo-neighbor-name">Shady Side</div>
+          <div class="tw-geo-neighbor-meta">2 communities &middot; seasonal</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local facts strip -->
+  <section class="tw-geo-section linen" style="padding:64px 0">
+    <div class="tw-container-wide">
+      <div class="tw-section-head-left" style="max-width:760px;margin:0 0 12px">
+        <div class="tw-eyebrow">By the Numbers</div>
+        <h2 class="tw-section-title" style="margin:10px 0 14px">The Anne Arundel HOA landscape, <em>in data.</em></h2>
+        <p class="tw-section-lede">Maryland&rsquo;s highest-density HOA county &mdash; and the most active CAI Chesapeake Chapter market.</p>
+      </div>
+      <div class="tw-geo-facts">
+        <div class="tw-geo-fact">
+          <div class="tw-geo-fact-label">HOA-governed homes</div>
+          <div class="tw-geo-fact-val">38,400+</div>
+          <div class="tw-geo-fact-sub">Across 540+ associations (county-wide)</div>
+        </div>
+        <div class="tw-geo-fact">
+          <div class="tw-geo-fact-label">Median assessment</div>
+          <div class="tw-geo-fact-val">$310 <span class="gold">/mo</span></div>
+          <div class="tw-geo-fact-sub">Townhome HOA &middot; 2026 estimate</div>
+        </div>
+        <div class="tw-geo-fact">
+          <div class="tw-geo-fact-label">Tidewater communities</div>
+          <div class="tw-geo-fact-val">157+</div>
+          <div class="tw-geo-fact-sub">~29% of county total under our management</div>
+        </div>
+        <div class="tw-geo-fact">
+          <div class="tw-geo-fact-label">Avg. reserve gap</div>
+          <div class="tw-geo-fact-val">22 pts</div>
+          <div class="tw-geo-fact-sub">Under-funded vs. industry 70% target</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local manager card -->
+  <section class="tw-geo-section cream" style="padding:64px 0">
+    <div class="tw-container-wide">
+      <div class="tw-section-head-left" style="max-width:760px;margin:0 0 12px">
+        <div class="tw-eyebrow">Your Local Manager</div>
+        <h2 class="tw-section-title" style="margin:10px 0 14px">An Anne Arundel manager, <em>not a rotating pool.</em></h2>
+        <p class="tw-section-lede">Same person at every board meeting. Same person at the vendor walk-through. Same person residents email.</p>
+      </div>
+      <div class="tw-geo-manager">
+        <div class="tw-geo-manager-avatar">SP</div>
+        <div>
+          <div class="tw-geo-manager-eyebrow">Regional Manager &middot; Anne Arundel</div>
+          <div class="tw-geo-manager-name">
+            Sarah Patel <span>CMCA&reg;, PCAM&reg;</span>
+          </div>
+          <p class="tw-geo-manager-role">
+            <strong>11 years</strong> managing Anne Arundel HOAs &amp; condos. Lives in Severna Park. Drives the county Tuesday &amp; Thursday each week. Specialty: waterfront condo associations and master-planned community sub-association coordination.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;min-width:200px">
+          <a href="/request-a-proposal" class="tw-btn tw-btn-primary tw-btn-block">Email Sarah &rarr;</a>
+          <a href="tel:+14435480191" class="tw-btn tw-btn-outline tw-btn-block">(443) 548-0191</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Communities table -->
+  <section id="communities" class="tw-geo-section mist">
+    <div class="tw-container-wide">
+      <div class="tw-section-head" style="text-align:center;max-width:760px;margin:0 auto">
+        <div class="tw-eyebrow">Sample Communities</div>
+        <h2 class="tw-section-title">A sample of the <em>157+</em> Anne Arundel communities we manage.</h2>
+        <p class="tw-section-lede">Representative sample by type, size, and location. Board references available on request &mdash; we&rsquo;d rather you talk to them than read about us.</p>
+      </div>
+      <div class="tw-geo-communities">
+        <div class="tw-geo-communities-head">
+          <div>Type</div>
+          <div>City</div>
+          <div>Units</div>
+          <div>Client since</div>
+        </div>
+        <div class="tw-geo-communities-row">
+          <div class="name">Single-family planned community</div>
+          <div class="type">Crofton</div>
+          <div>184</div>
+          <div>2014</div>
+        </div>
+        <div class="tw-geo-communities-row">
+          <div class="name">Waterfront mid-rise condo</div>
+          <div class="type">Annapolis</div>
+          <div>124</div>
+          <div>2007</div>
+        </div>
+        <div class="tw-geo-communities-row">
+          <div class="name">Townhome HOA</div>
+          <div class="type">Severna Park</div>
+          <div>96</div>
+          <div>2011</div>
+        </div>
+        <div class="tw-geo-communities-row">
+          <div class="name">Mixed townhome &amp; single-family HOA</div>
+          <div class="type">Pasadena</div>
+          <div>212</div>
+          <div>2018</div>
+        </div>
+        <div class="tw-geo-communities-row">
+          <div class="name">High-rise condo &middot; mixed-use</div>
+          <div class="type">Annapolis</div>
+          <div>188</div>
+          <div>2009</div>
+        </div>
+        <div class="tw-geo-communities-row">
+          <div class="name">Townhome HOA</div>
+          <div class="type">Glen Burnie</div>
+          <div>156</div>
+          <div>2016</div>
+        </div>
+        <div class="tw-geo-communities-row">
+          <div class="name">Single-family &middot; master-planned community</div>
+          <div class="type">Odenton</div>
+          <div>342</div>
+          <div>2020</div>
+        </div>
+        <div class="tw-geo-communities-row">
+          <div class="name">Single-family HOA</div>
+          <div class="type">Arnold</div>
+          <div>72</div>
+          <div>2003</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;margin-top:32px;gap:14px;flex-wrap:wrap">
+        <a href="/testimonials" class="tw-btn tw-btn-outline">Read board reviews &rarr;</a>
+        <a href="/request-a-proposal" class="tw-btn tw-btn-primary">Get board references &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service callouts -->
+  <section class="tw-geo-section linen">
+    <div class="tw-container-wide">
+      <div class="tw-section-head" style="text-align:center;max-width:760px;margin:0 auto">
+        <div class="tw-eyebrow">Services in Anne Arundel</div>
+        <h2 class="tw-section-title">Three service tiers, <em>same regional team.</em></h2>
+        <p class="tw-section-lede">Pick the level of service your board needs &mdash; everything else stays the same.</p>
+      </div>
+      <div class="tw-geo-law-grid" style="margin-top:48px">
+        <a href="/hoa-management" class="tw-geo-law-card" style="text-decoration:none">
+          <h3>Full HOA Management</h3>
+          <p>AAMC-accredited service for single-family, townhome, and master-planned HOAs. Includes financials, vendor management, covenant enforcement, board meetings, and 24/7 emergency response.</p>
+          <div class="tw-geo-law-foot">Full-service details &rarr;</div>
+        </a>
+        <a href="/hoa-management#tiers" class="tw-geo-law-card gold" style="text-decoration:none">
+          <h3>Flex Service</h3>
+          <p>Lower base fee with &agrave;-la-carte involvement for established Anne Arundel boards. Includes full financial controls, owner portal, and 24/7 emergency coverage &mdash; without the standing on-site presence.</p>
+          <div class="tw-geo-law-foot">Flex tier details &rarr;</div>
+        </a>
+        <a href="/hoa-management/hoa-financial-management" class="tw-geo-law-card sage" style="text-decoration:none">
+          <h3>Financial Management Only</h3>
+          <p>For self-managed boards in Anne Arundel that want CPA-led books without giving up operational control. Monthly statements, A/R, audit support, reserve study refresh.</p>
+          <div class="tw-geo-law-foot">Financial-only tier &rarr;</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ section -->
+  <section class="tw-section tw-sol-faq-section">
+    <div class="tw-container-wide">
+      <div class="tw-sol-faq-grid">
+        <div class="tw-sol-faq-head">
+          <div class="tw-eyebrow">Anne Arundel FAQs</div>
+          <h2>The county-specific <em>questions</em> we get.</h2>
+          <p>For all-purpose HOA questions see our <a href="/faq" style="color:var(--tw-teal-500);text-decoration:underline;text-underline-offset:3px">main FAQ hub</a>.</p>
+          <a href="/request-a-proposal" class="tw-btn tw-btn-primary">Ask your own question &rarr;</a>
+        </div>
+        <FaqAccordion items={countyFaqs} defaultOpen={0} />
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+  <Footer />
+</BaseLayout>

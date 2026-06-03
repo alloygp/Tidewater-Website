@@ -1,0 +1,55 @@
+---
+const services = [
+  { name: 'Buying — Residential', sub: 'Single-family homes, condos, townhomes across Maryland and Delaware.', icon: 'home' },
+  { name: 'Buying — Investment Property', sub: 'Rental-yield modeling, county-specific licensing review, tenant-corridor analysis.', icon: 'chart' },
+  { name: 'Selling — Owner-Occupied', sub: 'Local market positioning, staging guidance, and a network of investment buyers.', icon: 'building' },
+  { name: 'Selling — Rental Properties', sub: 'Exit a managed rental cleanly: tenant coordination, repair triage, and a full file in hand.', icon: 'refresh' },
+  { name: 'Foreclosures & Short Sales', sub: 'Distressed-sale navigation with lender coordination and protective timelines.', icon: 'gavel' },
+  { name: 'Market Analysis (CMA)', sub: 'A real number, not a Zestimate. Free, no-obligation, and grounded in rent comps.', icon: 'compass' },
+];
+---
+<section class="tw-section tw-rsv">
+  <div class="tw-container">
+    <div class="tw-section-head-left">
+      <div class="tw-eyebrow" style="color:var(--tw-div-deep, #8C7E40)">What we handle</div>
+      <h2 class="tw-section-title">Buying or selling. <em>Especially the deals where management context matters.</em></h2>
+      <p class="tw-section-lede">A small team, deliberately. Every client gets personalized support through every step &mdash; not a hand-off to an agent assistant after listing.</p>
+    </div>
+
+    <div class="tw-rsv-grid">
+      <div class="tw-rsv-list">
+        {services.map(s => (
+          <div class="tw-rsv-item">
+            <div class="tw-rsv-item-icon">
+              {s.icon === 'home' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>}
+              {s.icon === 'chart' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>}
+              {s.icon === 'building' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><line x1="9" y1="17" x2="15" y2="17"/></svg>}
+              {s.icon === 'gavel' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4l6 6M9 9l6 6M4 14l6 6"/><line x1="3" y1="21" x2="11" y2="13"/></svg>}
+              {s.icon === 'compass' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>}
+              {s.icon === 'refresh' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>}
+            </div>
+            <div>
+              <div class="tw-rsv-item-name">{s.name}</div>
+              <div class="tw-rsv-item-sub">{s.sub}</div>
+            </div>
+            <div class="tw-rsv-item-arrow">&rarr;</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="tw-rsv-broker">
+        <div class="tw-rsv-broker-img">[broker portrait &mdash; Cody Bishop, on-site]</div>
+        <div class="tw-rsv-broker-body">
+          <div class="tw-rsv-broker-name">Cody Bishop</div>
+          <div class="tw-rsv-broker-role">Broker &middot; Director of Rental Management &middot; Tidewater Realty Group, LLC</div>
+          <p class="tw-rsv-broker-quote">&ldquo;I run both rental management and the brokerage. That&rsquo;s rare, and it&rsquo;s on purpose. The same person handing you a listing comp can tell you what the unit two doors down actually rents for &mdash; because we manage it.&rdquo;</p>
+          <div class="tw-rsv-broker-cred">
+            <span>Licensed Broker</span>
+            <span>Director, Rental</span>
+            <span>MD &amp; DE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

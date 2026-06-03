@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Topbar from '../components/Topbar.astro';
+import Header from '../components/Header.astro';
+import ResourcesHero from '../components/ResourcesHero.astro';
+import ResourcesFeatured from '../components/ResourcesFeatured.astro';
+import ResourcesLibrary from '../components/ResourcesLibrary.astro';
+import ResourcesSeasonal from '../components/ResourcesSeasonal.astro';
+import ResourcesNewsletter from '../components/ResourcesNewsletter.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../config/site';
+
+const pageUrl = `${SITE.url}/resources`;
+
+const schemas = [
+  breadcrumbSchema([{ name: 'Home', url: SITE.url + '/' }, { name: 'Resources', url: pageUrl }]),
+];
+---
+<BaseLayout
+  title="HOA & Landlord Resources | Tidewater"
+  description="A library of HOA board playbooks, county-by-county rental rule guides, seasonal maintenance checklists, and investor reports."
+  bodyClass="tw-acc-teal"
+  pageStylesheet="styles-pages.css"
+  pageSchema={schemas}
+>
+  <Topbar variant="homeowner" />
+  <Header activeNav="resources" />
+  <Breadcrumb crumbs={[{ label: "Resources" }]} />
+  <ResourcesHero />
+  <ResourcesFeatured />
+  <ResourcesLibrary />
+  <ResourcesSeasonal />
+  <ResourcesNewsletter />
+  <Footer />
+</BaseLayout>

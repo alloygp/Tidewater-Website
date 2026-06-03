@@ -1,0 +1,500 @@
+// Blog spoke — How to Manage a Rental Property
+// URL: /blog/how-to-manage-a-rental-property/
+// Legacy redirect: /blog/5-tips-for-effective-property-management/ → 301
+
+import { useState, useEffect } from 'react';
+
+const RGuideIcons = {
+  clock: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
+  cal:   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>,
+  copy:  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>,
+  linkedin: <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>,
+  twitter: <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>,
+  email:   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>,
+  info:    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>,
+  alert:   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.7 3.86a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>,
+  check:   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>,
+};
+
+function RGuideReadingProgress() {
+  const [pct, setPct] = useState(0);
+  useEffect(() => {
+    const update = () => {
+      const h = document.documentElement;
+      const scrolled = h.scrollTop;
+      const total = h.scrollHeight - h.clientHeight;
+      setPct(total > 0 ? Math.min(1, scrolled / total) : 0);
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+  return <div className="tw-blog-progress" style={{transform: `scaleX(${pct})`}}/>;
+}
+
+function RGuideHero({ post }) {
+  return (
+    <section className="tw-blog-hero">
+      <div className="tw-blog-hero-inner">
+        <span className={`tw-blog-category ${post.category.tone}`}>{post.category.label}</span>
+
+        <h1 className="tw-blog-title" dangerouslySetInnerHTML={{__html: post.title}}/>
+        <p className="tw-blog-dek">{post.dek}</p>
+
+        <div className="tw-blog-meta">
+          <div className="tw-blog-meta-author">
+            <div className="tw-blog-meta-avatar">{post.author.initials}</div>
+            <div>
+              <div className="tw-blog-meta-name">{post.author.name}</div>
+              <div className="tw-blog-meta-role">{post.author.role}</div>
+            </div>
+          </div>
+          <div className="tw-blog-meta-divider"></div>
+          <div className="tw-blog-meta-item">{RGuideIcons.cal} {post.date}</div>
+          <div className="tw-blog-meta-divider"></div>
+          <div className="tw-blog-meta-item">{RGuideIcons.clock} {post.readTime} min read</div>
+          <div className="tw-blog-share">
+            <button title="Share on LinkedIn" aria-label="Share on LinkedIn">{RGuideIcons.linkedin}</button>
+            <button title="Share on X" aria-label="Share on X">{RGuideIcons.twitter}</button>
+            <button title="Share by email" aria-label="Share by email">{RGuideIcons.email}</button>
+            <button title="Copy link" aria-label="Copy link">{RGuideIcons.copy}</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RGuideCover({ post }) {
+  return (
+    <div className="tw-blog-cover">
+      <div className="tw-blog-cover-inner">
+        <img
+          src="/assets/how-to-manage-a-rental-property.png"
+          alt="Landlord conducting a rental property inspection and documenting condition with a phone camera"
+        />
+        <div className="tw-blog-cover-paper"></div>
+      </div>
+      <p className="tw-blog-cover-caption">{post.coverCaption}</p>
+    </div>
+  );
+}
+
+function RGuideToc({ items }) {
+  const [active, setActive] = useState(items[0]?.id);
+  useEffect(() => {
+    const els = items.map(it => document.getElementById(it.id)).filter(Boolean);
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter(e => e.isIntersecting);
+        if (visible.length > 0) {
+          visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+          setActive(visible[0].target.id);
+        }
+      },
+      { rootMargin: '-110px 0px -60% 0px', threshold: 0 }
+    );
+    els.forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, [items]);
+
+  const click = (e, id) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 100;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <aside className="tw-blog-toc">
+      <div className="tw-blog-toc-label">In this article</div>
+      <ul className="tw-blog-toc-list">
+        {items.map(it => (
+          <li key={it.id}>
+            <a
+              href={`#${it.id}`}
+              className={active === it.id ? 'is-active' : ''}
+              onClick={(e) => click(e, it.id)}
+              dangerouslySetInnerHTML={{__html: it.label}}
+            />
+          </li>
+        ))}
+      </ul>
+    </aside>
+  );
+}
+
+function RGuideArticleBody() {
+  return (
+    <article className="tw-blog-article">
+
+      <p>
+        Managing a rental property is more than collecting a rent check on the first of the month. It&rsquo;s an ongoing operational commitment that includes finding and screening tenants, maintaining the property, tracking finances, staying current on landlord-tenant law, and handling the unexpected at 10 PM on a Saturday. Some landlords manage one property on the side; others build a small portfolio and run it like a business. Both approaches work, but both require a system.
+      </p>
+
+      <p>
+        This guide covers the core responsibilities of how to manage a rental property, where first-time landlords tend to get tripped up, and how to evaluate whether self-managing makes sense for your situation or whether <a href="/rental-management">professional rental management</a> is a better return on your time and investment. These are property management tips drawn from day-to-day rental operations across Maryland, Delaware, and Virginia &mdash; not generic advice.
+      </p>
+
+      <h2 id="screening">Screen Tenants Thoroughly &mdash; It&rsquo;s the Most Important Step</h2>
+
+      <p>
+        The single most impactful decision a landlord makes is who lives in the property. <strong>Every downstream outcome &mdash; rent reliability, property condition, maintenance costs, legal exposure, and vacancy &mdash; traces back to tenant placement.</strong> The existing advice out there says &ldquo;prioritize tenant screening.&rdquo; That&rsquo;s true, but it doesn&rsquo;t tell you what a real screening process actually looks like.
+      </p>
+
+      <p>
+        Start with a written rental application. Require government-issued identification, proof of income (pay stubs, tax returns, or employer verification), and contact information for previous landlords. Most experienced property managers require income of at least three times the monthly rent and verify rental history going back a minimum of three years.
+      </p>
+
+      <p>
+        Run a full background check: credit report, criminal history, and eviction records. What you&rsquo;re looking for isn&rsquo;t perfection. It&rsquo;s patterns. A single late payment years ago tells a different story than a recent eviction and a pattern of collections. An income-to-rent ratio below 3:1 is a red flag. Recent eviction filings are a red flag. Consistent, documented screening criteria applied to every applicant is what protects you.
+      </p>
+
+      <p>
+        Every step of your tenant screening process must comply with the <a href="https://www.hud.gov/program_offices/fair_housing_equal_opp" target="_blank" rel="noopener">Fair Housing Act</a>. You cannot discriminate based on race, religion, sex, national origin, familial status, or disability. Maryland adds additional protected classes, including marital status, sexual orientation, gender identity, and source of income (including housing vouchers in some jurisdictions). Apply the same criteria to every applicant. That consistency is your best legal protection.
+      </p>
+
+      <div className="tw-blog-callout warning">
+        <div className="tw-blog-callout-icon">{RGuideIcons.alert}</div>
+        <div className="tw-blog-callout-content">
+          <h4>What a bad placement actually costs you</h4>
+          <p>
+            A bad tenant can mean months of lost rent, property damage, legal fees, and eviction costs. In Maryland, eviction timelines typically run 60 to 90 days from filing to possession. <strong>In Montgomery County, the timeline can extend to 12 months. An improper filing resets the clock entirely.</strong>
+          </p>
+        </div>
+      </div>
+
+      <h2 id="maintenance">Stay Ahead of Maintenance &mdash; Don&rsquo;t Wait for the Phone Call</h2>
+
+      <p>
+        The difference between a well-managed rental property and a money pit is maintenance discipline. <strong>Proactive landlords schedule regular property inspections and preventive work instead of waiting for something to break.</strong>
+      </p>
+
+      <p>
+        Inspect the property every three to six months. Walk the interior and exterior. Check for signs of water damage, HVAC performance, appliance condition, and general wear. Document everything with dated photos. This practice protects you in security deposit disputes, provides a running maintenance record, and gives you visibility into how tenants are treating the property. Always provide proper notice before an inspection &mdash; Maryland law requires reasonable notice, typically 24 hours.
+      </p>
+
+      <p>
+        Build a seasonal preventive maintenance calendar. HVAC filters should be changed quarterly. Smoke detectors and carbon monoxide detectors need testing twice a year. Clean gutters in fall and spring. Flush the water heater annually. Check exterior drainage and grading each spring to prevent water intrusion. None of this is expensive on its own, and all of it prevents the kind of emergency repair that is.
+      </p>
+
+      <div className="tw-blog-takeaways">
+        <div className="tw-blog-takeaways-label">Seasonal preventive maintenance</div>
+        <h3>A working landlord&rsquo;s yearly calendar</h3>
+        <ul>
+          <li><strong>Spring:</strong> Exterior drainage &amp; grading check. Gutter clean. HVAC cooling-system service. Re-caulk exterior penetrations. Smoke / CO detector battery swap.</li>
+          <li><strong>Summer:</strong> Mid-year interior inspection with photos. Pest treatment. Appliance &amp; plumbing check during occupancy.</li>
+          <li><strong>Fall:</strong> Gutter clean (second pass). HVAC heating-system service. Weather-strip doors &amp; windows. Water heater flush.</li>
+          <li><strong>Winter:</strong> Heat-tape &amp; pipe-insulation check. Roof inspection from ground after first major storm. Quarterly HVAC filter swap.</li>
+          <li><strong>Continuously:</strong> Quarterly HVAC filters, twice-a-year detector tests, annual lease-renewal walk-through, dated-photo log every visit.</li>
+        </ul>
+      </div>
+
+      <p>
+        When tenants do report an issue, response time matters for both tenant retention and legal compliance. Maryland law requires landlords to address habitability issues within a reasonable timeframe. Emergency repairs involving heating, water leaks, or electrical hazards need same-day response. Having reliable, pre-vetted contractors for plumbing, electrical, HVAC, and general handwork means you&rsquo;re not scrambling to find a plumber at 10 PM. <strong>Line up your vendors before you need them.</strong>
+      </p>
+
+      <h2 id="law">Know the Law &mdash; Especially in Maryland</h2>
+
+      <p>
+        Rental property management is a regulated activity, and the legal landscape varies significantly by state, county, and municipality. <strong>Maryland has one of the most complex regulatory environments for landlords in the country, and no two jurisdictions operate under identical rules.</strong>
+      </p>
+
+      <p>
+        The Maryland regulatory stack includes state law (the Maryland Real Property Code), county-level regulations, city ordinances, and in some cases town-level rules that all apply to a single rental property. A rental license or registration may be required at the county or city level before you can legally lease the property. Baltimore City, Baltimore County, Montgomery County, Prince George&rsquo;s County, and many others each maintain specific licensing, registration, or inspection requirements. Lead paint disclosure is required for properties built before 1978, and Maryland imposes its own lead paint requirements beyond federal law.
+      </p>
+
+      <div className="tw-blog-callout">
+        <div className="tw-blog-callout-icon">{RGuideIcons.info}</div>
+        <div className="tw-blog-callout-content">
+          <h4>The Maryland eviction reality</h4>
+          <p>
+            Most jurisdictions take 60 to 90 days from filing to possession. Montgomery County can take up to 12 months. <strong>An improper filing, missed notice, or procedural error can reset the entire process.</strong> This is where many self-managing landlords get burned &mdash; they don&rsquo;t follow the process correctly and lose months of rent while the clock resets.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Maryland caps security deposits at two months&rsquo; rent, requires interest-bearing escrow in certain circumstances, and imposes strict return timelines and itemization requirements. Missing a deadline or failing to itemize deductions properly can cost you the entire deposit amount in court.
+      </p>
+
+      <p>
+        Laws change, and this article is not legal advice &mdash; landlords should consult a qualified attorney for specific legal questions. The <a href="https://www.marylandattorneygeneral.gov/Pages/CPD/landlords.aspx" target="_blank" rel="noopener">Maryland Attorney General&rsquo;s Landlord-Tenant page</a> is a useful starting point for understanding your obligations at the state level.
+      </p>
+
+      <h2 id="financials">Get the Financials Right</h2>
+
+      <p>
+        Managing a rental property is running a business, and it requires financial discipline beyond collecting rent on the first of the month. <strong>Landlords who don&rsquo;t track their true operating costs often don&rsquo;t realize their actual return until tax season, and the number is rarely what they expected.</strong>
+      </p>
+
+      <p>
+        Set up an online rent collection system. Online payment portals reduce late payments and create a documented transaction trail. Define clear due dates, late fee policies, and grace periods in the lease, and enforce them consistently. Inconsistent enforcement creates precedent problems if you ever need to pursue legal action for non-payment.
+      </p>
+
+      <p>
+        Track every operating expense: mortgage, insurance, property taxes, maintenance, repairs, HOA fees (if applicable), property management fees, and vacancy costs. Many landlords underestimate their cost basis because they track rent coming in without tracking everything going out. A rental property that collects $2,000 per month in rent but costs $1,900 per month to carry isn&rsquo;t the investment it looks like on paper.
+      </p>
+
+      <p>
+        Maintain a reserve fund for capital expenditures and unexpected repairs. A common benchmark is 5 to 10 percent of gross monthly rent, set aside each month. Without a reserve, one HVAC replacement or water heater failure can wipe out a year of positive cash flow.
+      </p>
+
+      <p>
+        Keep meticulous records. Mortgage interest, depreciation, repairs, insurance premiums, and management fees are all potentially deductible. A rental property is a business. Treat the financial side like one, and you&rsquo;ll make better decisions about when to invest, when to hold, and when to sell.
+      </p>
+
+      <h2 id="first-timer">Tips for First-Time Landlords</h2>
+
+      <p>
+        If this is your first rental property, the learning curve is real. <strong>Most of the costly first-time landlord mistakes are avoidable with preparation, but they&rsquo;re the kind of lessons you&rsquo;d rather learn from someone else&rsquo;s experience.</strong>
+      </p>
+
+      <p>
+        <em>Price your rent based on comparable properties in your area, not on what you need to cover the mortgage.</em> Pricing too low leaves money on the table and attracts a different applicant pool. Pricing too high means longer vacancy &mdash; and every empty month costs you a full month&rsquo;s rent with zero return. Research active listings and recent leases for similar properties within a few miles of yours.
+      </p>
+
+      <p>
+        <em>Never rent without a written lease agreement.</em> The lease is your legal foundation. It defines rent amount, due date, security deposit terms, maintenance responsibilities, pet policy, and termination provisions. Use a Maryland-specific lease form, not a generic template downloaded from the internet. Maryland landlord-tenant law has provisions that a generic lease won&rsquo;t address.
+      </p>
+
+      <p>
+        <em>Treat the property as an investment, not your home.</em> This is one of the hardest adjustments for first-time landlords. Consistent, documented, professional communication with tenants protects both parties. Decisions about the property should be financial, not emotional.
+      </p>
+
+      <p>
+        <em>Get the right insurance.</em> Standard homeowner&rsquo;s insurance does not cover rental properties. You need a landlord policy (DP-3 or equivalent) that covers rental-specific risks: liability, loss of rental income, and property damage. Confirm coverage with your insurance agent before your first tenant moves in.
+      </p>
+
+      <p>
+        <em>Budget for vacancy.</em> Even well-managed properties experience turnover. Setting aside one to two months of rent per year for vacancy ensures you won&rsquo;t be caught short during a tenant transition. This applies whether you manage the property yourself or hire a professional.
+      </p>
+
+      <h2 id="when-to-hire">When to Hire a Property Management Company</h2>
+
+      <p>
+        Self-managing a rental property works well for some landlords. <strong>The question isn&rsquo;t whether professional management is &ldquo;better&rdquo; &mdash; it&rsquo;s whether the time, complexity, and risk of self-managing still pencil out for your specific situation.</strong>
+      </p>
+
+      <p>
+        If you live out of state, are deployed, or can&rsquo;t visit the property regularly, self-management creates blind spots. Deferred maintenance you can&rsquo;t see, tenant issues you can&rsquo;t verify in person, and emergency repairs you can&rsquo;t coordinate locally all erode your investment. This is where professional rental management consistently pays for itself, particularly for military personnel and federal employees who relocate frequently in the Maryland and DC market.
+      </p>
+
+      <p>
+        Multiple properties accelerate the operational burden faster than most landlords expect. One property is manageable alongside a full-time career. Two or three starts consuming serious time. Tenant calls, maintenance coordination, lease renewals, and financial tracking across multiple units become a second job.
+      </p>
+
+      <p>
+        Calculate your effective hourly rate. If you&rsquo;re spending 10 to 15 hours a month on a single property, the cost of a management fee may be less than the value of your time. That calculation shifts further when you factor in the cost of mistakes: a missed legal deadline, a delayed eviction filing, or a maintenance issue that escalates because you couldn&rsquo;t respond fast enough.
+      </p>
+
+      <p>
+        If Maryland&rsquo;s regulatory complexity, county-specific licensing requirements, and eviction timelines feel overwhelming, that&rsquo;s a signal, not a failure. Professional property management exists precisely because the operational and legal demands of managing rental property are substantial.
+      </p>
+
+      <p>
+        When evaluating property management companies, look for an all-inclusive fee structure with no hidden charges for inspections or maintenance coordination. Ask about their inspection cadence and whether they document property condition with photos. Look for transparent financial reporting through an owner portal, local regulatory expertise, and a clear leasing process with professional tenant screening. The right company makes your investment easier to own and more profitable to hold.
+      </p>
+
+      <h2 id="faq">Frequently Asked Questions</h2>
+
+      <h3>Can I manage my own rental property?</h3>
+      <p>
+        Yes. Many landlords successfully self-manage, especially with one or two local properties and the time to stay on top of tenants, maintenance, and legal compliance. Self-management works best when you live near the property, have reliable contractor relationships, understand your state and local landlord-tenant laws, and can dedicate consistent time to the operational demands. It becomes harder with distance, multiple properties, or complex regulatory environments like Maryland&rsquo;s.
+      </p>
+
+      <h3>How much does a property management company charge?</h3>
+      <p>
+        Most property management companies charge 8 to 12 percent of monthly collected rent, though fee structures vary widely. Some companies advertise a low base rate but charge separately for property inspections, maintenance coordination, lease renewals, and tenant placement. Look for an all-inclusive fee structure so you know exactly what you&rsquo;re paying and can budget accurately. The lowest advertised rate is rarely the lowest total cost.
+      </p>
+
+      <h3>How often should I inspect my rental property?</h3>
+      <p>
+        Every three to six months at minimum, with additional inspections at move-in and move-out. Regular property inspections catch maintenance issues before they become expensive, document property condition for security deposit purposes, and give you visibility into how tenants are treating the unit. Provide proper notice before each inspection &mdash; Maryland law requires reasonable notice, typically 24 hours. Take dated photos every time.
+      </p>
+
+      <h3>What are the biggest mistakes first-time landlords make?</h3>
+      <p>
+        The most common mistakes are inadequate tenant screening, underestimating maintenance costs, failing to use a written lease agreement, and not understanding local landlord-tenant laws. All four are preventable. Screen every applicant consistently using documented criteria. Budget 5 to 10 percent of gross rent for maintenance reserves. Use a state-specific lease, not a generic template. Familiarize yourself with your local regulatory requirements before your first tenant moves in.
+      </p>
+
+      <h3>Do I need a rental license in Maryland?</h3>
+      <p>
+        It depends on the jurisdiction. Many Maryland counties and municipalities require a rental license or registration before you can legally lease a property. Baltimore City, Baltimore County, Montgomery County, Prince George&rsquo;s County, and others each have specific requirements. Penalties for non-compliance can include fines and the inability to pursue eviction proceedings. Check with your local government before listing your property for rent.
+      </p>
+
+      <h2 id="conclusion">Make the Investment Work for You</h2>
+
+      <p>
+        Managing a rental property is a real operational commitment. Tenant screening, maintenance discipline, financial tracking, and legal compliance all require consistent attention. Done well, it protects your investment and generates reliable income. Done poorly, it creates financial and legal exposure that can cost more than the property earns.
+      </p>
+
+      <p>
+        Whether you self-manage or hire a professional, the fundamentals covered in this guide are the same. The question is who&rsquo;s responsible for executing them, day in and day out.
+      </p>
+
+      <div className="tw-blog-cta">
+        <div className="tw-blog-cta-eyebrow">Rather have a team handle the day-to-day?</div>
+        <h3>Tidewater&rsquo;s rental group has been protecting <em>Mid-Atlantic landlords</em>&rsquo; investments for 35+ years.</h3>
+        <p>One flat fee. Everything included &mdash; tenant screening, inspections, maintenance, rent collection, owner reporting, the licensing paperwork. No tenant-placement upcharge, no maintenance markup, no surprise line items.</p>
+        <a href="/request-a-proposal" className="tw-btn tw-btn-primary tw-btn-lg">Request a rental management proposal →</a>
+      </div>
+
+      <div className="tw-blog-tags">
+        <span className="tw-blog-tags-label">Tagged</span>
+        <a href="#" className="tw-blog-tag">Rental property management</a>
+        <a href="#" className="tw-blog-tag">Landlord tips</a>
+        <a href="#" className="tw-blog-tag">Tenant screening</a>
+        <a href="#" className="tw-blog-tag">Property inspections</a>
+        <a href="#" className="tw-blog-tag">Maryland landlord</a>
+      </div>
+    </article>
+  );
+}
+
+function RGuideAuthorBio({ author }) {
+  return (
+    <div className="tw-blog-author-bio">
+      <div className="tw-blog-author-bio-avatar">{author.initials}</div>
+      <div>
+        <div className="tw-blog-author-bio-eyebrow">About the author</div>
+        <div className="tw-blog-author-bio-name">
+          {author.name} <span>{author.creds}</span>
+        </div>
+        <div className="tw-blog-author-bio-role">{author.role}</div>
+        <p className="tw-blog-author-bio-blurb">{author.bio}</p>
+        <div className="tw-blog-author-bio-links">
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RGuideRelatedPosts({ posts }) {
+  return (
+    <section className="tw-blog-related">
+      <div className="tw-blog-related-inner">
+        <div className="tw-blog-related-head">
+          <div className="tw-blog-related-eyebrow">Continue Reading</div>
+          <h2>More for <em>landlords &amp; investors.</em></h2>
+        </div>
+        <div className="tw-blog-related-grid">
+          {posts.map((p, i) => (
+            <a key={i} href={p.href} className="tw-blog-related-card">
+              <div className={`tw-blog-related-card-img ${p.tone}`}>
+                {p.coverImage && <img src={p.coverImage} alt={p.coverAlt || p.title} />}
+              </div>
+              <div className="tw-blog-related-card-body">
+                <div className={`tw-blog-related-card-cat ${p.tone}`}>{p.category}</div>
+                <h3>{p.title}</h3>
+                <p>{p.dek}</p>
+                <div className="tw-blog-related-card-meta">{p.date} · {p.readTime} min read</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RGuideNewsletter() {
+  const [submitted, setSubmitted] = useState(false);
+  return (
+    <section className="tw-blog-newsletter">
+      <div className="tw-blog-newsletter-inner">
+        <div className="tw-blog-newsletter-eyebrow">Tidewater Resources</div>
+        <h2>Get the <em>monthly board memo</em> in your inbox.</h2>
+        <p>One email a month. Practical board playbooks, Maryland HOA law updates, governance deep-dives. Written for working boards, not vendors. No fluff.</p>
+        {submitted ? (
+          <div style={{fontFamily:'var(--tw-font-heading)',fontWeight:700,fontSize:15,color:'var(--tw-gold)'}}>Thanks &mdash; first issue lands the first Tuesday of next month.</div>
+        ) : (
+          <form className="tw-blog-newsletter-form" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
+            <input type="email" placeholder="board@yourcommunity.org" aria-label="Email address" required/>
+            <button type="submit">Subscribe</button>
+          </form>
+        )}
+        <div className="tw-blog-newsletter-fine">Unsubscribe any time &middot; We never share your email &middot; 4,200+ board members subscribed</div>
+      </div>
+    </section>
+  );
+}
+
+export default function PostRentalGuide() {
+  const post = {
+    title: 'How to manage a <em>rental property:</em> a practical guide for landlords.',
+    dek: 'Managing a rental property goes well beyond collecting rent. This practical guide covers tenant screening, maintenance, Maryland landlord-tenant law, financial tracking, and how to know when professional management is a better return on your time.',
+    category: { label: 'Rental Management', tone: '' },
+    author: {
+      name: 'Cody Bishop',
+      creds: 'Broker',
+      initials: 'CB',
+      role: 'Director of Rental Management, Tidewater',
+      bio: 'Cody is Tidewater\'s Director of Rental Management and a licensed real estate broker. He oversees rental and Realty operations across Maryland, Delaware, and Virginia.',
+    },
+    date: 'May 16, 2026',
+    dateIso: '2026-05-16',
+    readTime: 9,
+    coverCaption: 'A landlord walking through a kitchen — phone camera in hand, documenting condition for the inspection log. The discipline of the dated-photo walk-through is half of what protects an investment.',
+  };
+
+  const toc = [
+    { id: 'screening',    label: 'Tenant screening' },
+    { id: 'maintenance',  label: 'Maintenance discipline' },
+    { id: 'law',          label: 'Maryland landlord law' },
+    { id: 'financials',   label: 'Financial tracking' },
+    { id: 'first-timer',  label: 'First-time landlords' },
+    { id: 'when-to-hire', label: 'When to hire a PM' },
+    { id: 'faq',          label: 'FAQ' },
+    { id: 'conclusion',   label: 'Closing thought' },
+  ];
+
+  const related = [
+    {
+      tone: '', category: 'HOA Management',
+      title: 'What is a community association manager? Roles, responsibilities, and what your board should expect.',
+      dek: 'How the CAM role works alongside the board, what credentials matter, and how to evaluate whether your management company is meeting the standard.',
+      date: 'May 15, 2026', readTime: 9, href: '/blog/what-is-a-community-association-manager',
+      coverImage: '/assets/what-is-a-community-association-manager.png', coverAlt: 'Community association manager meeting with HOA board members',
+    },
+    {
+      tone: '', category: 'HOA Management',
+      title: 'How to switch HOA management companies: a step-by-step guide.',
+      dek: 'Contract review, board votes, notice requirements, financial and records transfer, and how to evaluate your next management partner.',
+      date: 'May 14, 2026', readTime: 9, href: '/blog/how-to-switch-hoa-management-companies',
+      coverImage: '/assets/how-to-switch-hoa-management-companies.png', coverAlt: 'HOA board members reviewing management company transition documents',
+    },
+    {
+      tone: '', category: 'Board Governance',
+      title: 'What is a quorum? Definition, requirements, and why it matters for your board.',
+      dek: "A quorum is the minimum number of members who must be present for a meeting\'s decisions to be legally valid.",
+      date: 'May 14, 2026', readTime: 8, href: '/blog/what-is-quorum-and-why-is-it-important',
+      coverImage: '/assets/quorum-community-manager.jpg', coverAlt: 'Community association manager at an HOA meeting',
+    },
+  ];
+
+  return (
+    <>
+      <RGuideReadingProgress/>
+      <RGuideHero post={post}/>
+      <RGuideCover post={post}/>
+      <div className="tw-blog-body-wrap">
+        <div className="tw-blog-layout">
+          <RGuideToc items={toc}/>
+          <div>
+            <RGuideArticleBody/>
+            <RGuideAuthorBio author={post.author}/>
+          </div>
+        </div>
+      </div>
+      <RGuideRelatedPosts posts={related}/>
+      <RGuideNewsletter/>
+    </>
+  );
+}

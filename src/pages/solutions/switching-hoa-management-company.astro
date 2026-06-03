@@ -1,0 +1,292 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Topbar from '../../components/Topbar.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import FromTheBlog from '../../components/FromTheBlog.jsx';
+
+const warningSigns = [
+  'Your manager hasn\'t attended a board meeting in the last 6 months',
+  'Vendor invoices are paid late, generating delinquency notices',
+  'You\'ve received financial statements more than 30 days after month-end',
+  'Reserve study is older than 5 years and hasn\'t been refreshed',
+  'Owners can\'t reach the manager except by email — and emails go unanswered',
+  'Account is rotated between managers; nobody owns your community',
+  'Annual budget was copy-pasted from prior year without explanation',
+  'You\'ve had multiple manager turnover events in the last 24 months',
+  'Compliance &amp; covenant enforcement is inconsistent or has stopped',
+  'You\'ve discovered errors in delinquency tracking or reserve allocations',
+];
+
+const weeks = [
+  { num: 'Signing', label: '', title: 'Introduction & welcome', tasks: ['Welcome to Tidewater email sent to the Board'] },
+  { num: '30', label: 'Days before start', title: 'Document collection & reserve setup', tasks: ['Request owner roster, EIN, assessments, late fees, and governing documents from prior management or Board', 'Begin reserve account transfers where possible (CDs transfer directly; MMAs may need to close and reopen; Columbia Bank accounts are not transferable between companies)'] },
+  { num: '15', label: 'Days before start', title: 'Systems, accounts & manager intro', tasks: ['Community set up in CINC by accounting, QA, and assigned manager', 'Manager assigned and introduced to Board contacts', 'New operating account opened with Columbia Bank (requires EIN, Articles/Bylaws, and Bank Authorization Form signed by two Board members)', 'Management letter drafted and sent to Board for review and approval', 'Coupon books ordered if applicable'] },
+  { num: '10', label: 'Days before start', title: 'Final pre-start prep', tasks: ['Transition meeting with manager, accounting, and supervisory staff to review community details and finalize system setup', 'Vendors notified of management change', 'SDAT records updated with new resident agent and principal office'] },
+  { num: 'Start', label: 'Date', title: 'Active management begins', tasks: ['Internal announcement sent confirming start of management', 'Manager receives CINC setup checklist and property audit documentation', 'CINC owner portal live for board and residents'] },
+  { num: 'Post', label: 'Start (30–60 days)', title: 'Financial handover from prior management', tasks: ['Financial records requested from prior management (general ledger balances, trial balances, owner balances)', 'Account statements sent to owners showing balances at turnover', 'Remaining community files and physical records collected', 'Final funds received from operating, MMA, and reserve accounts — timing depends on prior management and bank processing'], isFinal: true },
+];
+
+const compareRows = [
+  { topic: 'Manager assignment', sub: 'Who actually owns your account day-to-day', them: 'Rotating manager pool. Your community is one of 40+ in a junior portfolio.', us: '<strong>Named Community Association Manager</strong> who attends meetings as contracted &amp; knows every vendor.' },
+  { topic: 'Response time on board email', them: '3&ndash;5 business days. Sometimes a week.', us: '<strong>Same business day, 95% of the time.</strong> Tracked monthly &amp; reported quarterly.' },
+  { topic: 'Board meeting prep', sub: 'What lands in your inbox before the meeting', them: 'Generic agenda template. Financials emailed the morning of.', us: '<strong>Full board pack</strong> posted in portal 7 days early: agenda, financials, manager memo.' },
+  { topic: 'Vendor pricing', sub: 'How you know what you\'re paying for', them: 'Markups often baked in. Hard to audit.', us: '<strong>Pass-through pricing.</strong> You see every invoice; we show our work.' },
+  { topic: 'Reserve study', them: 'Done once and rarely revisited.', us: '<strong>Refreshed every 5 years</strong> with an independent engineer &mdash; included.' },
+  { topic: 'Owner portal', them: 'Branded portal, but no real workflow. Maintenance requests go to a black hole.', us: '<strong>CINC portal</strong> with real ticket assignment, ARC submission, doc library.' },
+  { topic: 'Compliance & covenant enforcement', sub: 'How violations are tracked and acted on', them: 'Logged inconsistently. Action depends on which manager is on duty.', us: '<strong>State-specific covenant enforcement</strong> with photo log &amp; documented escalation.' },
+  { topic: 'Onboarding fee', them: '$2,500&ndash;$8,000 one-time transition fee &mdash; the original sting.', us: '<strong>$1,000</strong> one-time transition fee, in or out &mdash; same fee both ways, disclosed upfront.' },
+];
+
+const faqItems = [
+  { q: 'When can our board actually switch — are we locked in?', a: ['Most management contracts have a <strong>60- or 90-day termination window</strong> with written notice. We recommend having your association attorney review your current agreement to confirm your notice date and any applicable penalties.', 'In Maryland, auto-renewal clauses must be conspicuously disclosed. Your attorney can advise whether your contract meets that standard.'] },
+  { q: 'How disruptive is the transition for residents?', a: 'Done well, nearly invisible. The two changes residents will notice: a new welcome letter from your Community Association Manager (with their direct line and email), and new payment instructions in the next assessment cycle. We coordinate both. Maintenance requests don\'t skip a beat — we run a 30-day overlap on the old vendor list.' },
+  { q: 'What does the transition actually cost?', a: '<strong>$1,000 one-time transition fee — in both directions.</strong> Some companies charge $2,500–$8,000 to onboard a new community — we charge $1,000, disclosed upfront. If your community ever leaves Tidewater, the same $1,000 applies; it\'s the same fee both ways. Your ongoing cost is your normal monthly management fee, which begins the month after your old contract ends.' },
+  { q: 'Will our reserve fund accountants need to start over?', a: 'No. We accept your current chart of accounts and reserve schedule as-is and reconcile from there. Your CPA / auditor receives a clean continuity file from us so the year-end audit is uninterrupted.' },
+  { q: 'Who handles communicating the change to homeowners?', a: 'We do. You approve every piece. The standard sequence: (1) a letter and email announcing us as the new managing agent, (2) a welcome letter from your new Community Association Manager with their direct contact, (3) coupons or statements with updated payment instructions, (4) portal invitations.' },
+  { q: 'How do you handle delinquencies in transit?', a: 'We accept the existing A/R balance and continue collection from where your last company stopped. <strong>Nothing falls off the radar.</strong> If your current company\'s collection practices were lax, we tighten with board approval — not unilaterally.' },
+  { q: 'What if we have an active legal matter or insurance claim?', a: 'Both transfer cleanly. We coordinate directly with your association attorney and insurance broker during weeks 2–3 of the transition. Open matters are inventoried, status reports collected, and timelines preserved.' },
+  { q: 'Do we get the same manager forever, or get bounced?', a: '<strong>You get a named Community Association Manager.</strong> Their turnover is rare (our average tenure is 6.4 years) and when it does happen, we hand off in person at a board meeting — never by email. Boards approve the replacement.' },
+  { q: 'What if our community is in Northern Virginia, DC, Delaware, or PA?', a: 'We\'re licensed across Maryland, DC, Virginia, Pennsylvania, Delaware, and West Virginia. We cover Montgomery County, Prince George\'s County, and Northern Virginia from our Maryland offices. We do not take communities outside the Mid-Atlantic — if you\'re elsewhere, we\'ll help you find a reputable peer.' },
+  { q: 'How do we know we won\'t be making the same mistake twice?', a: 'Talk to our boards. We\'ll connect you with 3–5 board presidents whose communities are similar in size and stage to yours — you call them, no script. We\'ll also share our 12-month retention rate (97%) and our state-specific covenant enforcement playbook.' },
+];
+---
+<BaseLayout
+  pageStylesheet="styles-blog.css"
+  title="Switching HOA Management Companies in Maryland | Tidewater" description="Switching HOA management companies in Maryland? Tidewater walks boards through the full transition — structured onboarding, transparent $1,000 fee, and a dedicated Community Association Manager.">
+  <style is:global>
+    /* page-level overrides if needed */
+  </style>
+  <Topbar variant="default" />
+  <Header activeNav="mgmt" />
+  <Breadcrumb crumbs={[
+    { label: 'Solutions' },
+    { label: 'Switching HOA Management' },
+  ]} />
+
+  <!-- Hero -->
+  <section class="tw-sol-hero">
+    <div class="tw-sol-hero-paper"></div>
+    <div class="tw-sol-hero-grid">
+      <div class="tw-sol-hero-copy">
+        <h1 class="tw-sol-hero-title">
+          Switching management companies, <em>done right.</em>
+        </h1>
+        <p class="tw-sol-hero-lede">
+          A board&rsquo;s guide to leaving an underperforming management company &mdash; without disruption, fees you didn&rsquo;t see coming, or weeks of board work. We run the transition on your behalf, and you keep ownership of every relationship that matters.
+        </p>
+        <div class="tw-sol-hero-actions">
+          <a href="/request-a-proposal" class="tw-btn tw-btn-primary tw-btn-lg">Request a proposal &rarr;</a>
+          <a href="#timeline" class="tw-btn tw-btn-ghost">See the transition timeline &rarr;</a>
+        </div>
+        <div class="tw-sol-hero-stats">
+          <div>
+            <div class="tw-sol-hero-stat-num">47</div>
+            <div class="tw-sol-hero-stat-label">Communities switched to Tidewater in the last 24 months</div>
+          </div>
+          <div>
+            <div class="tw-sol-hero-stat-num gold">~30 days</div>
+            <div class="tw-sol-hero-stat-label">Prep time before your official start date — systems, accounts, vendor notices</div>
+          </div>
+          <div>
+            <div class="tw-sol-hero-stat-num">$1K</div>
+            <div class="tw-sol-hero-stat-label">One-time transition fee &mdash; transparent, no surprises</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tw-sol-hero-side">
+        <div style="padding:24px 26px 26px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--tw-border)">
+            <div>
+              <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.16em;color:var(--tw-teal);margin-bottom:4px">Live transition &middot; Sample</div>
+              <div style="font-family:var(--tw-font-heading);font-weight:800;font-size:17px;color:var(--tw-dark);letter-spacing:-0.01em">Stonebridge Crossing HOA</div>
+            </div>
+            <div style="font-family:var(--tw-font-mono);font-size:10.5px;color:var(--tw-fg-subtle);letter-spacing:0.04em">184 units &middot; Frederick</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            {[
+              { wk:'Signing', t:'Introduction & welcome', s:'Welcome email sent to the Board', state:'done' },
+              { wk:'30 days out', t:'Document collection', s:'Roster, EIN, governing docs requested', state:'done' },
+              { wk:'15 days out', t:'CINC setup & bank account', s:'Columbia Bank account + mgmt letter', state:'now' },
+              { wk:'10 days out', t:'Vendor notices + SDAT', s:'All vendors notified; records updated', state:'next' },
+              { wk:'Start date', t:'Active management begins', s:'Portal live; owner statements sent', state:'next' },
+            ].map(r => (
+              <div style={`display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:10px 12px;background:${r.state==='now'?'rgba(58,146,166,0.07)':'var(--tw-warm-100)'};border:${r.state==='now'?'1px solid var(--tw-teal-100)':'1px solid var(--tw-border)'};border-radius:8px`}>
+                <div style={`font-family:var(--tw-font-heading);font-weight:800;font-size:11px;color:${r.state==='now'?'var(--tw-teal)':'var(--tw-fg-muted)'};letter-spacing:0.08em;text-transform:uppercase`}>{r.wk}</div>
+                <div>
+                  <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:13px;color:var(--tw-dark);margin-bottom:2px">{r.t}</div>
+                  <div style="font-family:var(--tw-font-body);font-size:11.5px;color:var(--tw-fg-muted);line-height:1.4">{r.s}</div>
+                </div>
+                <div style={`width:22px;height:22px;border-radius:50%;background:${r.state==='done'?'var(--tw-sage)':r.state==='now'?'var(--tw-teal)':'var(--tw-cream)'};border:${r.state==='next'?'1.5px dashed var(--tw-border-strong)':'none'};display:flex;align-items:center;justify-content:center;color:var(--tw-cream);font-size:10px`}>
+                  {r.state === 'done' && '✓'}
+                  {r.state === 'now' && '●'}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Warning Signs -->
+  <section class="tw-section tw-sol-warnings">
+    <div class="tw-container-wide">
+      <div class="tw-sol-warn-grid">
+        <div class="tw-sol-warn-head">
+          <div class="tw-eyebrow">Is it time?</div>
+          <h2>The 10 signs your management company isn&rsquo;t <em>working.</em></h2>
+          <p>Check the ones that apply to your community. We&rsquo;ve heard every one of these from boards who switched to Tidewater &mdash; usually after putting it off too long.</p>
+        </div>
+        <div class="tw-sol-warn-list">
+          {warningSigns.map((sign, i) => (
+            <div class="tw-sol-warn-item" style="cursor:default">
+              <div class="tw-sol-warn-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="tw-sol-warn-text" set:html={sign}></div>
+              <div class="tw-sol-warn-num">{String(i + 1).padStart(2, '0')}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="tw-section tw-sol-timeline-section" id="timeline">
+    <div class="tw-container-wide">
+      <div class="tw-section-head" style="text-align:center;max-width:760px;margin:0 auto">
+        <div class="tw-eyebrow">The Transition</div>
+        <h2 class="tw-section-title">A structured transition <em>built around your start date.</em></h2>
+        <p class="tw-section-lede">Our transitions team has done this 47 times in the last two years. Here&rsquo;s the exact playbook we run on your behalf &mdash; timed to your official start date, with the board reviewing, not lifting.</p>
+      </div>
+      <div class="tw-sol-timeline-wrap">
+        <div class="tw-sol-timeline" style="grid-template-columns:repeat(6,1fr)">
+          {weeks.map(w => (
+            <div class={`tw-sol-week${w.isFinal ? ' is-final' : ''}`}>
+              <div class="tw-sol-week-marker">
+                <div class="tw-sol-week-marker-num" style={w.num.length > 5 ? 'font-size:15px' : ''}>{w.num}</div>
+                <div class="tw-sol-week-marker-label">{w.label}</div>
+              </div>
+              <div class="tw-sol-week-card">
+                <div class="tw-sol-week-title">{w.title}</div>
+                <ul class="tw-sol-week-tasks">
+                  {w.tasks.map(task => <li><span>{task}</span></li>)}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="tw-sol-timeline-foot">
+          <div class="tw-sol-timeline-foot-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="tw-sol-timeline-foot-text">
+            <strong>47 transitions completed.</strong> Active management &mdash; board meetings, day-to-day operations, vendor dispatch &mdash; begins at your official contract start date. Financial records and final funds from prior management may take an additional 30&ndash;60 days depending on the outgoing company and bank processing.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="tw-section tw-sol-compare-section">
+    <div class="tw-container-wide">
+      <div class="tw-section-head" style="text-align:left;max-width:760px;margin:0 0 12px">
+        <div class="tw-eyebrow">The Difference</div>
+        <h2 class="tw-section-title" style="margin:10px 0 14px">Side-by-side: what you have now vs. what you&rsquo;d have with <em>Tidewater.</em></h2>
+        <p class="tw-section-lede">No softening. This is the table we walk every prospective board through, line by line.</p>
+      </div>
+      <div class="tw-sol-compare">
+        <div class="tw-sol-compare-head">
+          <div><div class="tw-sol-compare-head-row">Topic</div></div>
+          <div class="them"><div class="tw-sol-compare-head-row">Most management companies</div><h3>Current company</h3></div>
+          <div class="us"><div class="tw-sol-compare-head-row">Tidewater</div><h3>Tidewater</h3></div>
+        </div>
+        {compareRows.map(r => (
+          <div class="tw-sol-compare-row">
+            <div class="topic">
+              {r.topic}
+              {r.sub && <div class="topic-sub">{r.sub}</div>}
+            </div>
+            <div class="them" set:html={r.them}></div>
+            <div class="us" set:html={r.us}></div>
+          </div>
+        ))}
+        <div class="tw-sol-compare-foot">
+          <div class="tw-sol-compare-foot-text">
+            <strong>Ready to see how we compare to your current company?</strong> Request a proposal and we&rsquo;ll put together a line-by-line comparison against your existing management fee.
+          </div>
+          <a href="/request-a-proposal" class="tw-btn tw-btn-primary">Request a proposal &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Switch Story -->
+  <section class="tw-section tw-sol-story-section">
+    <div class="tw-container-wide">
+      <div class="tw-sol-story">
+        <div>
+          <div class="tw-eyebrow" style="color:var(--tw-gold)">After they switched</div>
+          <p class="tw-sol-story-quote">
+            We spent three years complaining about our old management company before we finally pulled the trigger. The transition was so quiet our residents barely noticed. Six months in, our reserves are funded properly for the first time in a decade.
+          </p>
+          <div class="tw-sol-story-attr">
+            <div class="tw-sol-story-avatar">KW</div>
+            <div>
+              <div class="tw-sol-story-name">Karen Whitlock</div>
+              <div class="tw-sol-story-role">President, Board of Directors &middot; <span class="gold">Stonebridge Crossing HOA &middot; Frederick, MD</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tw-sol-story-side">
+          <div class="tw-sol-story-side-eyebrow">Stonebridge Crossing &middot; Year 1</div>
+          <h3>After they switched</h3>
+          <div class="tw-sol-story-stats">
+            <div class="tw-sol-story-stat">
+              <div class="tw-sol-story-stat-num"><span class="gold">+$118K</span></div>
+              <div class="tw-sol-story-stat-label">Underbilled reserves recovered in year one</div>
+            </div>
+            <div class="tw-sol-story-stat">
+              <div class="tw-sol-story-stat-num">6.4 days</div>
+              <div class="tw-sol-story-stat-label">Avg. manager response time, down from 11</div>
+            </div>
+            <div class="tw-sol-story-stat">
+              <div class="tw-sol-story-stat-num"><span class="gold">100%</span></div>
+              <div class="tw-sol-story-stat-label">Board satisfaction at renewal</div>
+            </div>
+            <div class="tw-sol-story-stat">
+              <div class="tw-sol-story-stat-num">0</div>
+              <div class="tw-sol-story-stat-label">Resident complaints about the transition itself</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="tw-section tw-sol-faq-section">
+    <div class="tw-container-wide">
+      <div class="tw-sol-faq-grid">
+        <div class="tw-sol-faq-head">
+          <div class="tw-eyebrow">Top 10 Board Questions</div>
+          <h2>Everything boards <em>actually</em> ask us before switching.</h2>
+          <p>Compiled from the past 47 transitions. If you&rsquo;ve thought it, you&rsquo;re not the first.</p>
+          <a href="/request-a-proposal" class="tw-btn tw-btn-primary">Ask your own question &rarr;</a>
+        </div>
+        <FaqAccordion items={faqItems} defaultOpen={0} />
+      </div>
+    </div>
+  </section>
+
+  <FromTheBlog client:load categories={['solutions', 'hoa-mgmt']} />
+  <CTA />
+  <Footer />
+</BaseLayout>

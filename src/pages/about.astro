@@ -1,0 +1,58 @@
+---
+import AboutLayout from '../layouts/AboutLayout.astro';
+import Topbar from '../components/Topbar.astro';
+import Header from '../components/Header.astro';
+import AboutHero from '../components/AboutHero.astro';
+import OriginStory from '../components/OriginStory.astro';
+import NumbersStrip from '../components/NumbersStrip.astro';
+import Manifesto from '../components/Manifesto.astro';
+import Timeline from '../components/Timeline.astro';
+import Values from '../components/Values.astro';
+import CredentialsWall from '../components/CredentialsWall.astro';
+import Leadership from '../components/Leadership.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { localBusinessSchema, breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../config/site';
+
+const pageDesc = "Two generations. ~75 in-house staff. 400+ communities. AAMC® accredited and still independent in a market that has consolidated around us.";
+
+const schemas = [
+  localBusinessSchema({ description: pageDesc }),
+  breadcrumbSchema([{ name: 'Home', url: SITE.url + '/' }, { name: 'About', url: `${SITE.url}/about` }]),
+];
+---
+<AboutLayout
+  title="About Tidewater | Family-Owned Since 1989"
+  description={pageDesc}
+  pageSchema={schemas}
+>
+  <Topbar variant="default" />
+  <Header activeNav="about" />
+  <Breadcrumb crumbs={[{ label: "About" }]} />
+  <AboutHero
+    eyebrow="About Tidewater"
+    titleHtml="Family-owned in the Mid-Atlantic <em>since 1989.</em>"
+    lede="Two generations. One building. Roughly 75 people who never moved on to a corporate parent — and 400+ communities and 40,000 homes that have stayed because of it."
+    image="/assets/hero-mission.jpg"
+    imageAlt="Tidewater leadership and team — Owings Mills, Maryland"
+    datelineLeft="Owings Mills, MD"
+    datelineRight="Est. 1989"
+    ledger={[
+      { num: '1989', label: 'Founded by Stanley Greenberg' },
+      { num: '2', label: 'Generations · still family-owned' },
+      { num: '~75', label: 'In-house staff — nothing outsourced' },
+      { num: '400+', label: 'Communities · 40,000+ homes · 6 states' },
+    ]}
+  />
+  <OriginStory />
+  <NumbersStrip />
+  <Manifesto />
+  <Timeline />
+  <Values />
+  <CredentialsWall />
+  <Leadership />
+  <CTA />
+  <Footer />
+</AboutLayout>

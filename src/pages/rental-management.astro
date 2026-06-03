@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Topbar from '../components/Topbar.astro';
+import Header from '../components/Header.astro';
+import RentalHero from '../components/RentalHero.astro';
+import RentalPains from '../components/RentalPains.astro';
+import RentalFee from '../components/RentalFee.astro';
+import RentalCounty from '../components/RentalCounty.jsx';
+import RentalDeployed from '../components/RentalDeployed.astro';
+import RentalPortal from '../components/RentalPortal.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Mission from '../components/Mission.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import FromTheBlog from '../components/FromTheBlog.jsx';
+import { serviceSchema, breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../config/site';
+
+const pageUrl = `${SITE.url}/rental-management`;
+const pageDesc = "Full rental property management across Maryland and Delaware. One flat fee, no hidden charges. Built for deployed, out-of-state, and second-home owners. Since 1989.";
+
+const schemas = [
+  serviceSchema({ name: 'Rental Property Management', description: pageDesc, url: pageUrl, areaServed: ['Maryland', 'Delaware'] }),
+  breadcrumbSchema([{ name: 'Home', url: SITE.url + '/' }, { name: 'Rental Management', url: pageUrl }]),
+];
+---
+<BaseLayout
+  pageStylesheet="styles-blog.css"
+  title="Rental Property Management MD & DE | Tidewater"
+  description={pageDesc}
+  pageSchema={schemas}
+>
+  <Topbar variant="homeowner" />
+  <Header activeNav="rental" />
+  <Breadcrumb crumbs={[{ label: "Management", href: "/hoa-management/" }, { label: "Rental Management" }]} />
+  <RentalHero />
+  <TrustBar variant="rental" />
+
+  <RentalPains />
+  <RentalFee />
+  <RentalCounty client:visible />
+
+  <!-- Where We Manage geo strip -->
+  <section class="tw-geo-section linen">
+    <div class="tw-container">
+      <div style="max-width:640px;margin-bottom:36px">
+        <div style="font-family:var(--tw-font-heading);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tw-teal);margin-bottom:10px">Service Area</div>
+        <h2 style="font-family:var(--tw-font-heading);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--tw-dark);margin:0 0 12px">Rental management across Maryland &amp; Delaware</h2>
+        <p style="font-family:var(--tw-font-body);font-size:1rem;color:var(--tw-fg-muted);margin:0">We manage 400+ rental units across Maryland and coastal Delaware. Explore county-level coverage, local landlord laws, and licensing requirements for your area.</p>
+      </div>
+      <div class="tw-geo-counties">
+        <a href="/rental-management/maryland" class="tw-geo-county-card featured">
+          <div class="tw-geo-county-flag">MD</div>
+          <div>
+            <div class="tw-geo-county-head">
+              <div class="tw-geo-county-name">Maryland</div>
+              <div class="tw-geo-county-meta">Our primary rental state &middot; 8+ counties</div>
+            </div>
+            <div class="tw-geo-county-body">Anne Arundel, Baltimore City &amp; County, Howard, Montgomery, Prince George&rsquo;s, Frederick, and Harford. Military corridors and Eastern Shore.</div>
+            <div class="tw-geo-county-cta">
+              Explore Maryland coverage
+              <svg class="tw-geo-county-cta-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-left:4px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </div>
+          </div>
+        </a>
+        <div class="tw-geo-county-card" style="pointer-events:none;opacity:.65">
+          <div class="tw-geo-county-flag">DE</div>
+          <div>
+            <div class="tw-geo-county-head">
+              <div class="tw-geo-county-name">Delaware</div>
+              <div class="tw-geo-county-meta">Coastal &amp; Sussex County rentals</div>
+            </div>
+            <div class="tw-geo-county-body">Rental management for coastal Delaware owners &mdash; Lewes, Rehoboth, and Sussex County. Long-term rental management only.</div>
+            <div class="tw-geo-county-cta" style="color:var(--tw-fg-muted)">Coverage page coming soon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <RentalDeployed />
+  <RentalPortal />
+  <Mission variant="rental" />
+  <Testimonials variant="rental" />
+  <FromTheBlog client:load categories={['rental']} />
+
+  <!-- Community owner callout (#166) -->
+  <section style="background:var(--tw-cream);border-top:1px solid var(--tw-border);border-bottom:1px solid var(--tw-border);padding:48px 0">
+    <div class="tw-container" style="max-width:760px">
+      <div style="display:flex;align-items:flex-start;gap:20px">
+        <div style="flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--tw-gold);display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" style="width:18px;height:18px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <div style="font-family:var(--tw-font-heading);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tw-gold);margin-bottom:6px">For Community Residents</div>
+          <p style="font-family:var(--tw-font-body);font-size:1.05rem;font-weight:600;color:var(--tw-dark);margin:0 0 6px">Own a home in a Tidewater-managed community?</p>
+          <p style="font-family:var(--tw-font-body);font-size:.95rem;color:var(--tw-fg-muted);margin:0">Owners in communities we already manage may qualify for a discount on rental management. Ask our team about it when you reach out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTA variant="rental" />
+  <Footer />
+</BaseLayout>

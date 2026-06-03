@@ -1,0 +1,277 @@
+---
+interface Props {
+  activeNav?: string | null;
+}
+const { activeNav = null } = Astro.props;
+
+const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
+---
+
+<header class="tw-header">
+  <div class="tw-header-inner">
+    <a class="tw-header-logo" href="/">
+      <img src="/assets/logo-main-black.svg" alt="Tidewater Companies" />
+    </a>
+
+    <nav class="tw-header-nav" id="tw-nav">
+
+      <!-- About mega menu -->
+      <div class="tw-nav-item" data-menu="about">
+        <a href="/about" class={`tw-header-nav-link ${isActive(['about']) ? 'is-active' : ''}`}>
+          About<svg class="tw-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
+        </a>
+        <div class="tw-megamenu tw-megamenu-2col">
+          <!-- Col 1: feature image -->
+          <a href="/about" class="tw-mega-feature">
+            <div class="tw-mega-feature-img">
+              <img src="/assets/hero-mission.jpg" alt="Tidewater team — Owings Mills, Maryland" />
+              <div class="tw-mega-feature-overlay"></div>
+            </div>
+            <div class="tw-mega-feature-body">
+              <div class="tw-mega-feature-eyebrow">Since 1989</div>
+              <div class="tw-mega-feature-title">Family-owned in the Mid-Atlantic.</div>
+              <div class="tw-mega-feature-sub">Two generations. ~75 in-house staff. 300+ communities. Still independent.</div>
+              <div class="tw-mega-feature-cta">Our story →</div>
+            </div>
+          </a>
+          <!-- Col 2: company links -->
+          <div class="tw-mega-col">
+            <div class="tw-mega-col-label">Company</div>
+            <div class="tw-mega-list">
+              <a href="/about" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                <div><div class="tw-mega-title">Our Story</div><div class="tw-mega-body">Family-owned in the Mid-Atlantic since 1989.</div></div>
+              </a>
+              <a href="/about/leadership" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="9" cy="6" r="2.5" fill="currentColor"/><circle cx="14" cy="12" r="2.5" fill="currentColor"/><circle cx="7" cy="18" r="2.5" fill="currentColor"/></svg></div>
+                <div><div class="tw-mega-title">Leadership</div><div class="tw-mega-body">PCAM-credentialed team and chapter presidents.</div></div>
+              </a>
+              <a href="/careers" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><line x1="9" y1="13" x2="9.01" y2="13"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+                <div><div class="tw-mega-title">Careers</div><div class="tw-mega-body">Join an independent, board-first management firm.</div></div>
+              </a>
+              <a href="/testimonials" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                <div><div class="tw-mega-title">Testimonials</div><div class="tw-mega-body">What boards and owners say about Tidewater.</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Management mega menu -->
+      <div class="tw-nav-item" data-menu="mgmt">
+        <a href="/hoa-management" class={`tw-header-nav-link ${isActive(['mgmt','hoa','condo','rental','maintenance']) ? 'is-active' : ''}`}>
+          Management<svg class="tw-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
+        </a>
+        <div class="tw-megamenu tw-megamenu-3col">
+          <!-- Col 1: switching callout -->
+          <a href="/solutions/switching-hoa-management-company" class="tw-mega-feature">
+            <div class="tw-mega-feature-img">
+              <img src="/assets/hero-aerial.jpg" alt="Switching HOA management companies" />
+              <div class="tw-mega-feature-overlay"></div>
+            </div>
+            <div class="tw-mega-feature-body">
+              <div class="tw-mega-feature-eyebrow">Thinking of switching?</div>
+              <div class="tw-mega-feature-title">How to change HOA management companies</div>
+              <div class="tw-mega-feature-sub">What to look for in your next firm, how to make the transition, and what to expect from day one.</div>
+              <div class="tw-mega-feature-cta">Read the guide →</div>
+            </div>
+          </a>
+          <!-- Col 2: services -->
+          <div class="tw-mega-col">
+            <div class="tw-mega-col-label">Services</div>
+            <div class="tw-mega-list">
+              <a href="/hoa-management" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                <div><div class="tw-mega-title">HOA Management</div><div class="tw-mega-body">Full-service management for homeowner associations.</div></div>
+              </a>
+              <a href="/condo-management" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><line x1="9" y1="13" x2="9.01" y2="13"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+                <div><div class="tw-mega-title">Condo Association Management</div><div class="tw-mega-body">High-rise, mid-rise, and garden-style expertise.</div></div>
+              </a>
+              <a href="/rental-management" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                <div><div class="tw-mega-title">Rental Management</div><div class="tw-mega-body">One flat fee. Single-family and multifamily.</div></div>
+              </a>
+
+              <a href="/hoa-management/hoa-financial-management" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                <div><div class="tw-mega-title">HOA Financial Management</div><div class="tw-mega-body">MBA/CPA Controller. StrongRoom invoice approval.</div></div>
+              </a>
+            </div>
+          </div>
+          <!-- Col 3: solutions -->
+          <div class="tw-mega-col">
+            <div class="tw-mega-col-label">Solutions</div>
+            <div class="tw-mega-list">
+              <a href="/solutions/switching-hoa-management-company" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+                <div><div class="tw-mega-title">Switching Management Companies</div><div class="tw-mega-body">What to look for. How to make the transition.</div></div>
+              </a>
+              <a href="/solutions/self-managed-hoa-transition" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div><div class="tw-mega-title">Self-Managed HOA Transition</div><div class="tw-mega-body">Ready to hand off the day-to-day? We\'ll guide you.</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Maintenance Services standalone -->
+      <div class="tw-nav-item">
+        <a href="/maintenance-services" class={`tw-header-nav-link ${isActive(['maintenance']) ? 'is-active' : ''}`}>Maintenance</a>
+      </div>
+
+      <!-- Real Estate standalone -->
+      <div class="tw-nav-item">
+        <a href="/real-estate" class={`tw-header-nav-link ${isActive(['realty']) ? 'is-active' : ''}`}>Real Estate</a>
+      </div>
+
+      <!-- Resources mega menu -->
+      <div class="tw-nav-item" data-menu="resources">
+        <a href="/resources" class={`tw-header-nav-link ${isActive(['resources','blog']) ? 'is-active' : ''}`}>
+          Resources<svg class="tw-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
+        </a>
+        <div class="tw-megamenu tw-megamenu-3col">
+          <!-- Col 1: blog feature -->
+          <a href="/blog" class="tw-mega-feature">
+            <div class="tw-mega-feature-img">
+              <img src="/assets/how-to-switch-hoa-management-companies.png" alt="Tidewater HOA Board Playbook blog" />
+              <div class="tw-mega-feature-overlay"></div>
+            </div>
+            <div class="tw-mega-feature-body">
+              <div class="tw-mega-feature-eyebrow">The Blog</div>
+              <div class="tw-mega-feature-title">The HOA Board Playbook</div>
+              <div class="tw-mega-feature-sub">Practical guides for HOA and condo boards — written by PCAM-credentialed managers from what we\'ve seen on real agendas.</div>
+              <div class="tw-mega-feature-cta">Browse all posts →</div>
+            </div>
+          </a>
+          <!-- Col 2: resource links -->
+          <div class="tw-mega-col">
+            <div class="tw-mega-col-label">Resources</div>
+            <div class="tw-mega-list">
+              <a href="/blog" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                <div><div class="tw-mega-title">HOA News & Blog</div><div class="tw-mega-body">Reserve studies, switching management, governance, Maryland HOA law.</div></div>
+              </a>
+              <a href="/resources" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+                <div><div class="tw-mega-title">All Resources</div><div class="tw-mega-body">Tools, guides, and FAQs for boards and homeowners.</div></div>
+              </a>
+            </div>
+          </div>
+          <!-- Col 3: top posts -->
+          <div class="tw-mega-col">
+            <div class="tw-mega-col-label">Top Posts</div>
+            <div class="tw-mega-list">
+              <a href="/blog/how-to-switch-hoa-management-companies" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+                <div><div class="tw-mega-title">How to Switch HOA Management Companies</div><div class="tw-mega-body">A step-by-step transition guide for boards.</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </nav>
+
+    <div class="tw-header-actions">
+      <div class="tw-account-wrap" id="tw-account-wrap">
+        <button class="tw-header-login tw-account-btn" id="tw-account-btn" aria-haspopup="true" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          My Account
+          <svg class="tw-chev tw-account-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
+        </button>
+        <div class="tw-account-dropdown" id="tw-account-dropdown" role="menu">
+          <a href="https://tidewater.cincwebaxis.com" target="_blank" rel="noopener noreferrer" class="tw-account-item" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <div>
+              <div class="tw-account-item-title">Community Login</div>
+              <div class="tw-account-item-sub">HOA & condo owners</div>
+            </div>
+          </a>
+          <a href="https://account.appfolio.com/realms/foliospace/protocol/openid-connect/auth?activation_state&client_id=client-aa200e11a2d03f6365c1d339b05d19bf63850b9d&portfolio_uuid&redirect_uri=https%3A%2F%2Ftidewater.appfolio.com%2Fconnect%2Fusers%2Foauth%2Fcallback&response_type=code&scope=openid&session_timed_out=false&state" target="_blank" rel="noopener noreferrer" class="tw-account-item" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" rx="2"/><path d="M9 9h6M9 13h4"/></svg>
+            <div>
+              <div class="tw-account-item-title">Rentals Login</div>
+              <div class="tw-account-item-sub">Rental owners & tenants</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <a href="/request-a-proposal" class="tw-btn tw-btn-primary tw-btn-pill">Request a Proposal</a>
+      <button class="tw-mobile-toggle" id="tw-mobile-toggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Megamenu — desktop hover with close delay to bridge the CSS gap
+  document.querySelectorAll<HTMLElement>('.tw-nav-item[data-menu]').forEach(item => {
+    const menu = item.querySelector<HTMLElement>('.tw-megamenu');
+    if (!menu) return;
+    let closeTimer: ReturnType<typeof setTimeout>;
+
+    const open = () => { clearTimeout(closeTimer); menu.classList.add('is-open'); };
+    const close = () => { closeTimer = setTimeout(() => menu.classList.remove('is-open'), 150); };
+
+    item.addEventListener('mouseenter', open);
+    item.addEventListener('mouseleave', close);
+    menu.addEventListener('mouseenter', open);
+    menu.addEventListener('mouseleave', close);
+  });
+
+  // My Account dropdown
+  const accountWrap = document.getElementById('tw-account-wrap');
+  const accountBtn = document.getElementById('tw-account-btn');
+  const accountDrop = document.getElementById('tw-account-dropdown');
+  if (accountWrap && accountBtn && accountDrop) {
+    let closeTimer: ReturnType<typeof setTimeout>;
+    const openDrop = () => {
+      clearTimeout(closeTimer);
+      accountDrop.classList.add('is-open');
+      accountBtn.setAttribute('aria-expanded', 'true');
+    };
+    const closeDrop = () => {
+      closeTimer = setTimeout(() => {
+        accountDrop.classList.remove('is-open');
+        accountBtn.setAttribute('aria-expanded', 'false');
+      }, 150);
+    };
+    accountBtn.addEventListener('click', () => {
+      accountDrop.classList.contains('is-open') ? closeDrop() : openDrop();
+    });
+    accountWrap.addEventListener('mouseenter', openDrop);
+    accountWrap.addEventListener('mouseleave', closeDrop);
+    document.addEventListener('click', (e) => {
+      if (!accountWrap.contains(e.target as Node)) {
+        accountDrop.classList.remove('is-open');
+        accountBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Mobile nav toggle
+  const toggle = document.getElementById('tw-mobile-toggle');
+  const nav = document.getElementById('tw-nav');
+  toggle?.addEventListener('click', () => {
+    nav?.classList.toggle('is-mobile-open');
+    toggle.classList.toggle('is-active');
+  });
+
+  // Mobile nav: tap-to-expand megamenu sections
+  nav?.querySelectorAll('.tw-nav-item').forEach((item) => {
+    const link = item.querySelector('.tw-header-nav-link');
+    const megamenu = item.querySelector('.tw-megamenu');
+    if (!link || !megamenu) return;
+    link.addEventListener('click', (e) => {
+      if (!nav.classList.contains('is-mobile-open')) return; // desktop: do nothing
+      e.preventDefault();
+      item.classList.toggle('is-mobile-expanded');
+    });
+  });
+</script>

@@ -36,7 +36,7 @@ window.PAGE_CONFIG = {
   pains: {
     eyebrow: 'Why Condo Boards Switch to Tidewater',
     titleHtml: 'Condo management is <em>different.</em> So is ours.',
-    lede: 'Shared mechanical systems, complex reserves, and 24/7 resident expectations make condo boards a different beast than HOAs. We resolve the issues that drive most condo management changes.',
+    lede: 'Shared mechanical systems, complex reserves, and 24/7 resident expectations make condominium boards a different beast than HOAs. We resolve the issues that drive most condo management changes.',
     items: [
       { n: '01', pain: 'Reserve Underfunding',
         head: 'Reserve studies that boards can actually act on.',
@@ -56,6 +56,91 @@ window.PAGE_CONFIG = {
       { n: '06', pain: 'Financial Opacity',
         head: 'Board-readable financials. On the 1st. Every month.',
         body: 'Operating + reserve activity, delinquency status, and management plan progress in one report. Real-time visibility via the board portal — including secondary invoice approval if your board wants it.' }
+    ]
+  },
+  handson: {
+    eyebrow: 'How Condo Management Actually Works',
+    titleHtml: 'Building operations, run with <em>engineering rigor.</em>',
+    lede: 'Four operational systems built for the realities of condominium ownership \u2014 shared structure, shared mechanicals, and shared liability.',
+    items: [
+      { icon: 'eye', cls:'', title: 'A second set of eyes on every building.', body: 'Our Quality Assurance department \u2014 led by a former CAI Chesapeake Chapter President with senior project management experience \u2014 tracks insurance, elevator certs, sprinkler tests, fire alarm tests, and reserve study cadence on every building in our condo portfolio.', meta: 'Internal QA Team · Built-in compliance' },
+      { icon: 'calendar', cls:'tw-handson-icon-gold', title: 'Building systems calendar, scheduled in CINC.', body: 'Elevator inspections, sprinkler riser tests, fire alarm certifications, chiller service, roof inspections, and garage maintenance \u2014 mapped at the start of each year. Auto-triggered 15 days before deadlines.', meta: 'CINC Systems · Tidewater PM portal' },
+      { icon: 'phone', cls:'tw-handson-icon-clay', title: 'After-hours, you reach a manager who knows the building.', body: 'Our 24/7 emergency line rotates through actual Tidewater community managers \u2014 with engineer contacts, water-shutoff diagrams, and vendor numbers pre-loaded for every building. <strong>20-minute callback standard.</strong>', meta: 'Mid-rise & high-rise ready' },
+      { icon: 'handshake', cls:'tw-handson-icon-sage', title: 'Specialty vendor compliance, in-house.', body: 'Elevator companies, life-safety contractors, and engineering firms \u2014 all vetted through our proprietary CINC-integrated app. COIs, W-9s, license verification. <strong>No third-party platform fees</strong> charged back to your association.', meta: 'Proprietary compliance app' }
+    ]
+  },
+  tiers: {
+    eyebrow: 'Three Tiers. Engineered for Condominiums.',
+    titleHtml: 'A fit for <em>every condominium.</em>',
+    lede: 'From 24-unit garden communities to 300-unit high-rises. Three service models tuned to the scale of your building, the complexity of your mechanicals, and your board\u2019s preferred level of fiduciary involvement.',
+    featuredBestFor: 'Mid-rise & high-rise condominiums',
+    featuredTagline: 'Comprehensive management for buildings with shared mechanicals, complex reserves, and life-safety obligations.',
+    featuredFeatures: [
+      'Dedicated community manager familiar with your building',
+      'Building systems calendar &mdash; elevators, sprinklers, fire alarms, chillers',
+      'Reserve study oversight &amp; multi-scenario funding plans',
+      'Special assessment communications &amp; owner Q&amp;A windows',
+      'Annual management plan via CINC Systems',
+      'In-house specialty vendor compliance (engineering, life-safety)',
+      '24/7 emergency line &mdash; manager who knows the building'
+    ],
+    flexBestFor: 'Smaller, mature condo boards',
+    flexTagline: 'Lower base fee for garden-style condos with established operations and stable reserves.',
+    flexFeatures: [
+      { text: 'Reduced base condo management fee' },
+      { text: 'Hourly rate for board meeting attendance' },
+      { text: 'Building inspections &amp; cert tracking on-demand' },
+      { text: 'Full financial controls, collections &amp; reserve accounting' },
+      { text: 'Owner portal &amp; CINC management plan' },
+      { text: '24/7 emergency coverage with engineer contacts' },
+      { text: 'Standing on-site presence', muted: true }
+    ],
+    financialBestFor: 'Self-managed condo boards',
+    financialTagline: 'Reserve-grade accounting for boards handling their own day-to-day building operations.',
+    financialFeatures: [
+      { text: 'Operating + reserve account separation &amp; reconciliation' },
+      { text: 'AR / AP processing &amp; assessment billing' },
+      { text: 'Reserve transfers &amp; multi-year funding tracking' },
+      { text: 'Special assessment ledger &amp; owner statements' },
+      { text: 'Tax return coordination &amp; lender questionnaires' },
+      { text: 'Building systems oversight &amp; inspections', muted: true },
+      { text: 'Board meeting attendance', muted: true }
+    ],
+    footHtml: 'All tiers include the Tidewater PM owner portal, the Stanley AI assistant, and our in-house client services team. <a href="#">See full condo feature comparison →</a>'
+  },
+  portal: {
+    eyebrow: 'Built On CINC Systems',
+    titleHtml: 'A condo board portal you&rsquo;ll actually use. <em class="gold">An AI assistant named after our founder.</em>',
+    lede: 'Condo boards see what matters: building system status, reserve balances against the funding plan, life-safety compliance, delinquencies, and special assessment progress \u2014 in one real-time view.',
+    features: [
+      'Building systems calendar \u2014 elevators, fire, sprinkler, chillers',
+      'Reserve plan tracking against current funding scenarios',
+      'Live insurance &amp; certificate-of-occupancy status',
+      'Special assessment communications &amp; owner Q&amp;A logs',
+      'Optional StrongRoom invoice approval for boards'
+    ],
+    stanleyText: 'Annual sprinkler riser test is due in 8 days. I\u2019ve confirmed the vendor COI and drafted resident notice for the water shutoff window.',
+    ctaLabel: 'Tour the condo board portal \u2192',
+    mock: {
+      url: 'tidewater.cincwebaxis.com / condo-board',
+      greeting: 'Good morning, David.',
+      sub: 'Harborview Condominium \u00b7 Board Secretary \u00b7 184 units',
+      nav: ['Dashboard','Financials','Building Systems','Reserves','Life Safety','Documents','Resources'],
+      cards: [
+        { label: 'Operating Acct', num: '$412,180', trend: '\u25b2 on budget' },
+        { label: 'Reserve', num: '$2.4M', trend: '92% to 10-yr plan', cls:'teal' },
+        { label: 'Life-Safety', num: '4 due', trend: 'all on calendar', trendClay: false },
+        { label: 'Special Assess.', num: '$680k', trend: 'Garage \u2014 Phase 2 of 3' }
+      ]
+    }
+  },
+  testimonials: {
+    eyebrow: 'Voices From Our Condo Boards',
+    titleHtml: 'The way we work \u2014 <em class="gold">in buildings that can\u2019t afford a miss.</em>',
+    items: [
+      { quote: 'When unit 1404 leaked at 11pm, our manager had the engineer and the dry-out crew lined up before I made it down to the lobby. The reporting the next morning was as professional as anything I\u2019ve seen in 25 years of corporate life.', name: 'Board Treasurer', initials: 'DM', meta: 'High-rise condo \u00b7 184 units' },
+      { quote: 'Our last firm renewed insurance with a one-line summary. Tidewater walks us through three scenarios with their broker, then helps us defend the decision to owners. That\u2019s the difference.', name: 'Board President', initials: 'EH', meta: 'Bethesda condo \u00b7 96 units' },
+      { quote: 'The reserve study isn\u2019t a binder on a shelf anymore. It\u2019s a calendar with funding plans, vendor bids, and owner communications attached \u2014 and our manager runs that calendar.', name: 'Board Director', initials: 'RK', meta: 'Eastern Shore condo \u00b7 120 units' }
     ]
   }
 };

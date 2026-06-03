@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Topbar from '../../components/Topbar.astro';
+import Header from '../../components/Header.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Footer from '../../components/Footer.astro';
+import PostSwitchHoa from '../../components/PostSwitchHoa.jsx';
+import { articleSchema, faqSchema, breadcrumbSchema } from '../../lib/schema';
+import { SITE } from '../../config/site';
+
+const pageUrl = `${SITE.url}/blog/how-to-switch-hoa-management-companies`;
+const headline = 'How to Switch HOA Management Companies: A Step-by-Step Guide';
+const description = 'Step-by-step guide to switching HOA management companies: contract review, board votes, notice periods, records transfer, and evaluating candidates.';
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Switch HOA Management Companies',
+  description: 'A step-by-step guide for HOA boards transitioning to a new management company.',
+  totalTime: 'P60D',
+  step: [
+    { '@type': 'HowToStep', name: 'Review your current management contract', text: 'Read the termination clause. Identify notice period, early termination fees, auto-renewal date, and records-transfer language.', url: `${pageUrl}#contract` },
+    { '@type': 'HowToStep', name: 'Get board alignment and vote', text: 'Build consensus and hold a formal board vote. Document the decision in the meeting minutes. Homeowner approval typically not required.', url: `${pageUrl}#alignment` },
+    { '@type': 'HowToStep', name: 'Send proper notice to your current company', text: 'Deliver written termination notice via certified mail. Include termination date, request for records, and request for a final accounting of association funds.', url: `${pageUrl}#notice` },
+    { '@type': 'HowToStep', name: 'Manage the transition', text: 'Track the four categories of transfer: financial records and accounts, governing documents, vendor contracts, and homeowner communication. Typical timeline: 30–60 days.', url: `${pageUrl}#transition` },
+    { '@type': 'HowToStep', name: 'Evaluate your next management company', text: 'Use the transition checklist: AAMC accreditation, manager-to-community ratio, financial rigor, technology platform, vendor management, references, transparent contracts.', url: `${pageUrl}#evaluate` },
+  ],
+};
+
+const pageSchema = [
+  articleSchema({
+    headline,
+    description,
+    url: pageUrl,
+    datePublished: '2026-05-14',
+    about: ['HOA management', 'switching management companies', 'HOA board governance'],
+  }),
+  faqSchema([
+    { q: 'Can you fire your HOA management company?', a: 'Yes. The board has the authority to terminate the management company per the terms of the management contract. The process involves reviewing the termination clause in your current agreement, voting as a board to authorize the change, and providing written notice within the required timeframe. Homeowner approval is typically not required — this is a board-level vendor decision, similar to hiring any other service provider for the association.' },
+    { q: 'How long does it take to switch HOA management companies?', a: "Most transitions take 30 to 90 days from the board\'s decision to full handoff. The timeline depends on the notice period in your current contract, where you are in the association\'s financial year, and how quickly the outgoing company cooperates with the records and financial transfer." },
+    { q: 'What happens to our reserve funds when we change management companies?', a: 'Reserve funds belong to the association, not the management company, and must be transferred in full. The outgoing company should provide a final reserve fund statement and facilitate the transfer of all associated bank accounts. Your board should request a complete financial reconciliation before the transition closes.' },
+    { q: 'Does the board need homeowner approval to change management companies?', a: "In most cases, no. Selecting and terminating a management company is a board-level decision, and the board\'s authority to hire and manage vendors is typically established in the bylaws. However, boards should confirm this against their own governing documents." },
+  ]),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Blog', url: SITE.url + '/blog' },
+    { name: headline, url: pageUrl },
+  ]),
+  howToSchema,
+];
+---
+
+<BaseLayout
+  title="How to Switch HOA Management Companies | Tidewater"
+  description={description}
+  ogType="article"
+  pageSchema={pageSchema}
+  pageStylesheet="styles-blog.css"
+>
+  <Topbar variant="homeowner" />
+  <Header activeNav="blog" />
+  <Breadcrumb crumbs={[
+    { label: 'Blog', href: '/blog' },
+    { label: 'How to Switch HOA Management Companies' },
+  ]} />
+  <PostSwitchHoa client:load />
+  <Footer />
+</BaseLayout>

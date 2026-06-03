@@ -1,0 +1,39 @@
+---
+const leaders = [
+  { initials: 'MG', name: 'Marc Greenberg',    creds: 'CMCA · AMS · PCAM', title: 'President — holds all three primary CAI management designations including the industry&rsquo;s highest individual credential.' },
+  { initials: 'GW', name: 'Gail Windisch',     creds: 'CMCA · AMS · PCAM', title: 'Senior Director of Operations · Former CAI Chesapeake Chapter President, Secretary, and VP. 20+ years with Tidewater.' },
+  { initials: 'JJ', name: 'Joe Jordan',        creds: 'CMCA · AMS · PCAM', title: 'Director of Quality Assurance · Former CAI Chesapeake Chapter President (2012). Leads our compliance oversight team.' },
+  { initials: 'DG', name: 'Don Gentry',        creds: 'CMCA · AMS · PCAM', title: 'Delmarva Regional Director · 20+ years in customer service and real estate. Oversees the Eastern Shore, Ocean City, and Delaware portfolio.' },
+  { initials: 'KC', name: 'Kate Cornell',      creds: 'CMCA',               title: 'Baltimore Metro Regional Director · Co-leads the developer management program. 15+ years industry experience.' },
+  { initials: 'JO', name: 'Jessica Ogle',      creds: 'CMCA',               title: 'Director of Association Financial Management · 20+ years at Tidewater. Backed by an MBA, CPA Controller.' },
+  { initials: 'SS', name: 'Stacey Schaffer',   creds: 'SHRM-CP',            title: 'Director of Human Resources · SHRM-certified. Leads company-wide HR standards, expectations, and staff development.' },
+  { initials: 'RB', name: 'Rick Bowling',      creds: 'MBA · CPA',          title: 'Controller · MBA and CPA credentials. Focuses on company finance administration and accounting processes.' },
+  { initials: 'CB', name: 'Cody Bishop',       creds: 'Licensed Broker',    title: 'Director of Rental Management · Licensed real estate broker. Oversees rental management and Realty operations across Maryland, Delaware, and Virginia.' },
+];
+---
+<section class="tw-section tw-section-cream" id="leadership">
+  <div class="tw-container">
+    <div class="tw-section-head-left">
+      <div class="tw-eyebrow">Leadership You Can Reach</div>
+      <h2 class="tw-section-title">Credentials uncommon at our size. <em>Tenure even rarer.</em></h2>
+      <p class="tw-section-lede">Tidewater pays for every CAI designation upfront &mdash; for managers, administrative staff, and accountants. The result is a leadership team whose qualifications are visible, verifiable, and rooted in regional industry leadership.</p>
+    </div>
+    <div class="tw-lead-grid">
+      {leaders.map(l => (
+        <article class="tw-lead-card">
+          <div class="tw-lead-avatar">{l.initials}</div>
+          <h3 class="tw-lead-name">{l.name}</h3>
+          <div class="tw-lead-creds">{l.creds}</div>
+          <p class="tw-lead-title" set:html={l.title} />
+        </article>
+      ))}
+    </div>
+    <div class="tw-cai-banner">
+      <div class="tw-cai-banner-icon">CAI<br />LED</div>
+      <div class="tw-cai-banner-text">
+        <h4>Two Tidewater leaders have served as CAI Chesapeake Chapter President.</h4>
+        <p>No management company in the Maryland market is more deeply embedded in the industry&rsquo;s professional leadership structure. The QA Director who oversees compliance for your community is also the person who has helped shape the standards of the profession.</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,100 @@
+---
+const regions = [
+  { label: 'Maryland',       sub: 'Baltimore · DC Metro · Eastern Shore · Western MD', href: '/hoa-management/maryland/' },
+  { label: 'Washington DC',  sub: 'District communities & investors' },
+  { label: 'Virginia',       sub: 'Northern Virginia' },
+  { label: 'Delaware',       sub: 'Wilmington · Rehoboth · Coastal DE' },
+  { label: 'Pennsylvania',   sub: 'South-central PA' },
+  { label: 'West Virginia',  sub: 'Eastern Panhandle' },
+];
+---
+<footer class="tw-footer">
+  <div class="tw-container">
+    <div class="tw-footer-grid">
+      <div class="tw-footer-brand">
+        <img src="/assets/logo-main-white.svg" alt="Tidewater" />
+        <p>Family-owned. Community-focused. Always moving forward. Hands-on management and personalized insight for the Mid-Atlantic since 1989.</p>
+        <div class="tw-footer-social">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+      <div>
+        <h4>Management</h4>
+        <ul>
+          <li><a href="/hoa-management">HOA &amp; Community Management</a></li>
+          <li><a href="/condo-management">Condo Association Management</a></li>
+          <li><a href="/hoa-management/commercial-association-management">Commercial Association Management</a></li>
+          <li><a href="/hoa-management/townhome-community-management">Townhome &amp; Planned Communities</a></li>
+          <li><a href="/hoa-management/hoa-financial-management">HOA Financial Management</a></li>
+          <li><a href="/hoa-management/maryland">HOA Management in Maryland</a></li>
+          <li><a href="/rental-management">Rental Management</a></li>
+          <li><a href="/maintenance-services">Maintenance Services</a></li>
+          <li><a href="/real-estate">Tidewater Realty Group</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">Our Story</a></li>
+          <li><a href="/about/leadership">Leadership</a></li>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/testimonials">Testimonials</a></li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/blog">Blog &amp; Resources</a></li>
+          <li><a href="/request-a-proposal">Request a Proposal</a></li>
+          <li><a href="#">Pay Your Assessment</a></li>
+          <li><a href="#">Owner Login</a></li>
+          <li><a href="#">Board Portal</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="tw-footer-areas">
+    <div class="tw-footer-areas-inner">
+      <div class="tw-footer-areas-left">
+        <svg class="tw-footer-areas-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        <div>
+          <span class="tw-footer-areas-label">Serving the Mid-Atlantic</span>
+          <span class="tw-footer-areas-sub">400+ communities across 6 states</span>
+        </div>
+      </div>
+      <div class="tw-footer-areas-regions">
+        {regions.map(r => (
+          r.href
+            ? <a href={r.href} class="tw-footer-area-pill">
+                <span class="tw-footer-area-name">{r.label}</span>
+                <span class="tw-footer-area-sub">{r.sub}</span>
+              </a>
+            : <div class="tw-footer-area-pill">
+                <span class="tw-footer-area-name">{r.label}</span>
+                <span class="tw-footer-area-sub">{r.sub}</span>
+              </div>
+        ))}
+      </div>
+      <a href="/service-areas" class="tw-footer-areas-link">View all service areas →</a>
+    </div>
+  </div>
+
+  <div class="tw-footer-base">
+    <div class="tw-footer-base-inner">
+      <span>© 2026 Tidewater Companies. All rights reserved. AAMC® · A+ BBB · CAI Member.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>

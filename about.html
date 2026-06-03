@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>About Tidewater — Family-Owned in the Mid-Atlantic Since 1989</title>
+<meta name="description" content="Two generations. ~75 in-house staff. ~300 communities. AAMC® accredited and still independent in a market that has consolidated around us."/>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="styles-about.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap" rel="stylesheet"/>
+<script>
+window.PAGE_CONFIG = {
+  nav: { active: 'about' },
+  aboutHero: {
+    eyebrow: 'About Tidewater',
+    titleHtml: 'Family-owned in the Mid-Atlantic <em>since 1989.</em>',
+    lede: 'Two generations. One building. Roughly 75 people who never moved on to a corporate parent — and roughly 300 communities and 30,000 homes that have stayed because of it.',
+    image: 'assets/hero-mission.jpg',
+    imageAlt: 'Tidewater leadership and team — Owings Mills, Maryland',
+    datelineLeft: 'Owings Mills, MD',
+    datelineRight: 'Est. 1989',
+    ledger: [
+      { num: '1989', label: 'Founded by Stanley Greenberg' },
+      { num: '2', label: 'Generations · still family-owned' },
+      { num: '~75', label: 'In-house staff — nothing outsourced' },
+      { num: '300+', label: 'Communities · 30,000+ homes · 6 states' }
+    ]
+  }
+};
+</script>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="components/Header.jsx"></script>
+<script type="text/babel" src="components/AboutHero.jsx"></script>
+<script type="text/babel" src="components/OriginStory.jsx"></script>
+<script type="text/babel" src="components/NumbersStrip.jsx"></script>
+<script type="text/babel" src="components/Manifesto.jsx"></script>
+<script type="text/babel" src="components/Timeline.jsx"></script>
+<script type="text/babel" src="components/Values.jsx"></script>
+<script type="text/babel" src="components/CredentialsWall.jsx"></script>
+<script type="text/babel" src="components/Leadership.jsx"></script>
+<script type="text/babel" src="components/Footer.jsx"></script>
+<script type="text/babel">
+function App() {
+  return (
+    <div data-screen-label="About">
+      <Topbar/>
+      <Header/>
+      <AboutHero/>
+      <OriginStory/>
+      <NumbersStrip/>
+      <Manifesto/>
+      <Timeline/>
+      <Values/>
+      <CredentialsWall/>
+      <Leadership/>
+      <CTA/>
+      <Footer/>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

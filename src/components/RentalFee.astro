@@ -1,0 +1,80 @@
+---
+const sections = [
+  {
+    title: 'Leasing &amp; Tenant Placement',
+    lede: 'Whether you sign on for full management or leasing-only, the work is the same.',
+    items: [
+      'Property advertising with video tours',
+      '3D Matterport &amp; virtual tours with staff<sup>*</sup>',
+      'Personal &amp; in-person showings',
+      'Credit, background &amp; rental history checks',
+      '3-year rental verification &amp; 3&times; income standard',
+      'Lease prep, signing &amp; adverse-action notices',
+    ],
+  },
+  {
+    title: 'Day-to-Day Management',
+    lede: 'Once a tenant is in, the relationship doesn&rsquo;t end &mdash; ours just gets busier.',
+    items: [
+      'Rent collection via AppFolio',
+      'Bookkeeping &amp; monthly owner statements',
+      'AP &mdash; mortgage, utilities, HOA dues paid from funds<sup>*</sup>',
+      'Move-in / move-out inspections',
+      'Bi-annual interior inspections',
+      'Photo documentation in AppFolio',
+    ],
+  },
+  {
+    title: 'Maintenance &amp; Emergencies',
+    lede: 'Coordinated, not just dispatched. With a discount on Tidewater Maintenance.',
+    items: [
+      '24/7 maintenance line via AppFolio',
+      'Best-effort 20-minute callback for true emergencies',
+      'Tidewater Property Maintenance discount',
+      'Vetted vendor network &mdash; appliances, electrical, specialty trades',
+      'Tenant work-order portal',
+      'Mid-Atlantic regional network',
+    ],
+  },
+  {
+    title: 'When Things Go Sideways',
+    lede: 'You shouldn&rsquo;t have to navigate delinquent tenants alone &mdash; in Maryland or Delaware.',
+    items: [
+      'Eviction coordination, in-house',
+      'Third-party filing partner on the day of eviction',
+      'Maryland multi-county regulatory expertise',
+      'Lease violation enforcement',
+      'Security-deposit reconciliation &amp; documentation',
+      'Tenant transition support',
+    ],
+  },
+];
+---
+<section class="tw-section tw-section-linen" id="fee">
+  <div class="tw-container">
+    <div class="tw-section-head">
+      <div class="tw-eyebrow">What the All-Inclusive Fee Includes</div>
+      <h2 class="tw-section-title">Routine services, one flat fee. <em>The whole rental lifecycle.</em></h2>
+      <p class="tw-section-lede">A simple test: if you&rsquo;ve been managed before, count the line items on last year&rsquo;s statement. Now compare.</p>
+    </div>
+    <div class="tw-rfee-grid">
+      {sections.map((s, i) => (
+        <div class="tw-rfee-card">
+          <div class="tw-rfee-num">{String(i + 1).padStart(2, '0')}</div>
+          <h3 class="tw-rfee-title"><Fragment set:html={s.title} /></h3>
+          <p class="tw-rfee-lede"><Fragment set:html={s.lede} /></p>
+          <ul class="tw-rfee-list">
+            {s.items.map((it) => (
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><Fragment set:html={it} /></span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <p class="tw-rfee-asterisk-note" style="font-size:.8rem;color:var(--tw-fg-subtle);margin-bottom:6px"><sup>*</sup>Available as an add-on with an addendum. Ask our rental team about pricing.</p>
+    <p class="tw-tier-foot">Available as full management, leasing-only, or vacancy management. <a href="#contact">Talk to our rental team &rarr;</a></p>
+  </div>
+</section>

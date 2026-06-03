@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Topbar from '../../../components/Topbar.astro';
+import Header from '../../../components/Header.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Footer from '../../../components/Footer.astro';
+import CTA from '../../../components/CTA.astro';
+import RentalGeo, { GEO_DATA_SILVER_SPRING as geo } from '../../../components/RentalGeo.jsx';
+import { breadcrumbSchema, serviceSchema } from '../../../lib/schema';
+import { SITE } from '../../../config/site';
+
+const pageUrl = `${SITE.url}/rental-management/maryland/silver-spring`;
+
+const schemas = [
+  serviceSchema({
+    name: 'Rental Property Management — Silver Spring, MD',
+    description: geo.schemaDesc,
+    url: pageUrl,
+    areaServed: 'Silver Spring, Maryland',
+  }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Rental Management', url: SITE.url + '/rental-management' },
+    { name: 'Maryland', url: SITE.url + '/rental-management/maryland' },
+    { name: 'Silver Spring', url: pageUrl },
+  ]),
+];
+---
+
+<BaseLayout
+  title="Rental Property Management Silver Spring MD | Tidewater"
+  description="Rental property management in Silver Spring, MD — single-family, condo, and townhome. DC commuter market, Metro proximity, NIH/FDA corridor. Flat 8.5% fee."
+  ogType="website"
+  pageSchema={schemas}
+  pageStylesheet="styles-geo.css"
+>
+  <Topbar />
+  <Header activeNav="rental" />
+  <Breadcrumb crumbs={[
+    { label: 'Rental Management', href: '/rental-management' },
+    { label: 'Maryland', href: '/rental-management/maryland' },
+    { label: 'Silver Spring' },
+  ]} />
+  <RentalGeo geo={geo} client:load />
+  <CTA />
+  <Footer />
+</BaseLayout>

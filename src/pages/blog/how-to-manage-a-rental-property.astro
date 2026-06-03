@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Topbar from '../../components/Topbar.astro';
+import Header from '../../components/Header.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PostRentalGuide from '../../components/PostRentalGuide.jsx';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+import { articleSchema, faqSchema, breadcrumbSchema } from '../../lib/schema';
+import { SITE } from '../../config/site';
+
+const pageUrl = `${SITE.url}/blog/how-to-manage-a-rental-property`;
+
+const faqItems = [
+  { q: 'Can I manage my own rental property?', a: 'Yes. Many landlords successfully self-manage, especially with one or two local properties and the time to stay on top of tenants, maintenance, and legal compliance. Self-management works best when you live near the property, have reliable contractor relationships, understand your state and local landlord-tenant laws, and can dedicate consistent time to the operational demands. It becomes harder with distance, multiple properties, or complex regulatory environments like Maryland\'s.' },
+  { q: 'How much does a property management company charge?', a: 'Most property management companies charge 8 to 12 percent of monthly collected rent, though fee structures vary widely. Some companies advertise a low base rate but charge separately for property inspections, maintenance coordination, lease renewals, and tenant placement. Look for an all-inclusive fee structure so you know exactly what you\'re paying and can budget accurately. The lowest advertised rate is rarely the lowest total cost.' },
+  { q: 'How often should I inspect my rental property?', a: 'Every three to six months at minimum, with additional inspections at move-in and move-out. Regular property inspections catch maintenance issues before they become expensive, document property condition for security deposit purposes, and give you visibility into how tenants are treating the unit. Provide proper notice before each inspection — Maryland law requires reasonable notice, typically 24 hours. Take dated photos every time.' },
+  { q: 'What are the biggest mistakes first-time landlords make?', a: 'The most common mistakes are inadequate tenant screening, underestimating maintenance costs, failing to use a written lease agreement, and not understanding local landlord-tenant laws. All four are preventable. Screen every applicant consistently using documented criteria. Budget 5 to 10 percent of gross rent for maintenance reserves. Use a state-specific lease, not a generic template. Familiarize yourself with your local regulatory requirements before your first tenant moves in.' },
+  { q: 'Do I need a rental license in Maryland?', a: 'It depends on the jurisdiction. Many Maryland counties and municipalities require a rental license or registration before you can legally lease a property. Baltimore City, Baltimore County, Montgomery County, Prince George\'s County, and others each have specific requirements. Penalties for non-compliance can include fines and the inability to pursue eviction proceedings. Check with your local government before listing your property for rent.' },
+];
+
+const schemas = [
+  articleSchema({
+    headline: 'How to Manage a Rental Property: A Practical Guide for Landlords',
+    description: 'How to manage a rental property — tenant screening, maintenance, finances, and local regulations. Know when to self-manage and when to hire a property manager.',
+    datePublished: '2026-05-16',
+    dateModified: '2026-05-16',
+    authorName: 'Cody Bishop',
+    image: `${SITE.url}/assets/how-to-manage-a-rental-property.png`,
+    url: pageUrl,
+  }),
+  faqSchema(faqItems),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Blog', url: `${SITE.url}/blog` },
+    { name: 'How to Manage a Rental Property', url: pageUrl },
+  ]),
+];
+---
+<BaseLayout
+  title="How to Manage a Rental Property | Tidewater"
+  description="How to manage a rental property — tenant screening, maintenance, finances, and local regulations. Know when to self-manage and when to hire a property manager."
+  ogType="article"
+  pageSchema={schemas}
+  pageStylesheet="styles-blog.css"
+>
+  <Topbar variant="homeowner" />
+  <Header activeNav="blog" />
+  <Breadcrumb crumbs={[
+    { label: 'Blog', href: '/blog' },
+    { label: "How to Manage a Rental Property" },
+  ]} />
+  <PostRentalGuide client:load />
+  <CTA
+    eyebrow="Request a Rental Management Proposal"
+    title="Let\'s talk about your rental property."
+    body="Tell us about your property and a member of our rental management team will reach out within one business day."
+  />
+  <Footer />
+</BaseLayout>

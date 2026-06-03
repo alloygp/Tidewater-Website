@@ -1,6 +1,9 @@
-// HOA Homepage — Testimonials
+// HOA / Condo — Testimonials (config-driven)
 function Testimonials() {
-  const items = [
+  const cfg = (window.PAGE_CONFIG && window.PAGE_CONFIG.testimonials) || {};
+  const eyebrow = cfg.eyebrow || 'Voices From Our Communities';
+  const titleHtml = cfg.titleHtml || 'The way we work — <em class="gold">everyday.</em>';
+  const items = cfg.items || [
     { quote: 'Tidewater knows our community. We never feel like an account number — they answer when we call, and they show up.', name: 'Board President', initials: 'MS', meta: 'Towson HOA · 220 homes' },
     { quote: 'The transition from our previous manager was smoother than we expected. Their proactive approach has saved us money and headaches.', name: 'Treasurer', initials: 'DR', meta: 'Anne Arundel Condo · 88 units' },
     { quote: 'Our manager has been with us six years now. After three companies in five years, that stability has been the biggest gift.', name: 'Board Director', initials: 'AB', meta: 'Howard County HOA · 410 homes' },
@@ -9,8 +12,8 @@ function Testimonials() {
     <section className="tw-section tw-section-dark">
       <div className="tw-container">
         <div className="tw-section-head-left">
-          <div className="tw-eyebrow tw-eyebrow-gold">Voices From Our Communities</div>
-          <h2 className="tw-section-title tw-section-title-light">The way we work — <em className="gold">everyday.</em></h2>
+          <div className="tw-eyebrow tw-eyebrow-gold">{eyebrow}</div>
+          <h2 className="tw-section-title tw-section-title-light" dangerouslySetInnerHTML={{__html: titleHtml}}></h2>
         </div>
         <div className="tw-quote-grid">
           {items.map((t,i) => (

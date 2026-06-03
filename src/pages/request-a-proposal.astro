@@ -1,0 +1,530 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Topbar from '../components/Topbar.astro';
+import Header from '../components/Header.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ProposalForm from '../components/ProposalForm.jsx';
+import Footer from '../components/Footer.astro';
+import { breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../config/site';
+
+const schemas = [
+  breadcrumbSchema([{ name: 'Home', url: SITE.url + '/' }, { name: 'Request a Proposal', url: `${SITE.url}/request-a-proposal` }]),
+];
+---
+<BaseLayout
+  title="Request a Proposal — Tidewater Companies"
+  description="Get in touch with Tidewater Companies. Boards: request a no-pressure proposal. Homeowners, tenants, and vendors: find the fastest way to what you need."
+  pageSchema={schemas}
+>
+  <style is:global>
+    /* ===== Deflection bar ===== */
+    .tw-deflect-bar { background: var(--tw-warm-100); border-bottom: 1px solid var(--tw-border); }
+    .tw-deflect-bar-inner {
+      max-width: 1320px; margin: 0 auto; padding: 14px 32px;
+      display: flex; align-items: center; gap: 18px;
+      font-family: var(--tw-font-body); font-size: 13.5px;
+      color: var(--tw-fg-muted); flex-wrap: wrap;
+    }
+    .tw-deflect-bar-label {
+      font-family: var(--tw-font-heading); font-weight: 700; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 0.14em; color: var(--tw-dark);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .tw-deflect-bar-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--tw-teal); }
+    .tw-deflect-bar-links { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tw-deflect-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border-radius: 999px;
+      background: var(--tw-cream); border: 1px solid var(--tw-border);
+      font-family: var(--tw-font-heading); font-weight: 600; font-size: 12.5px;
+      color: var(--tw-dark); text-decoration: none; transition: all .15s ease;
+    }
+    .tw-deflect-link:hover { border-color: var(--tw-teal); color: var(--tw-teal); transform: translateY(-1px); }
+
+    /* ===== Hero ===== */
+    .tw-c-hero {
+      position: relative; background: var(--tw-dark); color: var(--tw-cream);
+      overflow: hidden; isolation: isolate;
+    }
+    .tw-c-hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse at 12% 30%, rgba(58,146,166,0.32) 0%, transparent 55%),
+        radial-gradient(ellipse at 88% 80%, rgba(191,172,95,0.16) 0%, transparent 50%),
+        var(--tw-dark);
+    }
+    .tw-c-hero-paper {
+      position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='1' stitchTiles='stitch' seed='4'/><feColorMatrix values='0 0 0 0 0.30  0 0 0 0 0.22  0 0 0 0 0.12  0 0 0 1.6 -0.4'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-size: 160px 160px; mix-blend-mode: screen; opacity: 0.20;
+    }
+    .tw-c-hero-grid {
+      position: relative; z-index: 5;
+      max-width: 1320px; margin: 0 auto;
+      padding: 72px 32px 88px;
+      display: grid; grid-template-columns: 0.95fr 1.05fr;
+      gap: 64px; align-items: start;
+    }
+    .tw-c-hero-copy { padding-top: 14px; }
+    .tw-c-hero-eyebrow-row { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+    .tw-c-hero-eyebrow-row .tw-divider { width: 36px; height: 2px; background: var(--tw-gold); }
+    .tw-c-hero-eyebrow-row .tw-eyebrow { color: var(--tw-gold); }
+    .tw-c-hero-title {
+      font-family: var(--tw-font-heading); font-weight: 800;
+      font-size: clamp(38px, 4.2vw, 60px); line-height: 1.04;
+      letter-spacing: -0.02em; color: var(--tw-cream);
+      margin: 0 0 22px; text-wrap: balance;
+    }
+    .tw-c-hero-title em { font-style: italic; font-weight: 300; color: var(--tw-gold); }
+    .tw-c-hero-lede {
+      font-family: var(--tw-font-body); font-size: 18px; line-height: 1.65;
+      color: rgba(254,252,248,0.82); margin: 0 0 32px; max-width: 480px;
+    }
+    .tw-c-promise {
+      display: flex; flex-direction: column; gap: 14px;
+      padding: 22px 24px;
+      background: rgba(254,252,248,0.04);
+      border: 1px solid rgba(254,252,248,0.12);
+      border-radius: 12px; backdrop-filter: blur(4px);
+    }
+    .tw-c-promise-head {
+      font-family: var(--tw-font-heading); font-weight: 700; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 0.16em; color: var(--tw-gold);
+    }
+    .tw-c-promise-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+    .tw-c-promise-step {
+      display: grid; grid-template-columns: 26px 1fr; gap: 12px;
+      font-family: var(--tw-font-body); font-size: 14px;
+      line-height: 1.5; color: rgba(254,252,248,0.85);
+    }
+    .tw-c-promise-step strong { color: var(--tw-cream); font-weight: 600; }
+    .tw-c-promise-num {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(191,172,95,0.18); color: var(--tw-gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--tw-font-heading); font-weight: 800; font-size: 11px; flex-shrink: 0;
+    }
+
+    /* ===== Form card (shared with ProposalForm.jsx) ===== */
+    .tw-c-form-card {
+      background: var(--tw-cream); color: var(--tw-dark);
+      border-radius: 14px; box-shadow: 0 28px 70px rgba(0,0,0,0.40);
+      border: 1px solid rgba(254,252,248,0.4); overflow: hidden;
+    }
+    .tw-c-form-head {
+      padding: 26px 32px 22px; border-bottom: 1px solid var(--tw-border);
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    }
+    .tw-c-form-head-left { flex: 1; min-width: 0; }
+    .tw-c-form-head h2 {
+      font-family: var(--tw-font-heading); font-weight: 800; font-size: 22px;
+      line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 4px; color: var(--tw-dark);
+    }
+    .tw-c-form-head p { font-family: var(--tw-font-body); font-size: 13.5px; color: var(--tw-fg-muted); margin: 0; line-height: 1.5; }
+    .tw-c-form-badge {
+      flex-shrink: 0; background: var(--tw-teal-50); color: var(--tw-teal-700);
+      border: 1px solid var(--tw-teal-100); border-radius: 999px; padding: 6px 12px;
+      font-family: var(--tw-font-heading); font-weight: 700; font-size: 10.5px;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+    }
+    .tw-c-form-badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--tw-sage); box-shadow: 0 0 0 0 rgba(100,125,87,0.6);
+      animation: tw-c-pulse 2.4s ease-out infinite;
+    }
+    @keyframes tw-c-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(100,125,87,0.55); }
+      70%  { box-shadow: 0 0 0 8px rgba(100,125,87,0); }
+      100% { box-shadow: 0 0 0 0 rgba(100,125,87,0); }
+    }
+    .tw-c-role-strip {
+      padding: 16px 32px; background: var(--tw-warm-100); border-bottom: 1px solid var(--tw-border);
+    }
+    .tw-c-role-label {
+      font-family: var(--tw-font-heading); font-weight: 700; font-size: 10.5px;
+      text-transform: uppercase; letter-spacing: 0.16em; color: var(--tw-fg-muted);
+      margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+    }
+    .tw-c-role-required {
+      background: var(--tw-gold); color: var(--tw-dark);
+      border-radius: 3px; padding: 1px 6px; font-size: 9px; letter-spacing: 0.1em;
+    }
+    .tw-c-role-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tw-c-role-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 14px; background: var(--tw-cream);
+      border: 1.5px solid var(--tw-border); border-radius: 999px;
+      font-family: var(--tw-font-heading); font-weight: 600; font-size: 13px;
+      color: var(--tw-dark); cursor: pointer; transition: all .15s ease; user-select: none;
+    }
+    .tw-c-role-pill:hover { border-color: var(--tw-teal); color: var(--tw-teal); }
+    .tw-c-role-pill.is-selected { background: var(--tw-teal); border-color: var(--tw-teal); color: var(--tw-cream); }
+    .tw-c-role-check {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: rgba(254,252,248,0.25); color: var(--tw-cream);
+      display: none; align-items: center; justify-content: center; font-size: 9px; font-weight: 800;
+    }
+    .tw-c-role-pill.is-selected .tw-c-role-check { display: inline-flex; }
+    .tw-c-role-divider { width: 1px; height: 22px; background: var(--tw-border-strong); margin: 0 4px; align-self: center; }
+    .tw-c-form-body { padding: 24px 32px 28px; display: flex; flex-direction: column; gap: 16px; }
+    .tw-c-form-row { display: grid; gap: 14px; }
+    .tw-c-form-row.row-2 { grid-template-columns: 1fr 1fr; }
+    .tw-c-field { display: flex; flex-direction: column; gap: 6px; }
+    .tw-c-field label {
+      font-family: var(--tw-font-heading); font-weight: 700; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--tw-dark);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .tw-c-field label .tw-c-opt { font-size: 10px; color: var(--tw-fg-subtle); font-weight: 600; text-transform: none; letter-spacing: 0.04em; }
+    .tw-c-field input, .tw-c-field select, .tw-c-field textarea {
+      font-family: var(--tw-font-body); font-size: 15px; padding: 12px 14px;
+      border: 1.5px solid var(--tw-border); border-radius: 8px;
+      background: var(--tw-cream); color: var(--tw-fg);
+      outline: none; transition: border-color .15s, box-shadow .15s, background .15s;
+    }
+    .tw-c-field input::placeholder, .tw-c-field textarea::placeholder { color: var(--tw-fg-subtle); }
+    .tw-c-field input:focus, .tw-c-field select:focus, .tw-c-field textarea:focus {
+      border-color: var(--tw-teal); box-shadow: 0 0 0 4px rgba(58,146,166,.13);
+    }
+    .tw-c-field textarea { min-height: 92px; resize: vertical; line-height: 1.5; }
+    .tw-c-seg {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      background: var(--tw-warm-100); border: 1.5px solid var(--tw-border);
+      border-radius: 8px; padding: 4px; gap: 2px;
+    }
+    .tw-c-seg-opt {
+      background: transparent; border: 0; padding: 10px 8px;
+      font-family: var(--tw-font-heading); font-weight: 700; font-size: 13px;
+      color: var(--tw-fg-muted); border-radius: 6px; cursor: pointer; transition: all .15s ease;
+    }
+    .tw-c-seg-opt:hover { color: var(--tw-dark); }
+    .tw-c-seg-opt.is-selected { background: var(--tw-cream); color: var(--tw-teal); box-shadow: 0 1px 3px rgba(23,35,37,.08); }
+    .tw-c-form-foot {
+      padding: 20px 32px 28px; background: var(--tw-warm-100); border-top: 1px solid var(--tw-border);
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    }
+    .tw-c-form-foot-note { font-family: var(--tw-font-body); font-size: 12px; color: var(--tw-fg-muted); line-height: 1.45; max-width: 280px; }
+    .tw-c-form-foot-note strong { color: var(--tw-dark); font-weight: 700; }
+
+    /* ===== Self-help section ===== */
+    .tw-c-help { background: var(--tw-cream); }
+    .tw-c-help-grid { display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: start; }
+    .tw-c-help-head h2 {
+      font-family: var(--tw-font-heading); font-weight: 800; font-size: 32px;
+      line-height: 1.15; letter-spacing: -0.015em; color: var(--tw-dark);
+      margin: 12px 0 14px; text-wrap: balance;
+    }
+    .tw-c-help-head h2 em { font-style: italic; font-weight: 300; color: var(--tw-teal); }
+    .tw-c-help-head p { font-family: var(--tw-font-body); font-size: 15px; line-height: 1.6; color: var(--tw-fg-muted); margin: 0; }
+    .tw-c-help-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .tw-c-help-card {
+      background: var(--tw-cream); border: 1px solid var(--tw-border); border-radius: 12px;
+      padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 12px;
+      text-decoration: none; transition: all .2s ease;
+    }
+    .tw-c-help-card:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(23,35,37,.10); border-color: var(--tw-teal-100); }
+    .tw-c-help-card-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--tw-teal-50); color: var(--tw-teal);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tw-c-help-card-icon svg { width: 20px; height: 20px; }
+    .tw-c-help-card.gold .tw-c-help-card-icon { background: rgba(191,172,95,0.16); color: #8a7a3d; }
+    .tw-c-help-card.sage .tw-c-help-card-icon { background: rgba(100,125,87,0.16); color: var(--tw-sage); }
+    .tw-c-help-card.clay .tw-c-help-card-icon { background: rgba(206,142,114,0.18); color: #9a5a3a; }
+    .tw-c-help-card h4 { font-family: var(--tw-font-heading); font-weight: 700; font-size: 16px; line-height: 1.3; color: var(--tw-dark); margin: 0; }
+    .tw-c-help-card p { font-family: var(--tw-font-body); font-size: 13px; line-height: 1.5; color: var(--tw-fg-muted); margin: 0; }
+    .tw-c-help-card-foot {
+      margin-top: auto; padding-top: 8px; display: flex; align-items: center; gap: 6px;
+      font-family: var(--tw-font-heading); font-weight: 700; font-size: 12px;
+      color: var(--tw-teal); text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .tw-c-help-card.gold .tw-c-help-card-foot { color: #8a7a3d; }
+    .tw-c-help-card.sage .tw-c-help-card-foot { color: var(--tw-sage); }
+    .tw-c-help-card.clay .tw-c-help-card-foot { color: #9a5a3a; }
+    .tw-c-help-search {
+      margin-top: 18px; display: flex; align-items: center;
+      background: var(--tw-cream); border: 1.5px solid var(--tw-border); border-radius: 999px;
+      padding: 6px 6px 6px 18px; transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .tw-c-help-search:focus-within { border-color: var(--tw-teal); box-shadow: 0 0 0 4px rgba(58,146,166,.13); }
+    .tw-c-help-search svg { width: 16px; height: 16px; color: var(--tw-fg-subtle); flex-shrink: 0; }
+    .tw-c-help-search input {
+      flex: 1; background: transparent; border: 0; outline: 0; color: var(--tw-dark);
+      font-family: var(--tw-font-body); font-size: 14px; padding: 10px 12px; min-width: 0;
+    }
+    .tw-c-help-search input::placeholder { color: var(--tw-fg-subtle); }
+    .tw-c-help-search button {
+      background: var(--tw-dark); color: var(--tw-cream); border: 0; border-radius: 999px;
+      padding: 9px 18px; font-family: var(--tw-font-heading); font-weight: 700; font-size: 12.5px;
+      cursor: pointer; transition: background .15s ease;
+    }
+    .tw-c-help-search button:hover { background: var(--tw-warm-700); }
+
+    /* ===== Other paths section ===== */
+    .tw-c-paths { background: var(--tw-linen); border-top: 1px solid var(--tw-border); }
+    .tw-c-paths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .tw-c-path-card {
+      background: var(--tw-cream); border: 1px solid var(--tw-border); border-radius: 12px;
+      padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 14px;
+    }
+    .tw-c-path-card h4 {
+      font-family: var(--tw-font-heading); font-weight: 800; font-size: 18px; line-height: 1.25;
+      color: var(--tw-dark); margin: 0; display: flex; align-items: center; gap: 10px;
+    }
+    .tw-c-path-icon {
+      width: 30px; height: 30px; border-radius: 8px; background: var(--tw-teal-50); color: var(--tw-teal);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .tw-c-path-icon svg { width: 15px; height: 15px; }
+    .tw-c-path-icon.gold { background: rgba(191,172,95,0.16); color: #8a7a3d; }
+    .tw-c-path-icon.clay { background: rgba(206,142,114,0.18); color: #9a5a3a; }
+    .tw-c-path-rows { display: flex; flex-direction: column; gap: 10px; }
+    .tw-c-path-row {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+      padding: 8px 0; border-bottom: 1px dashed var(--tw-border);
+      font-family: var(--tw-font-body); font-size: 14px; color: var(--tw-dark);
+    }
+    .tw-c-path-row:last-child { border-bottom: 0; }
+    .tw-c-path-row-label { font-family: var(--tw-font-heading); font-weight: 600; font-size: 13px; color: var(--tw-fg-muted); }
+    .tw-c-path-row-val { font-weight: 700; font-family: var(--tw-font-heading); font-size: 14px; }
+    .tw-c-path-row-val.teal { color: var(--tw-teal); }
+    .tw-c-path-row-val.gold { color: #8a7a3d; }
+    .tw-c-path-row a { color: inherit; text-decoration: none; }
+    .tw-c-path-row a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .tw-c-path-foot { margin-top: auto; padding-top: 10px; font-family: var(--tw-font-body); font-size: 12.5px; color: var(--tw-fg-muted); line-height: 1.45; }
+    .tw-c-offices {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      background: var(--tw-cream); border: 1px solid var(--tw-border);
+      border-radius: 12px; overflow: hidden; margin-top: 24px;
+    }
+    .tw-c-office { padding: 22px 24px; border-right: 1px solid var(--tw-border); display: flex; flex-direction: column; gap: 4px; }
+    .tw-c-office:last-child { border-right: 0; }
+    .tw-c-office-eyebrow { font-family: var(--tw-font-heading); font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--tw-teal); margin-bottom: 4px; }
+    .tw-c-office h5 { font-family: var(--tw-font-heading); font-weight: 800; font-size: 17px; color: var(--tw-dark); margin: 0; line-height: 1.2; }
+    .tw-c-office-addr { font-family: var(--tw-font-body); font-size: 13.5px; line-height: 1.5; color: var(--tw-fg-muted); margin: 4px 0 0; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1080px) {
+      .tw-c-hero-grid { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px 72px; }
+      .tw-c-help-grid { grid-template-columns: 1fr; gap: 32px; }
+      .tw-c-help-cards { grid-template-columns: 1fr 1fr; }
+      .tw-c-paths-grid { grid-template-columns: 1fr; }
+      .tw-c-offices { grid-template-columns: 1fr; }
+      .tw-c-office { border-right: 0; border-bottom: 1px solid var(--tw-border); }
+      .tw-c-office:last-child { border-bottom: 0; }
+    }
+    @media (max-width: 640px) {
+      .tw-c-help-cards { grid-template-columns: 1fr; }
+      .tw-c-form-row.row-2 { grid-template-columns: 1fr; }
+      .tw-c-seg { grid-template-columns: repeat(2, 1fr); }
+      .tw-c-form-head { flex-direction: column; }
+      .tw-deflect-bar-inner { padding: 12px 20px; }
+    }
+    @media (max-width: 480px) {
+      .tw-c-hero-grid { padding: 40px 16px 56px; gap: 28px; }
+      .tw-c-form-body { padding: 18px 16px 22px; }
+      .tw-c-form-head { padding: 20px 16px 16px; }
+      .tw-c-role-strip { padding: 14px 16px; }
+      .tw-c-form-foot { padding: 16px 16px 22px; flex-direction: column; align-items: flex-start; }
+      .tw-c-role-pills { gap: 6px; }
+      .tw-c-role-pill { font-size: 12px; padding: 9px 12px; }
+      .tw-c-seg { grid-template-columns: repeat(2, 1fr); }
+      .tw-c-seg-opt { font-size: 12px; padding: 9px 6px; }
+      .tw-deflect-bar-inner { padding: 10px 16px; }
+    }
+  </style>
+
+  <Topbar variant="homeowner" />
+  <Header activeNav="contact" />
+  <Breadcrumb crumbs={[{ label: 'Request a Proposal' }]} />
+
+  <!-- Hero: proposal-forward -->
+  <section class="tw-c-hero">
+    <div class="tw-c-hero-bg"></div>
+    <div class="tw-c-hero-paper"></div>
+    <div class="tw-c-hero-grid">
+
+      <!-- Left: copy + promise steps -->
+      <div class="tw-c-hero-copy">
+        <div class="tw-c-hero-eyebrow-row">
+          <span class="tw-divider"></span>
+          <span class="tw-eyebrow">Request a Proposal</span>
+        </div>
+        <h1 class="tw-c-hero-title">
+          Let&rsquo;s talk about your <em>community.</em>
+        </h1>
+        <p class="tw-c-hero-lede">
+          Family-owned since 1989. AAMC&reg; accredited. A member of our team will review your situation and reach back within one business day — no high-pressure follow-up, ever.
+        </p>
+        <div class="tw-c-promise">
+          <div class="tw-c-promise-head">What happens after you submit</div>
+          <ul class="tw-c-promise-steps">
+            <li class="tw-c-promise-step">
+              <span class="tw-c-promise-num">1</span>
+              <span><strong>Tonight.</strong> A member of our team reads your submission &mdash; not a sales pipeline tool.</span>
+            </li>
+            <li class="tw-c-promise-step">
+              <span class="tw-c-promise-num">2</span>
+              <span><strong>Within one business day.</strong> A short call to understand your situation. No deck, no demo.</span>
+            </li>
+            <li class="tw-c-promise-step">
+              <span class="tw-c-promise-num">3</span>
+              <span><strong>A free review</strong> of your property and a detailed proposal with transparent pricing.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right: interactive form island -->
+      <div>
+        <ProposalForm client:load />
+      </div>
+    </div>
+  </section>
+
+  <!-- Self-help section -->
+  <section id="self-help" class="tw-section tw-c-help">
+    <div class="tw-container-wide">
+      <div class="tw-c-help-grid">
+        <div class="tw-c-help-head">
+          <div class="tw-eyebrow">Homeowner Self-Service</div>
+          <h2>Most things take <em>two minutes</em> in the portal.</h2>
+          <p>Faster than email, available 24/7, and your community manager sees every request in real time.</p>
+        </div>
+        <div class="tw-c-help-cards">
+          <a href="#" class="tw-c-help-card">
+            <div class="tw-c-help-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M10.85 12.15 19 4"/><path d="M18 5l2 2"/><path d="M15 8l2 2"/></svg>
+            </div>
+            <h4>Owner Portal &amp; password reset</h4>
+            <p>Reset your login, update contact info, or recover a missing welcome email.</p>
+            <div class="tw-c-help-card-foot">Open the portal</div>
+          </a>
+          <a href="#" class="tw-c-help-card gold">
+            <div class="tw-c-help-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-2.5 2.5-2.5z"/></svg>
+            </div>
+            <h4>Maintenance request</h4>
+            <p>Non-emergency repairs go through your portal. Faster than email — assigned within hours.</p>
+            <div class="tw-c-help-card-foot">Submit a request →</div>
+          </a>
+          <a href="#" class="tw-c-help-card sage">
+            <div class="tw-c-help-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 3v6"/><path d="M12 14h6"/><path d="M12 18h4"/></svg>
+            </div>
+            <h4>ARC / architectural change</h4>
+            <p>Fences, sheds, paint, solar, additions — submit plans and track approval status online.</p>
+            <div class="tw-c-help-card-foot">Start an ARC request →</div>
+          </a>
+          <a href="#" class="tw-c-help-card clay">
+            <div class="tw-c-help-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg>
+            </div>
+            <h4>Report a violation or nuisance</h4>
+            <p>Noise, parking, pets, trash, short-term rentals. Logged, time-stamped, and routed to your manager.</p>
+            <div class="tw-c-help-card-foot">File a report →</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other paths: phones, email, response times, offices -->
+  <section class="tw-section-tight tw-c-paths">
+    <div class="tw-container-wide">
+      <div class="tw-section-head-left" style="max-width:760px">
+        <div class="tw-eyebrow">Other Ways to Reach Us</div>
+        <h2 class="tw-section-title" style="margin:10px 0 12px;font-size:clamp(28px,2.8vw,38px)">Direct lines, by department.</h2>
+        <p class="tw-section-lede">Skip the form — go straight to the right team.</p>
+      </div>
+
+      <div class="tw-c-paths-grid">
+        <!-- Phones -->
+        <div class="tw-c-path-card">
+          <h4>
+            <span class="tw-c-path-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2L8 9.7a16 16 0 0 0 6 6l1.3-1.1a2 2 0 0 1 2-.5c.9.3 1.8.5 2.7.6A2 2 0 0 1 22 16.9z"/></svg>
+            </span>
+            By phone
+          </h4>
+          <div class="tw-c-path-rows">
+            <div class="tw-c-path-row"><span class="tw-c-path-row-label">Main line</span><a class="tw-c-path-row-val teal" href="tel:+14435480191">(443) 548-0191</a></div>
+            <div class="tw-c-path-row"><span class="tw-c-path-row-label">After-hours emergency</span><a class="tw-c-path-row-val gold" href="tel:+14435480191">24/7 line</a></div>
+            <div class="tw-c-path-row"><span class="tw-c-path-row-label">New proposals</span><span class="tw-c-path-row-val">Use form above</span></div>
+          </div>
+          <div class="tw-c-path-foot">Phones answered Mon–Fri, 8:30am–5:30pm ET.</div>
+        </div>
+
+        <!-- Who handles your request -->
+        <div class="tw-c-path-card">
+          <h4>
+            <span class="tw-c-path-icon gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            Who handles your request
+          </h4>
+          <div class="tw-c-path-rows">
+            <div class="tw-c-path-row"><span class="tw-c-path-row-label">Boards &amp; developers</span><span class="tw-c-path-row-val teal">Community Association Manager</span></div>
+            <div class="tw-c-path-row"><span class="tw-c-path-row-label">Rental owners</span><span class="tw-c-path-row-val">Rental Division</span></div>
+            <div class="tw-c-path-row"><span class="tw-c-path-row-label">Real estate</span><span class="tw-c-path-row-val">Realty Group</span></div>
+            <div class="tw-c-path-row"><span class="tw-c-path-row-label">Vendors</span><span class="tw-c-path-row-val">Operations Team</span></div>
+          </div>
+          <div class="tw-c-path-foot">Every submission is read by a person — not filtered by a pipeline tool. Use the form above to reach the right team directly.</div>
+        </div>
+
+        <!-- Response times -->
+        <div class="tw-c-path-card">
+          <h4>
+            <span class="tw-c-path-icon clay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg>
+            </span>
+            Response times
+          </h4>
+          <div class="tw-c-path-rows">
+            <div class="tw-c-path-row"><span class="tw-c-path-row-label">Emergency (water, fire, storm damage)</span><span class="tw-c-path-row-val gold">&lt; 30 min</span></div>
+            <div class="tw-c-path-row"><span class="tw-c-path-row-label">Maintenance request</span><span class="tw-c-path-row-val">Same day</span></div>
+            <div class="tw-c-path-row"><span class="tw-c-path-row-label">Portal &amp; account</span><span class="tw-c-path-row-val">1 business day</span></div>
+            <div class="tw-c-path-row"><span class="tw-c-path-row-label">Proposal requests</span><span class="tw-c-path-row-val teal">1 business day</span></div>
+          </div>
+          <div class="tw-c-path-foot">Hands-on means we measure ourselves.</div>
+        </div>
+      </div>
+
+      <div class="tw-c-offices">
+        <div class="tw-c-office">
+          <div class="tw-c-office-eyebrow">Headquarters</div>
+          <h5>Owings Mills, MD</h5>
+          <p class="tw-c-office-addr">3600 Crondall Lane, Suite 100<br/>Owings Mills, MD 21117</p>
+        </div>
+        <div class="tw-c-office">
+          <div class="tw-c-office-eyebrow">Coastal Delaware</div>
+          <h5>Lewes, DE</h5>
+          <p class="tw-c-office-addr">Serving Sussex County and<br/>coastal Delaware communities</p>
+        </div>
+        <div class="tw-c-office">
+          <div class="tw-c-office-eyebrow">Ocean City</div>
+          <h5>Ocean City, MD</h5>
+          <p class="tw-c-office-addr">Serving Worcester County and<br/>Ocean City area communities</p>
+        </div>
+        <div class="tw-c-office">
+          <div class="tw-c-office-eyebrow">Delmarva</div>
+          <h5>Eastern Shore, MD</h5>
+          <p class="tw-c-office-addr">Serving Talbot, Dorchester, Wicomico,<br/>and Worcester county communities</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+
+  <script>
+    document.getElementById('tw-help-search')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const q = (document.getElementById('tw-help-q') as HTMLInputElement)?.value.trim();
+      if (q) window.location.href = `/resources/#search=${encodeURIComponent(q)}`;
+    });
+  </script>
+</BaseLayout>
