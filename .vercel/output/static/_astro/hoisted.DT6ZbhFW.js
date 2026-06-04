@@ -1,0 +1,1 @@
+import"./hoisted.BqxO9_8H.js";document.getElementById("tw-help-search")?.addEventListener("submit",t=>{t.preventDefault();const e=document.getElementById("tw-help-q")?.value.trim();e&&(window.location.href=`/resources/#search=${encodeURIComponent(e)}`)});

@@ -6,6 +6,7 @@ import RentalHero from '../components/RentalHero.astro';
 import RentalPains from '../components/RentalPains.astro';
 import RentalFee from '../components/RentalFee.astro';
 import RentalCounty from '../components/RentalCounty.jsx';
+import RentalInsider from '../components/RentalInsider.astro';
 import RentalDeployed from '../components/RentalDeployed.astro';
 import RentalPortal from '../components/RentalPortal.astro';
 import TrustBar from '../components/TrustBar.astro';
@@ -27,14 +28,14 @@ const schemas = [
 ];
 ---
 <BaseLayout
-  pageStylesheet="styles-blog.css"
+  pageStylesheet={["styles-pages.css", "styles-blog.css"]}
   title="Rental Property Management MD & DE | Tidewater"
   description={pageDesc}
   pageSchema={schemas}
 >
   <Topbar variant="homeowner" />
-  <Header activeNav="rental" logoSrc="/assets/Tidewater-Realty-Logo.svg" logoAlt="Tidewater Realty Group" />
-  <Breadcrumb variant="realty" crumbs={[{ label: "Management", href: "/hoa-management/" }, { label: "Rental Management" }]} />
+  <Header activeNav="rental" logoSrc="/assets/Tidewater-Management-Logo.svg" logoAlt="Tidewater Management" />
+  <Breadcrumb variant="management" crumbs={[{ label: "Management", href: "/hoa-management/" }, { label: "Rental Management" }]} />
   <RentalHero />
   <TrustBar variant="rental" />
 
@@ -80,8 +81,42 @@ const schemas = [
     </div>
   </section>
 
+  <RentalInsider />
+
   <RentalDeployed />
   <RentalPortal />
+
+  <!-- Currently leasing — live AppFolio rentals -->
+  <section class="tw-section tw-section-cream" id="listings" style="scroll-margin-top:88px">
+    <div class="tw-container-wide">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:36px">
+        <div>
+          <div class="tw-eyebrow" style="color:var(--tw-teal)">Currently Leasing</div>
+          <h2 class="tw-section-title" style="margin:10px 0 12px">Homes we&rsquo;re leasing <em>right now.</em></h2>
+          <p class="tw-section-lede" style="max-width:560px;margin:0">Every unit below is pulled live from our AppFolio system &mdash; the same platform your property would be managed on. Prices and availability reflect current status.</p>
+        </div>
+        <a href="/request-a-proposal" class="tw-btn tw-btn-outline" style="flex-shrink:0">List your property &rarr;</a>
+      </div>
+      <div style="border:1px solid var(--tw-border);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 8px 32px rgba(23,35,37,.06)">
+        <div style="padding:14px 20px;background:var(--tw-dark);display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.08)">
+          <div style="display:flex;gap:6px">
+            <div style="width:11px;height:11px;border-radius:50%;background:#FF6B5C"></div>
+            <div style="width:11px;height:11px;border-radius:50%;background:#FFBD3D"></div>
+            <div style="width:11px;height:11px;border-radius:50%;background:#1FC73E"></div>
+          </div>
+          <div style="font-family:var(--tw-font-mono);font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.06em">tidewater.appfolio.com / listings</div>
+        </div>
+        <iframe
+          src="https://tidewater.appfolio.com/listings?1509013686620"
+          style="width:100%;height:700px;border:0;display:block"
+          title="Tidewater — Available Rentals"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p style="text-align:center;font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-subtle);margin-top:16px">Listings update in real time. Looking to rent? Contact us if a home you&rsquo;re interested in isn&rsquo;t shown here.</p>
+    </div>
+  </section>
+
   <Mission variant="rental" />
   <Testimonials variant="rental" />
   <FromTheBlog client:load categories={['rental']} />

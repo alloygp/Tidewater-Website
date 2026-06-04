@@ -1,0 +1,1 @@
+import"./hoisted.BqxO9_8H.js";import"./hoisted.Bz6_SOO9.js";document.getElementById("tw-404-search")?.addEventListener("submit",t=>{t.preventDefault();const e=document.getElementById("tw-404-query")?.value.trim();window.location.href=e?`/resources/#search=${encodeURIComponent(e)}`:"/"});

@@ -1,0 +1,295 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"src": "/404/",
+			"headers": {
+				"Location": "/404"
+			},
+			"status": 308
+		},
+		{
+			"src": "/about/leadership/",
+			"headers": {
+				"Location": "/about/leadership"
+			},
+			"status": 308
+		},
+		{
+			"src": "/about/",
+			"headers": {
+				"Location": "/about"
+			},
+			"status": 308
+		},
+		{
+			"src": "/blog/how-to-manage-a-rental-property/",
+			"headers": {
+				"Location": "/blog/how-to-manage-a-rental-property"
+			},
+			"status": 308
+		},
+		{
+			"src": "/blog/how-to-switch-hoa-management-companies/",
+			"headers": {
+				"Location": "/blog/how-to-switch-hoa-management-companies"
+			},
+			"status": 308
+		},
+		{
+			"src": "/blog/what-is-a-community-association-manager/",
+			"headers": {
+				"Location": "/blog/what-is-a-community-association-manager"
+			},
+			"status": 308
+		},
+		{
+			"src": "/blog/what-is-quorum-and-why-is-it-important/",
+			"headers": {
+				"Location": "/blog/what-is-quorum-and-why-is-it-important"
+			},
+			"status": 308
+		},
+		{
+			"src": "/blog/",
+			"headers": {
+				"Location": "/blog"
+			},
+			"status": 308
+		},
+		{
+			"src": "/careers/",
+			"headers": {
+				"Location": "/careers"
+			},
+			"status": 308
+		},
+		{
+			"src": "/condo-management/",
+			"headers": {
+				"Location": "/condo-management"
+			},
+			"status": 308
+		},
+		{
+			"src": "/faq/",
+			"headers": {
+				"Location": "/faq"
+			},
+			"status": 308
+		},
+		{
+			"src": "/hoa-management/commercial-association-management/",
+			"headers": {
+				"Location": "/hoa-management/commercial-association-management"
+			},
+			"status": 308
+		},
+		{
+			"src": "/hoa-management/covenant-enforcement/",
+			"headers": {
+				"Location": "/hoa-management/covenant-enforcement"
+			},
+			"status": 308
+		},
+		{
+			"src": "/hoa-management/hoa-financial-management/",
+			"headers": {
+				"Location": "/hoa-management/hoa-financial-management"
+			},
+			"status": 308
+		},
+		{
+			"src": "/hoa-management/maryland/anne-arundel-county/",
+			"headers": {
+				"Location": "/hoa-management/maryland/anne-arundel-county"
+			},
+			"status": 308
+		},
+		{
+			"src": "/hoa-management/maryland/",
+			"headers": {
+				"Location": "/hoa-management/maryland"
+			},
+			"status": 308
+		},
+		{
+			"src": "/hoa-management/townhome-community-management/",
+			"headers": {
+				"Location": "/hoa-management/townhome-community-management"
+			},
+			"status": 308
+		},
+		{
+			"src": "/hoa-management/",
+			"headers": {
+				"Location": "/hoa-management"
+			},
+			"status": 308
+		},
+		{
+			"src": "/maintenance-services/",
+			"headers": {
+				"Location": "/maintenance-services"
+			},
+			"status": 308
+		},
+		{
+			"src": "/real-estate/",
+			"headers": {
+				"Location": "/real-estate"
+			},
+			"status": 308
+		},
+		{
+			"src": "/rental-management/delaware/lewes/",
+			"headers": {
+				"Location": "/rental-management/delaware/lewes"
+			},
+			"status": 308
+		},
+		{
+			"src": "/rental-management/delaware/",
+			"headers": {
+				"Location": "/rental-management/delaware"
+			},
+			"status": 308
+		},
+		{
+			"src": "/rental-management/maryland/anne-arundel-county/",
+			"headers": {
+				"Location": "/rental-management/maryland/anne-arundel-county"
+			},
+			"status": 308
+		},
+		{
+			"src": "/rental-management/maryland/baltimore-county/",
+			"headers": {
+				"Location": "/rental-management/maryland/baltimore-county"
+			},
+			"status": 308
+		},
+		{
+			"src": "/rental-management/maryland/howard-county/",
+			"headers": {
+				"Location": "/rental-management/maryland/howard-county"
+			},
+			"status": 308
+		},
+		{
+			"src": "/rental-management/maryland/montgomery-county/",
+			"headers": {
+				"Location": "/rental-management/maryland/montgomery-county"
+			},
+			"status": 308
+		},
+		{
+			"src": "/rental-management/maryland/ocean-city/",
+			"headers": {
+				"Location": "/rental-management/maryland/ocean-city"
+			},
+			"status": 308
+		},
+		{
+			"src": "/rental-management/maryland/prince-georges-county/",
+			"headers": {
+				"Location": "/rental-management/maryland/prince-georges-county"
+			},
+			"status": 308
+		},
+		{
+			"src": "/rental-management/maryland/silver-spring/",
+			"headers": {
+				"Location": "/rental-management/maryland/silver-spring"
+			},
+			"status": 308
+		},
+		{
+			"src": "/rental-management/maryland/",
+			"headers": {
+				"Location": "/rental-management/maryland"
+			},
+			"status": 308
+		},
+		{
+			"src": "/rental-management/",
+			"headers": {
+				"Location": "/rental-management"
+			},
+			"status": 308
+		},
+		{
+			"src": "/request-a-proposal/",
+			"headers": {
+				"Location": "/request-a-proposal"
+			},
+			"status": 308
+		},
+		{
+			"src": "/resources/",
+			"headers": {
+				"Location": "/resources"
+			},
+			"status": 308
+		},
+		{
+			"src": "/service-areas/",
+			"headers": {
+				"Location": "/service-areas"
+			},
+			"status": 308
+		},
+		{
+			"src": "/solutions/self-managed-hoa-transition/",
+			"headers": {
+				"Location": "/solutions/self-managed-hoa-transition"
+			},
+			"status": 308
+		},
+		{
+			"src": "/solutions/switching-hoa-management-company/",
+			"headers": {
+				"Location": "/solutions/switching-hoa-management-company"
+			},
+			"status": 308
+		},
+		{
+			"src": "/testimonials/",
+			"headers": {
+				"Location": "/testimonials"
+			},
+			"status": 308
+		},
+		{
+			"src": "^/_astro/(.*)$",
+			"headers": {
+				"cache-control": "public, max-age=31536000, immutable"
+			},
+			"continue": true
+		},
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "^\\/_image$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/api\\/contact$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/api\\/lead$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/api\\/subscribe$",
+			"dest": "_render"
+		},
+		{
+			"src": "/.*",
+			"dest": "/404.html",
+			"status": 404
+		}
+	]
+}

@@ -329,7 +329,7 @@ function RentalMarylandLaw() {
     {
       tone: '', meta: 'Md. Code · Real Property § 8',
       title: 'Maryland Landlord-Tenant Law',
-      body: "Maryland\'s landlord-tenant framework: security deposits (max 2 months' rent + interest accrual), required disclosures, repair-and-deduct, eviction notice periods. We operate inside it by default.",
+      body: "Maryland\'s landlord-tenant framework: security deposits (max 1 month's rent + interest accrual), required disclosures, repair-and-deduct, eviction notice periods. We operate inside it by default.",
 
       foot: 'Compliance handled, not delegated',
     },

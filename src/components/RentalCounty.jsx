@@ -12,7 +12,7 @@ const states = [
     ],
     facts: [
       { label: 'Rental Licensing', val: 'County-by-county — we file &amp; renew for you' },
-      { label: 'Security Deposit Cap', val: '2 months&rsquo; rent max under Maryland law' },
+      { label: 'Security Deposit Cap', val: '1 month&rsquo;s rent max under Maryland law' },
       { label: 'Lead Paint', val: 'Disclosure &amp; inspection required for pre-1978 properties' },
     ],
     note: 'Each Maryland county has its own rental license, renewal schedule, and inspection cadence. What&rsquo;s required in Anne Arundel differs from Montgomery County. We track every jurisdiction we operate in &mdash; and update your file when the rules change.',

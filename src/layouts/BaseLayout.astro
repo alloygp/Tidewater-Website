@@ -20,8 +20,8 @@ interface Props {
   description: string;
   /** Body class(es) for accent colour variants. */
   bodyClass?: string;
-  /** Additional stylesheet to load (e.g. 'styles-pages.css'). */
-  pageStylesheet?: string;
+  /** Additional stylesheet(s) to load (e.g. 'styles-pages.css'). Pass an array to load several, in cascade order. */
+  pageStylesheet?: string | string[];
   /** og:type — 'website' for service/info pages, 'article' for blog/resource pages. */
   ogType?: 'website' | 'article';
   /** Per-page OG image. Absolute path from /public. Defaults to SITE.defaultOgImage. */
@@ -48,6 +48,10 @@ const {
 // Staging / preview deployments will get noindex (not nofollow — nofollow breaks crawlers like Screaming Frog).
 const isProduction = import.meta.env.PUBLIC_ENV === 'production';
 const robots = robotsProp ?? (isProduction ? undefined : 'noindex');
+
+const pageStylesheets = pageStylesheet
+  ? (Array.isArray(pageStylesheet) ? pageStylesheet : [pageStylesheet])
+  : [];
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? SITE.url).toString();
 
@@ -113,7 +117,7 @@ const orgLd = {
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/styles.css" />
-  {pageStylesheet && <link rel="stylesheet" href={`/${pageStylesheet}`} />}
+  {pageStylesheets.map(s => <link rel="stylesheet" href={`/${s}`} />)}
 
   <!-- JSON-LD: Organization (every page) -->
   <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
