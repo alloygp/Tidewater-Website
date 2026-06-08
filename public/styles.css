@@ -878,7 +878,8 @@ img { max-width: 100%; display: block; }
   .tw-header-nav.is-mobile-open .tw-mega-feature { display: none; }
   .tw-header-nav.is-mobile-open .tw-mega-col-label { display: none; }
   .tw-header-nav.is-mobile-open .tw-megamenu-2col,
-  .tw-header-nav.is-mobile-open .tw-megamenu-3col { grid-template-columns: 1fr; }
+  .tw-header-nav.is-mobile-open .tw-megamenu-3col,
+  .tw-header-nav.is-mobile-open .tw-megamenu-4col { grid-template-columns: 1fr; }
   .tw-header-nav.is-mobile-open .tw-mega-item { padding: 10px 12px; border-radius: 8px; }
   .tw-header-nav.is-mobile-open .tw-mega-body { display: none; }
   /* Topbar hidden on mobile */
@@ -896,6 +897,19 @@ img { max-width: 100%; display: block; }
 
 /* ============= Megamenu 3-col + col labels ============= */
 .tw-megamenu-3col { grid-template-columns: 280px 1fr 1fr; gap: 24px; padding: 24px 32px; }
+.tw-megamenu-4col { grid-template-columns: 240px 1fr 1fr 1fr; gap: 24px; padding: 24px 32px; }
+
+/* Solutions stacked cards (megamenu col 1) */
+.tw-mega-solcards { display: flex; flex-direction: column; gap: 12px; }
+.tw-mega-solcard { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 112px; border-radius: 10px; overflow: hidden; text-decoration: none; background: var(--tw-dark); transition: transform .2s ease; }
+.tw-mega-solcard:hover { transform: translateY(-2px); }
+.tw-mega-solcard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tw-mega-solcard-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23,35,37,0.25) 0%, rgba(23,35,37,0.55) 45%, rgba(23,35,37,0.90) 100%); }
+.tw-mega-solcard-body { position: relative; padding: 14px 16px; }
+.tw-mega-solcard-eyebrow { font-family: var(--tw-font-heading); font-weight: 700; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--tw-gold); margin-bottom: 3px; }
+.tw-mega-solcard-title { font-family: var(--tw-font-heading); font-weight: 800; font-size: 15px; line-height: 1.15; color: var(--tw-cream); margin-bottom: 5px; letter-spacing: -0.01em; }
+.tw-mega-solcard-cta { font-family: var(--tw-font-heading); font-weight: 700; font-size: 11px; color: var(--tw-gold); transition: color .15s ease; }
+.tw-mega-solcard:hover .tw-mega-solcard-cta { color: var(--tw-cream); }
 .tw-mega-col { display: flex; flex-direction: column; gap: 4px; }
 .tw-mega-col-label { font-family: var(--tw-font-heading); font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--tw-fg-muted); padding: 0 14px 6px; }
 /* ============================================================

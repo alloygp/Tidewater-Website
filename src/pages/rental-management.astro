@@ -39,6 +39,14 @@ const schemas = [
   <RentalHero />
   <TrustBar variant="rental" />
 
+  <!-- Tenant routing: this page is for owners; send renters to the listings page -->
+  <section style="background:var(--tw-teal-tint, #eef5f6);border-bottom:1px solid var(--tw-border)">
+    <div class="tw-container" style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:14px 0;text-align:center">
+      <span style="font-family:var(--tw-font-body);font-size:.95rem;color:var(--tw-fg-muted)">Looking to <strong style="color:var(--tw-dark)">rent a home</strong>, not manage one?</span>
+      <a href="/rental-listings" style="font-family:var(--tw-font-heading);font-weight:700;font-size:.95rem;color:var(--tw-teal);text-decoration:none;white-space:nowrap">Browse available rentals &rarr;</a>
+    </div>
+  </section>
+
   <RentalPains />
   <RentalFee />
   <RentalCounty client:visible />
@@ -85,37 +93,6 @@ const schemas = [
 
   <RentalDeployed />
   <RentalPortal />
-
-  <!-- Currently leasing — live AppFolio rentals -->
-  <section class="tw-section tw-section-cream" id="listings" style="scroll-margin-top:88px">
-    <div class="tw-container-wide">
-      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:36px">
-        <div>
-          <div class="tw-eyebrow" style="color:var(--tw-teal)">Currently Leasing</div>
-          <h2 class="tw-section-title" style="margin:10px 0 12px">Homes we&rsquo;re leasing <em>right now.</em></h2>
-          <p class="tw-section-lede" style="max-width:560px;margin:0">Every unit below is pulled live from our AppFolio system &mdash; the same platform your property would be managed on. Prices and availability reflect current status.</p>
-        </div>
-        <a href="/request-a-proposal" class="tw-btn tw-btn-outline" style="flex-shrink:0">List your property &rarr;</a>
-      </div>
-      <div style="border:1px solid var(--tw-border);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 8px 32px rgba(23,35,37,.06)">
-        <div style="padding:14px 20px;background:var(--tw-dark);display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.08)">
-          <div style="display:flex;gap:6px">
-            <div style="width:11px;height:11px;border-radius:50%;background:#FF6B5C"></div>
-            <div style="width:11px;height:11px;border-radius:50%;background:#FFBD3D"></div>
-            <div style="width:11px;height:11px;border-radius:50%;background:#1FC73E"></div>
-          </div>
-          <div style="font-family:var(--tw-font-mono);font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.06em">tidewater.appfolio.com / listings</div>
-        </div>
-        <iframe
-          src="https://tidewater.appfolio.com/listings?1509013686620"
-          style="width:100%;height:700px;border:0;display:block"
-          title="Tidewater — Available Rentals"
-          loading="lazy"
-        ></iframe>
-      </div>
-      <p style="text-align:center;font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-subtle);margin-top:16px">Listings update in real time. Looking to rent? Contact us if a home you&rsquo;re interested in isn&rsquo;t shown here.</p>
-    </div>
-  </section>
 
   <Mission variant="rental" />
   <Testimonials variant="rental" />

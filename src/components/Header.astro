@@ -66,54 +66,81 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
         <a href="/hoa-management" class={`tw-header-nav-link ${isActive(['mgmt','hoa','condo','rental']) ? 'is-active' : ''}`}>
           Management<svg class="tw-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 6 7 11 1"/></svg>
         </a>
-        <div class="tw-megamenu tw-megamenu-3col">
-          <!-- Col 1: switching callout -->
-          <a href="/solutions/switching-hoa-management-company" class="tw-mega-feature">
-            <div class="tw-mega-feature-img">
-              <img src="/assets/hero-aerial.jpg" alt="Switching HOA management companies" />
-              <div class="tw-mega-feature-overlay"></div>
-            </div>
-            <div class="tw-mega-feature-body">
-              <div class="tw-mega-feature-eyebrow">Thinking of switching?</div>
-              <div class="tw-mega-feature-title">How to change HOA management companies</div>
-              <div class="tw-mega-feature-sub">What to look for in your next firm, how to make the transition, and what to expect from day one.</div>
-              <div class="tw-mega-feature-cta">Read the guide →</div>
-            </div>
-          </a>
-          <!-- Col 2: services -->
+        <div class="tw-megamenu tw-megamenu-4col">
+          <!-- Col 1: Solutions pillar (stacked cards) -->
           <div class="tw-mega-col">
-            <div class="tw-mega-col-label">Services</div>
+            <div class="tw-mega-col-label">Solutions</div>
+            <div class="tw-mega-solcards">
+              <a href="/solutions/switching-hoa-management-company" class="tw-mega-solcard">
+                <img src="/assets/how-to-switch-hoa-management-companies.png" alt="Switching HOA management companies" />
+                <div class="tw-mega-solcard-overlay"></div>
+                <div class="tw-mega-solcard-body">
+                  <div class="tw-mega-solcard-eyebrow">Thinking of switching?</div>
+                  <div class="tw-mega-solcard-title">Switching Companies</div>
+                  <div class="tw-mega-solcard-cta">Read the guide →</div>
+                </div>
+              </a>
+              <a href="/solutions/self-managed-hoa-transition" class="tw-mega-solcard">
+                <img src="/assets/hoa-management-transition-community.png" alt="Transitioning a self-managed HOA to professional management" />
+                <div class="tw-mega-solcard-overlay"></div>
+                <div class="tw-mega-solcard-body">
+                  <div class="tw-mega-solcard-eyebrow">Self-managed today?</div>
+                  <div class="tw-mega-solcard-title">Self-Managed Transition</div>
+                  <div class="tw-mega-solcard-cta">See how it works →</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Col 2: HOA pillar -->
+          <div class="tw-mega-col">
+            <div class="tw-mega-col-label">HOA Management</div>
             <div class="tw-mega-list">
               <a href="/hoa-management" class="tw-mega-item">
                 <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
                 <div><div class="tw-mega-title">HOA Management</div><div class="tw-mega-body">Full-service management for homeowner associations.</div></div>
               </a>
-              <a href="/condo-management" class="tw-mega-item">
-                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><line x1="9" y1="13" x2="9.01" y2="13"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
-                <div><div class="tw-mega-title">Condo Association Management</div><div class="tw-mega-body">High-rise, mid-rise, and garden-style expertise.</div></div>
+              <a href="/hoa-management/townhome-community-management" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V9l5-4 5 4v12"/><path d="M13 21V12l4-3 4 3v9"/><line x1="2" y1="21" x2="22" y2="21"/></svg></div>
+                <div><div class="tw-mega-title">Townhome &amp; Planned Communities</div><div class="tw-mega-body">Master-planned and townhome association expertise.</div></div>
               </a>
-              <a href="/rental-management" class="tw-mega-item">
-                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-                <div><div class="tw-mega-title">Rental Management</div><div class="tw-mega-body">One flat fee. Single-family and multifamily.</div></div>
-              </a>
-
               <a href="/hoa-management/hoa-financial-management" class="tw-mega-item">
                 <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
                 <div><div class="tw-mega-title">HOA Financial Management</div><div class="tw-mega-body">MBA/CPA Controller. StrongRoom invoice approval.</div></div>
               </a>
+              <a href="/hoa-management/covenant-enforcement" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+                <div><div class="tw-mega-title">Covenant Enforcement</div><div class="tw-mega-body">Consistent, documented rule enforcement.</div></div>
+              </a>
             </div>
           </div>
-          <!-- Col 3: solutions -->
+
+          <!-- Col 3: Condo pillar (standalone) -->
           <div class="tw-mega-col">
-            <div class="tw-mega-col-label">Solutions</div>
+            <div class="tw-mega-col-label">Condo Management</div>
             <div class="tw-mega-list">
-              <a href="/solutions/switching-hoa-management-company" class="tw-mega-item">
-                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
-                <div><div class="tw-mega-title">Switching Management Companies</div><div class="tw-mega-body">What to look for. How to make the transition.</div></div>
+              <a href="/condo-management" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><line x1="9" y1="13" x2="9.01" y2="13"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+                <div><div class="tw-mega-title">Condo Association Management</div><div class="tw-mega-body">High-rise, mid-rise, and garden-style expertise.</div></div>
               </a>
-              <a href="/solutions/self-managed-hoa-transition" class="tw-mega-item">
-                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-                <div><div class="tw-mega-title">Self-Managed HOA Transition</div><div class="tw-mega-body">Ready to hand off the day-to-day? We\'ll guide you.</div></div>
+              <a href="/hoa-management/commercial-association-management" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="21" x2="22" y2="21"/><rect x="5" y="8" width="6" height="13"/><rect x="13" y="3" width="6" height="18"/></svg></div>
+                <div><div class="tw-mega-title">Commercial Associations</div><div class="tw-mega-body">Mixed-use, office condos, and business parks.</div></div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Col 4: Rental pillar -->
+          <div class="tw-mega-col">
+            <div class="tw-mega-col-label">Rental Management</div>
+            <div class="tw-mega-list">
+              <a href="/rental-management" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                <div><div class="tw-mega-title">Rental Property Management</div><div class="tw-mega-body">For owners. One flat fee, single-family &amp; multifamily.</div></div>
+              </a>
+              <a href="/rental-listings" class="tw-mega-item">
+                <div class="tw-mega-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="21" x2="21" y2="21"/><path d="M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><circle cx="14.5" cy="12" r="1"/></svg></div>
+                <div><div class="tw-mega-title">Available Rentals</div><div class="tw-mega-body">For renters. Browse homes available now &amp; apply online.</div></div>
               </a>
             </div>
           </div>

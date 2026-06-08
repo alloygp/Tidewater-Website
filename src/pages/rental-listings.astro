@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Topbar from '../components/Topbar.astro';
+import Header from '../components/Header.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { serviceSchema, breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../config/site';
+
+const pageUrl = `${SITE.url}/rental-listings`;
+const pageDesc = "Browse available rental homes, townhomes, and condos for rent across Maryland and coastal Delaware. Professionally managed by Tidewater — listings update in real time, apply online.";
+
+const schemas = [
+  serviceSchema({ name: 'Available Rentals — Tidewater Property Management', description: pageDesc, url: pageUrl, areaServed: ['Maryland', 'Delaware'] }),
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Rental Management', url: SITE.url + '/rental-management' },
+    { name: 'Rental Listings', url: pageUrl },
+  ]),
+];
+
+// Internal links to owner/coverage pages — good for crawlability and local intent.
+const areas = [
+  { label: 'Anne Arundel County', href: '/rental-management/maryland/anne-arundel-county' },
+  { label: 'Baltimore County',     href: '/rental-management/maryland/baltimore-county' },
+  { label: 'Howard County',        href: '/rental-management/maryland/howard-county' },
+  { label: 'Montgomery County',    href: '/rental-management/maryland/montgomery-county' },
+  { label: "Prince George's County", href: '/rental-management/maryland/prince-georges-county' },
+  { label: 'Silver Spring',        href: '/rental-management/maryland/silver-spring' },
+  { label: 'Ocean City',           href: '/rental-management/maryland/ocean-city' },
+  { label: 'Lewes, Delaware',      href: '/rental-management/delaware/lewes' },
+];
+
+const steps = [
+  { n: '01', t: 'Browse live listings', d: 'Every available home below is pulled straight from our management system, updated in real time.' },
+  { n: '02', t: 'Apply online', d: 'Submit your application and screening documents securely through the AppFolio resident portal.' },
+  { n: '03', t: 'Get a fast decision', d: 'Most applications get a decision in 3–5 business days, with clear, consistent screening criteria.' },
+  { n: '04', t: 'Move in & manage online', d: 'Pay rent, submit maintenance requests, and track everything from your resident portal.' },
+];
+---
+<BaseLayout
+  pageStylesheet="styles-pages.css"
+  title="Available Rentals in MD & DE | Tidewater Property Management"
+  description={pageDesc}
+  pageSchema={schemas}
+>
+  <Topbar variant="homeowner" />
+  <Header activeNav="rental" logoSrc="/assets/Tidewater-Management-Logo.svg" logoAlt="Tidewater Management" />
+  <Breadcrumb variant="management" crumbs={[
+    { label: "Management", href: "/hoa-management/" },
+    { label: "Rental Management", href: "/rental-management" },
+    { label: "Rental Listings" },
+  ]} />
+
+  <!-- Tenant hero -->
+  <section class="tw-hero">
+    <div class="tw-hero-bg">
+      <img src="/assets/hero-aerial.jpg" alt="Maryland and Delaware neighborhoods where Tidewater manages rentals" />
+    </div>
+    <div class="tw-hero-paper" aria-hidden="true"></div>
+
+    <div class="tw-hero-grid">
+      <div class="tw-hero-copy">
+        <div class="tw-hero-eyebrow-row">
+          <div class="tw-divider"></div>
+          <div class="tw-eyebrow">Available Rentals</div>
+        </div>
+        <h1 class="tw-hero-title">Find your next home in <em>Maryland &amp; Delaware.</em></h1>
+        <p class="tw-hero-lede">Browse homes, townhomes, and condos managed by Tidewater &mdash; availability updates in real time, and you can apply online in minutes. Rent with a local team that actually answers the phone.</p>
+        <div class="tw-hero-actions">
+          <a href="#listings" class="tw-btn tw-btn-primary tw-btn-lg">Browse current listings &darr;</a>
+          <a href="/rental-management" class="tw-btn tw-btn-ghost">Own a rental? See management &rarr;</a>
+        </div>
+        <div class="tw-hero-trust tw-hero-trust-rental" style="display:grid;grid-template-columns:1fr 1fr;gap:12px 24px">
+          <div class="tw-hero-trust-item"><div class="tw-hero-trust-num"><span class="accent">Live</span></div><div class="tw-hero-trust-label">Updated availability</div></div>
+          <div class="tw-hero-trust-item"><div class="tw-hero-trust-num"><span class="accent">3&ndash;5 days</span></div><div class="tw-hero-trust-label">Application decision</div></div>
+          <div class="tw-hero-trust-item"><div class="tw-hero-trust-num"><span class="accent">Online</span></div><div class="tw-hero-trust-label">Apply &amp; pay rent</div></div>
+          <div class="tw-hero-trust-item"><div class="tw-hero-trust-num"><span class="accent">MD + DE</span></div><div class="tw-hero-trust-label">Coverage area</div></div>
+        </div>
+      </div>
+
+      <div class="tw-hero-side">
+        <div class="tw-rh2-card">
+          <div class="tw-rh2-card-img">
+            <img src="/assets/virginia-jane-way.jpg" alt="A Tidewater-managed rental home in Maryland" onerror="this.style.display='none'" />
+            <span class="tw-rh2-card-badge matched">Now Leasing</span>
+          </div>
+          <div class="tw-rh2-card-body">
+            <div class="tw-rh2-card-price">Browse by home type</div>
+            <div class="tw-rh2-card-addr">Single-family homes, townhomes, condos &amp; apartments across MD &amp; DE.</div>
+            <div class="tw-rh2-card-stats">
+              <span><strong>Live</strong> availability</span>
+              <span><strong>Apply</strong> online</span>
+              <span><strong>Fast</strong> decisions</span>
+            </div>
+            <div class="tw-rh2-card-pitch">
+              <div class="tw-rh2-card-pitch-eye">Resident portal</div>
+              Pay rent, request maintenance, and track everything online &mdash; with a 20-minute emergency callback standard.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#listings" class="tw-hero-scroll" style="text-decoration:none;color:inherit">
+      <div class="tw-hero-scroll-line"></div>
+      See what&rsquo;s available
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+  </section>
+
+  <!-- Live AppFolio listings -->
+  <section class="tw-section tw-section-cream" id="listings" style="scroll-margin-top:88px">
+    <div class="tw-container-wide">
+      <div style="border:1px solid var(--tw-border);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 8px 32px rgba(23,35,37,.06)">
+        <div style="padding:14px 20px;background:var(--tw-dark);display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.08)">
+          <div style="display:flex;gap:6px">
+            <div style="width:11px;height:11px;border-radius:50%;background:#FF6B5C"></div>
+            <div style="width:11px;height:11px;border-radius:50%;background:#FFBD3D"></div>
+            <div style="width:11px;height:11px;border-radius:50%;background:#1FC73E"></div>
+          </div>
+          <div style="font-family:var(--tw-font-mono);font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.06em">tidewater.appfolio.com / listings</div>
+        </div>
+        <iframe
+          src="https://tidewater.appfolio.com/listings?1509013686620"
+          style="width:100%;height:760px;border:0;display:block"
+          title="Tidewater — Available Rentals"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p style="text-align:center;font-family:var(--tw-font-body);font-size:13px;color:var(--tw-fg-subtle);margin-top:16px">Listings update in real time. Don&rsquo;t see what you&rsquo;re looking for? <a href="/request-a-proposal" style="color:var(--tw-teal)">Contact our rental team</a> and we&rsquo;ll let you know when something opens up.</p>
+    </div>
+  </section>
+
+  <!-- How renting works -->
+  <section class="tw-section">
+    <div class="tw-container">
+      <div class="tw-section-head-left" style="max-width:640px;margin-bottom:36px">
+        <div class="tw-eyebrow" style="color:var(--tw-teal)">For Renters</div>
+        <h2 class="tw-section-title" style="margin:10px 0 12px">How renting with Tidewater works</h2>
+        <p class="tw-section-lede" style="margin:0">No mystery, no runaround. Four steps from browsing to move-in &mdash; all online.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px">
+        {steps.map(s => (
+          <div style="background:#fff;border:1px solid var(--tw-border);border-radius:12px;padding:24px">
+            <div style="font-family:var(--tw-font-mono);font-size:13px;font-weight:700;color:var(--tw-teal);margin-bottom:10px">{s.n}</div>
+            <div style="font-family:var(--tw-font-heading);font-weight:700;font-size:1.05rem;color:var(--tw-dark);margin-bottom:6px">{s.t}</div>
+            <p style="font-family:var(--tw-font-body);font-size:.92rem;color:var(--tw-fg-muted);margin:0;line-height:1.55">{s.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas served (internal links / local SEO) -->
+  <section class="tw-section tw-section-linen">
+    <div class="tw-container">
+      <div style="max-width:640px;margin-bottom:28px">
+        <div class="tw-eyebrow" style="color:var(--tw-teal)">Where We Rent</div>
+        <h2 class="tw-section-title" style="margin:10px 0 12px">Rentals across Maryland &amp; coastal Delaware</h2>
+        <p class="tw-section-lede" style="margin:0">We manage long-term rentals throughout the Mid-Atlantic. Explore the areas we cover &mdash; or browse the live listings above for what&rsquo;s open right now.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        {areas.map(a => (
+          <a href={a.href} style="font-family:var(--tw-font-body);font-size:.92rem;color:var(--tw-dark);background:#fff;border:1px solid var(--tw-border);border-radius:999px;padding:8px 16px;text-decoration:none">{a.label} &rarr;</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA variant="rental" />
+  <Footer />
+</BaseLayout>
