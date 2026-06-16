@@ -7,8 +7,11 @@ const states = [
     flag: 'MD',
     areas: [
       'Anne Arundel County', 'Baltimore City', 'Baltimore County',
+      'Caroline County', 'Carroll County', 'Cecil County',
+      'Dorchester County', 'Frederick County', 'Harford County',
       'Howard County', 'Montgomery County', "Prince George's County",
-      'Frederick County', 'Harford County', 'Talbot County',
+      "Queen Anne's County", 'Talbot County', 'Wicomico County',
+      'Worcester County',
     ],
     facts: [
       { label: 'Rental Licensing', val: 'County-by-county — we file &amp; renew for you' },
