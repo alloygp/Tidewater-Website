@@ -208,7 +208,7 @@ function CAMArticleBody() {
         <strong>The key distinction is governance: a CAM operates within a framework of CC&amp;Rs, bylaws, and board-approved rules, while a property manager operates under a lease agreement.</strong>
       </p>
 
-      <table>
+      <table className="tw-stack-table">
         <thead>
           <tr>
             <th></th>
@@ -219,23 +219,23 @@ function CAMArticleBody() {
         <tbody>
           <tr>
             <td><strong>Client</strong></td>
-            <td>Board of directors / association entity</td>
-            <td>Individual landlord or property owner</td>
+            <td data-label="Community Association Manager">Board of directors / association entity</td>
+            <td data-label="Property Manager">Individual landlord or property owner</td>
           </tr>
           <tr>
             <td><strong>Governance framework</strong></td>
-            <td>CC&amp;Rs, bylaws, board resolutions</td>
-            <td>Lease agreement</td>
+            <td data-label="Community Association Manager">CC&amp;Rs, bylaws, board resolutions</td>
+            <td data-label="Property Manager">Lease agreement</td>
           </tr>
           <tr>
             <td><strong>Scope</strong></td>
-            <td>Association financials (assessments, reserves, budgets), common area maintenance, governance support, compliance</td>
-            <td>Tenant placement, rent collection, unit maintenance, lease enforcement</td>
+            <td data-label="Community Association Manager">Association financials (assessments, reserves, budgets), common area maintenance, governance support, compliance</td>
+            <td data-label="Property Manager">Tenant placement, rent collection, unit maintenance, lease enforcement</td>
           </tr>
           <tr>
             <td><strong>Typical credentials</strong></td>
-            <td>CAI designations (CMCA, AMS, PCAM)</td>
-            <td>IREM designations (CPM, ARM) or NARPM designations (RMP, MPM); state real estate license may also be required</td>
+            <td data-label="Community Association Manager">CAI designations (CMCA, AMS, PCAM)</td>
+            <td data-label="Property Manager">IREM designations (CPM, ARM) or NARPM designations (RMP, MPM); state real estate license may also be required</td>
           </tr>
         </tbody>
       </table>

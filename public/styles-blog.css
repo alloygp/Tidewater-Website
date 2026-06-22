@@ -511,6 +511,8 @@
   border-radius: 14px;
   text-align: center;
 }
+/* Long-sentence CTA labels must wrap instead of forcing a 700px+ button */
+.tw-blog-cta .tw-btn { white-space: normal; max-width: 100%; }
 .tw-blog-cta-eyebrow {
   font-family: var(--tw-font-heading);
   font-weight: 700; font-size: 11px;
@@ -791,7 +793,10 @@
 
 /* ===== Responsive ===== */
 @media (max-width: 1080px) {
-  .tw-blog-layout { grid-template-columns: 1fr; gap: 32px; }
+  .tw-blog-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  /* Let the single column shrink below the article's 700px max-width */
+  .tw-blog-layout > *, .tw-blog-article, .tw-blog-toc { min-width: 0; }
+  .tw-blog-article { max-width: 100%; }
   .tw-blog-toc { position: static; padding: 18px 0 22px; border-bottom: 1px solid var(--tw-border); }
   .tw-blog-toc-list { flex-direction: row; flex-wrap: wrap; gap: 4px; }
   .tw-blog-toc-list a { padding: 6px 12px; border-left: 0; border-radius: 999px; background: var(--tw-warm-100); border: 1px solid var(--tw-border); font-size: 12px; }

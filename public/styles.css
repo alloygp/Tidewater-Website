@@ -49,6 +49,27 @@ img { max-width: 100%; display: block; }
 .tw-header.is-hidden { transform: translateY(-100%); }
 /* Lock background scroll while the mobile menu overlay is open */
 .tw-menu-open { overflow: hidden; }
+
+/* Responsive grid utilities — collapse to one column on mobile.
+   Use these instead of inline grid-template-columns so layouts can reflow. */
+.tw-mgrid-2 { display: grid; grid-template-columns: 1fr 1fr; }
+.tw-mgrid-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+.tw-mgrid-split { display: grid; grid-template-columns: 1fr 1.05fr; }
+@media (max-width: 768px) {
+  .tw-mgrid-2, .tw-mgrid-3, .tw-mgrid-split { grid-template-columns: 1fr; }
+  .tw-mgrid-split { gap: 32px !important; }
+}
+
+/* Stackable data table — collapses to labeled cards on mobile (prevents wide-table overflow) */
+@media (max-width: 768px) {
+  .tw-stack-table { display: block; width: 100%; }
+  .tw-stack-table thead { display: none; }
+  .tw-stack-table tbody, .tw-stack-table tr, .tw-stack-table td { display: block; width: auto; }
+  .tw-stack-table tr { border: 1px solid var(--tw-border); border-radius: 10px; margin: 0 0 14px; padding: 6px 0; background: var(--tw-cream); }
+  .tw-stack-table td { border: 0; padding: 8px 16px; }
+  .tw-stack-table td:first-child { font-family: var(--tw-font-heading); font-weight: 800; font-size: 16px; padding: 12px 16px 4px; color: var(--tw-dark); }
+  .tw-stack-table td[data-label]::before { content: attr(data-label); display: block; font-family: var(--tw-font-heading); font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--tw-teal); margin-bottom: 3px; }
+}
 .tw-header-inner { max-width: 1320px; margin: 0 auto; padding: 0 32px; height: 80px; display: flex; align-items: center; gap: 32px; position: relative; }
 .tw-header-logo { flex-shrink: 0; }
 .tw-header-logo img { height: 54px; width: auto; display: block; }
@@ -974,7 +995,7 @@ img { max-width: 100%; display: block; }
    =========================================================== */
 .tw-mm-overlay {
   position: fixed; inset: 0; z-index: 1000; background: var(--tw-cream);
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; overflow: hidden;
   opacity: 0; transform: translateY(8px) scale(.99); pointer-events: none; visibility: hidden;
   transition: opacity .26s var(--tw-ease-standard), transform .3s var(--tw-ease-standard), visibility 0s linear .3s;
 }
@@ -1893,7 +1914,8 @@ img { max-width: 100%; display: block; }
   .tw-sol-hero-grid { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px 72px; }
   .tw-sol-warn-grid { grid-template-columns: 1fr; gap: 32px; }
   .tw-sol-warn-list { grid-template-columns: 1fr; }
-  .tw-sol-timeline { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  /* !important to beat the inline grid-template-columns on the timeline markup */
+  .tw-sol-timeline { grid-template-columns: repeat(3, 1fr) !important; gap: 24px; }
   .tw-sol-timeline::before { display: none; }
   .tw-sol-compare-head, .tw-sol-compare-row { grid-template-columns: 1fr 1fr; }
   .tw-sol-compare-head > div:first-child, .tw-sol-compare-row > div:first-child { display: none; }
@@ -1902,8 +1924,20 @@ img { max-width: 100%; display: block; }
   .tw-sol-two-col, .tw-sol-tier-compare { grid-template-columns: 1fr; }
   .tw-sol-cost-grid { grid-template-columns: 1fr; gap: 32px; }
 }
-@media (max-width: 640px) {
-  .tw-sol-timeline { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 768px) {
+  /* Transition timeline → vertical stack (6 across is unreadable on phones) */
+  .tw-sol-timeline { grid-template-columns: 1fr !important; gap: 28px; }
+  .tw-sol-week { align-items: flex-start; text-align: left; }
+  /* Comparison "table" → stacked, self-labeled cards */
+  .tw-sol-compare-head { display: none; }
+  .tw-sol-compare-row { grid-template-columns: 1fr; }
+  .tw-sol-compare-row > div { border-right: 0; }
+  .tw-sol-compare-row > div:first-child { display: block; }
+  .tw-sol-compare-row .topic { padding: 16px 18px 8px; }
+  .tw-sol-compare-row .them, .tw-sol-compare-row .us { padding: 12px 18px; }
+  .tw-sol-compare-row .them { border-top: 1px solid var(--tw-divider); }
+  .tw-sol-compare-row .them::before { content: 'Current company'; display: block; width: auto; margin: 0 0 4px; font-family: var(--tw-font-heading); font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--tw-fg-subtle); }
+  .tw-sol-compare-row .us::before { content: 'Tidewater'; display: block; width: auto; margin: 0 0 4px; font-family: var(--tw-font-heading); font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--tw-teal); }
   .tw-sol-hero-stats { grid-template-columns: 1fr 1fr; }
 }
 /* ============================================================

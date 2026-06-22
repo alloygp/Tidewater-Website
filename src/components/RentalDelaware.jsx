@@ -225,7 +225,7 @@ function RentalDelawareAudiences() {
           <h2 className="tw-section-title">Four owner profiles, <em>one operating standard.</em></h2>
           <p className="tw-section-lede">Coastal Delaware&rsquo;s rental owner base is mostly out-of-state. We&rsquo;re built for remote operations.</p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, marginTop: 48 }}>
+        <div className="tw-mgrid-2" style={{ gap: 20, marginTop: 48 }}>
           {groups.map((g, i) => (
             <div key={i} style={{
               background: 'var(--tw-cream)',
