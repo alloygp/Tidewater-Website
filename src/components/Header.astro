@@ -1,4 +1,5 @@
 ---
+import MobileMenu from './MobileMenu.jsx';
 interface Props {
   activeNav?: string | null;
   logoSrc?: string;
@@ -7,6 +8,7 @@ interface Props {
 const { activeNav = null, logoSrc = '/assets/logo-main-black.svg', logoAlt = 'Tidewater Companies' } = Astro.props;
 
 const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="tw-header">
@@ -238,6 +240,9 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
   </div>
 </header>
 
+<!-- Mobile drill-down menu (opens via the header hamburger) -->
+<MobileMenu client:idle currentPath={currentPath} logoSrc={logoSrc} logoAlt={logoAlt} />
+
 <script>
   // Megamenu — desktop hover with close delay to bridge the CSS gap
   document.querySelectorAll<HTMLElement>('.tw-nav-item[data-menu]').forEach(item => {
@@ -284,23 +289,32 @@ const isActive = (keys: string[]) => keys.includes(activeNav ?? '');
     });
   }
 
-  // Mobile nav toggle
+  // Mobile menu: the hamburger opens the drill-down menu island (MobileMenu.jsx)
   const toggle = document.getElementById('tw-mobile-toggle');
-  const nav = document.getElementById('tw-nav');
+  const header = document.querySelector<HTMLElement>('.tw-header');
   toggle?.addEventListener('click', () => {
-    nav?.classList.toggle('is-mobile-open');
-    toggle.classList.toggle('is-active');
+    window.dispatchEvent(new CustomEvent('tw-open-menu'));
   });
 
-  // Mobile nav: tap-to-expand megamenu sections
-  nav?.querySelectorAll('.tw-nav-item').forEach((item) => {
-    const link = item.querySelector('.tw-header-nav-link');
-    const megamenu = item.querySelector('.tw-megamenu');
-    if (!link || !megamenu) return;
-    link.addEventListener('click', (e) => {
-      if (!nav.classList.contains('is-mobile-open')) return; // desktop: do nothing
-      e.preventDefault();
-      item.classList.toggle('is-mobile-expanded');
-    });
-  });
+  // Header: glassy on scroll; hide on scroll-down / reveal on scroll-up (mobile)
+  let lastY = window.scrollY;
+  let ticking = false;
+  const onScroll = () => {
+    const y = window.scrollY;
+    if (header) {
+      header.classList.toggle('is-scrolled', y > 8);
+      const isMobile = window.matchMedia('(max-width: 1080px)').matches;
+      const menuOpen = document.body.classList.contains('tw-menu-open');
+      if (isMobile && !menuOpen && y > 120 && y > lastY) {
+        header.classList.add('is-hidden');
+      } else {
+        header.classList.remove('is-hidden');
+      }
+    }
+    lastY = y;
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
+  }, { passive: true });
 </script>

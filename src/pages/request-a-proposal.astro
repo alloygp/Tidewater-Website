@@ -64,9 +64,12 @@ const schemas = [
       max-width: 1320px; margin: 0 auto;
       padding: 72px 32px 88px;
       display: grid; grid-template-columns: 0.95fr 1.05fr;
-      gap: 64px; align-items: start;
+      grid-template-areas: "copy form" "promise form";
+      gap: 28px 64px; align-items: start;
     }
-    .tw-c-hero-copy { padding-top: 14px; }
+    .tw-c-hero-copy { padding-top: 14px; grid-area: copy; }
+    .tw-c-hero-formwrap { grid-area: form; }
+    .tw-c-promise { grid-area: promise; }
     .tw-c-hero-eyebrow-row { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
     .tw-c-hero-eyebrow-row .tw-divider { width: 36px; height: 2px; background: var(--tw-gold); }
     .tw-c-hero-eyebrow-row .tw-eyebrow { color: var(--tw-gold); }
@@ -308,7 +311,7 @@ const schemas = [
 
     /* ===== Responsive ===== */
     @media (max-width: 1080px) {
-      .tw-c-hero-grid { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px 72px; }
+      .tw-c-hero-grid { grid-template-columns: 1fr; grid-template-areas: "copy" "form" "promise"; gap: 28px; padding: 56px 24px 72px; }
       .tw-c-help-grid { grid-template-columns: 1fr; gap: 32px; }
       .tw-c-help-cards { grid-template-columns: 1fr 1fr; }
       .tw-c-paths-grid { grid-template-columns: 1fr; }
@@ -347,7 +350,7 @@ const schemas = [
     <div class="tw-c-hero-paper"></div>
     <div class="tw-c-hero-grid">
 
-      <!-- Left: copy + promise steps -->
+      <!-- Copy -->
       <div class="tw-c-hero-copy">
         <div class="tw-c-hero-eyebrow-row">
           <span class="tw-divider"></span>
@@ -359,28 +362,30 @@ const schemas = [
         <p class="tw-c-hero-lede">
           Family-owned since 1989. AAMC&reg; accredited. A member of our team will review your situation and reach back within one business day — no high-pressure follow-up, ever.
         </p>
-        <div class="tw-c-promise">
-          <div class="tw-c-promise-head">What happens after you submit</div>
-          <ul class="tw-c-promise-steps">
-            <li class="tw-c-promise-step">
-              <span class="tw-c-promise-num">1</span>
-              <span><strong>Tonight.</strong> A member of our team reads your submission &mdash; not a sales pipeline tool.</span>
-            </li>
-            <li class="tw-c-promise-step">
-              <span class="tw-c-promise-num">2</span>
-              <span><strong>Within one business day.</strong> A short call to understand your situation. No deck, no demo.</span>
-            </li>
-            <li class="tw-c-promise-step">
-              <span class="tw-c-promise-num">3</span>
-              <span><strong>A free review</strong> of your property and a detailed proposal with transparent pricing.</span>
-            </li>
-          </ul>
-        </div>
       </div>
 
-      <!-- Right: interactive form island -->
-      <div>
+      <!-- Form island (sits above the promise steps on mobile) -->
+      <div class="tw-c-hero-formwrap">
         <ProposalForm client:load />
+      </div>
+
+      <!-- What happens after you submit -->
+      <div class="tw-c-promise">
+        <div class="tw-c-promise-head">What happens after you submit</div>
+        <ul class="tw-c-promise-steps">
+          <li class="tw-c-promise-step">
+            <span class="tw-c-promise-num">1</span>
+            <span><strong>Tonight.</strong> A member of our team reads your submission &mdash; not a sales pipeline tool.</span>
+          </li>
+          <li class="tw-c-promise-step">
+            <span class="tw-c-promise-num">2</span>
+            <span><strong>Within one business day.</strong> A short call to understand your situation. No deck, no demo.</span>
+          </li>
+          <li class="tw-c-promise-step">
+            <span class="tw-c-promise-num">3</span>
+            <span><strong>A free review</strong> of your property and a detailed proposal with transparent pricing.</span>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
