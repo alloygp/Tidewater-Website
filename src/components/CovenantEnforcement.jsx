@@ -68,7 +68,7 @@ function CovenantHero() {
             Most boards outsource covenant enforcement for one reason: to take board members out of the middle of neighbor disputes. Tidewater delivers consistent, third-party violation notices and a documented process &mdash; tracked in real time in CINC &mdash; so the rules apply the same way to every owner, every time.
           </p>
           <div className="tw-sol-hero-actions">
-            <a href="#contact" className="tw-btn tw-btn-primary tw-btn-lg">Request a proposal →</a>
+            <a href="/request-a-proposal" className="tw-btn tw-btn-primary tw-btn-lg">Request a proposal →</a>
             <a href="#process" className="tw-btn tw-btn-ghost">See the process →</a>
           </div>
           <div className="tw-sol-hero-stats">
@@ -322,7 +322,7 @@ function CovenantFaq() {
             <div className="tw-eyebrow">Board Questions</div>
             <h2>The covenant-enforcement <em>questions</em> we get most.</h2>
             <p>For a deeper walkthrough of the violation lifecycle, see the related blog spoke: <em>[PLACEHOLDER — link to HOA Violations blog when published]</em>.</p>
-            <a href="#contact" className="tw-btn tw-btn-primary">Ask your own question →</a>
+            <a href="/request-a-proposal" className="tw-btn tw-btn-primary">Ask your own question →</a>
           </div>
           <FaqAccordion items={FAQS} defaultOpen={0} />
         </div>

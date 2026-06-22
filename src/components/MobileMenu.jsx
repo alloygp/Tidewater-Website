@@ -223,7 +223,7 @@ export default function MobileMenu({ currentPath = '', logoSrc = '/assets/logo-m
         </div>
 
         <div className="tw-mm-cta-wrap">
-          <a className="tw-mm-cta" href="/request-a-proposal">Request a Proposal</a>
+          <a className="tw-mm-cta" href="/request-a-proposal">Request Proposal / Contact</a>
         </div>
       </div>
     </div>

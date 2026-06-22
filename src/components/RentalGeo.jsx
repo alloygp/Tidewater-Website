@@ -56,7 +56,7 @@ function RentalGeoHero({ geo }) {
           <h1 className="tw-geo-hero-title" dangerouslySetInnerHTML={{ __html: geo.heroTitle }} />
           <p className="tw-geo-hero-lede">{geo.heroLede}</p>
           <div className="tw-geo-hero-actions">
-            <a href="#contact" className="tw-btn tw-btn-primary tw-btn-lg">Get a free rental analysis →</a>
+            <a href="/request-a-proposal" className="tw-btn tw-btn-primary tw-btn-lg">Get a free rental analysis →</a>
             <a href="#services" className="tw-btn tw-btn-ghost">What&rsquo;s included →</a>
           </div>
           <div className="tw-geo-hero-stats">
@@ -198,7 +198,7 @@ function RentalGeoManager({ geo }) {
             <p className="tw-geo-manager-role" dangerouslySetInnerHTML={{ __html: geo.manager.bio }} />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, minWidth: 200 }}>
-            <a href="#contact" className="tw-btn tw-btn-primary tw-btn-block">Email {geo.manager.name.split(' ')[0]} →</a>
+            <a href="/request-a-proposal" className="tw-btn tw-btn-primary tw-btn-block">Email {geo.manager.name.split(' ')[0]} →</a>
             <a href="tel:+14435480191" className="tw-btn tw-btn-outline tw-btn-block">(443) 548-0191</a>
           </div>
         </div>
@@ -219,7 +219,7 @@ function RentalGeoFaq({ geo }) {
             <div className="tw-eyebrow">{geo.name} FAQs</div>
             <h2>The {geo.scope === 'county' ? 'county' : 'city'}-specific <em>questions</em> we get.</h2>
             <p>For all-purpose rental management questions see the <a href="/rental-management" style={{ color: 'var(--tw-teal-500)', textDecoration: 'underline', textUnderlineOffset: 3 }}>main rental page</a>.</p>
-            <a href="#contact" className="tw-btn tw-btn-primary">Ask your own question →</a>
+            <a href="/request-a-proposal" className="tw-btn tw-btn-primary">Ask your own question →</a>
           </div>
           <FaqAccordion items={geo.faqs} defaultOpen={0} />
         </div>

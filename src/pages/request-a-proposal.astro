@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Topbar from '../components/Topbar.astro';
 import Header from '../components/Header.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
-import ProposalForm from '../components/ProposalForm.jsx';
+import IntakeForm from '../components/IntakeForm.jsx';
 import Footer from '../components/Footer.astro';
 import { breadcrumbSchema } from '../lib/schema';
 import { SITE } from '../config/site';
@@ -365,8 +365,8 @@ const schemas = [
       </div>
 
       <!-- Form island (sits above the promise steps on mobile) -->
-      <div class="tw-c-hero-formwrap">
-        <ProposalForm client:load />
+      <div class="tw-c-hero-formwrap" id="contact-form" style="scroll-margin-top:96px">
+        <IntakeForm client:load />
       </div>
 
       <!-- What happens after you submit -->

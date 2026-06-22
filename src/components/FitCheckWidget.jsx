@@ -103,7 +103,7 @@ export default function FitCheckWidget() {
               </div>
             </div>
             <div className="tw-fit-result-actions">
-              <a href="#contact" className="tw-btn tw-btn-primary">Request a proposal</a>
+              <a href="/request-a-proposal" className="tw-btn tw-btn-primary">Request a proposal</a>
               <button className="tw-btn tw-btn-ghost" onClick={() => { setStep(0); setAnswers({ size: null, pain: null, state: null }); }}>
                 Start over
               </button>

@@ -68,7 +68,7 @@ function RentalMarylandHero() {
             For owners who don&rsquo;t live where their rental does. Deployed military, out-of-state investors, accidental landlords, first-time owners. We manage 700+ single-family and small-multifamily rentals across the state &mdash; one flat fee, AppFolio-backed, named local property managers in every market.
           </p>
           <div className="tw-geo-hero-actions">
-            <a href="#contact" className="tw-btn tw-btn-primary tw-btn-lg">Get a free rental analysis →</a>
+            <a href="/request-a-proposal" className="tw-btn tw-btn-primary tw-btn-lg">Get a free rental analysis →</a>
             <a href="#counties" className="tw-btn tw-btn-ghost">Find your county →</a>
           </div>
           <div className="tw-geo-hero-stats">
