@@ -181,8 +181,11 @@ export default function IntakeForm() {
     setSending(true); setSendError('');
     const id = genId();
     const company = fields.association || fields.company || fields.unit || '';
-    const detailLines = (intent.fields || []).map((f) => `${f.label}: ${fields[f.key] || '—'}`).join('\n');
-    const composed = `Intent: ${intent.label}\n${detailLines}${message.trim() ? `\n\nMessage: ${message.trim()}` : ''}\n\nRef: ${id}`;
+    // Send the per-intent fields as a labeled, ordered list so the handler can
+    // render every answer with its real label (not a cram-everything-into-message blob).
+    const fieldsJson = JSON.stringify(
+      (intent.fields || []).map((f) => ({ label: f.label, value: (fields[f.key] ?? '').toString().trim() }))
+    );
 
     const fd = new FormData();
     fd.set('name', contact.name.trim());
@@ -190,7 +193,10 @@ export default function IntakeForm() {
     fd.set('phone', contact.phone.trim());
     fd.set('company', company);
     fd.set('intent', intent.id);
-    fd.set('message', composed);
+    fd.set('intentLabel', intent.label);
+    fd.set('ref', id);
+    fd.set('fieldsJson', fieldsJson);
+    fd.set('message', message.trim()); // free-text "anything else" only
     fd.set('source', typeof window !== 'undefined' ? window.location.pathname : '');
     fd.set('website', hp); // honeypot — handler rejects if non-empty
 

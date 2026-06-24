@@ -35,14 +35,9 @@ export const POST: APIRoute = async ({ request }) => {
     // Route the notification to the right inbox by intent (falls back to default).
     const notifyTo = EMAIL_CONFIG.routes[intent] ?? EMAIL_CONFIG.notify;
 
-    // Tidewater-specific optional fields
-    const phone         = data.get("phone")?.toString().trim()         ?? "";
-    const community     = data.get("community")?.toString().trim()     ?? "";
-    const role          = data.get("role")?.toString().trim()          ?? "";
-    const communitySize = data.get("communitySize")?.toString().trim() ?? "";
-    const timing        = data.get("timing")?.toString().trim()        ?? "";
-    const propertyType  = data.get("propertyType")?.toString().trim()  ?? "";
-    const notes         = data.get("notes")?.toString().trim()         ?? "";
+    const phone   = data.get("phone")?.toString().trim()   ?? "";
+    const message = data.get("message")?.toString().trim() ?? "";
+    const ref     = data.get("ref")?.toString().trim()     ?? "";
 
     if (!email || !name) {
       return new Response(
@@ -51,11 +46,31 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    // Per-intent content (subject + submitter confirmation) — see email.config.ts.
+    const intentCfg = EMAIL_CONFIG.intents[intent] ?? EMAIL_CONFIG.intents.default;
+
+    // Structured per-intent answers, sent by the form as a labeled list. Render
+    // EVERY field with its real label — this is the fix for "only Name/Email show".
+    const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    let detailFields: { label: string; value: string }[] = [];
+    try {
+      const parsed = JSON.parse(data.get("fieldsJson")?.toString() ?? "[]");
+      if (Array.isArray(parsed)) {
+        detailFields = parsed
+          .filter((f) => f && typeof f.label === "string")
+          .map((f) => ({ label: String(f.label), value: String(f.value ?? "").trim() }));
+      }
+    } catch { /* ignore malformed fieldsJson */ }
+    const detailRows = detailFields
+      .map((f) =>
+        `<tr><td style="padding:4px 14px 4px 0;color:#888;white-space:nowrap;vertical-align:top"><strong>${esc(f.label)}</strong></td><td style="padding:4px 0">${f.value ? esc(f.value) : "—"}</td></tr>`)
+      .join("");
+
     // Internal notification — alerts Slack + admin email if the send fails (then re-throws → 500)
     await sendWithAlert(
       {
         client: "Tidewater",
-        formName: `Lead / intake form${intent ? ` (${intent})` : ""}`,
+        formName: `${intentCfg.label}${intent ? ` (${intent})` : ""}`,
         slackWebhookUrl: FORM_ALERT_SLACK_URL,
         alertEmail: { apiKey: import.meta.env.RESEND_API_KEY, to: "admin@alloygp.co", from: EMAIL_CONFIG.from.notifications },
       },
@@ -63,31 +78,28 @@ export const POST: APIRoute = async ({ request }) => {
       from:    EMAIL_CONFIG.from.notifications,
       replyTo: EMAIL_CONFIG.replyTo,
       to:      notifyTo,
-      subject: `New ${intent || "lead"}: ${company || community || name}`,
+      subject: intentCfg.notifySubject(company || name),
       html: `
-        <h2>New Lead Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        ${phone         ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
-        ${company       ? `<p><strong>Company:</strong> ${company}</p>` : ""}
-        ${community     ? `<p><strong>Community:</strong> ${community}</p>` : ""}
-        ${role          ? `<p><strong>Role:</strong> ${role}</p>` : ""}
-        ${communitySize ? `<p><strong>Community Size:</strong> ${communitySize}</p>` : ""}
-        ${timing        ? `<p><strong>Timing:</strong> ${timing}</p>` : ""}
-        ${propertyType  ? `<p><strong>Property Type:</strong> ${propertyType}</p>` : ""}
-        ${notes         ? `<p><strong>Notes:</strong><br>${notes.replace(/\n/g, "<br>")}</p>` : ""}
-        ${source ? `<hr><p style="color:#888;font-size:13px"><strong>Source</strong><br>${source.replace(/\n/g, "<br>")}</p>` : ""}
+        <h2>${esc(intentCfg.label)}</h2>
+        <p><strong>Name:</strong> ${esc(name)}</p>
+        <p><strong>Email:</strong> ${esc(email)}</p>
+        ${phone   ? `<p><strong>Phone:</strong> ${esc(phone)}</p>` : ""}
+        ${company ? `<p><strong>Company / community:</strong> ${esc(company)}</p>` : ""}
+        ${detailRows ? `<table style="border-collapse:collapse;margin:14px 0;font-size:14px">${detailRows}</table>` : ""}
+        ${message ? `<p><strong>Message:</strong><br>${esc(message).replace(/\n/g, "<br>")}</p>` : ""}
+        <hr><p style="color:#888;font-size:12px">${ref ? `Ref ${esc(ref)} · ` : ""}Form: ${esc(intent || "lead")}${source ? ` · Source ${esc(source)}` : ""}</p>
       `,
       })
     );
 
-    // Confirmation to submitter
+    // Confirmation to submitter — per-intent subject + body
+    const firstName = name.split(" ")[0] || name;
     const { error: confirmError } = await resend.emails.send({
       from:    EMAIL_CONFIG.from.hello,
       replyTo: EMAIL_CONFIG.replyTo,
       to:      email,
-      subject: EMAIL_CONFIG.copy.lead.confirmSubject,
-      html:    EMAIL_CONFIG.copy.lead.confirmBody(name, company || community, EMAIL_CONFIG.brand.url),
+      subject: intentCfg.confirmSubject,
+      html:    intentCfg.confirmBody(firstName, EMAIL_CONFIG.brand.url),
     });
     if (confirmError) console.error("Resend confirm error:", confirmError);
 
@@ -100,7 +112,7 @@ export const POST: APIRoute = async ({ request }) => {
           merge_fields: {
             FNAME:   name.split(" ")[0],
             LNAME:   name.split(" ").slice(1).join(" "),
-            COMPANY: company || community,
+            COMPANY: company,
           },
           tags: EMAIL_CONFIG.mailchimp.defaultTags,
         });
