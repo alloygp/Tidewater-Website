@@ -164,6 +164,11 @@ const orgLd = {
     </>
   )}
 
+  <!-- Ahrefs Web Analytics — production only -->
+  {isProduction && (
+    <script is:inline src="https://analytics.ahrefs.com/analytics.js" data-key="KSu9T9ikt5vn/1LxfGVVIw" async></script>
+  )}
+
   <slot name="head" />
 </head>
 <body class={bodyClass}>
