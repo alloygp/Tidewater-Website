@@ -13,13 +13,13 @@ import Leadership from '../components/Leadership.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
-import { localBusinessSchema, breadcrumbSchema } from '../lib/schema';
+import { breadcrumbSchema } from '../lib/schema';
 import { SITE } from '../config/site';
 
 const pageDesc = "Two generations. ~75 in-house staff. 400+ communities. AAMC® accredited and still independent in a market that has consolidated around us.";
 
+// LocalBusiness is already emitted globally by the layout — only add the breadcrumb here.
 const schemas = [
-  localBusinessSchema({ description: pageDesc }),
   breadcrumbSchema([{ name: 'Home', url: SITE.url + '/' }, { name: 'About', url: `${SITE.url}/about` }]),
 ];
 ---
