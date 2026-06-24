@@ -4,6 +4,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    { "source": "/privacypolicy", "destination": "/privacy", "permanent": true },
+    { "source": "/privacypolicy/", "destination": "/privacy", "permanent": true },
     { "source": "/association-management", "destination": "/hoa-management", "permanent": true },
     { "source": "/community-association-management", "destination": "/hoa-management", "permanent": true },
     { "source": "/accredited-association-management", "destination": "/hoa-management", "permanent": true },
