@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tidewater — Website at a Glance (security, hosting & changes)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #3A92A6;
+    --teal-deep: #2C7080;
+    --gold: #BFAC5F;
+    --clay: #CE8E72;
+    --sand: #E2BB92;
+    --sage: #647D57;
+    --ink: #172325;
+    --linen: #F1EEEA;
+    --cream: #FEFCF8;
+    --mist: #E9F0F1;
+    --rule: #DED8CF;
+    --muted: #5E6B6D;
+    --heading: 'Nunito Sans', sans-serif;
+    --body: 'Work Sans', sans-serif;
+    --mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'Roboto Mono', Menlo, Consolas, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--body);
+    color: var(--ink);
+    background: var(--linen);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 20px;
+  }
+  .sheet {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(23,35,37,.04), 0 18px 50px -28px rgba(23,35,37,.30);
+    overflow: hidden;
+  }
+
+  .masthead {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 40px 48px 36px;
+    position: relative;
+  }
+  .masthead::after {
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
+    background: linear-gradient(90deg, var(--teal) 0 38%, var(--gold) 38% 62%, var(--clay) 62% 80%, var(--sage) 80% 100%);
+  }
+  .eyebrow {
+    font-family: var(--heading); font-weight: 700; font-size: 12px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--sand); margin-bottom: 14px;
+  }
+  .masthead h1 {
+    font-family: var(--heading); font-weight: 800;
+    font-size: clamp(27px, 4.4vw, 40px); line-height: 1.06;
+    letter-spacing: -.015em; text-wrap: balance; max-width: 20ch;
+  }
+  .masthead p.sub { margin-top: 14px; max-width: 64ch; color: rgba(254,252,248,.78); font-size: 15.5px; }
+  .meta-row { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 28px; font-size: 13px; }
+  .meta-row .k { display: block; font-family: var(--heading); font-weight: 700; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); margin-bottom: 3px; }
+  .meta-row .v { color: rgba(254,252,248,.92); }
+
+  .body { padding: 42px 48px 48px; }
+  section { margin-bottom: 42px; }
+  section:last-child { margin-bottom: 0; }
+
+  h2 {
+    font-family: var(--heading); font-weight: 800; font-size: 20px;
+    letter-spacing: -.01em; display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px;
+  }
+  h2 .num { font-size: 12px; font-weight: 800; color: var(--teal); font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+  .lead { color: var(--muted); max-width: 72ch; font-size: 15px; margin-bottom: 22px; }
+
+  /* Spec grid (hosting / email) */
+  .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .spec { background: var(--cream); padding: 18px 20px; }
+  .spec .lbl { font-family: var(--heading); font-weight: 700; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 6px; }
+  .spec .val { font-family: var(--heading); font-weight: 800; font-size: 16px; }
+  .spec .note { font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
+  .spec .val .mono { font-family: var(--mono); font-weight: 400; font-size: 14px; }
+
+  /* Security cards */
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .card { border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; background: var(--cream); }
+  .card .h { display: flex; align-items: center; gap: 10px; margin-bottom: 7px; }
+  .card .ic { width: 28px; height: 28px; border-radius: 7px; background: var(--mist); display: grid; place-items: center; flex: none; }
+  .card .ic svg { width: 16px; height: 16px; stroke: var(--teal-deep); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .card .t { font-family: var(--heading); font-weight: 800; font-size: 14.5px; }
+  .card .d { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+  .card .d strong { color: var(--ink); font-weight: 600; }
+
+  /* Change request process */
+  .steps { display: flex; flex-direction: column; gap: 0; counter-reset: step; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .srow { display: grid; grid-template-columns: 56px 1fr; border-top: 1px solid var(--rule); }
+  .srow:first-child { border-top: none; }
+  .srow .idx { background: var(--ink); color: var(--cream); display: grid; place-items: center; font-family: var(--heading); font-weight: 800; font-size: 18px; font-variant-numeric: tabular-nums; }
+  .srow .scontent { padding: 16px 20px; }
+  .srow .st { font-family: var(--heading); font-weight: 800; font-size: 15px; margin-bottom: 3px; }
+  .srow .sd { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+  .srow .sd .mono { font-family: var(--mono); font-size: 12.5px; color: var(--ink); }
+
+  /* Turnaround pills */
+  .turn { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; }
+  .pill { border: 1px solid var(--rule); border-radius: 8px; padding: 16px 18px; background: var(--cream); border-top: 3px solid var(--teal); }
+  .pill.amber { border-top-color: var(--gold); }
+  .pill.clay { border-top-color: var(--clay); }
+  .pill .pt { font-family: var(--heading); font-weight: 800; font-size: 14px; }
+  .pill .pw { font-family: var(--heading); font-weight: 800; font-size: 22px; color: var(--teal-deep); margin: 6px 0 2px; letter-spacing: -.01em; }
+  .pill.amber .pw { color: #9A7A12; }
+  .pill.clay .pw { color: #B06A4C; }
+  .pill .pd { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+
+  /* Contact band */
+  .contact {
+    background: linear-gradient(180deg, var(--mist), #E0EBEC);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 26px 28px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px;
+  }
+  .contact .ct { font-family: var(--heading); font-weight: 800; font-size: 18px; margin-bottom: 4px; }
+  .contact .cd { font-size: 14px; color: var(--muted); max-width: 46ch; }
+  .contact .who { text-align: right; }
+  .contact .who .name { font-family: var(--heading); font-weight: 800; font-size: 15px; }
+  .contact .who .email { font-family: var(--mono); font-size: 14px; color: var(--teal-deep); }
+
+  .minirule { height: 1px; background: var(--rule); margin: 4px 0 0; }
+  a { color: var(--teal-deep); }
+
+  @media (max-width: 760px) {
+    body { padding: 16px 8px; }
+    .masthead, .body { padding-left: 24px; padding-right: 24px; }
+    .specs, .cards, .turn { grid-template-columns: 1fr; }
+    .contact { flex-direction: column; align-items: flex-start; }
+    .contact .who { text-align: left; }
+  }
+  @media print {
+    body { background: #fff; padding: 0; font-size: 12px; }
+    .sheet { box-shadow: none; border: none; }
+    section { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header class="masthead">
+    <div class="eyebrow">Tidewater Companies &nbsp;·&nbsp; Website Reference</div>
+    <h1>Your website, at a glance</h1>
+    <p class="sub">A plain-English summary of where your site is hosted, how it's kept secure, and exactly how to request a change or update. Keep this handy — it answers the questions that come up most.</p>
+    <div class="meta-row">
+      <div><span class="k">Site</span><span class="v">tidewaterproperty.com</span></div>
+      <div><span class="k">Prepared</span><span class="v">June 24, 2026</span></div>
+      <div><span class="k">Maintained by</span><span class="v">Alloy GP</span></div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <section>
+      <h2><span class="num">01</span> Hosting &amp; infrastructure</h2>
+      <p class="lead">The site is built as a fast, modern static site with a few secure server functions for forms. It runs on enterprise infrastructure with a global content network, so pages load quickly anywhere and there are no servers for you to maintain.</p>
+      <div class="specs">
+        <div class="spec">
+          <div class="lbl">Hosting platform</div>
+          <div class="val">Vercel</div>
+          <div class="note">Enterprise-grade hosting with a global CDN. Automatic scaling — no servers to patch or maintain.</div>
+        </div>
+        <div class="spec">
+          <div class="lbl">How it's built</div>
+          <div class="val">Astro <span class="mono">(static + serverless)</span></div>
+          <div class="note">Pages are pre-built for speed; form submissions run on small secure functions only when needed.</div>
+        </div>
+        <div class="spec">
+          <div class="lbl">Deployment</div>
+          <div class="val">Automatic from Git</div>
+          <div class="note">Approved changes publish automatically. Every change is version-controlled and can be rolled back.</div>
+        </div>
+        <div class="spec">
+          <div class="lbl">Email delivery</div>
+          <div class="val">Resend</div>
+          <div class="note">Form notifications and confirmations send from <span class="mono">notifications@tidewaterproperty.com</span> with delivery monitoring.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">02</span> Security</h2>
+      <p class="lead">Security is built in at every layer — from encrypted connections to spam filtering on forms to how sensitive keys are stored. Nothing confidential lives in the website's code.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="h">
+            <span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+            <span class="t">Encrypted everywhere (HTTPS)</span>
+          </div>
+          <div class="d">Every page and form is served over an encrypted connection with an automatically renewed SSL certificate. There's nothing to manage and it never expires unexpectedly.</div>
+        </div>
+        <div class="card">
+          <div class="h">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span>
+            <span class="t">Browser protection headers</span>
+          </div>
+          <div class="d">The site sends security headers (<strong>clickjacking protection</strong>, content-type locking, and referrer privacy) that harden it against common web attacks.</div>
+        </div>
+        <div class="card">
+          <div class="h">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="8" cy="6" r="2" fill="#3A92A6" stroke="none"/></svg></span>
+            <span class="t">Spam &amp; bot filtering</span>
+          </div>
+          <div class="d">Forms use a hidden “honeypot” trap that silently catches automated bot submissions — so your inboxes stay clean — without making real visitors solve a puzzle.</div>
+        </div>
+        <div class="card">
+          <div class="h">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 6.5L21 9l-5 4 1.5 7L12 16l-5.5 4L8 13 3 9l6.5-.5z"/></svg></span>
+            <span class="t">Secrets kept out of the code</span>
+          </div>
+          <div class="d">API keys and credentials are stored as encrypted environment variables on the host — never written into the website's code or repository.</div>
+        </div>
+        <div class="card">
+          <div class="h">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <span class="t">Server-side validation</span>
+          </div>
+          <div class="d">Every submission is checked on the server, not just in the browser, so required fields and valid email addresses are confirmed before anything is sent.</div>
+        </div>
+        <div class="card">
+          <div class="h">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6A2 2 0 0 0 22 18L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
+            <span class="t">Failure alerts</span>
+          </div>
+          <div class="d">If a form email ever fails to send, our team is alerted immediately so we can step in — no submission silently disappears.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">03</span> How to request changes &amp; updates</h2>
+      <p class="lead">Whether it's a copy tweak, a new page, or a change to who receives form submissions, the process is the same. Send it to us and we'll handle the rest.</p>
+      <div class="steps">
+        <div class="srow">
+          <div class="idx">1</div>
+          <div class="scontent">
+            <div class="st">Send your request to Alloy GP</div>
+            <div class="sd">Email <span class="mono">admin@alloygp.co</span> (or your usual contact) with what you'd like changed. A screenshot or the page link is always helpful.</div>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="idx">2</div>
+          <div class="scontent">
+            <div class="st">Include the details</div>
+            <div class="sd">Tell us the page or section, the exact new wording or image, and the deadline if there is one. The more specific, the faster we can turn it around.</div>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="idx">3</div>
+          <div class="scontent">
+            <div class="st">We make the change &amp; preview it</div>
+            <div class="sd">We update the site and, for anything substantial, share a preview link so you can review it before it goes live.</div>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="idx">4</div>
+          <div class="scontent">
+            <div class="st">You approve, we publish</div>
+            <div class="sd">Once you sign off, the change publishes automatically. Every update is version-controlled, so it can be rolled back if needed.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="turn">
+        <div class="pill">
+          <div class="pt">Small edits</div>
+          <div class="pw">1–2 days</div>
+          <div class="pd">Copy tweaks, swapping an image, updating a phone number or staff name.</div>
+        </div>
+        <div class="pill amber">
+          <div class="pt">Form recipients</div>
+          <div class="pw">Same / next day</div>
+          <div class="pd">Changing who receives submissions (e.g. the vendor inbox) is a quick configuration update.</div>
+        </div>
+        <div class="pill clay">
+          <div class="pt">New pages / features</div>
+          <div class="pw">Scoped per request</div>
+          <div class="pd">A new page or section gets a quick estimate and timeline before we start.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="contact">
+        <div>
+          <div class="ct">Need a change, or have a question?</div>
+          <div class="cd">One address reaches us for everything — site edits, form routing, hosting questions, or anything urgent.</div>
+        </div>
+        <div class="who">
+          <div class="name">Alloy GP</div>
+          <div class="email">admin@alloygp.co</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+</body>
+</html>
