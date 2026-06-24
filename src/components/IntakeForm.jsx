@@ -237,7 +237,7 @@ export default function IntakeForm() {
         )}
 
         {step === 'form' && intent && (
-          <form className="tw-if-stage" onSubmit={submit} noValidate>
+          <form id="lead-form" name="lead-form" className="tw-if-stage" onSubmit={submit} noValidate>
             {/* Honeypot — hidden from humans; bots that fill it get rejected by /api/lead */}
             <div className="tw-hp" aria-hidden="true">
               <label>Leave this field empty
