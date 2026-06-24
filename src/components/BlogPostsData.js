@@ -14,7 +14,7 @@ export const ALL_POSTS = [
     author: 'Cody Bishop',
     tone: '',
     featured: true,
-    coverImage: '/assets/how-to-manage-a-rental-property.png',
+    coverImage: '/assets/how-to-manage-a-rental-property.jpg',
     coverAlt: 'Landlord conducting a rental property inspection and documenting condition with a phone camera',
   },
   {
@@ -27,7 +27,7 @@ export const ALL_POSTS = [
     readTime: 9,
     author: 'Marcia Goldstein',
     tone: '',
-    coverImage: '/assets/what-is-a-community-association-manager.png',
+    coverImage: '/assets/what-is-a-community-association-manager.jpg',
     coverAlt: 'Community association manager shaking hands with HOA board members outside a community clubhouse',
   },
   {
@@ -53,7 +53,7 @@ export const ALL_POSTS = [
     readTime: 9,
     author: 'Rachel Halverson',
     tone: '',
-    coverImage: '/assets/how-to-switch-hoa-management-companies.png',
+    coverImage: '/assets/how-to-switch-hoa-management-companies.jpg',
     coverAlt: 'HOA board members reviewing management company transition documents',
   },
   {
@@ -66,7 +66,7 @@ export const ALL_POSTS = [
     readTime: 6,
     author: 'Marcia Goldstein',
     tone: '',
-    coverImage: '/assets/tidewater-self-managed-hoa-board-members-frustrated.png',
+    coverImage: '/assets/tidewater-self-managed-hoa-board-members-frustrated.jpg',
     coverAlt: 'Self-managed HOA board members reviewing financial documents at a community meeting',
   },
 ];
