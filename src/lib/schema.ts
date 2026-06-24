@@ -42,6 +42,7 @@ export function orgSchema() {
     },
     areaServed: SITE.org.areaServed,
     priceRange: SITE.org.priceRange,
+    sameAs: SITE.org.sameAs,
   };
 }
 
