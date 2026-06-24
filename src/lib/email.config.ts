@@ -22,9 +22,9 @@ export const EMAIL_CONFIG = {
     proposal: ["gwindisch@tidewaterproperty.com", "bjordan@tidewaterproperty.com", "admin@alloygp.co"], // HOA/condo board
     rental:   ["cbishop@tidewaterproperty.com", "bjordan@tidewaterproperty.com", "admin@alloygp.co"],   // rental owners
     service:  ["logles@tidewaterproperty.com", "admin@alloygp.co"],                                     // resident requests
-    general:  ["bjordan@tidewaterproperty.com", "info@tidewaterproperty.com", "admin@alloygp.co"],      // catch-all
+    general:  ["info@tidewaterproperty.com", "admin@alloygp.co"],                                       // catch-all (bjordan removed per client)
     contact:  ["bjordan@tidewaterproperty.com", "info@tidewaterproperty.com", "admin@alloygp.co"],      // /api/contact
-    // vendor: no inbox assigned yet → falls back to `notify` (info@ + admin)
+    vendor:   ["vendorcompliance@tidewaterproperty.com", "admin@alloygp.co"],                            // vendor bids (per client)
   } as Record<string, string[]>,
   mailchimp: {
     enabled:     false, // OFF until MAILCHIMP_* keys are added to Vercel — flip to true then
@@ -46,59 +46,67 @@ export const EMAIL_CONFIG = {
     proposal: {
       label: "Proposal Request",
       notifySubject: (who: string) => `New proposal request — ${who}`,
-      confirmSubject: "We received your proposal request — Tidewater Companies",
-      confirmBody: (firstName: string, siteUrl: string) =>
-        `<p>Hi ${firstName},</p>
-        <p>Thanks for reaching out about management for your community. Our team will review your request and follow up within one business day.</p>
-        <p>In the meantime, you can browse our resources at <a href="${siteUrl}/resources">${siteUrl}/resources</a>.</p>
-        <p>— The Tidewater Team</p>`,
+      confirmSubject: "We received your proposal request — Tidewater Property Management",
+      confirmBody: () =>
+        `<p>Thank you for reaching out to Tidewater Property Management regarding your community's management needs.</p>
+        <p>We've received your proposal request and appreciate the opportunity to learn more about your association. Our team is dedicated to delivering proactive, full-service community management—including financial management, vendor coordination, governance support, and responsive homeowner communication—to help boards operate efficiently and communities thrive.</p>
+        <p>A member of our Business Development team will review your submission and follow up with you within the next 1-2 business days to learn more about your goals and discuss how we can best support your board and community members.</p>
+        <p>We look forward to connecting with you.</p>
+        <p>Best regards,<br>Tidewater Property Management</p>`,
     },
     rental: {
       label: "Rental Management Inquiry",
       notifySubject: (who: string) => `New rental management inquiry — ${who}`,
-      confirmSubject: "We received your rental management request — Tidewater Companies",
-      confirmBody: (firstName: string, siteUrl: string) =>
-        `<p>Hi ${firstName},</p>
-        <p>Thanks for reaching out about managing your rental property. Our rental team will follow up within one business day.</p>
-        <p>In the meantime, you can browse our resources at <a href="${siteUrl}/resources">${siteUrl}/resources</a>.</p>
-        <p>— The Tidewater Team</p>`,
+      confirmSubject: "We received your rental request — Tidewater Rental Team",
+      confirmBody: () =>
+        `<p>Thank you for contacting Tidewater Property Management about your rental property.</p>
+        <p>We've received your inquiry and appreciate the opportunity to learn more about your needs. Our rental management team specializes in comprehensive services designed to maximize your rental income while minimizing the day-to-day demands of property ownership—from marketing and tenant screening to maintenance coordination and financial reporting.</p>
+        <p>A member of our team will review your submission and reach out within the next 1-2 business days to discuss your property and how we can best support your goals.</p>
+        <p>We look forward to connecting with you.</p>
+        <p>Best regards,<br>Tidewater Property Management</p>`,
     },
     vendor: {
       label: "Vendor / Bid Submission",
       notifySubject: (who: string) => `New vendor submission — ${who}`,
-      confirmSubject: "We received your submission — Tidewater Companies",
-      confirmBody: (firstName: string, _siteUrl: string) =>
-        `<p>Hi ${firstName},</p>
-        <p>Thanks for your interest in working with Tidewater. Our operations team will review your submission and reach out if there's a fit.</p>
-        <p>— The Tidewater Team</p>`,
+      confirmSubject: "We received your vendor inquiry — Tidewater Property Management",
+      confirmBody: () =>
+        `<p>Thank you for your interest in partnering with Tidewater Property Management.</p>
+        <p>We've received your vendor inquiry and appreciate your interest in working with our team. We're committed to building strong partnerships with qualified, reliable vendors who help us deliver high-quality service across the communities and properties we manage.</p>
+        <p>Our team will review your submission and reach out within the next 1-2 business days regarding next steps, including any additional information that may be needed as part of our vendor onboarding and approval process.</p>
+        <p>We look forward to the opportunity to work together.</p>
+        <p>Best regards,<br>Tidewater Property Management</p>`,
     },
     service: {
       label: "Service Request",
       notifySubject: (who: string) => `New service request — ${who}`,
-      confirmSubject: "We received your service request — Tidewater Companies",
-      confirmBody: (firstName: string, _siteUrl: string) =>
-        `<p>Hi ${firstName},</p>
-        <p>Thanks — your request has been logged and routed to your community manager. We'll follow up within one business day.</p>
-        <p>If this is an emergency, please call <strong>(443) 548-0191</strong>.</p>
-        <p>— The Tidewater Team</p>`,
+      confirmSubject: "We received your service request — Tidewater Service Team",
+      confirmBody: () =>
+        `<p>Thank you for contacting Tidewater Property Management.</p>
+        <p>We've received your service request and appreciate the opportunity to assist. Our team is committed to providing timely, high-quality service—from routine repairs and preventative maintenance to larger projects—so you can have confidence that your request will be handled efficiently and professionally.</p>
+        <p>A member of our team will review your submission and reach out within the next 1-2 business days to gather any additional details and discuss next steps.</p>
+        <p>We look forward to working with you.</p>
+        <p>Best regards,<br>Tidewater Property Management</p>`,
     },
     general: {
       label: "General Inquiry",
       notifySubject: (who: string) => `New general inquiry — ${who}`,
-      confirmSubject: "We received your message — Tidewater Companies",
-      confirmBody: (firstName: string, _siteUrl: string) =>
-        `<p>Hi ${firstName},</p>
-        <p>Thanks for reaching out. Our team will get back to you within one business day.</p>
-        <p>— The Tidewater Team</p>`,
+      confirmSubject: "We received your message — Tidewater Property Management",
+      confirmBody: () =>
+        `<p>Thank you for reaching out to Tidewater Property Management.</p>
+        <p>We've received your message and appreciate you taking the time to get in touch. Whether your question is about community association management, rental services, or real estate, we're glad to help and will point you to the right team.</p>
+        <p>A member of our team will review your message and follow up with you within the next 1-2 business days.</p>
+        <p>We look forward to connecting with you.</p>
+        <p>Best regards,<br>Tidewater Property Management</p>`,
     },
     default: {
       label: "Inquiry",
       notifySubject: (who: string) => `New inquiry — ${who}`,
-      confirmSubject: "We received your message — Tidewater Companies",
-      confirmBody: (firstName: string, _siteUrl: string) =>
-        `<p>Hi ${firstName},</p>
-        <p>Thanks for reaching out. Our team will get back to you within one business day.</p>
-        <p>— The Tidewater Team</p>`,
+      confirmSubject: "We received your message — Tidewater Property Management",
+      confirmBody: () =>
+        `<p>Thank you for reaching out to Tidewater Property Management.</p>
+        <p>We've received your message and a member of our team will follow up with you within the next 1-2 business days.</p>
+        <p>We look forward to connecting with you.</p>
+        <p>Best regards,<br>Tidewater Property Management</p>`,
     },
   } as Record<string, {
     label: string;
