@@ -237,7 +237,14 @@ export default function IntakeForm() {
         )}
 
         {step === 'form' && intent && (
-          <form id="lead-form" name="lead-form" className="tw-if-stage" onSubmit={submit} noValidate>
+          // WhatConverts tracks ONLY the proposal intent: the tracked id="lead-form"
+          // renders only for proposal; every other intent gets id="intake-form" so WC
+          // ignores it. key forces a clean remount per intent for WC's form detection.
+          <form
+            key={intent.id}
+            id={intent.id === 'proposal' ? 'lead-form' : 'intake-form'}
+            name={intent.id === 'proposal' ? 'lead-form' : 'intake-form'}
+            className="tw-if-stage" onSubmit={submit} noValidate>
             {/* Honeypot — hidden from humans; bots that fill it get rejected by /api/lead */}
             <div className="tw-hp" aria-hidden="true">
               <label>Leave this field empty
