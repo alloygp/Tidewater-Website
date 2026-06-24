@@ -35,16 +35,6 @@
     { "source": "/resources/board-education", "destination": "/resources", "permanent": true },
     { "source": "/blog/page/2", "destination": "/blog", "permanent": true },
     {
-      "source": "/resources",
-      "destination": "/blog",
-      "permanent": true
-    },
-    {
-      "source": "/resources/",
-      "destination": "/blog",
-      "permanent": true
-    },
-    {
       "source": "/blog/5-tips-for-effective-property-management",
       "destination": "/blog/how-to-manage-a-rental-property",
       "permanent": true
@@ -495,6 +485,26 @@
       "permanent": true
     },
     {
+      "source": "/maintenance/propertyservices",
+      "destination": "/maintenance-services",
+      "permanent": true
+    },
+    {
+      "source": "/maintenance/propertyservices/",
+      "destination": "/maintenance-services",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/services/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/commercial-property-management",
       "destination": "/hoa-management/commercial-association-management",
       "permanent": true
@@ -846,12 +856,12 @@
     },
     {
       "source": "/service-area/harford-county-md",
-      "destination": "/rental-management/maryland/harford-county",
+      "destination": "/rental-management/maryland",
       "permanent": true
     },
     {
       "source": "/service-area/harford-county-md/",
-      "destination": "/rental-management/maryland/harford-county",
+      "destination": "/rental-management/maryland",
       "permanent": true
     },
     {
