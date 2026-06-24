@@ -8,7 +8,7 @@
 export const SITE = {
   // ── Identity ───────────────────────────────────────────────────────────────
   name:           'Tidewater Companies',
-  url:            'https://www.tidewaterproperty.com',   // no trailing slash
+  url:            'https://tidewaterproperty.com',   // no trailing slash, non-www canonical
 
   // ── Default OG image ───────────────────────────────────────────────────────
   // 1200×630px PNG in /public/assets/. Per-page overrides via BaseLayout ogImage prop.
@@ -23,7 +23,7 @@ export const SITE = {
   // ── Organization schema (used on every page) ───────────────────────────────
   org: {
     type:            'LocalBusiness' as const,
-    logo:            'https://www.tidewaterproperty.com/assets/logo-main-white.svg',
+    logo:            'https://tidewaterproperty.com/assets/logo-main-white.svg',
     telephone:       '+14435480191',
     email:           'info@tidewaterproperty.com',
     addressLocality: 'Owings Mills',

@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [react(), sitemap()],
   output: 'hybrid',
   adapter: vercel(),
-  site: 'https://www.tidewaterproperty.com',
+  site: 'https://tidewaterproperty.com',
   trailingSlash: 'never',
   prefetch: { prefetchAll: true },
   build: {

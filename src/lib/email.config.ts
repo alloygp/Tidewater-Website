@@ -1,7 +1,7 @@
 export const EMAIL_CONFIG = {
   brand: {
     name: "Tidewater Companies",
-    url:  "https://www.tidewaterproperty.com",
+    url:  "https://tidewaterproperty.com",
     team: "The Tidewater Team",
   },
   // All outbound mail sends from notifications@, displayed as the company name.
