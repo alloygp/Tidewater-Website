@@ -8,6 +8,7 @@ import type { APIRoute } from "astro";
 import { Resend } from "resend";
 import mailchimp from "@mailchimp/mailchimp_marketing";
 import { EMAIL_CONFIG } from "../../lib/email.config";
+import { sendWithAlert } from "../../lib/form-alert";
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
@@ -54,15 +55,27 @@ export const POST: APIRoute = async ({ request }) => {
       }
     }
 
-    // Internal notification (admin is copied on every form)
-    const { error: notifyError } = await resend.emails.send({
-      from:    EMAIL_CONFIG.from.notifications,
-      replyTo: EMAIL_CONFIG.replyTo,
-      to:      EMAIL_CONFIG.notify,
-      subject: `New newsletter signup: ${email}`,
-      html:    `<h2>New Newsletter Signup</h2><p><strong>Email:</strong> ${email}</p>${firstName ? `<p><strong>Name:</strong> ${firstName}</p>` : ""}`,
-    });
-    if (notifyError) console.error("Resend notify error:", notifyError);
+    // Internal notification (admin is copied on every form) — alerts on failure.
+    // Wrapped so a failed notify can't break the subscriber's success response.
+    try {
+      await sendWithAlert(
+        {
+          client: "Tidewater",
+          formName: "Newsletter signup",
+          slackWebhookUrl: import.meta.env.FORM_ALERT_SLACK_URL,
+          alertEmail: { apiKey: import.meta.env.RESEND_API_KEY, to: "admin@alloygp.co", from: EMAIL_CONFIG.from.notifications },
+        },
+        () => resend.emails.send({
+          from:    EMAIL_CONFIG.from.notifications,
+          replyTo: EMAIL_CONFIG.replyTo,
+          to:      EMAIL_CONFIG.notify,
+          subject: `New newsletter signup: ${email}`,
+          html:    `<h2>New Newsletter Signup</h2><p><strong>Email:</strong> ${email}</p>${firstName ? `<p><strong>Name:</strong> ${firstName}</p>` : ""}`,
+        })
+      );
+    } catch (notifyError) {
+      console.error("Resend notify error:", notifyError);
+    }
 
     // Welcome email to subscriber
     const { error: welcomeError } = await resend.emails.send({

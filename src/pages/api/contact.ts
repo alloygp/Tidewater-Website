@@ -8,6 +8,7 @@ import type { APIRoute } from "astro";
 import { Resend } from "resend";
 import mailchimp from "@mailchimp/mailchimp_marketing";
 import { EMAIL_CONFIG } from "../../lib/email.config";
+import { sendWithAlert } from "../../lib/form-alert";
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
@@ -37,23 +38,30 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Internal notification
-    const { error: notifyError } = await resend.emails.send({
-      from:    EMAIL_CONFIG.from.notifications,
-      replyTo: EMAIL_CONFIG.replyTo,
-      to:      EMAIL_CONFIG.routes.contact ?? EMAIL_CONFIG.notify,
-      subject: `New contact form submission from ${name}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
-        <p><strong>Subscribe:</strong> ${subscribe ? "Yes" : "No"}</p>
-        ${source ? `<hr><p style="color:#888;font-size:13px"><strong>Source</strong><br>${source.replace(/\n/g, "<br>")}</p>` : ""}
-      `,
-    });
-    if (notifyError) console.error("Resend notify error:", notifyError);
+    // Internal notification — alerts Slack + admin email if the send fails (then re-throws → 500)
+    await sendWithAlert(
+      {
+        client: "Tidewater",
+        formName: "Contact form",
+        slackWebhookUrl: import.meta.env.FORM_ALERT_SLACK_URL,
+        alertEmail: { apiKey: import.meta.env.RESEND_API_KEY, to: "admin@alloygp.co", from: EMAIL_CONFIG.from.notifications },
+      },
+      () => resend.emails.send({
+        from:    EMAIL_CONFIG.from.notifications,
+        replyTo: EMAIL_CONFIG.replyTo,
+        to:      EMAIL_CONFIG.routes.contact ?? EMAIL_CONFIG.notify,
+        subject: `New contact form submission from ${name}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message.replace(/\n/g, "<br>")}</p>
+          <p><strong>Subscribe:</strong> ${subscribe ? "Yes" : "No"}</p>
+          ${source ? `<hr><p style="color:#888;font-size:13px"><strong>Source</strong><br>${source.replace(/\n/g, "<br>")}</p>` : ""}
+        `,
+      })
+    );
 
     // Confirmation to submitter
     const { error: confirmError } = await resend.emails.send({

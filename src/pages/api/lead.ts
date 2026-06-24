@@ -51,9 +51,14 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Internal notification — alerts Slack if the send fails (then re-throws → 500)
+    // Internal notification — alerts Slack + admin email if the send fails (then re-throws → 500)
     await sendWithAlert(
-      { client: "Tidewater", formName: "Lead / intake form", slackWebhookUrl: FORM_ALERT_SLACK_URL },
+      {
+        client: "Tidewater",
+        formName: `Lead / intake form${intent ? ` (${intent})` : ""}`,
+        slackWebhookUrl: FORM_ALERT_SLACK_URL,
+        alertEmail: { apiKey: import.meta.env.RESEND_API_KEY, to: "admin@alloygp.co", from: EMAIL_CONFIG.from.notifications },
+      },
       () => resend.emails.send({
       from:    EMAIL_CONFIG.from.notifications,
       replyTo: EMAIL_CONFIG.replyTo,
