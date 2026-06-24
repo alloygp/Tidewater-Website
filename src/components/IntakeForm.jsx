@@ -57,13 +57,12 @@ const INTENTS = [
     ],
   },
   {
-    id: 'service', label: 'Service request', icon: 'wrench', tone: 'sage',
-    blurb: 'I live here and need something handled.', forWho: 'Residents & owners',
-    routeTo: 'your community manager', fields: [
-      { key: 'association', label: 'Community name', type: 'text', required: true, placeholder: 'e.g. Wynbrook', col: 2 },
-      { key: 'unit', label: 'Unit / address', type: 'text', required: true, placeholder: 'e.g. 204B' },
-      { key: 'category', label: 'What’s the issue?', type: 'select', required: true, options: ['Common area', 'Landscaping', 'Plumbing / water', 'Gate / access', 'Billing / account', 'Other'] },
-      { key: 'urgency', label: 'Urgency', type: 'radio', required: true, options: ['Routine', 'Urgent', 'Emergency'], col: 2 },
+    id: 'service', label: 'Request a maintenance proposal', icon: 'wrench', tone: 'sage',
+    blurb: 'I’d like a quote for maintenance or home improvements.', forWho: 'Homeowners & property owners',
+    routeTo: 'our maintenance team', fields: [
+      { key: 'address', label: 'Property address or area', type: 'text', required: true, placeholder: 'e.g. Owings Mills, MD or 123 Main St', col: 2 },
+      { key: 'workType', label: 'Type of work', type: 'select', required: true, options: ['General maintenance', 'Repairs', 'Home improvement / renovation', 'Preventative maintenance', 'Not sure yet'] },
+      { key: 'timeline', label: 'Timeline', type: 'radio', required: true, options: ['ASAP', '1–3 months', 'Just exploring'], col: 2 },
     ],
   },
   {
@@ -180,7 +179,7 @@ export default function IntakeForm() {
     if (!validate() || sending) return;
     setSending(true); setSendError('');
     const id = genId();
-    const company = fields.association || fields.company || fields.unit || '';
+    const company = fields.association || fields.company || fields.unit || fields.address || '';
     // Send the per-intent fields as a labeled, ordered list so the handler can
     // render every answer with its real label (not a cram-everything-into-message blob).
     const fieldsJson = JSON.stringify(
@@ -270,9 +269,9 @@ export default function IntakeForm() {
                 <Field key={f.key} def={f} value={fields[f.key]} error={errors[f.key]} onChange={setField} />
               ))}
               <div className="tw-if-field" style={{ gridColumn: '1 / -1' }}>
-                <label className="tw-if-label">{intent.id === 'service' ? 'Describe the issue' : 'Anything else?'}{intent.id === 'service' && <span className="tw-if-req">*</span>}</label>
+                <label className="tw-if-label">{intent.id === 'service' ? 'What do you need done?' : 'Anything else?'}{intent.id === 'service' && <span className="tw-if-req">*</span>}</label>
                 <textarea className={'tw-if-control tw-if-textarea' + (errors.message ? ' is-err' : '')} rows={intent.id === 'general' ? 5 : 3}
-                  placeholder={intent.id === 'general' ? 'Tell us what’s on your mind…' : 'A sentence or two helps us route this faster.'}
+                  placeholder={intent.id === 'general' ? 'Tell us what’s on your mind…' : intent.id === 'service' ? 'Tell us about the work you’re considering — repairs, upgrades, or ongoing maintenance.' : 'A sentence or two helps us route this faster.'}
                   value={message} onChange={(e) => { setMessage(e.target.value); setErrors((x) => ({ ...x, message: null })); }} />
                 {errors.message && <div className="tw-if-err-msg">{errors.message}</div>}
               </div>

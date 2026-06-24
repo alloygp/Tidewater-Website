@@ -77,13 +77,13 @@ export const EMAIL_CONFIG = {
         <p>Best regards,<br>Tidewater Property Management</p>`,
     },
     service: {
-      label: "Service Request",
-      notifySubject: (who: string) => `New service request — ${who}`,
-      confirmSubject: "We received your service request — Tidewater Service Team",
+      label: "Maintenance Proposal Request",
+      notifySubject: (who: string) => `New maintenance proposal request — ${who}`,
+      confirmSubject: "We received your maintenance proposal request — Tidewater Maintenance Team",
       confirmBody: () =>
-        `<p>Thank you for contacting Tidewater Property Management.</p>
-        <p>We've received your service request and appreciate the opportunity to assist. Our team is committed to providing timely, high-quality service—from routine repairs and preventative maintenance to larger projects—so you can have confidence that your request will be handled efficiently and professionally.</p>
-        <p>A member of our team will review your submission and reach out within the next 1-2 business days to gather any additional details and discuss next steps.</p>
+        `<p>Thank you for reaching out to Tidewater Property Management about maintenance for your property.</p>
+        <p>We've received your request for a maintenance proposal and appreciate the opportunity to learn more about the work you're considering. Our maintenance team handles everything from routine repairs and preventative upkeep to larger home-improvement projects—with reliable, vetted crews and clear, up-front quotes.</p>
+        <p>A member of our team will review your request and follow up within the next 1-2 business days to discuss the scope and provide a quote.</p>
         <p>We look forward to working with you.</p>
         <p>Best regards,<br>Tidewater Property Management</p>`,
     },
