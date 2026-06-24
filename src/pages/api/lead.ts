@@ -8,8 +8,10 @@ import type { APIRoute } from "astro";
 import { Resend } from "resend";
 import mailchimp from "@mailchimp/mailchimp_marketing";
 import { EMAIL_CONFIG } from "../../lib/email.config";
+import { sendWithAlert } from "../../lib/form-alert";
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
+const FORM_ALERT_SLACK_URL = import.meta.env.FORM_ALERT_SLACK_URL;
 
 mailchimp.setConfig({
   apiKey:  import.meta.env.MAILCHIMP_API_KEY,
@@ -28,6 +30,10 @@ export const POST: APIRoute = async ({ request }) => {
     const email   = data.get("email")?.toString().trim()   ?? "";
     const company = data.get("company")?.toString().trim() ?? "";
     const source  = data.get("source")?.toString().trim()  ?? "";
+    const intent  = data.get("intent")?.toString().trim()  ?? "";
+
+    // Route the notification to the right inbox by intent (falls back to default).
+    const notifyTo = EMAIL_CONFIG.routes[intent] ?? EMAIL_CONFIG.notify;
 
     // Tidewater-specific optional fields
     const phone         = data.get("phone")?.toString().trim()         ?? "";
@@ -45,11 +51,14 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Internal notification
-    const { error: notifyError } = await resend.emails.send({
+    // Internal notification — alerts Slack if the send fails (then re-throws → 500)
+    await sendWithAlert(
+      { client: "Tidewater", formName: "Lead / intake form", slackWebhookUrl: FORM_ALERT_SLACK_URL },
+      () => resend.emails.send({
       from:    EMAIL_CONFIG.from.notifications,
-      to:      EMAIL_CONFIG.notify,
-      subject: `New lead: ${company || community || name}`,
+      replyTo: EMAIL_CONFIG.replyTo,
+      to:      notifyTo,
+      subject: `New ${intent || "lead"}: ${company || community || name}`,
       html: `
         <h2>New Lead Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
@@ -64,12 +73,13 @@ export const POST: APIRoute = async ({ request }) => {
         ${notes         ? `<p><strong>Notes:</strong><br>${notes.replace(/\n/g, "<br>")}</p>` : ""}
         ${source ? `<hr><p style="color:#888;font-size:13px"><strong>Source</strong><br>${source.replace(/\n/g, "<br>")}</p>` : ""}
       `,
-    });
-    if (notifyError) console.error("Resend notify error:", notifyError);
+      })
+    );
 
     // Confirmation to submitter
     const { error: confirmError } = await resend.emails.send({
       from:    EMAIL_CONFIG.from.hello,
+      replyTo: EMAIL_CONFIG.replyTo,
       to:      email,
       subject: EMAIL_CONFIG.copy.lead.confirmSubject,
       html:    EMAIL_CONFIG.copy.lead.confirmBody(name, company || community, EMAIL_CONFIG.brand.url),

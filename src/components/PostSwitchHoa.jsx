@@ -391,7 +391,8 @@ function SwitchNewsletter() {
             Thanks &mdash; first issue lands the first Tuesday of next month.
           </div>
         ) : (
-          <form className="tw-blog-newsletter-form" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
+          <form className="tw-blog-newsletter-form" onSubmit={(e) => { e.preventDefault(); if (e.currentTarget.website && e.currentTarget.website.value) return; setSubmitted(true); }}>
+            <div className="tw-hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabIndex={-1} autoComplete="off" /></label></div>
             <input type="email" placeholder="board@yourcommunity.org" aria-label="Email address" required />
             <button type="submit">Subscribe</button>
           </form>

@@ -50,6 +50,10 @@ img { max-width: 100%; display: block; }
 /* Lock background scroll while the mobile menu overlay is open */
 .tw-menu-open { overflow: hidden; }
 
+/* Honeypot — invisible to humans & assistive tech, out of tab order; bots fill it
+   and the form handler rejects any submission where it has a value. */
+.tw-hp { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(100%); white-space: nowrap; }
+
 /* Responsive grid utilities — collapse to one column on mobile.
    Use these instead of inline grid-template-columns so layouts can reflow. */
 .tw-mgrid-2 { display: grid; grid-template-columns: 1fr 1fr; }
@@ -1119,6 +1123,7 @@ img { max-width: 100%; display: block; }
 .tw-if-intent-arrow .tw-if-ic { width: 18px; height: 18px; }
 .tw-if-intent-card:hover .tw-if-intent-arrow { color: var(--it); transform: translateX(3px); }
 .tw-if-widget .tone-teal { --it: #3A92A6; --it-tint: #e3eff1; }
+.tw-if-widget .tone-ocean { --it: #246574; --it-tint: #e0eaec; }
 .tw-if-widget .tone-clay { --it: #9a5a3a; --it-tint: #f6ece6; }
 .tw-if-widget .tone-sage { --it: #647D57; --it-tint: #e8ece2; }
 .tw-if-widget .tone-gold { --it: #8a7a3d; --it-tint: #f6f0de; }

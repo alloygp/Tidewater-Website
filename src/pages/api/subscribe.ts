@@ -54,9 +54,20 @@ export const POST: APIRoute = async ({ request }) => {
       }
     }
 
+    // Internal notification (admin is copied on every form)
+    const { error: notifyError } = await resend.emails.send({
+      from:    EMAIL_CONFIG.from.notifications,
+      replyTo: EMAIL_CONFIG.replyTo,
+      to:      EMAIL_CONFIG.notify,
+      subject: `New newsletter signup: ${email}`,
+      html:    `<h2>New Newsletter Signup</h2><p><strong>Email:</strong> ${email}</p>${firstName ? `<p><strong>Name:</strong> ${firstName}</p>` : ""}`,
+    });
+    if (notifyError) console.error("Resend notify error:", notifyError);
+
     // Welcome email to subscriber
     const { error: welcomeError } = await resend.emails.send({
       from:    EMAIL_CONFIG.from.hello,
+      replyTo: EMAIL_CONFIG.replyTo,
       to:      email,
       subject: EMAIL_CONFIG.copy.subscribe.confirmSubject,
       html:    EMAIL_CONFIG.copy.subscribe.confirmBody(firstName),

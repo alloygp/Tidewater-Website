@@ -12,6 +12,7 @@
 //   <BaseLayout title="…" description="…" robots="noindex,nofollow">
 
 import { SITE } from '../config/site';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
   /** <title> tag. Required. */
@@ -48,6 +49,13 @@ const {
 // Staging / preview deployments will get noindex (not nofollow — nofollow breaks crawlers like Screaming Frog).
 const isProduction = import.meta.env.PUBLIC_ENV === 'production';
 const robots = robotsProp ?? (isProduction ? undefined : 'noindex');
+
+// GA4 — only loads in production (never fires on dev/staging). Set GA_MEASUREMENT_ID in env.
+const gaMeasurementId = isProduction ? import.meta.env.GA_MEASUREMENT_ID : undefined;
+
+// WhatConverts (lead attribution) — production only. The inline bootstrap must run
+// before the external loader, which reads $wc_leads.
+const wcBootstrap = `var $wc_load=function(a){return  JSON.parse(JSON.stringify(a))},$wc_leads=$wc_leads||{doc:{url:$wc_load(document.URL),ref:$wc_load(document.referrer),search:$wc_load(location.search),hash:$wc_load(location.hash)}};`;
 
 const pageStylesheets = pageStylesheet
   ? (Array.isArray(pageStylesheet) ? pageStylesheet : [pageStylesheet])
@@ -127,9 +135,33 @@ const orgLd = {
     <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
   )}
 
+  <!-- Google Analytics (GA4) — production only; deferred until after load -->
+  {gaMeasurementId && (
+    <script is:inline define:vars={{ gaMeasurementId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gaMeasurementId);
+      window.addEventListener('load', function () {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaMeasurementId;
+        document.head.appendChild(s);
+      });
+    </script>
+  )}
+
+  <!-- WhatConverts (lead attribution) — production only -->
+  {isProduction && (
+    <>
+      <script is:inline set:html={wcBootstrap}></script>
+      <script is:inline src="//s.ksrndkehqnwntyxlhgto.com/170413.js"></script>
+    </>
+  )}
+
   <slot name="head" />
 </head>
 <body class={bodyClass}>
   <slot />
+  <SpeedInsights />
 </body>
 </html>

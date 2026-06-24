@@ -4,15 +4,30 @@ export const EMAIL_CONFIG = {
     url:  "https://www.tidewaterproperty.com",
     team: "The Tidewater Team",
   },
+  // All outbound mail sends from notifications@, displayed as the company name.
   from: {
-    notifications: "Tidewater <notifications@tidewaterproperty.com>",
-    hello:         "Tidewater <hello@tidewaterproperty.com>",
+    notifications: "Tidewater Companies <notifications@tidewaterproperty.com>",
+    hello:         "Tidewater Companies <notifications@tidewaterproperty.com>",
   },
+  // Replies to any of our emails route to a monitored inbox.
+  replyTo: "info@tidewaterproperty.com",
+  // Default inbox — used by unknown intents (fallback). info@ + Alloy admin.
   notify: [
     "info@tidewaterproperty.com",
+    "admin@alloygp.co",
   ],
+  // Per-intent routing — the intake form sends `intent`; /api/lead routes here.
+  // admin@alloygp.co is CC'd on every form. Each value can be one address or several.
+  routes: {
+    proposal: ["gwindisch@tidewaterproperty.com", "bjordan@tidewaterproperty.com", "admin@alloygp.co"], // HOA/condo board
+    rental:   ["cbishop@tidewaterproperty.com", "bjordan@tidewaterproperty.com", "admin@alloygp.co"],   // rental owners
+    service:  ["logles@tidewaterproperty.com", "admin@alloygp.co"],                                     // resident requests
+    general:  ["bjordan@tidewaterproperty.com", "info@tidewaterproperty.com", "admin@alloygp.co"],      // catch-all
+    contact:  ["bjordan@tidewaterproperty.com", "info@tidewaterproperty.com", "admin@alloygp.co"],      // /api/contact
+    // vendor: no inbox assigned yet → falls back to `notify` (info@ + admin)
+  } as Record<string, string[]>,
   mailchimp: {
-    enabled:     true,
+    enabled:     false, // OFF until MAILCHIMP_* keys are added to Vercel — flip to true then
     defaultTags: ["website-lead"],
   },
   copy: {

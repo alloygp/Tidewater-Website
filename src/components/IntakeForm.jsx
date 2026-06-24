@@ -9,6 +9,7 @@ const I = {
   hardhat:    <svg viewBox="0 0 24 24"><path d="M2 18a10 10 0 0 1 20 0"/><path d="M2 18h20"/><path d="M10 8.5V6a2 2 0 0 1 4 0v2.5"/><path d="M6 18v-2a6 6 0 0 1 1.2-3.6M18 18v-2a6 6 0 0 0-1.2-3.6"/></svg>,
   wrench:     <svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8 6.2 21l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.5 2.5-2.3-.6-.6-2.3z"/></svg>,
   chat:       <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.7-.7L3 21l1.4-4.2A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>,
+  home:       <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
   arrowRight: <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>,
   arrowLeft:  <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>,
   check:      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>,
@@ -32,6 +33,17 @@ const INTENTS = [
       { key: 'propertyType', label: 'Property type', type: 'select', required: true, options: ['HOA', 'Condominium', 'Townhome', 'Master-planned', 'Commercial / mixed-use', 'Rental property'] },
       { key: 'situation', label: 'Current situation', type: 'select', required: true, options: ['Self-managed today', 'Unhappy with current manager', 'Contract ending soon', 'Just exploring'], col: 2 },
       { key: 'timeline', label: 'Decision timeline', type: 'radio', required: true, options: ['ASAP', '1–3 months', 'Just researching'], col: 2 },
+    ],
+  },
+  {
+    id: 'rental', label: 'Rental property management', icon: 'home', tone: 'ocean',
+    blurb: 'I own a rental property and want it managed.', forWho: 'Rental owners & landlords',
+    routeTo: 'our rental team', fields: [
+      { key: 'address', label: 'Property address or area', type: 'text', required: true, placeholder: 'e.g. Annapolis, MD or 123 Main St', col: 2 },
+      { key: 'propertyType', label: 'Property type', type: 'select', required: true, options: ['Single-family home', 'Townhome', 'Condo', 'Small multifamily (2–4)', 'Other'] },
+      { key: 'unitsRental', label: 'Number of units', type: 'select', required: true, options: ['1', '2–4', '5–20', '20+'] },
+      { key: 'situation', label: 'Current situation', type: 'select', required: true, options: ['Self-managing now', 'Unhappy with current manager', 'First-time landlord', 'Just exploring'], col: 2 },
+      { key: 'timeline', label: 'When do you need management?', type: 'radio', required: true, options: ['ASAP', '1–3 months', 'Just researching'], col: 2 },
     ],
   },
   {
@@ -136,6 +148,7 @@ export default function IntakeForm() {
   const [submission, setSubmission] = useState(null);
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState('');
+  const [hp, setHp] = useState(''); // honeypot — must stay empty for humans
 
   const intent = intentId ? intentById(intentId) : null;
 
@@ -179,7 +192,7 @@ export default function IntakeForm() {
     fd.set('intent', intent.id);
     fd.set('message', composed);
     fd.set('source', typeof window !== 'undefined' ? window.location.pathname : '');
-    fd.set('website', ''); // honeypot
+    fd.set('website', hp); // honeypot — handler rejects if non-empty
 
     try {
       const res = await fetch('/api/lead', { method: 'POST', body: fd });
@@ -225,6 +238,12 @@ export default function IntakeForm() {
 
         {step === 'form' && intent && (
           <form className="tw-if-stage" onSubmit={submit} noValidate>
+            {/* Honeypot — hidden from humans; bots that fill it get rejected by /api/lead */}
+            <div className="tw-hp" aria-hidden="true">
+              <label>Leave this field empty
+                <input type="text" name="website" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} />
+              </label>
+            </div>
             <button type="button" className="tw-if-back" onClick={back}><Ic name="arrowLeft" /> Change request type</button>
             <div className={`tw-if-chosen tone-${intent.tone}`}>
               <span className="tw-if-intent-icon"><Ic name={intent.icon} /></span>

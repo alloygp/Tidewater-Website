@@ -40,7 +40,8 @@ export const POST: APIRoute = async ({ request }) => {
     // Internal notification
     const { error: notifyError } = await resend.emails.send({
       from:    EMAIL_CONFIG.from.notifications,
-      to:      EMAIL_CONFIG.notify,
+      replyTo: EMAIL_CONFIG.replyTo,
+      to:      EMAIL_CONFIG.routes.contact ?? EMAIL_CONFIG.notify,
       subject: `New contact form submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -57,6 +58,7 @@ export const POST: APIRoute = async ({ request }) => {
     // Confirmation to submitter
     const { error: confirmError } = await resend.emails.send({
       from:    EMAIL_CONFIG.from.hello,
+      replyTo: EMAIL_CONFIG.replyTo,
       to:      email,
       subject: EMAIL_CONFIG.copy.contact.confirmSubject,
       html:    EMAIL_CONFIG.copy.contact.confirmBody(name, EMAIL_CONFIG.brand.url),

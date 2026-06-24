@@ -3,4 +3,4 @@ Allow: /
 Disallow: /_astro/
 Disallow: /*?*
 
-Sitemap: https://www.tidewaterproperty.com/sitemap.xml
+Sitemap: https://www.tidewaterproperty.com/sitemap-index.xml
