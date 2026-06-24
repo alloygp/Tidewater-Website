@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Topbar from '../components/Topbar.astro';
+import Header from '../components/Header.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import Footer from '../components/Footer.astro';
+import { breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../config/site';
+
+const pageUrl = `${SITE.url}/accessibility`;
+const lastUpdated = 'June 24, 2026';
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Accessibility', url: pageUrl },
+  ]),
+];
+---
+<BaseLayout
+  title="Accessibility Statement | Tidewater Companies"
+  description="Tidewater Companies is committed to making its website accessible to everyone, including people with disabilities."
+  bodyClass="tw-acc-teal"
+  pageStylesheet="styles-pages.css"
+  pageSchema={schemas}
+>
+  <Topbar variant="homeowner" />
+  <Header />
+  <Breadcrumb crumbs={[{ label: "Accessibility" }]} />
+
+  <section class="tw-legal">
+    <div class="tw-container tw-legal-inner">
+      <header class="tw-legal-head">
+        <span class="tw-legal-eyebrow">Legal</span>
+        <h1>Accessibility Statement</h1>
+        <p class="tw-legal-updated">Last updated: {lastUpdated}</p>
+      </header>
+
+      <div class="tw-legal-body">
+        <p>
+          The Tidewater Companies is committed to ensuring that our website is accessible to everyone,
+          including people with disabilities. We believe that all visitors should be able to access
+          information about our property management, rental, and real estate services with ease.
+        </p>
+
+        <h2>Our Commitment</h2>
+        <p>
+          We strive to conform to the Web Content Accessibility Guidelines (WCAG) 2.1, Level AA, which
+          define how to make web content more accessible to people with a wide range of disabilities.
+          Accessibility is an ongoing effort, and we continually work to improve the experience for
+          all users and to apply the relevant standards across our site.
+        </p>
+
+        <h2>Measures We Take</h2>
+        <ul>
+          <li>Using semantic HTML and descriptive headings to support screen readers.</li>
+          <li>Providing text alternatives for meaningful images.</li>
+          <li>Maintaining sufficient color contrast for readability.</li>
+          <li>Ensuring the site is navigable by keyboard.</li>
+          <li>Designing responsive layouts that adapt to phones, tablets, and desktops.</li>
+        </ul>
+
+        <h2>Known Limitations</h2>
+        <p>
+          Despite our efforts, some content may not yet be fully accessible. Where we identify areas
+          for improvement, we prioritize remediation. We also work with third-party tools and content
+          providers and encourage them to provide accessible experiences.
+        </p>
+
+        <h2>Feedback &amp; Assistance</h2>
+        <p>
+          If you encounter any barrier to accessing content on our website, or if you need assistance
+          or information in an alternative format, please let us know &mdash; we welcome your feedback
+          and will make reasonable efforts to provide the information you need.
+        </p>
+        <ul>
+          <li>Email: <a href="mailto:info@tidewaterproperty.com">info@tidewaterproperty.com</a></li>
+          <li>Phone: <a href="tel:+14435480191">(443) 548-0191</a></li>
+        </ul>
+        <p>
+          You can also <a href="/request-a-proposal">contact us through our website</a>. Please
+          describe the issue and the page where you experienced it so we can address it promptly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .tw-legal {
+    background: var(--tw-cream);
+    padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(3rem, 7vw, 5.5rem);
+  }
+  .tw-legal-inner { max-width: 820px; }
+  .tw-legal-head {
+    padding-bottom: 1.75rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--tw-border);
+  }
+  .tw-legal-eyebrow {
+    display: inline-block;
+    font: 600 0.78rem/1 var(--tw-font-body);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tw-teal);
+    margin-bottom: 0.75rem;
+  }
+  .tw-legal-head h1 {
+    font-family: var(--tw-font-heading);
+    color: var(--tw-dark);
+    font-size: clamp(2rem, 5vw, 2.9rem);
+    line-height: 1.1;
+    margin: 0 0 0.6rem;
+  }
+  .tw-legal-updated {
+    color: var(--tw-fg-muted);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  .tw-legal-body { color: var(--tw-dark); }
+  .tw-legal-body h2 {
+    font-family: var(--tw-font-heading);
+    color: var(--tw-dark);
+    font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+    margin: 2.25rem 0 0.6rem;
+  }
+  .tw-legal-body p,
+  .tw-legal-body li {
+    font-family: var(--tw-font-body);
+    color: var(--tw-fg-muted);
+    font-size: 1.02rem;
+    line-height: 1.75;
+  }
+  .tw-legal-body p { margin: 0 0 1rem; }
+  .tw-legal-body ul { margin: 0 0 1rem; padding-left: 1.25rem; }
+  .tw-legal-body li { margin-bottom: 0.4rem; }
+  .tw-legal-body a {
+    color: var(--tw-teal);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .tw-legal-body a:hover { color: var(--tw-dark); }
+</style>
