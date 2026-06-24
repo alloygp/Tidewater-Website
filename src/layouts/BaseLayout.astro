@@ -50,8 +50,14 @@ const {
 const isProduction = import.meta.env.PUBLIC_ENV === 'production';
 const robots = robotsProp ?? (isProduction ? undefined : 'noindex');
 
-// GA4 — only loads in production (never fires on dev/staging). Set GA_MEASUREMENT_ID in env.
-const gaMeasurementId = isProduction ? import.meta.env.GA_MEASUREMENT_ID : undefined;
+// GA4 — only loads in production (never fires on dev/staging).
+// Must be PUBLIC_-prefixed: non-prefixed env vars are NOT inlined into statically
+// prerendered pages by Astro/Vite, so they read as undefined at build time.
+// The measurement ID is non-secret (it ships in the page), so PUBLIC_ is correct.
+// Set PUBLIC_GA_MEASUREMENT_ID in Vercel (GA_MEASUREMENT_ID kept as a fallback).
+const gaMeasurementId = isProduction
+  ? (import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? import.meta.env.GA_MEASUREMENT_ID)
+  : undefined;
 
 // WhatConverts (lead attribution) — production only. The inline bootstrap must run
 // before the external loader, which reads $wc_leads.
