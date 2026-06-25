@@ -92,8 +92,11 @@ export function serviceSchema(opts: {
     name: opts.name,
     description: opts.description,
     url: opts.url,
+    // Organization (not LocalBusiness) — a LocalBusiness provider would require
+    // address/image and trips Google's rich-results validation; Organization
+    // only needs name. Keep it minimal + valid.
     provider: {
-      '@type': SITE.org.type,
+      '@type': 'Organization',
       name: SITE.name,
       url: SITE.url,
     },

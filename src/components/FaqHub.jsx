@@ -171,7 +171,7 @@ const FAQ_CATEGORIES = [
     qs: [
       {
         q: 'How long does the transition from another company take?',
-        a: 'Typically <strong>7 weeks</strong> from signed proposal to first managed board meeting. Self-managed communities transition in <strong>4&ndash;5 weeks</strong>. We run the transition on your behalf; the board reviews, doesn\'t lift. See the <a href="/solutions/switching-hoa-management-company/#timeline">week-by-week timeline</a>.',
+        a: 'Typically <strong>7 weeks</strong> from signed proposal to first managed board meeting. Self-managed communities transition in <strong>4&ndash;5 weeks</strong>. We run the transition on your behalf; the board reviews, doesn\'t lift. See the <a href="/solutions/switching-hoa-management-company#timeline">week-by-week timeline</a>.',
       },
       {
         q: 'What does the transition cost?',
