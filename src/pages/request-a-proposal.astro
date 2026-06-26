@@ -65,6 +65,10 @@ const schemas = [
       padding: 72px 32px 88px;
       display: grid; grid-template-columns: 0.95fr 1.05fr;
       grid-template-areas: "copy form" "promise form";
+      /* Row 1 hugs the copy; row 2 absorbs the form's extra height so the
+         promise box sits directly under the copy instead of being pushed
+         to the vertical center (the "huge gap"). */
+      grid-template-rows: auto 1fr;
       gap: 28px 64px; align-items: start;
     }
     .tw-c-hero-copy { padding-top: 14px; grid-area: copy; }
@@ -314,7 +318,7 @@ const schemas = [
       /* minmax(0,1fr) lets the stacked track shrink below the form's intrinsic
          560px width; min-width:0 lets the copy + form-wrap shrink to fit. Without
          these the 1fr track inflates to 560px and the hero clips on mobile. */
-      .tw-c-hero-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "form" "promise"; gap: 28px; padding: 56px 24px 72px; }
+      .tw-c-hero-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "form" "promise"; grid-template-rows: auto; gap: 28px; padding: 56px 24px 72px; }
       .tw-c-hero-copy, .tw-c-hero-formwrap, .tw-c-promise { min-width: 0; }
       .tw-c-help-grid { grid-template-columns: 1fr; gap: 32px; }
       .tw-c-help-cards { grid-template-columns: 1fr 1fr; }

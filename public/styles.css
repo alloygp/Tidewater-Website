@@ -1148,6 +1148,7 @@ img { max-width: 100%; display: block; }
 .tw-if-textarea { resize: vertical; min-height: 64px; line-height: 1.5; }
 .tw-if-select-wrap { position: relative; }
 .tw-if-select { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 34px; }
+.tw-if-select.tw-if-placeholder { color: var(--if-placeholder); }
 .tw-if-caret { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--if-muted); pointer-events: none; }
 .tw-if-caret .tw-if-ic { width: 14px; height: 14px; }
 .tw-if-segmented { display: flex; gap: 7px; flex-wrap: wrap; }

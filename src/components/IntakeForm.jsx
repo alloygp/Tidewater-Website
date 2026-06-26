@@ -94,32 +94,37 @@ function Field({ def, value, error, onChange }) {
   const span = def.col === 2 ? '1 / -1' : 'auto';
   const fid = 'if-' + def.key;
   const name = wcName(def);
+  // Placeholder doubles as the label to keep the form compact.
+  const ph = def.label + (def.required ? ' *' : '');
   return (
     <div className="tw-if-field" style={{ gridColumn: span }}>
-      <label className="tw-if-label" htmlFor={fid}>{def.label}{def.required && <span className="tw-if-req">*</span>}</label>
       {def.type === 'text' && (
-        <input id={fid} name={name} className={'tw-if-control' + (error ? ' is-err' : '')} type="text" placeholder={def.placeholder || ''}
+        <input id={fid} name={name} aria-label={def.label} className={'tw-if-control' + (error ? ' is-err' : '')} type="text" placeholder={ph}
           inputMode={def.inputMode} maxLength={def.maxLength}
           value={value || ''} onChange={(e) => onChange(def.key, e.target.value)} />
       )}
       {def.type === 'select' && (
         <div className={'tw-if-select-wrap' + (error ? ' is-err' : '')}>
-          <select id={fid} name={name} className="tw-if-control tw-if-select" value={value || ''} onChange={(e) => onChange(def.key, e.target.value)}>
-            <option value="" disabled>Select…</option>
+          <select id={fid} name={name} aria-label={def.label} className={'tw-if-control tw-if-select' + (value ? '' : ' tw-if-placeholder')} value={value || ''} onChange={(e) => onChange(def.key, e.target.value)}>
+            <option value="" disabled>{ph}</option>
             {def.options.map((o) => <option key={o} value={o}>{o}</option>)}
           </select>
           <span className="tw-if-caret"><Ic name="chevron" /></span>
         </div>
       )}
       {def.type === 'radio' && (
-        <div className="tw-if-segmented" role="radiogroup">
-          {def.options.map((o) => (
-            <button type="button" key={o} className={'tw-if-seg' + (value === o ? ' on' : '')}
-              onClick={() => onChange(def.key, o)}>{o}</button>
-          ))}
-          {/* Carries the segmented value into the DOM form so WhatConverts captures it. */}
-          <input type="hidden" id={fid} name={name} value={value || ''} readOnly />
-        </div>
+        // Segmented buttons have no placeholder slot, so keep a compact label for context.
+        <>
+          <label className="tw-if-label" htmlFor={fid}>{def.label}{def.required && <span className="tw-if-req">*</span>}</label>
+          <div className="tw-if-segmented" role="radiogroup">
+            {def.options.map((o) => (
+              <button type="button" key={o} className={'tw-if-seg' + (value === o ? ' on' : '')}
+                onClick={() => onChange(def.key, o)}>{o}</button>
+            ))}
+            {/* Carries the segmented value into the DOM form so WhatConverts captures it. */}
+            <input type="hidden" id={fid} name={name} value={value || ''} readOnly />
+          </div>
+        </>
       )}
       {error && <div className="tw-if-err-msg">{error}</div>}
     </div>
@@ -285,9 +290,8 @@ export default function IntakeForm() {
                 <Field key={f.key} def={f} value={fields[f.key]} error={errors[f.key]} onChange={setField} />
               ))}
               <div className="tw-if-field" style={{ gridColumn: '1 / -1' }}>
-                <label className="tw-if-label" htmlFor="if-message">{intent.id === 'service' ? 'What do you need done?' : 'Anything else?'}{intent.id === 'service' && <span className="tw-if-req">*</span>}</label>
-                <textarea id="if-message" name={intent.id === 'service' ? 'What do you need done?' : 'Message'} className={'tw-if-control tw-if-textarea' + (errors.message ? ' is-err' : '')} rows={intent.id === 'general' ? 5 : 3}
-                  placeholder={intent.id === 'general' ? 'Tell us what’s on your mind…' : intent.id === 'service' ? 'Tell us about the work you’re considering — repairs, upgrades, or ongoing maintenance.' : 'A sentence or two helps us route this faster.'}
+                <textarea id="if-message" aria-label={intent.id === 'service' ? 'What do you need done?' : 'Anything else?'} name={intent.id === 'service' ? 'What do you need done?' : 'Message'} className={'tw-if-control tw-if-textarea' + (errors.message ? ' is-err' : '')} rows={intent.id === 'general' ? 5 : 3}
+                  placeholder={intent.id === 'general' ? 'What’s on your mind?' : intent.id === 'service' ? 'What do you need done? * — repairs, upgrades, or ongoing maintenance' : 'Anything else? A sentence or two helps us route this faster'}
                   value={message} onChange={(e) => { setMessage(e.target.value); setErrors((x) => ({ ...x, message: null })); }} />
                 {errors.message && <div className="tw-if-err-msg">{errors.message}</div>}
               </div>
