@@ -29,6 +29,8 @@ const INTENTS = [
     blurb: 'We’re a board exploring new management.', forWho: 'Boards & HOA / condo directors', hot: true,
     routeTo: 'our management team', fields: [
       { key: 'association', label: 'Association / community name', type: 'text', required: true, placeholder: 'e.g. Wynbrook HOA', col: 2 },
+      { key: 'city', label: 'City', type: 'text', required: true, placeholder: 'e.g. Annapolis' },
+      { key: 'zip', label: 'ZIP code', type: 'text', required: true, placeholder: 'e.g. 21401', inputMode: 'numeric', maxLength: 10 },
       { key: 'units', label: 'Number of units', type: 'select', required: true, options: ['1–50', '51–150', '151–400', '400+'] },
       { key: 'propertyType', label: 'Property type', type: 'select', required: true, options: ['HOA', 'Condominium', 'Townhome', 'Master-planned', 'Commercial / mixed-use', 'Rental property'] },
       { key: 'situation', label: 'Current situation', type: 'select', required: true, options: ['Self-managed today', 'Unhappy with current manager', 'Contract ending soon', 'Just exploring'], col: 2 },
@@ -97,6 +99,7 @@ function Field({ def, value, error, onChange }) {
       <label className="tw-if-label" htmlFor={fid}>{def.label}{def.required && <span className="tw-if-req">*</span>}</label>
       {def.type === 'text' && (
         <input id={fid} name={name} className={'tw-if-control' + (error ? ' is-err' : '')} type="text" placeholder={def.placeholder || ''}
+          inputMode={def.inputMode} maxLength={def.maxLength}
           value={value || ''} onChange={(e) => onChange(def.key, e.target.value)} />
       )}
       {def.type === 'select' && (
