@@ -7,6 +7,16 @@ import Footer from '../../components/Footer.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import FromTheBlog from '../../components/FromTheBlog.jsx';
+import { breadcrumbSchema } from '../../lib/schema';
+import { SITE } from '../../config/site';
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'HOA Management', url: SITE.url + '/hoa-management' },
+    { name: 'HOA Financial Management', url: SITE.url + '/hoa-management/hoa-financial-management' },
+  ]),
+];
 
 const faqItems = [
   {
@@ -48,6 +58,7 @@ const faqItems = [
 ---
 <BaseLayout
   pageStylesheet="styles-blog.css"
+  pageSchema={schemas}
   title="HOA Financial Management Maryland | Tidewater" description="HOA financial management as a standalone service. Monthly statements, A/R, vendor payments, audit support — MBA/CPA-led.">
   <style is:global>
     /* page-level overrides if needed */

@@ -7,6 +7,8 @@ import Footer from '../../components/Footer.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import FromTheBlog from '../../components/FromTheBlog.jsx';
+import { breadcrumbSchema } from '../../lib/schema';
+import { SITE } from '../../config/site';
 
 const warningSigns = [
   'Your manager hasn\'t attended a board meeting in the last 6 months',
@@ -53,9 +55,17 @@ const faqItems = [
   { q: 'What if our community is in Northern Virginia, DC, Delaware, or PA?', a: 'We\'re licensed across Maryland, DC, Virginia, Pennsylvania, Delaware, and West Virginia. We cover Montgomery County, Prince George\'s County, and Northern Virginia from our Maryland offices. We do not take communities outside the Mid-Atlantic — if you\'re elsewhere, we\'ll help you find a reputable peer.' },
   { q: 'How do we know we won\'t be making the same mistake twice?', a: 'Talk to our boards. We\'ll connect you with 3–5 board presidents whose communities are similar in size and stage to yours — you call them, no script. We\'ll also share our 12-month retention rate (97%) and our state-specific covenant enforcement playbook.' },
 ];
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Switching HOA Management Companies', url: SITE.url + '/solutions/switching-hoa-management-company' },
+  ]),
+];
 ---
 <BaseLayout
   pageStylesheet="styles-blog.css"
+  pageSchema={schemas}
   title="Switching HOA Management Companies in Maryland | Tidewater" description="Switching HOA management companies in Maryland? Tidewater handles the full transition — structured onboarding, a flat $1,000 fee, and a dedicated manager.">
   <style is:global>
     /* page-level overrides if needed */

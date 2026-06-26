@@ -7,8 +7,17 @@ import Footer from '../components/Footer.astro';
 import TestimonialsGrid from '../components/TestimonialsGrid.jsx';
 import GoogleReviewsGrid from '../components/GoogleReviewsGrid.jsx';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import { breadcrumbSchema } from '../lib/schema';
+import { SITE } from '../config/site';
+
+const schemas = [
+  breadcrumbSchema([
+    { name: 'Home', url: SITE.url + '/' },
+    { name: 'Testimonials', url: SITE.url + '/testimonials' },
+  ]),
+];
 ---
-<BaseLayout title="HOA Board Reviews & Testimonials | Tidewater" description="What HOA and condo association boards across Maryland and the Mid-Atlantic say about working with Tidewater — reviews from boards we manage today.">
+<BaseLayout pageSchema={schemas} title="HOA Board Reviews & Testimonials | Tidewater" description="What HOA and condo association boards across Maryland and the Mid-Atlantic say about working with Tidewater — reviews from boards we manage today.">
   <style is:global>
     /* page-level overrides if needed */
   </style>

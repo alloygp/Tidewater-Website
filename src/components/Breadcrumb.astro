@@ -12,40 +12,24 @@ const { crumbs, variant = 'default' } = Astro.props;
 // Always prepend Home
 const allCrumbs: Crumb[] = [{ label: 'Home', href: '/' }, ...crumbs];
 
-// JSON-LD BreadcrumbList for SEO
-const schemaItems = allCrumbs.map((c, i) => ({
-  '@type': 'ListItem',
-  position: i + 1,
-  name: c.label,
-  ...(c.href ? { item: `https://tidewaterproperty.com${c.href}` } : {}),
-}));
-const schema = JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: schemaItems,
-});
+// NOTE: BreadcrumbList JSON-LD is emitted once per page via `breadcrumbSchema()`
+// passed into BaseLayout's `pageSchema` — that version is complete (every
+// ListItem has an `item`). This component is presentation only; emitting a
+// second (incomplete) BreadcrumbList here tripped Google's "Missing field item".
 ---
 
 <nav class={`tw-breadcrumb${variant === 'realty' ? ' tw-breadcrumb-realty' : variant === 'management' ? ' tw-breadcrumb-management' : variant === 'maintenance' ? ' tw-breadcrumb-maintenance' : ''}`} aria-label="Breadcrumb">
   <div class="tw-breadcrumb-inner">
-    <ol class="tw-breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <ol class="tw-breadcrumb-list">
       {allCrumbs.map((crumb, i) => {
         const isLast = i === allCrumbs.length - 1;
         return (
-          <li
-            class="tw-breadcrumb-item"
-            itemprop="itemListElement"
-            itemscope
-            itemtype="https://schema.org/ListItem"
-          >
+          <li class="tw-breadcrumb-item">
             {crumb.href && !isLast ? (
-              <a href={crumb.href} class="tw-breadcrumb-link" itemprop="item">
-                <span itemprop="name">{crumb.label}</span>
-              </a>
+              <a href={crumb.href} class="tw-breadcrumb-link">{crumb.label}</a>
             ) : (
-              <span class="tw-breadcrumb-current" itemprop="name" aria-current="page">{crumb.label}</span>
+              <span class="tw-breadcrumb-current" aria-current="page">{crumb.label}</span>
             )}
-            <meta itemprop="position" content={String(i + 1)} />
             {!isLast && <span class="tw-breadcrumb-sep" aria-hidden="true">›</span>}
           </li>
         );
@@ -53,8 +37,6 @@ const schema = JSON.stringify({
     </ol>
   </div>
 </nav>
-
-<script type="application/ld+json" set:html={schema}></script>
 
 <style>
   .tw-breadcrumb {
