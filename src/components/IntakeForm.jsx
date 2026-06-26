@@ -79,18 +79,29 @@ function genId() {
   return 'REQ-' + s + '-' + Math.floor(1000 + Math.random() * 9000);
 }
 
+// WhatConverts reads the DOM form on submit and only captures controls that
+// have a `name` attribute. Map our standard contact fields to the canonical
+// names WC maps to its built-in lead fields (Name/Email/Phone/Company); every
+// other field uses its human label as the name so WC shows it verbatim as a
+// custom field. (The actual POST builds its own FormData, so these names don't
+// change what the email/handler receive — they exist purely for WC capture.)
+const WC_STD = { name: 'name', email: 'email', phone: 'phone', association: 'company', company: 'company' };
+const wcName = (def) => WC_STD[def.key] || def.label;
+
 function Field({ def, value, error, onChange }) {
   const span = def.col === 2 ? '1 / -1' : 'auto';
+  const fid = 'if-' + def.key;
+  const name = wcName(def);
   return (
     <div className="tw-if-field" style={{ gridColumn: span }}>
-      <label className="tw-if-label">{def.label}{def.required && <span className="tw-if-req">*</span>}</label>
+      <label className="tw-if-label" htmlFor={fid}>{def.label}{def.required && <span className="tw-if-req">*</span>}</label>
       {def.type === 'text' && (
-        <input className={'tw-if-control' + (error ? ' is-err' : '')} type="text" placeholder={def.placeholder || ''}
+        <input id={fid} name={name} className={'tw-if-control' + (error ? ' is-err' : '')} type="text" placeholder={def.placeholder || ''}
           value={value || ''} onChange={(e) => onChange(def.key, e.target.value)} />
       )}
       {def.type === 'select' && (
         <div className={'tw-if-select-wrap' + (error ? ' is-err' : '')}>
-          <select className="tw-if-control tw-if-select" value={value || ''} onChange={(e) => onChange(def.key, e.target.value)}>
+          <select id={fid} name={name} className="tw-if-control tw-if-select" value={value || ''} onChange={(e) => onChange(def.key, e.target.value)}>
             <option value="" disabled>Select…</option>
             {def.options.map((o) => <option key={o} value={o}>{o}</option>)}
           </select>
@@ -103,6 +114,8 @@ function Field({ def, value, error, onChange }) {
             <button type="button" key={o} className={'tw-if-seg' + (value === o ? ' on' : '')}
               onClick={() => onChange(def.key, o)}>{o}</button>
           ))}
+          {/* Carries the segmented value into the DOM form so WhatConverts captures it. */}
+          <input type="hidden" id={fid} name={name} value={value || ''} readOnly />
         </div>
       )}
       {error && <div className="tw-if-err-msg">{error}</div>}
@@ -269,8 +282,8 @@ export default function IntakeForm() {
                 <Field key={f.key} def={f} value={fields[f.key]} error={errors[f.key]} onChange={setField} />
               ))}
               <div className="tw-if-field" style={{ gridColumn: '1 / -1' }}>
-                <label className="tw-if-label">{intent.id === 'service' ? 'What do you need done?' : 'Anything else?'}{intent.id === 'service' && <span className="tw-if-req">*</span>}</label>
-                <textarea className={'tw-if-control tw-if-textarea' + (errors.message ? ' is-err' : '')} rows={intent.id === 'general' ? 5 : 3}
+                <label className="tw-if-label" htmlFor="if-message">{intent.id === 'service' ? 'What do you need done?' : 'Anything else?'}{intent.id === 'service' && <span className="tw-if-req">*</span>}</label>
+                <textarea id="if-message" name={intent.id === 'service' ? 'What do you need done?' : 'Message'} className={'tw-if-control tw-if-textarea' + (errors.message ? ' is-err' : '')} rows={intent.id === 'general' ? 5 : 3}
                   placeholder={intent.id === 'general' ? 'Tell us what’s on your mind…' : intent.id === 'service' ? 'Tell us about the work you’re considering — repairs, upgrades, or ongoing maintenance.' : 'A sentence or two helps us route this faster.'}
                   value={message} onChange={(e) => { setMessage(e.target.value); setErrors((x) => ({ ...x, message: null })); }} />
                 {errors.message && <div className="tw-if-err-msg">{errors.message}</div>}
