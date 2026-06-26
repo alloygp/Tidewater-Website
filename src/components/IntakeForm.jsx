@@ -31,7 +31,7 @@ const INTENTS = [
       { key: 'association', label: 'Association / community name', type: 'text', required: true, placeholder: 'e.g. Wynbrook HOA', col: 2 },
       { key: 'city', label: 'City', type: 'text', required: true, placeholder: 'e.g. Annapolis' },
       { key: 'zip', label: 'ZIP code', type: 'text', required: true, placeholder: 'e.g. 21401', inputMode: 'numeric', maxLength: 10 },
-      { key: 'units', label: 'Number of units', type: 'select', required: true, options: ['1–50', '51–150', '151–400', '400+'] },
+      { key: 'units', label: 'Number of units', type: 'text', required: true, placeholder: 'e.g. 120', inputMode: 'numeric', maxLength: 6 },
       { key: 'propertyType', label: 'Property type', type: 'select', required: true, options: ['HOA', 'Condominium', 'Townhome', 'Master-planned', 'Commercial / mixed-use', 'Rental property'] },
       { key: 'situation', label: 'Current situation', type: 'select', required: true, options: ['Self-managed today', 'Unhappy with current manager', 'Contract ending soon', 'Just exploring'], col: 2 },
       { key: 'timeline', label: 'Decision timeline', type: 'radio', required: true, options: ['ASAP', '1–3 months', 'Just researching'], col: 2 },
@@ -94,38 +94,46 @@ function Field({ def, value, error, onChange }) {
   const span = def.col === 2 ? '1 / -1' : 'auto';
   const fid = 'if-' + def.key;
   const name = wcName(def);
-  // Placeholder doubles as the label to keep the form compact.
-  const ph = def.label + (def.required ? ' *' : '');
+  const filled = value != null && String(value) !== '';
+
+  // Radio (segmented) has no placeholder slot — keep a static label.
+  if (def.type === 'radio') {
+    return (
+      <div className="tw-if-field" style={{ gridColumn: span }}>
+        <label className="tw-if-label" htmlFor={fid}>{def.label}{def.required && <span className="tw-if-req">*</span>}</label>
+        <div className="tw-if-segmented" role="radiogroup">
+          {def.options.map((o) => (
+            <button type="button" key={o} className={'tw-if-seg' + (value === o ? ' on' : '')}
+              onClick={() => onChange(def.key, o)}>{o}</button>
+          ))}
+          {/* Carries the segmented value into the DOM form so WhatConverts captures it. */}
+          <input type="hidden" id={fid} name={name} value={value || ''} readOnly />
+        </div>
+        {error && <div className="tw-if-err-msg">{error}</div>}
+      </div>
+    );
+  }
+
+  // Floating label: sits inside the field, shrinks to the top border on focus/fill.
   return (
     <div className="tw-if-field" style={{ gridColumn: span }}>
-      {def.type === 'text' && (
-        <input id={fid} name={name} aria-label={def.label} className={'tw-if-control' + (error ? ' is-err' : '')} type="text" placeholder={ph}
-          inputMode={def.inputMode} maxLength={def.maxLength}
-          value={value || ''} onChange={(e) => onChange(def.key, e.target.value)} />
-      )}
-      {def.type === 'select' && (
-        <div className={'tw-if-select-wrap' + (error ? ' is-err' : '')}>
-          <select id={fid} name={name} aria-label={def.label} className={'tw-if-control tw-if-select' + (value ? '' : ' tw-if-placeholder')} value={value || ''} onChange={(e) => onChange(def.key, e.target.value)}>
-            <option value="" disabled>{ph}</option>
-            {def.options.map((o) => <option key={o} value={o}>{o}</option>)}
-          </select>
-          <span className="tw-if-caret"><Ic name="chevron" /></span>
-        </div>
-      )}
-      {def.type === 'radio' && (
-        // Segmented buttons have no placeholder slot, so keep a compact label for context.
-        <>
-          <label className="tw-if-label" htmlFor={fid}>{def.label}{def.required && <span className="tw-if-req">*</span>}</label>
-          <div className="tw-if-segmented" role="radiogroup">
-            {def.options.map((o) => (
-              <button type="button" key={o} className={'tw-if-seg' + (value === o ? ' on' : '')}
-                onClick={() => onChange(def.key, o)}>{o}</button>
-            ))}
-            {/* Carries the segmented value into the DOM form so WhatConverts captures it. */}
-            <input type="hidden" id={fid} name={name} value={value || ''} readOnly />
-          </div>
-        </>
-      )}
+      <div className={'tw-if-float' + (filled ? ' has-value' : '') + (error ? ' is-err' : '')}>
+        {def.type === 'text' && (
+          <input id={fid} name={name} aria-label={def.label} className="tw-if-control" type="text" placeholder=" "
+            inputMode={def.inputMode} maxLength={def.maxLength}
+            value={value || ''} onChange={(e) => onChange(def.key, e.target.value)} />
+        )}
+        {def.type === 'select' && (
+          <>
+            <select id={fid} name={name} aria-label={def.label} className="tw-if-control tw-if-select" value={value || ''} onChange={(e) => onChange(def.key, e.target.value)}>
+              <option value="" disabled></option>
+              {def.options.map((o) => <option key={o} value={o}>{o}</option>)}
+            </select>
+            <span className="tw-if-caret"><Ic name="chevron" /></span>
+          </>
+        )}
+        <label className="tw-if-flabel" htmlFor={fid}>{def.label}{def.required && <span className="tw-if-req">*</span>}</label>
+      </div>
       {error && <div className="tw-if-err-msg">{error}</div>}
     </div>
   );
@@ -290,9 +298,12 @@ export default function IntakeForm() {
                 <Field key={f.key} def={f} value={fields[f.key]} error={errors[f.key]} onChange={setField} />
               ))}
               <div className="tw-if-field" style={{ gridColumn: '1 / -1' }}>
-                <textarea id="if-message" aria-label={intent.id === 'service' ? 'What do you need done?' : 'Anything else?'} name={intent.id === 'service' ? 'What do you need done?' : 'Message'} className={'tw-if-control tw-if-textarea' + (errors.message ? ' is-err' : '')} rows={intent.id === 'general' ? 5 : 3}
-                  placeholder={intent.id === 'general' ? 'What’s on your mind?' : intent.id === 'service' ? 'What do you need done? * — repairs, upgrades, or ongoing maintenance' : 'Anything else? A sentence or two helps us route this faster'}
-                  value={message} onChange={(e) => { setMessage(e.target.value); setErrors((x) => ({ ...x, message: null })); }} />
+                <div className={'tw-if-float tw-if-float-top' + (message ? ' has-value' : '') + (errors.message ? ' is-err' : '')}>
+                  <textarea id="if-message" aria-label={intent.id === 'service' ? 'What do you need done?' : 'Anything else?'} name={intent.id === 'service' ? 'What do you need done?' : 'Message'} className="tw-if-control tw-if-textarea" rows={intent.id === 'general' ? 5 : 3}
+                    placeholder=" "
+                    value={message} onChange={(e) => { setMessage(e.target.value); setErrors((x) => ({ ...x, message: null })); }} />
+                  <label className="tw-if-flabel" htmlFor="if-message">{intent.id === 'service' ? 'What do you need done?' : 'Anything else?'}{intent.id === 'service' && <span className="tw-if-req">*</span>}</label>
+                </div>
                 {errors.message && <div className="tw-if-err-msg">{errors.message}</div>}
               </div>
             </div>

@@ -1148,7 +1148,23 @@ img { max-width: 100%; display: block; }
 .tw-if-textarea { resize: vertical; min-height: 64px; line-height: 1.5; }
 .tw-if-select-wrap { position: relative; }
 .tw-if-select { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 34px; }
-.tw-if-select.tw-if-placeholder { color: var(--if-placeholder); }
+/* Floating label */
+.tw-if-float { position: relative; }
+.tw-if-flabel {
+  position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+  transform-origin: left center; font-family: var(--tw-font-body); font-size: 14px; line-height: 1;
+  color: var(--if-muted); pointer-events: none; background: var(--if-input-bg); padding: 0 5px;
+  max-width: calc(100% - 26px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  transition: top .14s ease, transform .14s ease, color .14s ease, background .14s ease;
+}
+.tw-if-float.tw-if-float-top .tw-if-flabel { top: 14px; transform: none; }
+.tw-if-float:focus-within .tw-if-flabel,
+.tw-if-float.has-value .tw-if-flabel {
+  top: 0; transform: translateY(-50%) scale(.84); font-weight: 600; background: #fff; color: var(--if-muted);
+}
+.tw-if-float:focus-within .tw-if-flabel { color: var(--if-accent); }
+.tw-if-float.is-err .tw-if-control { border-color: #b9466a; }
+.tw-if-float .tw-if-req { color: var(--if-accent); }
 .tw-if-caret { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--if-muted); pointer-events: none; }
 .tw-if-caret .tw-if-ic { width: 14px; height: 14px; }
 .tw-if-segmented { display: flex; gap: 7px; flex-wrap: wrap; }
